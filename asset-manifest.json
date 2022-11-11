@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/ravl/static/css/main.073c9b0a.css",
-    "main.js": "/ravl/static/js/main.f5cb2c52.js",
+    "main.css": "/ravl/static/css/main.0d75ddd5.css",
+    "main.js": "/ravl/static/js/main.b9747b26.js",
     "static/js/787.43a2a0f3.chunk.js": "/ravl/static/js/787.43a2a0f3.chunk.js",
-    "static/media/logo.svg": "/ravl/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "static/media/Acme.ttf": "/ravl/static/media/Acme.f6db4c5c3282b4e95e85.ttf",
     "index.html": "/ravl/index.html",
-    "main.073c9b0a.css.map": "/ravl/static/css/main.073c9b0a.css.map",
-    "main.f5cb2c52.js.map": "/ravl/static/js/main.f5cb2c52.js.map",
+    "main.0d75ddd5.css.map": "/ravl/static/css/main.0d75ddd5.css.map",
+    "main.b9747b26.js.map": "/ravl/static/js/main.b9747b26.js.map",
     "787.43a2a0f3.chunk.js.map": "/ravl/static/js/787.43a2a0f3.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.073c9b0a.css",
-    "static/js/main.f5cb2c52.js"
+    "static/css/main.0d75ddd5.css",
+    "static/js/main.b9747b26.js"
   ]
 }
