@@ -1,0 +1,42 @@
+html{
+  font-size: 20px;
+}
+body{
+  min-height: 100vh;
+  display: flex;
+  background-color: #282c34;
+}
+#root{
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.App {
+  display: flex;
+  flex-direction: row;
+  max-width: 600px;
+  width: 100%;
+  height: 100vh;
+  border: 20px solid "red";
+}
+.AppLeftBox {
+  height:100vh;
+  text-align: center;
+  border-color: 'red'; border: 20px;
+}
+.AppLRightBox {
+  height:100vh;
+  text-align: center;
+  border-color: 'yellow'; border: 20px;
+}
+.GameContainer {
+  height:100vh;
+  width: 100px;;
+  background-color: rgb(6, 108, 197);
+  text-align: center;
+  border-color: 'red'; border: 20px;
+}
+
+
