@@ -3,13 +3,11 @@ import config from '../config/config';
 import MenuImage from '../images/menu.png';
 import SupportImage from '../images/heart.png';
 import HelpImage from '../images/question.png';
-
-
+const scrWidth = config.scrWidth;
+const scrHeight = config.scrHeight;
+const marLeftOrRight = (scrWidth - scrHeight * 9/16)/2;
 
 function Header(props) {
-
-
-
   return(
     <div style={headerStyles.container}>
       <div style={headerStyles.left_div}>
@@ -22,7 +20,7 @@ function Header(props) {
       </div>
       <div style={headerStyles.right_div}>
         <img src={SupportImage} alt={"Support"} style={headerStyles.imageStyle} onClick={() => props.clickMenu()} />          
-        <img src={HelpImage} alt={"Help"} style={headerStyles.imageStyle} onClick={() => props.clickMenu()} />          
+        <img src={HelpImage} alt={"Help"} style={headerStyles.helpImageStyle} onClick={() => props.clickMenu()} />          
       </div>
     </div>
 
@@ -40,8 +38,8 @@ const headerStyles = {
     flexDirection: "row",
     position: "absolute",
     top: 0,
-    left: (config.width - config.height * 9/16)/2,
-    width: config.height * 9/16,
+    left: 0,
+    width: config.scrWidth,
     height: 60,
     backgroundColor: colors.dark_purple,
 
@@ -74,7 +72,12 @@ const headerStyles = {
   menuImageStyle: {
     width: 44,
     height: 44,
-    marginLeft: 10
+    marginLeft: config.isPC || config.isTablet?marLeftOrRight:10,
+  },
+  helpImageStyle: {
+    width: 44,
+    height: 44,
+    marginRight: config.isPC || config.isTablet?marLeftOrRight:10,
   },
   titleText: {
     fontFamily: "Acme",

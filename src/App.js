@@ -42,7 +42,6 @@ function App() {
     </div>
   );
 
-console.log("height: " + window.innerHeight);
 
 return (
     <div style={styles.container}>

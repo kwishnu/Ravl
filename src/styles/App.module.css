@@ -24,12 +24,10 @@ body{
 .AppLeftBox {
   height:100vh;
   text-align: center;
-  border-color: 'red'; border: 20px;
 }
 .AppLRightBox {
   height:100vh;
   text-align: center;
-  border-color: 'yellow'; border: 20px;
 }
 .GameContainer {
   height:100vh;
