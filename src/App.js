@@ -15,7 +15,7 @@ import {
 import { useState } from "react";
 import Header from './components/Header.js';
 import styles from './styles/appStyles.js';
-import stylesCSS from './styles/App.module.css';
+//import stylesCSS from './styles/App.module.css';
 
 const data = [
   {
@@ -45,19 +45,19 @@ function App() {
 
 return (
     <div style={styles.container}>
-      <div className={stylesCSS.AppLeftBox}>
+      <div style={styles.AppLeftBox}>
 
       </div>
 
       <div style={styles.appContainer}>
-        <div style={styles.messageHeader}>
-          here i am
+        <div id="messageHeader" style={styles.messageHeader}>
+
         </div>
-        <div style={styles.scoreContainer}>
+        <div  id="scoreContainer" style={styles.scoreContainer}>
         </div>
-        <div style={styles.gameContainer}>
+        <div id="gameContainer" style={styles.gameContainer}>
         </div>
-        <div style={styles.footerContainer}>
+        <div  id="footerContainer" style={styles.footerContainer}>
         </div>
       </div>
 
@@ -68,7 +68,7 @@ return (
           clickMenu={() => setOpen(true)}
         />
 
-      <div className={stylesCSS.AppRightBox}>
+      <div style={styles.AppRightBox}>
 
       </div>
     </div>

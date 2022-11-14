@@ -8,7 +8,6 @@ const appStyles = {
 
 
   container: {
-    display: "flex",
     height: "100%",
     width: "100%",
     alignItems: 'center',
@@ -22,11 +21,11 @@ const appStyles = {
     flexDirection: "column",
     height: scrHeight,
     width: scrWidth,
+    maxWidth: scrWidth,
     padding: 0,
     alignItems: 'center',
     justifyContent: 'flex-start',
     backgroundColor: colors.transparent,
-    borderColor: 'green', borderWidth: 2, borderStyle: "solid"
   },
   AppLeftBox: {
     height:"100%",
@@ -46,7 +45,9 @@ const appStyles = {
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: colors.transparent,
-    borderColor: 'yellow', borderWidth: 2, borderStyle: "solid"
+    borderTop: 'yellow', 
+    borderWidth: 2, 
+    borderStyle: "solid none none none"
   },
   scoreContainer: {
     flexDirection: "row",
@@ -56,7 +57,9 @@ const appStyles = {
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: colors.transparent,
-    borderColor: 'blue', borderWidth: 2, borderStyle: "solid"
+    borderTop: 'blue', 
+    borderWidth: 2, 
+    borderStyle: "solid none none none"
   },
   gameContainer: {
     flexDirection: "column",
@@ -66,7 +69,9 @@ const appStyles = {
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: colors.transparent,
-    borderColor: 'pink', borderWidth: 2, borderStyle: "solid"
+    borderTop: 'pink', 
+    borderWidth: 2, 
+    borderStyle: "solid none none none"
   },
   footerContainer: {
     flexDirection: "column",
@@ -76,7 +81,9 @@ const appStyles = {
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: colors.transparent,
-    borderColor: 'red', borderWidth: 2, borderStyle: "solid"
+    borderColor: 'red', 
+    borderWidth: 2, 
+    borderStyle: "solid none none none"
   },
 
 
