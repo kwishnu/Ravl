@@ -14,6 +14,8 @@ import {
 } from "@material-ui/icons";
 import { useState } from "react";
 import Header from './components/Header.js';
+// import Tester from "./components/test.js";
+import TileSet from './components/TileSet.js';
 import styles from './styles/appStyles.js';
 //import stylesCSS from './styles/App.module.css';
 
@@ -42,7 +44,7 @@ function App() {
     </div>
   );
 
-
+  
 return (
     <div style={styles.container}>
       <div style={styles.AppLeftBox}>
@@ -51,11 +53,11 @@ return (
 
       <div style={styles.appContainer}>
         <div id="messageHeader" style={styles.messageHeader}>
-
         </div>
         <div  id="scoreContainer" style={styles.scoreContainer}>
         </div>
         <div id="gameContainer" style={styles.gameContainer}>
+          <TileSet />
         </div>
         <div  id="footerContainer" style={styles.footerContainer}>
         </div>
