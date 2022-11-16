@@ -14,8 +14,9 @@ import {
 } from "@material-ui/icons";
 import { useState } from "react";
 import Header from './components/Header.js';
+import Footer from './components/Footer.js';
 // import Tester from "./components/test.js";
-import TileSet from './components/TileSet.js';
+import TileSet from './components/TileSet';
 import styles from './styles/appStyles.js';
 //import stylesCSS from './styles/App.module.css';
 
@@ -43,7 +44,10 @@ function App() {
       ))}
     </div>
   );
-
+  // const props = {
+  //   tilesInColumn: 3,
+  //   tileHeight: 60
+  // }
   
 return (
     <div style={styles.container}>
@@ -54,12 +58,13 @@ return (
       <div style={styles.appContainer}>
         <div id="messageHeader" style={styles.messageHeader}>
         </div>
-        <div  id="scoreContainer" style={styles.scoreContainer}>
-        </div>
         <div id="gameContainer" style={styles.gameContainer}>
-          <TileSet />
+          <TileSet tilesInColumn={3} tileHeight={60} />
+          <TileSet  tilesInColumn={3} tileHeight={60}/>
+          <TileSet  tilesInColumn={3} tileHeight={60}/>
         </div>
         <div  id="footerContainer" style={styles.footerContainer}>
+          <Footer />
         </div>
       </div>
 

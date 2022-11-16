@@ -1,33 +1,29 @@
 import React, {useState} from 'react';
 import Tile from './Tile';
+// import config from '../config/config';
 import Draggable from "react-draggable";
+let tilePlusMargin = 0;
 
-
-function TileSet() {
+const TileSet = (props) => {
+  const { tilesInColumn, tileHeight } = props;
+  tilePlusMargin = tileHeight + 2;
+  const maxMove = tilesInColumn - 1;
   const [position, setPosition] = useState({ x: 0, y: 0 })
-  // const myRef = React.createRef()
-  const handleDrag = (e, data) => {
-    // setPosition({ x: 0, y: data.y })    
-  };
+
   const handleStop = (e, data) => {
-    console.log("data from handleStop: " + (data.y));
-    setPosition({ x: 0, y: -200 })    
-  };
-  const handleDrop = (e, data) => {
-    console.log("data: " + (data.y));
-    // setPosition({ x: 0, y: 100 })    
+    const moveMultiple = Math.round(data.y/tilePlusMargin);
+    setPosition({ x: 0, y: moveMultiple * tilePlusMargin })    
   };
 
   return (
-    <Draggable axis={'y'}  position={position} onDrop={handleDrop} onDrag={handleDrag} onStop={handleStop}> 
+    <Draggable axis={'y'} bounds={{top: -(tilePlusMargin * (maxMove + 0.4)), bottom: (tilePlusMargin * (maxMove + 0.4))}} position={position} onStop={handleStop}> 
       <span>
-        <Tile />
-        <Tile />
-        <Tile />
+        <Tile tileHeight={props.tileHeight}/>
+        <Tile tileHeight={props.tileHeight}/>
+        <Tile tileHeight={props.tileHeight}/>
       </span>
     </Draggable>
   );
-
 // function handleDragEnd(event) {
 //   // console.log("handleDragEnd..." + JSON.stringify(event));
 //   console.log("Here I am!");

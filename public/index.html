@@ -22,9 +22,13 @@
     -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <script>
-      // document.addEventListener("touchstart", function(e){
-      //   e.preventDefault();
-      // },{passive: false});
+      // global.scrHeight = window.innerHeight;
+      // global.scrWidth = window.innerWidth;
+      // window.screen.orientation.addEventListener('change', function() {
+      //   const temp = global.scrHeight;
+      //   global.scrHeight = global.scrWidth;
+      //   global.scrWidth = temp;
+      // })
       window.addEventListener('touchmove', ev => {
         if (true) {
           ev.preventDefault();

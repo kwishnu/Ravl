@@ -62,9 +62,9 @@ const appStyles = {
     borderStyle: "solid none none none"
   },
   gameContainer: {
-    flexDirection: "column",
     display: "flex",
-    flex: 15,
+    flexDirection: "row",
+    flex: 18,
     width: config.isPC || config.isTablet?scrHeight * 9/16:scrWidth,
     alignItems: 'center',
     justifyContent: 'center',
@@ -76,10 +76,10 @@ const appStyles = {
   footerContainer: {
     flexDirection: "column",
     display: "flex",
-    flex: 4,
+    flex: 2,
     width: config.isPC || config.isTablet?scrHeight * 9/16:scrWidth,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: 'stretch',
+    justifyContent: 'stretch',
     backgroundColor: colors.transparent,
     borderColor: 'red', 
     borderWidth: 2, 

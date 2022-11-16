@@ -1,5 +1,5 @@
-let height = window.innerHeight;
-let width = window.innerWidth;
+const height = window.innerHeight;
+const width = window.innerWidth;
 const TILE_HEIGHT = parseInt((height/17).toPrecision(2));
 const LINE_HEIGHT = Math.floor(width/18);
 const deviceType = width > 800?"PC":height/width > 1.77?"phone":"tablet";
@@ -8,10 +8,7 @@ const isTablet = deviceType === "tablet"?true:false;
 const isPhone = deviceType === "phone"?true:false;
 const SLIDER_WIDTH = width * 0.66;
 
-window.screen.orientation.addEventListener('change', function() {
-  height = window.innerWidth;
-  width = window.innerHeight;
-})
+
 
 export var config = {
   versionCode: 12,

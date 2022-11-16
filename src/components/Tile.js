@@ -224,8 +224,10 @@ class Tile extends Component {
   }
   render() {
     // const anim = (this.props.animate === true)?"bounceInRight":"";
+    const { tileHeight } = this.props;
+    console.log("tileHeight: " + tileHeight);
     return (
-      <motion.div style={tile_styles.tile}
+      <motion.div style={{...tile_styles.tile, height: tileHeight, width: tileHeight}}
       initial={{ x: 500 }}
       animate={{ x: 0 }}
       transition={{ type: "spring", stiffness: 250, damping: 18, duration: 0.4 }}
@@ -247,13 +249,11 @@ const tile_styles = {
     justifyContent: 'center',
     alignItems: 'center',
     borderWidth: 1,
-    height: 100,
-    width: 100,
     backgroundColor: colors.off_white,
     borderColor: colors.off_black, borderStyle: 'solid'
   },
   text: {
-    fontSize: 60,
+    fontSize: 36,
     fontFamily: 'Helvetica',
     fontWeight: 'bold',
     color: colors.off_black
