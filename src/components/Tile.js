@@ -225,7 +225,7 @@ class Tile extends Component {
   render() {
     // const anim = (this.props.animate === true)?"bounceInRight":"";
     const { tileHeight } = this.props;
-    console.log("tileHeight: " + tileHeight);
+    // console.log("tileHeight: " + tileHeight);
     return (
       <motion.div style={{...tile_styles.tile, height: tileHeight, width: tileHeight}}
       initial={{ x: 500 }}

@@ -12,7 +12,9 @@ import {
   SettingsOutlined,
   ContactSupportOutlined,
 } from "@material-ui/icons";
-import { useState } from "react";
+// import { useState } from "react";
+import React, { Component } from 'react';
+import colors from './config/colors';
 import Header from './components/Header.js';
 import Footer from './components/Footer.js';
 // import Tester from "./components/test.js";
@@ -31,11 +33,26 @@ const data = [
   { name: "Mega RavL", icon: <DraftsOutlined /> },
 ];
 
-function App() {
-  const [open, setOpen] = useState(false);
-
-  const getList = () => (
-    <div onClick={() => setOpen(false)}>
+class App extends Component {
+  constructor(props) {
+    super(props);
+    // this.handleViewRef = ref => this.view = ref;
+    // this.handleTileRef = ref2 => this.view = ref2;
+    this.state = {
+      text: this.props.text,
+      tileHeight: this.props.tileHeight,
+      yOffset: 0,
+      intervalID: 0,
+      bgColor: colors.text_white,
+      textColor: colors.off_black,
+      darkModeEnabled: this.props.dark,
+      isOpen: false
+      // xValue: posOrNeg() * getRandomInt(20, 100)
+    };
+  }
+  getList(){
+    return(
+    <div onClick={() => this.toggleDrawer()}>
       {data.map((item, index) => (
         <ListItem button key={index}>
           <ListItemIcon>{item.icon}</ListItemIcon>
@@ -43,43 +60,50 @@ function App() {
         </ListItem>
       ))}
     </div>
-  );
+    )
+}  
+  // const [open, setOpen] = useState(false);
+toggleDrawer(which){
+  this.setState({isOpen: !this.state.isOpen});
+  console.log("which: " + which);
+}
   // const props = {
   //   tilesInColumn: 3,
   //   tileHeight: 60
   // }
-  
-return (
-    <div style={styles.container}>
-      <div style={styles.AppLeftBox}>
+  render() {
+    return (
+      <div style={styles.container}>
+        <div style={styles.AppLeftBox}>
 
-      </div>
-
-      <div style={styles.appContainer}>
-        <div id="messageHeader" style={styles.messageHeader}>
         </div>
-        <div id="gameContainer" style={styles.gameContainer}>
-          <TileSet tilesInColumn={3} tileHeight={60} />
-          <TileSet  tilesInColumn={3} tileHeight={60}/>
-          <TileSet  tilesInColumn={3} tileHeight={60}/>
+
+        <div style={styles.appContainer}>
+          <div id="messageHeader" style={styles.messageHeader}>
+          </div>
+          <div id="gameContainer" style={styles.gameContainer}>
+            <TileSet tilesInColumn={3} tileHeight={60} />
+            <TileSet  tilesInColumn={3} tileHeight={60}/>
+            <TileSet  tilesInColumn={3} tileHeight={60}/>
+          </div>
+          <div  id="footerContainer" style={styles.footerContainer}>
+            <Footer />
+          </div>
         </div>
-        <div  id="footerContainer" style={styles.footerContainer}>
-          <Footer />
+
+          <Drawer anchor={"left"} open={this.state.isOpen} onClose={() => this.setState({isOpen: false})}>
+            {this.getList()}
+          </Drawer>
+          <Header 
+            clickMenu={(which) => this.toggleDrawer(which)}
+          />
+
+        <div style={styles.AppRightBox}>
+
         </div>
       </div>
-
-        <Drawer anchor={"left"} open={open} onClose={() => setOpen(false)}>
-          {getList()}
-        </Drawer>
-        <Header 
-          clickMenu={() => setOpen(true)}
-        />
-
-      <div style={styles.AppRightBox}>
-
-      </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default App;

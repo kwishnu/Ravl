@@ -11,7 +11,7 @@ function Header(props) {
   return(
     <div style={headerStyles.container}>
       <div style={headerStyles.left_div}>
-      <img src={MenuImage} alt={"Menu"} style={headerStyles.menuImageStyle} onClick={() => props.clickMenu()} />          
+      <img src={MenuImage} alt={"Menu"} style={headerStyles.menuImageStyle} onClick={() => props.clickMenu("Menu")} />          
       </div>
       <div style={headerStyles.center_div}>
         <div style={headerStyles.titleText}>
@@ -19,18 +19,13 @@ function Header(props) {
         </div>
       </div>
       <div style={headerStyles.right_div}>
-        <img src={SupportImage} alt={"Support"} style={headerStyles.imageStyle} onClick={() => props.clickMenu()} />          
-        <img src={HelpImage} alt={"Help"} style={headerStyles.helpImageStyle} onClick={() => props.clickMenu()} />          
+        <img src={SupportImage} alt={"Support"} style={headerStyles.imageStyle} onClick={() => props.clickMenu("Support")} />          
+        <img src={HelpImage} alt={"Help"} style={headerStyles.helpImageStyle} onClick={() => props.clickMenu("Help")} />          
       </div>
     </div>
-
-
-
   )
 
-
 }
-
 
 const headerStyles = {
   container: {
