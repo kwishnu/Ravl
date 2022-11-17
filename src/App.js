@@ -70,6 +70,7 @@ toggleDrawer(which){
 transitionToGame(daily){
   console.log("transition to game...");
 }
+
   render() {
     return (
       <div style={styles.container}>

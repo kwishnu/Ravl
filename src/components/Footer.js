@@ -69,7 +69,7 @@ const footer_styles = {
     display: "flex",
     flexDirection: "row",
     position: 'absolute',
-    top: scrHeight * 0.89,
+    top: scrHeight * 0.84,
     bottom: 0,
     right: 0, 
     left: 0,
@@ -89,26 +89,30 @@ const footer_styles = {
     display: "flex",
     flexDirection: 'column',
     width: config.isPC || config.isTablet?scrHeight * 9/16:scrWidth,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: "flex-start",
+    alignItems: "flex-start",
+    alignSelf: 'stretch',
+// borderColor: 'white', borderWidth: 2, borderStyle: 'solid'
 
   },
   start_buttons_row: {
     display: "flex",
-    flex: 5,
+    flex: 3,
     flexDirection: 'row',
     alignItems: 'flex-end',
     alignSelf: 'stretch',
     justifyContent: 'center',
-
+// borderColor: 'red', borderWidth: 2, borderStyle: 'solid'
   },
   streak_row: {
     display: "flex",
-    flex: 3,
+    flex: 5,
     flexDirection: 'row',
     alignItems: 'flex-start',
     justifyContent: 'center',
     alignSelf: 'stretch',
+    padding: 6,
+// borderColor: 'yellow', borderWidth: 2, borderStyle: 'solid'
 
   },
 
@@ -161,7 +165,7 @@ const footer_styles = {
   streak_cell1: {
     display: "flex",
     flex: 1,
-    alignItems: 'center',
+    alignItems: 'flex-start',
     justifyContent: 'flex-end',
     alignSelf: 'stretch',
 
@@ -178,7 +182,7 @@ const footer_styles = {
   streak_cell3: {
     display: "flex",
     flex: 1,
-    alignItems: 'center',
+    alignItems: 'flex-start',
     justifyContent: 'flex-start',
     alignSelf: 'stretch',
   },
@@ -195,7 +199,6 @@ const footer_styles = {
     borderWidth: 1,
     borderStyle: 'solid',
     borderRadius: 20,
-    marginTop: 6,
     paddingLeft: 16,
     paddingRight: 16
   },

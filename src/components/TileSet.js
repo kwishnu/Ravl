@@ -6,14 +6,14 @@ let tilePlusMargin = 0;
 
 const TileSet = (props) => {
   const { tilesInColumn, tileHeight } = props;
-  tilePlusMargin = tileHeight + 2.3;
+  tilePlusMargin = tileHeight + 2;//2.3
   const maxMove = tilesInColumn - 1;
   const [position, setPosition] = useState({ x: 0, y: 0 })
 
   const handleStop = (e, data) => {
-    const moveMultiple = Math.round(data.y/tilePlusMargin);
-    setPosition({ x: 0, y: moveMultiple * tilePlusMargin })  
-    console.log("y: " + moveMultiple * tilePlusMargin);  
+    const moveMultiple = Math.round(data.y/tileHeight);
+    setPosition({ x: 0, y: moveMultiple * tilePlusMargin })
+    console.log("test: " + moveMultiple + ", moveMultiple * tilePlusMargin: " + moveMultiple * tilePlusMargin);  
   };
 
   return (
