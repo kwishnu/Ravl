@@ -39,6 +39,6 @@ export const getAnimatedWordLeft = (length) => {
   }
 }
 
-export const convertFont = (inputFontSize) => isTablet?inputFontSize * height/1000:inputFontSize * width/460;
+export const convertFont = (inputFontSize) => isTablet || isPC?inputFontSize * height/1000:inputFontSize * width/460;
 
 export default config;

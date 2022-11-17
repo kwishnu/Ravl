@@ -43,14 +43,14 @@ const headerStyles = {
     display: "flex",
     flex: 1,
     justifyContent: "flex-start",
-    alignItems: "center"
+    alignItems: "center",
 
   },
   center_div: {
     display: "flex",
     flex: 1,
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
 
   },
   right_div: {

@@ -67,10 +67,9 @@ toggleDrawer(which){
   this.setState({isOpen: !this.state.isOpen});
   console.log("which: " + which);
 }
-  // const props = {
-  //   tilesInColumn: 3,
-  //   tileHeight: 60
-  // }
+transitionToGame(daily){
+  console.log("transition to game...");
+}
   render() {
     return (
       <div style={styles.container}>
@@ -82,12 +81,11 @@ toggleDrawer(which){
           <div id="messageHeader" style={styles.messageHeader}>
           </div>
           <div id="gameContainer" style={styles.gameContainer}>
-            <TileSet tilesInColumn={3} tileHeight={60} />
-            <TileSet  tilesInColumn={3} tileHeight={60}/>
-            <TileSet  tilesInColumn={3} tileHeight={60}/>
+            <TileSet tilesInColumn={4} tileHeight={60} />
+            <TileSet tilesInColumn={4} tileHeight={60}/>
+            <TileSet tilesInColumn={4} tileHeight={60}/>
           </div>
           <div  id="footerContainer" style={styles.footerContainer}>
-            <Footer />
           </div>
         </div>
 
@@ -97,6 +95,7 @@ toggleDrawer(which){
           <Header 
             clickMenu={(which) => this.toggleDrawer(which)}
           />
+            <Footer puzzleStreak={'3'} startGame={(daily) => this.transitionToGame(daily)}/>
 
         <div style={styles.AppRightBox}>
 

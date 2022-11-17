@@ -26,6 +26,7 @@ const appStyles = {
     alignItems: 'center',
     justifyContent: 'flex-start',
     backgroundColor: colors.transparent,
+    borderColor: 'red', borderWidth: 2, borderStyle: 'solid'
   },
   AppLeftBox: {
     height:"100%",
