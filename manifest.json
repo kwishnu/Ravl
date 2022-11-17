@@ -28,6 +28,7 @@
     }],  "lang": "en-US",
   "start_url": "/index.html",
   "display": "standalone",
+  "orientation": "portrait",
   "background_color": "#2E034B",
   "theme_color": "#2E034B"
 }

@@ -17,10 +17,17 @@ import React, { Component } from 'react';
 import colors from './config/colors';
 import Header from './components/Header.js';
 import Footer from './components/Footer.js';
-// import Tester from "./components/test.js";
+// import Settings from "../screens/settings";
+// import Help from "../screens/help";
+// import Support from "../screens/support";
+// import Words from "./modal/WordsModal";
+// import EndGame from "./modal/EndGameModal";
+// import ThankYou from "./modal/ThankYouModal";
+import HintNag from "./modal/HintNagModal";
 import TileSet from './components/TileSet';
 import styles from './styles/appStyles.js';
 //import stylesCSS from './styles/App.module.css';
+
 
 const data = [
   {
@@ -46,6 +53,7 @@ class App extends Component {
       bgColor: colors.text_white,
       textColor: colors.off_black,
       darkModeEnabled: this.props.dark,
+      showHintNagModal: false,
       isOpen: false
       // xValue: posOrNeg() * getRandomInt(20, 100)
     };
@@ -69,10 +77,25 @@ toggleDrawer(which){
 }
 transitionToGame(daily){
   console.log("transition to game...");
+  this.setState({showHintNagModal: true});
 }
+closeModal(){
+  this.setState({
+    // showSettingsModal: false,
+    // showHelpModal: false,
+    // showSupportModal: false,
+    // showWordsModal: false,
+    // showEndGameModal: false,
+    // showThankYouModal: false,
+    showHintNagModal: false,
+    // modalCall: "None"
+  });
+}
+
 
   render() {
     return (
+      <div>
       <div style={styles.container}>
         <div style={styles.AppLeftBox}>
 
@@ -102,6 +125,12 @@ transitionToGame(daily){
 
         </div>
       </div>
+        {this.state.showHintNagModal &&
+          <div>
+          <HintNag isModalVisible={this.state.showHintNagModal} isDarkModeEnabled={this.state.darkModeEnabled} requestModalClose={()=>{this.closeModal()}}/>
+          </div>
+        }
+        </div>
     );
   }
 }
