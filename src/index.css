@@ -1,3 +1,7 @@
+* {
+  font: Verdana, Arial, 'sans-serif'; /* !important;<-- fonts */
+  font-family: 'Open Sans' 'Segoe UI', 'Roboto', sans-serif;
+}
 html {
   font-size: 16px;
 }
@@ -6,8 +10,8 @@ html {
   src: local('Acme'), url(./fonts/Acme.ttf) format('truetype');
 }
 body {
-  font-family: 'Open Sans' 'Segoe UI', 'Roboto', 'Oxygen',
-  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  /* font-family: 'Open Sans' 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   display: flex;

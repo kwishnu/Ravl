@@ -12,8 +12,6 @@ function Footer(props) {
       <div style={footer_styles.left_div}>
       </div>
       <div style={footer_styles.center_div}>
-
-
         <div style={footer_styles.start_buttons_row}>
           <div style={footer_styles.footer_spacer}>
           </div>
@@ -52,10 +50,6 @@ function Footer(props) {
             </div>
           </div>
         </div>
-
-
-
-
       </div>
       <div style={footer_styles.right_div}>
       </div>
@@ -76,6 +70,7 @@ const footer_styles = {
     justifyContent: "center",
     alignItems: "center",
     width: config.scrWidth,
+    paddingTop: 10,
     backgroundColor: colors.dark_purple,
 
   },
@@ -115,23 +110,6 @@ const footer_styles = {
 // borderColor: 'yellow', borderWidth: 2, borderStyle: 'solid'
 
   },
-
-  // start_button: {
-  //   flex: 2,
-  //   height: tablet? scrHeight * 0.06:scrWidth/17,
-  //   borderRadius: config.button_radius,
-  //   justifyContent: "center",
-  //   backgroundColor: colors.button_blue,
-  //   marginLeft: 10,
-  //   marginRight: 10,
-  //   marginBottom: 16,
-  //   shadowColor: '#000',
-  //   shadowOffset: { width: 0, height: 2 },
-  //   shadowOpacity: 0.5,
-  //   shadowRadius: 2,
-  //   elevation: 10,
-  // },
-  
   start_button: {
     display: "flex",
     flex: tablet?1:2,

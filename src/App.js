@@ -23,10 +23,10 @@ import Footer from './components/Footer.js';
 // import Words from "./modal/WordsModal";
 // import EndGame from "./modal/EndGameModal";
 // import ThankYou from "./modal/ThankYouModal";
-// import HintNag from "./modal/HintNagModal";
+import HintNag from "./modal/HintNagModal";
 import TileSet from './components/TileSet';
 import styles from './styles/appStyles.js';
-//import stylesCSS from './styles/App.module.css';
+// import stylesCSS from './styles/App.module.css';
 
 
 const data = [
@@ -92,9 +92,10 @@ closeModal(){
   });
 }
 
+
   render() {
     return (
-
+      <div>
 
         <div style={styles.container}>
           <div style={styles.AppLeftBox}>
@@ -124,6 +125,12 @@ closeModal(){
           <div style={styles.AppRightBox}>
 
           </div>
+        </div>
+        {this.state.showHintNagModal &&
+          <div>
+            <HintNag isModalVisible={this.state.showHintNagModal} isDarkModeEnabled={this.state.darkModeEnabled} requestModalClose={()=>{this.closeModal()}}/>
+          </div>
+        }
         </div>
     );
   }
