@@ -67,9 +67,7 @@ function transposeArray(sentArr) {
 }
 const data = [
   {
-    name: "RavL",
-    icon: <HomeOutlined />,
-  },
+    name: "RavL", icon: <HomeOutlined /> },
   { name: "Settings", icon: <SettingsOutlined /> },
   { name: "Help", icon: <ContactSupportOutlined /> },
   { name: "Support", icon: <QuestionAnswerOutlined /> },
@@ -218,6 +216,7 @@ class App extends Component {
       isOpen: false
       // xValue: posOrNeg() * getRandomInt(20, 100)
     };
+    this.colRefs = [];
   }
 
   componentDidMount() {
@@ -684,31 +683,83 @@ class App extends Component {
       ))}
     </div>
     )
-}  
-  // const [open, setOpen] = useState(false);
-toggleDrawer(which){
-  this.setState({isOpen: !this.state.isOpen});
-  console.log("which: " + which);
-}
-transitionToGame(daily){
-  console.log("transition to game...");
-  this.setState({showHintNagModal: true});
-}
-closeModal(){
-  this.setState({
-    // showSettingsModal: false,
-    // showHelpModal: false,
-    // showSupportModal: false,
-    // showWordsModal: false,
-    // showEndGameModal: false,
-    // showThankYouModal: false,
-    showHintNagModal: false,
-    // modalCall: "None"
-  });
-}
+  }  
+  toggleDrawer(which){
+    this.setState({isOpen: !this.state.isOpen});
+    console.log("which: " + which);
+  }
+  testAnimation(which){
+
+    //this.colRefs["col0"].setPosition(-2);
+    this.colRefs["col0"].sendCellOut("row2");
+    // this.colRefs["col0"].pulseCell("row1", which);
+
+  }
+  transitionToGame(daily){
+    if(daily){
+      this.testAnimation('pulse');
+
+    }else{
+      this.testAnimation('tada');
+      
+    }
+    // console.log("colRefs..." + this.colRefs);
+    this.testAnimation();
+    //this.setState({showHintNagModal: true});
+  }
+  closeModal(){
+    this.setState({
+      // showSettingsModal: false,
+      // showHelpModal: false,
+      // showSupportModal: false,
+      // showWordsModal: false,
+      // showEndGameModal: false,
+      // showThankYouModal: false,
+      showHintNagModal: false,
+      // modalCall: "None"
+    });
+  }
+  renderCol(col, i, anim, idFrag){
+    // const numC = this.state.gameArray0.length;
+    // const numR = 3 * this.state.rowsInPuzzle - 2;
+    // let cWidth = this.state.lettersetContainerWidth;
+    // let cHeight = this.state.lettersetContainerHeight;
+    // const th1 = tileHeight * (1.1 - (this.state.gameArray0.length - 3) * 0.06);
+    // const th2 = tablet?650/this.state.initialArrayHeight:520/this.state.initialArrayHeight;
+    // const scrDividedWidth = cWidth/(numC + 1);
+    // const scrDividedHeight = cHeight/(numR + 2);
+    // const th = Math.min(th1, th2, scrDividedWidth, scrDividedHeight);
+    // const le = (cWidth - numC * (th + 2))/2;
+    // if(this.state.lettersetContainerWidth > 0){
+    //   return (
+    //     <TileSet
+    //       key={idFrag + i}
+    //       letterArray={col}
+    //       ref={"col" + i}
+    //       colIndex={i}
+    //       tileHeight={th}
+    //       left={le}
+    //       animate={anim}
+    //       dark={this.state.darkModeEnabled}
+    //       numColumns={numC}
+    //       sendColToGame={(indexArr) => {this.updateGameArray(indexArr)}}
+    //       checkForWordsAtStart={() => {this.updateGameArray([])}}
+    //     />
+    //   );
+    // }
+    
+    
+    return(
+      <TileSet key={"key" + i} ref={(ref) => this.colRefs[col] = ref} tilesInColumn={4} tileHeight={60}/>
+      )
+  }
 
 
   render() {
+    // this.col0 = React.createRef();
+    // this.col1 = React.createRef();
+    // this.col2 = React.createRef();
+    const arr = ["col0", "col1", "col2"];  //[0,1,2];
     return (
       <div>
 
@@ -720,14 +771,14 @@ closeModal(){
           <div style={styles.appContainer}>
             <div id="messageHeader" style={styles.messageHeader}>
             </div>
-            <div id="gameContainer" style={styles.gameContainer}>
+            <div id="gameContainer" style={styles.gameContainer} ref={(lettersetContainer) => {this.lettersetContainer = lettersetContainer}}>
+              {
+              arr.map((column, index) => this.renderCol(column, index))
+              }
 
-
-
-
-              <TileSet tilesInColumn={4} tileHeight={60} />
-              <TileSet tilesInColumn={4} tileHeight={60}/>
-              <TileSet tilesInColumn={4} tileHeight={60}/>
+              {/* <TileSet ref={this.col0} tilesInColumn={4} tileHeight={60}/>
+              <TileSet ref={this.col1} tilesInColumn={4} tileHeight={60}/>
+              <TileSet ref={this.col2} tilesInColumn={4} tileHeight={60} /> */}
             </div>
             <div  id="footerContainer" style={styles.footerContainer}>
             </div>
