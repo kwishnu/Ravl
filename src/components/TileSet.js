@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import Tile from './Tile';
-// import config from '../config/config';
 import Draggable from "react-draggable";
+import config from '../config/config';
+import colors from '../config/colors';
+const scrHeight = config.SCREEN_HEIGHT;
 let tilePlusMargin = 0;
 let maxMove = 0;
 // const [position, setPosition] = useState({ x: 0, y: 0 })
@@ -13,6 +15,13 @@ class TileSet extends Component {
     super(props);
     this.state = {
       position: 0,
+      letterArray: this.props.letterArray,
+      tilesInColumn: (this.props.letterArray.length + 2)/3,
+      tileHeight: this.props.tileHeight,
+      tilePlusMargin: this.props.tileHeight + 2,
+      yOffsetInt: 0,
+      bottom: (0.65 * scrHeight - (((this.props.letterArray.length + 2)/3) * (this.props.tileHeight + 2)))/2,
+      bgColor: colors.transparent,
     };
     this.rowRefs = [];
 
@@ -39,7 +48,6 @@ class TileSet extends Component {
 
   }
   sendCellOut(ref){//animPref, , callback
-    console.log("ref: " + ref);
     if(this.rowRefs[ref]){
       this.rowRefs[ref].animateOut(ref);//animPref, callback
     }
@@ -49,32 +57,42 @@ class TileSet extends Component {
       this.rowRefs[ref].pulse(which);//animPref, callback
     // }
   }
-  renderTiles(row, i){
-    return(
-      <Tile id={"id" + i} myRef={'row' + i} key={"key" + i} ref={(ref) => this.rowRefs[row] = ref} tileHeight={this.props.tileHeight}/>
+  renderTiles(cell, i){
+    if(cell.letter){
+      return (
+        <Tile
+          key={`${cell.ref}`}
+          ref={`${cell.ref}`}
+          myRef={`${cell.ref}`}
+          text={`${cell.letter}`}
+          animate={this.props.animate}
+          dark={this.props.dark}
+          tileHeight={this.props.tileHeight}
+          checkForWords={(tileRef)=>{this.pingFromTile(tileRef);}}
+        />
+
+      // <Tile id={"id" + i} myRef={'row' + i} key={"key" + i} ref={(ref) => this.rowRefs[row] = ref} tileHeight={this.props.tileHeight}/>
       )
+    }
   }
 
-  render() {
-  const { tilesInColumn, tileHeight } = this.props; 
-  tilePlusMargin = tileHeight + 3;//2.3
-  maxMove = tilesInColumn - 1;
-  const arr = ["row0", "row1", "row2", "row3"]; 
 
+  render() {
+  const { tileHeight } = this.props; 
+  tilePlusMargin = tileHeight + 3;//2.3
+  maxMove = this.state.tilesInColumn - 1;
+  // const arr = ["row0", "row1", "row2", "row3"]; 
+  let colObj = this.state.letterArray;
   return (
     <Draggable 
       axis={'y'} 
       bounds={{top: -(tilePlusMargin * (maxMove + 0.4)), bottom: (tilePlusMargin * (maxMove + 0.4))}} 
       position={{x: 0, y: this.state.position}} onStop={(e, data) => this.handleStop(e, data)}
-      
     > 
-      <span style={{...styles.tileset, height: tilesInColumn * tileHeight}}>
+      <span style={{...styles.tileset, height: this.state.tilesInColumn * tileHeight}}>
         {
-        arr.map((row, index) => this.renderTiles(row, index))
+          colObj.map((row, index) => this.renderTiles(row, index))
         }
-        {/* <Tile tileHeight={tileHeight}/>
-        <Tile tileHeight={tileHeight}/>
-        <Tile tileHeight={tileHeight}/> */}
      </span>
     </Draggable>
   );

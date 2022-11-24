@@ -301,7 +301,7 @@ class Tile extends Component {
   }//this.state.animation  this.state.duration
   render() {
     // const anim = (this.props.animate === true)?"bounceInRight":"";
-    const { tileHeight, myRef } = this.props;
+    const { text, tileHeight, myRef } = this.props;
     // let anim = this.state.animation;
     // console.log("tileHeight: " + tileHeight);
     return (
@@ -316,7 +316,7 @@ class Tile extends Component {
         >
           <div id={'id_' + myRef} className={'anim-element'} ref={node => {if (node) this.tileRefs[myRef] = node}} style={{...tile_styles.tile, height: tileHeight, width: tileHeight}}>
           <div style={tile_styles.text}>
-            T
+            {text.toUpperCase()}
           </div></div>
         </motion.div>
       }

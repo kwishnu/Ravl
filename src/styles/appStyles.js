@@ -7,6 +7,16 @@ const widthLeftOrRight = (scrWidth - scrHeight * 9/16)/2;
 const appStyles = {
 
 
+  loading_container: {
+    display: 'flex',
+    flex: 1,
+    height: scrHeight,
+    width: scrWidth,
+    justifyContent: 'center',
+    alignItems: 'center',
+
+    backgroundColor: colors.dark_purple,
+  },
   container: {
     height: "100%",
     width: "100%",
@@ -14,7 +24,6 @@ const appStyles = {
     justifyContent: 'center',
     backgroundColor: colors.gray_4,
   },
-
   appContainer: {
     display: "flex",
     flex: 1,

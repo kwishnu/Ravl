@@ -12,14 +12,16 @@ import {
   SettingsOutlined,
   ContactSupportOutlined,
 } from "@material-ui/icons";
+import { CircularProgress } from '@mui/material';
 // import { useState } from "react";
 import React, { Component } from 'react';
 import formatDate from 'date-fns/format';
 // import parse from 'date-fns/parse';
 // import * as funcs from './config/functions';
 // import {getAnimatedWordLeft} from '../config/config';
+import config from './config/config';
+import colors from './config/colors';
 import {puzzTitle, puzzDescription,  puzzles} from './data/dailyDataHelper';//numPuzzles,
-// import colors from './config/colors';
 import gamePlatitudes from "./data/game_plats";
 import playRavlStr from "./data/PlayRavlStr";
 import Header from './components/Header.js';
@@ -34,6 +36,12 @@ import HintNag from "./modal/HintNagModal";
 import TileSet from './components/TileSet';
 import styles from './styles/appStyles.js';
 import genWordArray from "./config/genWordArray";
+const scrWidth = config.SCREEN_WIDTH;
+const scrHeight = config.SCREEN_HEIGHT;
+const tablet = scrHeight/scrWidth > 1.77?false:true;
+
+const tileHeight = config.TILE_HEIGHT;
+
 // import stylesCSS from './styles/App.module.css';
 function getRandom(arr, n) {
   var result = new Array(n),
@@ -178,8 +186,8 @@ class App extends Component {
       points: 0,
       solvedPadding: 0,
       playRavlIntervalID: 0,
-      lettersetContainerWidth: 0,
-      lettersetContainerHeight: 0,
+      lettersetContainerWidth: null,
+      lettersetContainerHeight: null,
       starsContainerWidth: 0,
       starsContainerHeight: 0,
       numberOfStars: 0,
@@ -217,6 +225,7 @@ class App extends Component {
       // xValue: posOrNeg() * getRandomInt(20, 100)
     };
     this.colRefs = [];
+    this.lettersetContainer = React.createRef();
   }
 
   componentDidMount() {
@@ -224,6 +233,10 @@ class App extends Component {
     title = puzzTitle(dateToday);
     description = puzzDescription(dateToday);
     dailyPuzzlesArr = puzzles(dateToday);
+    this.setState({
+      lettersetContainerHeight: this.lettersetContainer.current.getBoundingClientRect().height,
+      lettersetContainerWidth: this.lettersetContainer.current.getBoundingClientRect().width
+   });
     this.init(
       puzzleWords0,
       puzzleWords1,
@@ -436,7 +449,7 @@ class App extends Component {
 
     let showPR = (cgi === -1)?true:false;//show "Play RavL" animation
     let showSW = (cgi === -1)?false:true;//show solved words
-    let showG0 = (cgi === 0)?true:false;
+    // let showG0 = (cgi === 0)?true:false;
     let showG1 = (cgi === 1)?true:false;
     let showG2 = (cgi === 2)?true:false;
     let showG3 = (cgi === 3)?true:false;
@@ -554,7 +567,7 @@ class App extends Component {
       solvedWords: solvedWords,
       bonusWords: bonusWords,
       showPlayRavl: showPR,
-      showGame0: showG0,
+      showGame0: true,//showG0,
       showGame1: showG1,
       showGame2: showG2,
       showGame3: showG3,
@@ -719,90 +732,127 @@ class App extends Component {
       // modalCall: "None"
     });
   }
+  getDimensions(node) {
+    if (node && !this.state.height) {
+      this.setState({
+          lettersetContainerHeight: node.clientHeight,
+          lettersetContainerWidth: node.clientWidth
+      });
+    }
+}
   renderCol(col, i, anim, idFrag){
-    // const numC = this.state.gameArray0.length;
-    // const numR = 3 * this.state.rowsInPuzzle - 2;
-    // let cWidth = this.state.lettersetContainerWidth;
-    // let cHeight = this.state.lettersetContainerHeight;
-    // const th1 = tileHeight * (1.1 - (this.state.gameArray0.length - 3) * 0.06);
-    // const th2 = tablet?650/this.state.initialArrayHeight:520/this.state.initialArrayHeight;
-    // const scrDividedWidth = cWidth/(numC + 1);
-    // const scrDividedHeight = cHeight/(numR + 2);
-    // const th = Math.min(th1, th2, scrDividedWidth, scrDividedHeight);
-    // const le = (cWidth - numC * (th + 2))/2;
-    // if(this.state.lettersetContainerWidth > 0){
-    //   return (
-    //     <TileSet
-    //       key={idFrag + i}
-    //       letterArray={col}
-    //       ref={"col" + i}
-    //       colIndex={i}
-    //       tileHeight={th}
-    //       left={le}
-    //       animate={anim}
-    //       dark={this.state.darkModeEnabled}
-    //       numColumns={numC}
-    //       sendColToGame={(indexArr) => {this.updateGameArray(indexArr)}}
-    //       checkForWordsAtStart={() => {this.updateGameArray([])}}
-    //     />
-    //   );
-    // }
+    const numC = this.state.gameArray0.length;
+    const numR = 3 * this.state.rowsInPuzzle - 2;
+    let cWidth = this.state.lettersetContainerWidth;
+    let cHeight = this.state.lettersetContainerHeight;
+    const th1 = tileHeight * (1.1 - (this.state.gameArray0.length - 3) * 0.06);
+    const th2 = tablet?650/this.state.initialArrayHeight:520/this.state.initialArrayHeight;
+    const scrDividedWidth = cWidth/(numC + 1);
+    const scrDividedHeight = cHeight/(numR + 2);
+    const th = Math.min(th1, th2, scrDividedWidth, scrDividedHeight);
+    console.log("th: " + th);
+    const le = (cWidth - numC * (th + 2))/2;
+    if(this.state.lettersetContainerWidth > 0){
+      return (
+        <TileSet
+          key={idFrag + i}
+          letterArray={col}
+          ref={"col" + i}
+          colIndex={i}
+          tileHeight={th}
+          left={le}
+          animate={anim}
+          dark={this.state.darkModeEnabled}
+          numColumns={numC}
+          sendColToGame={(indexArr) => {this.updateGameArray(indexArr)}}
+          checkForWordsAtStart={() => {this.updateGameArray([])}}
+        />
+      );
+    }
     
     
-    return(
-      <TileSet key={"key" + i} ref={(ref) => this.colRefs[col] = ref} tilesInColumn={4} tileHeight={60}/>
-      )
+    // return(
+    //   <TileSet key={"key" + i} ref={(ref) => this.colRefs[col] = ref} tilesInColumn={4} tileHeight={60}/>
+    //   )
   }
 
 
   render() {
-    // this.col0 = React.createRef();
-    // this.col1 = React.createRef();
-    // this.col2 = React.createRef();
-    const arr = ["col0", "col1", "col2"];  //[0,1,2];
-    return (
-      <div>
-
-        <div style={styles.container}>
-          <div style={styles.AppLeftBox}>
-
-          </div>
-
-          <div style={styles.appContainer}>
-            <div id="messageHeader" style={styles.messageHeader}>
-            </div>
-            <div id="gameContainer" style={styles.gameContainer} ref={(lettersetContainer) => {this.lettersetContainer = lettersetContainer}}>
-              {
-              arr.map((column, index) => this.renderCol(column, index))
-              }
-
-              {/* <TileSet ref={this.col0} tilesInColumn={4} tileHeight={60}/>
-              <TileSet ref={this.col1} tilesInColumn={4} tileHeight={60}/>
-              <TileSet ref={this.col2} tilesInColumn={4} tileHeight={60} /> */}
-            </div>
-            <div  id="footerContainer" style={styles.footerContainer}>
-            </div>
-          </div>
-
-            <Drawer anchor={"left"} open={this.state.isOpen} onClose={() => this.setState({isOpen: false})}>
-              {this.getMenuItems()}
-            </Drawer>
-            <Header 
-              clickMenu={(which) => this.toggleDrawer(which)}
-            />
-              <Footer puzzleStreak={'3'} startGame={(daily) => this.transitionToGame(daily)}/>
-
-          <div style={styles.AppRightBox}>
-
-          </div>
+    if (this.state.lettersetContainerHeight === 0) {
+      return (
+        <div style={styles.loading_container}>
+          <CircularProgress colors={colors.off_white} />
         </div>
-        {this.state.showHintNagModal &&
-          <div>
-            <HintNag isModalVisible={this.state.showHintNagModal} isDarkModeEnabled={this.state.darkModeEnabled} requestModalClose={()=>{this.closeModal()}}/>
+      );
+
+    } else {
+      let {
+        gameArray0,
+        // gameArray1,
+        // gameArray2,
+        // gameArray3,
+        // gameArray4,
+        // gameArray5,
+        // gameArray6,
+        // gameArray7,
+        // gameArray8,
+        // gameArray9,
+        // gameArray10,
+        // solvedWords,
+        // modalVisible,
+        // showPuzzWordsModal,
+        // solvedModalMessage,
+        // bonusModalMessage,
+        // dividerString,
+        // keyIDFragment
+      } = this.state;
+      return (
+        <div>
+
+          <div style={styles.container}>
+            <div style={styles.AppLeftBox}>
+
+            </div>
+
+            <div style={styles.appContainer}>
+              <div id="messageHeader" style={styles.messageHeader}>
+              </div>
+              <div id="gameContainer" style={styles.gameContainer} ref={this.lettersetContainer}>
+              {this.state.showGame0 &&
+                gameArray0.map((column, index) => this.renderCol(column, index, true, ""))}
+                
+                {/* {
+                arr.map((column, index) => this.renderCol(column, index))
+                } */}
+
+                {/* <TileSet ref={this.col0} tilesInColumn={4} tileHeight={60}/>
+                <TileSet ref={this.col1} tilesInColumn={4} tileHeight={60}/>
+                <TileSet ref={this.col2} tilesInColumn={4} tileHeight={60} /> */}
+              </div>
+              <div  id="footerContainer" style={styles.footerContainer}>
+              </div>
+            </div>
+
+              <Drawer anchor={"left"} open={this.state.isOpen} onClose={() => this.setState({isOpen: false})}>
+                {this.getMenuItems()}
+              </Drawer>
+              <Header 
+                clickMenu={(which) => this.toggleDrawer(which)}
+              />
+                <Footer puzzleStreak={'3'} startGame={(daily) => this.transitionToGame(daily)}/>
+
+            <div style={styles.AppRightBox}>
+
+            </div>
           </div>
-        }
-        </div>
-    );
+          {this.state.showHintNagModal &&
+            <div>
+              <HintNag isModalVisible={this.state.showHintNagModal} isDarkModeEnabled={this.state.darkModeEnabled} requestModalClose={()=>{this.closeModal()}}/>
+            </div>
+          }
+          </div>
+      );
+    }
   }
 }
 
