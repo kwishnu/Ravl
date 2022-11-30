@@ -36,6 +36,14 @@ const appStyles = {
     justifyContent: 'flex-start',
     backgroundColor: colors.transparent,
   },
+  screen_lock: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+    backgroundColor: colors.transparent,
+  },
   AppLeftBox: {
     height:"100%",
     width: config.isPC || config.isTablet?widthLeftOrRight:0,

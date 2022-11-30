@@ -137,8 +137,8 @@ class App extends Component {
       animationTimerIDs: [],
       starColorArray: ['#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333'],
       currentStarColor: '#FFD700',
-      bonusWords: this.props.bonusWords,
-      solvedWords: this.props.solvedWords,
+      // bonusWords: this.props.bonusWords,
+      // solvedWords: this.props.solvedWords,
       showPlayRavl: false,
       showStars: true,
       isDailyGame: false,
@@ -160,11 +160,11 @@ class App extends Component {
       gameDone: false,
       clearedLevel: true,
       showActionButton: false,
-      showPuzzWordsModal: false,
+      // showPuzzWordsModal: false,
       showHeaderComment: false,
       showSolvedWord: false,
       showSolvedWords: false,
-      modalVisible: false,
+      // modalVisible: false,
       puzzleDisplayed: false,
       darkModeEnabled: false,
       newHighScore: false,
@@ -200,8 +200,8 @@ class App extends Component {
       headerComment: "",
       dailyGameDescription: "",
       nextBtnText: "NEXT",
-      solvedModalMessage: "",
-      bonusModalMessage: "",
+      // solvedModalMessage: "",
+      // bonusModalMessage: "",
       puzzleStreak: "0,01-01-2001",
       dailyStreak: "0,01-01-2001",
       lastPuzzleDay: "01-01-2001",
@@ -215,7 +215,7 @@ class App extends Component {
       showEndGameModal: false,
       showThankYouModal: false,
       showHintNagModal: false,
-      dividerString: "",
+      // dividerString: "",
       playedGameOnce: false,
       lockScreenInput: false,
       modalCall: this.props.modalCall,
@@ -449,7 +449,7 @@ class App extends Component {
 
     let showPR = (cgi === -1)?true:false;//show "Play RavL" animation
     let showSW = (cgi === -1)?false:true;//show solved words
-    // let showG0 = (cgi === 0)?true:false;
+    let showG0 = (cgi === 0)?true:false;
     let showG1 = (cgi === 1)?true:false;
     let showG2 = (cgi === 2)?true:false;
     let showG3 = (cgi === 3)?true:false;
@@ -567,7 +567,7 @@ class App extends Component {
       solvedWords: solvedWords,
       bonusWords: bonusWords,
       showPlayRavl: showPR,
-      showGame0: true,//showG0,
+      showGame0: showG0,
       showGame1: showG1,
       showGame2: showG2,
       showGame3: showG3,
@@ -592,6 +592,7 @@ class App extends Component {
       eligibleForStar: eligibility,
       // keyIDFragment: keyIDFrag
     });
+    if(cgi === -1)this.runPlayRavlAnimation();
   }
 
   buildStraightArray(wordsSent) {
@@ -685,6 +686,162 @@ class App extends Component {
     const val2 = getRandomInt((rows - 1), (2 * rows - 1));
     return "col" + val1 + ",row" + val2;
   }
+  sendRowOut(rowArr, row) {
+    this.lockScreen(1250);
+//    if(this.state.currentHintsArray.length == 0)this.setState({hintsGiven: 0});
+    const pts = this.state.gameArray0.length;//this.getPointsToAdd();
+    this.changeScore(pts);
+    let doneDropping = false;
+    rowArr.forEach((cellRef) => {
+      const colRef = cellRef.split(",")[0];
+      this.refs[colRef].sendCellOut(this.state.animationStyle, cellRef, () => {
+        if (!doneDropping) {
+          doneDropping = true;
+          const gArray = this.state.gameArray0;
+          this.spliceArray(gArray, row);
+          if (this.state.rowsInPuzzle - this.state.onRow === 1) {
+            let dropArray = this.getDropTileArray();
+            if (dropArray.length < this.state.gameArray0.length) {
+              dropArray.forEach((cellRef) => {
+                const colRef = cellRef.split(",")[0];
+                this.refs[colRef].dropColumn(cellRef);
+              });
+            }
+          }
+          this.resetSolvedWord();//resets padding for the "solved word" animation
+          this.resetTileColors(this.state.darkModeEnabled);//called in case a hint (green) tile isn't removed
+          this.updateGameArray([]);
+        }
+      });
+    });
+  }
+  flashWord(rowArr) {
+    this.lockScreen(1000);
+    // const pts = this.state.gameArray0.length;
+    // this.changeScore(pts);
+    let wordAdded = false;
+    rowArr.forEach((cellRef) => {
+      const colRef = cellRef.split(",")[0];
+      const rowRef = cellRef.split(",")[1];
+      this.colRefs[colRef].flashWord(rowRef, () => {//cellRef
+        if (!wordAdded) {
+      console.log("colRef is: " + colRef);
+          wordAdded = true;
+//          this.resetSolvedWord();
+          // this.updateGameArray([]);
+        }
+      });
+    });
+  }
+  runPlayRavlAnimation(){
+    if(this.state.playRavlIntervalID === 0){
+      setTimeout(() => {
+        if(this.state.darkModeEnabled){
+            this.resetTileColors(false);
+        }
+      }, 200);
+      this.playRavlAnimation(true);
+      this.setState({ showPlayRavl: true,
+                      showGame0: false,
+                      showGame1: false,
+                      showGame2: false,
+                      showGame3: false,
+                      showGame4: false,
+                      showGame5: false,
+                      showGame6: false,
+                      showGame7: false,
+                      showGame8: false,
+                      showGame9: false,
+                      showGame10: false,
+                      gameArray0: playRavlStr
+                    });
+      let intervalID = setInterval(() => {this.playRavlAnimation(true)}, 9000);
+      this.setState({playRavlIntervalID: intervalID});
+    } else {
+      clearInterval(this.state.playRavlIntervalID);
+      this.playRavlAnimation(false);
+      this.setState({playRavlIntervalID: 0});
+    }
+  }
+  playRavlAnimation(starting) {
+    if(!this.colRefs)return;
+    const colArray = [0,1,2,3];
+    let timeoutIDArr = [];
+    if(starting){
+      const aniTimer1 = setTimeout(() => {
+        colArray.forEach((colIndex) => {
+          const colRef = "col" + colIndex;
+          if(this.colRefs[colRef]){
+            this.colRefs[colRef].nudgeUpAndDown(colIndex, true);
+          }
+        });
+      }, 100);
+      timeoutIDArr.push(aniTimer1);
+      const aniTimer2 = setTimeout(() => {
+        colArray.forEach((colIndex) => {
+          const colRef = "col" + colIndex;
+          if(this.colRefs[colRef]){
+          this.colRefs[colRef].nudgeUpAndDown(colIndex, false);
+          }
+        });
+      }, 600);
+      timeoutIDArr.push(aniTimer2);
+    const aniTimer3 = setTimeout(() => {
+      colArray.forEach((colIndex) => {
+        const colRef = "col" + colIndex;
+        if(this.colRefs[colRef]){
+          this.colRefs[colRef].cycleColor(colRef + ",row3");
+          this.colRefs[colRef].cycleColor(colRef + ",row6");
+          }
+        });
+    }, 200);
+      timeoutIDArr.push(aniTimer3);
+    const aniTimer4 = setTimeout(() => {
+      colArray.forEach((colIndex) => {
+        const colRef = "col" + colIndex;
+        if(this.colRefs[colRef]){
+          this.colRefs[colRef].moveColUpOrDown(colIndex);
+          }
+        });
+    }, 3000);
+      timeoutIDArr.push(aniTimer4);
+    const aniTimer5 = setTimeout(() => {
+      colArray.forEach((colIndex) => {
+        const colRef = "col" + colIndex;
+        if(this.colRefs[colRef]){
+          this.colRefs[colRef].moveColUpOrDown(colIndex);
+          }
+        });
+    }, 1800);
+      timeoutIDArr.push(aniTimer5);
+      this.setState({animationTimerIDs: timeoutIDArr});
+    } else {
+      setTimeout(() => {
+        colArray.forEach((colIndex) => {
+          const colRef = "col" + colIndex;
+        if(this.colRefs[colRef]){
+          this.colRefs[colRef].stopColorCycle(colRef + ",row3");
+          this.colRefs[colRef].stopColorCycle(colRef + ",row6");
+          }
+        });
+      }, 200);
+    }
+  }
+
+
+  displayLockScreen(){
+    return (
+      <div style={styles.screen_lock}>
+      </div>
+    )
+  }
+  lockScreen(howLong){
+    this.setState({lockScreenInput: true});
+    setTimeout(() => {
+      this.setState({lockScreenInput: false});
+    }, howLong);
+  }
+
   getMenuItems(){
     return(
     <div onClick={() => this.toggleDrawer()}>
@@ -701,21 +858,21 @@ class App extends Component {
     this.setState({isOpen: !this.state.isOpen});
     console.log("which: " + which);
   }
-  testAnimation(which){
+  testAnimation(){
+    // this.lockScreen(6000);
+    // this.flashWord(['col0,row4']);
+    this.colRefs["col0"].testMove('yo');
 
+    // this.colRefs["col0"].stopColorCycle("col0,row3");
+    // this.colRefs["col0"].stopColorCycle("col0,row6");
+// this.colRefs["col0"].flashWord(['col0,row2']);
     //this.colRefs["col0"].setPosition(-2);
-    this.colRefs["col0"].sendCellOut("row2");
+    // this.colRefs["col0"].animateFail("row5");
+    // this.colRefs["col0"].showFailWord("row5");
     // this.colRefs["col0"].pulseCell("row1", which);
 
   }
   transitionToGame(daily){
-    if(daily){
-      this.testAnimation('pulse');
-
-    }else{
-      this.testAnimation('tada');
-      
-    }
     // console.log("colRefs..." + this.colRefs);
     this.testAnimation();
     //this.setState({showHintNagModal: true});
@@ -741,6 +898,7 @@ class App extends Component {
     }
 }
   renderCol(col, i, anim, idFrag){
+    const cRef = "col" + i
     const numC = this.state.gameArray0.length;
     const numR = 3 * this.state.rowsInPuzzle - 2;
     let cWidth = this.state.lettersetContainerWidth;
@@ -750,14 +908,14 @@ class App extends Component {
     const scrDividedWidth = cWidth/(numC + 1);
     const scrDividedHeight = cHeight/(numR + 2);
     const th = Math.min(th1, th2, scrDividedWidth, scrDividedHeight);
-    console.log("th: " + th);
     const le = (cWidth - numC * (th + 2))/2;
     if(this.state.lettersetContainerWidth > 0){
       return (
         <TileSet
           key={idFrag + i}
           letterArray={col}
-          ref={"col" + i}
+          // ref={"col" + i}
+          ref={(ref) => this.colRefs[cRef] = ref}
           colIndex={i}
           tileHeight={th}
           left={le}
@@ -788,23 +946,23 @@ class App extends Component {
     } else {
       let {
         gameArray0,
-        // gameArray1,
-        // gameArray2,
-        // gameArray3,
-        // gameArray4,
-        // gameArray5,
-        // gameArray6,
-        // gameArray7,
-        // gameArray8,
-        // gameArray9,
-        // gameArray10,
+        gameArray1,
+        gameArray2,
+        gameArray3,
+        gameArray4,
+        gameArray5,
+        gameArray6,
+        gameArray7,
+        gameArray8,
+        gameArray9,
+        gameArray10,
         // solvedWords,
         // modalVisible,
         // showPuzzWordsModal,
         // solvedModalMessage,
         // bonusModalMessage,
         // dividerString,
-        // keyIDFragment
+        keyIDFragment
       } = this.state;
       return (
         <div>
@@ -818,8 +976,34 @@ class App extends Component {
               <div id="messageHeader" style={styles.messageHeader}>
               </div>
               <div id="gameContainer" style={styles.gameContainer} ref={this.lettersetContainer}>
+              {this.state.showPlayRavl &&
+              playRavlStr.map((column, index) => this.renderCol(column, index, false, keyIDFragment))}
               {this.state.showGame0 &&
                 gameArray0.map((column, index) => this.renderCol(column, index, true, ""))}
+              {this.state.showGame1 &&
+                gameArray1.map((column, index) => this.renderCol(column, index, true, keyIDFragment))}
+              {this.state.showGame2 &&
+                gameArray2.map((column, index) => this.renderCol(column, index, true, keyIDFragment))}
+              {this.state.showGame3 &&
+                gameArray3.map((column, index) => this.renderCol(column, index, true, keyIDFragment))}
+              {this.state.showGame4 &&
+                gameArray4.map((column, index) => this.renderCol(column, index, true, keyIDFragment))}
+              {this.state.showGame5 &&
+                gameArray5.map((column, index) => this.renderCol(column, index, true, keyIDFragment))}
+              {this.state.showGame6 &&
+                gameArray6.map((column, index) => this.renderCol(column, index, true, keyIDFragment))}
+              {this.state.showGame7 &&
+                gameArray7.map((column, index) => this.renderCol(column, index, true, keyIDFragment))}
+              {this.state.showGame8 && !this.state.megaPuzzle &&
+                gameArray8.map((column, index) => this.renderCol(column, index, true, keyIDFragment))}
+              {this.state.showGame8 && this.state.megaPuzzle &&
+                megaPuzzleArr.map((column, index) => this.renderCol(column, index, true, keyIDFragment))}
+              {this.state.showGame9 &&
+                gameArray9.map((column, index) => this.renderCol(column, index, true, keyIDFragment))}
+              {this.state.showGame10 &&
+                gameArray10.map((column, index) => this.renderCol(column, index, true, keyIDFragment))}
+              {this.state.gameDone && this.renderDone(this.state.clearedLevel)}
+              {this.state.lockScreenInput && this.displayLockScreen()}
                 
                 {/* {
                 arr.map((column, index) => this.renderCol(column, index))

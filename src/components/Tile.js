@@ -4,6 +4,19 @@ import colors from '../config/colors';
 import '../styles/animations.css';
 import { motion, AnimatePresence } from "framer-motion"
 import 'animate.css';
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
+}
+function posOrNeg(){
+  return Math.round(Math.random()) * 2 - 1;
+}
+export function getColor(){//https://stackoverflow.com/questions/43193341/how-to-generate-random-pastel-or-brighter-color-in-javascript
+  return "hsl(" + Math.floor(360 * Math.random()) + ',' +//hue
+             Math.floor(70 + 10 * Math.random()) + '%,' +//saturation
+             Math.floor(40 + 20 * Math.random()) + '%)'//lightness
+}
 const animateCSS = (element, animation, prefix = 'animate__') =>
   new Promise((resolve, reject) => {
     const animationName = `${prefix}${animation}`;//
@@ -39,22 +52,22 @@ const animateCSS = (element, animation, prefix = 'animate__') =>
 //     backgroundColor: '#adfa75', scale: 1
 //   },
 // };
-const flash1 = {
-  from: {
-    backgroundColor: '#00000000', scale: 1
-  },
-  to: {
-    backgroundColor: 'pink', scale: 1.2
-  },
-};
-const flash2 = {
-  from: {
-    backgroundColor: 'pink', scale: 1.2
-  },
-  to: {
-    backgroundColor: '#00000000', scale: 1.0
-  },
-};
+// const flash1 = {
+//   from: {
+//     backgroundColor: '#00000000', scale: 1
+//   },
+//   to: {
+//     backgroundColor: 'pink', scale: 1.2
+//   },
+// };
+// const flash2 = {
+//   from: {
+//     backgroundColor: 'pink', scale: 1.2
+//   },
+//   to: {
+//     backgroundColor: '#00000000', scale: 1.0
+//   },
+// };
 // eslint-disable-next-line 
 // const test = 
 // [
@@ -129,6 +142,7 @@ class Tile extends Component {
       yOffset: 0,
       intervalID: 0,
       bgColor: colors.text_white,
+      toColor: colors.text_white,
       textColor: colors.off_black,
       darkModeEnabled: this.props.dark,
       show: true,
@@ -137,63 +151,34 @@ class Tile extends Component {
       scale: 1,
       play: false,
       showPulse: false,
-      showTada: false
-      // xValue: posOrNeg() * getRandomInt(20, 100)
+      showTada: false,
+      xValue: 400,
+      tileKey: this.props.myRef,
+      tileKeyStored: this.props.myRef,
+      animDelay: Math.random()
     };
-    // this.animatedRef = React.createRef();
+
     this.tileRefs = [];
 
   }
-  // componentDidMount() {
-  //   const randColor = getColor();
-  //   let tileColor = this.props.dark ? colors.gray_3:colors.text_white;
-  //   tileColor = (this.props.text === " ")?randColor:tileColor;//colors.transparent
-  //   let txtColor = this.props.dark ? colors.off_white2:colors.off_black;
-  //   let bordColor = this.props.dark ? colors.gray_1:colors.off_black;
-  //   this.setState({bgColor: tileColor, textColor: txtColor, borderColor: bordColor});
-  // }
-  // randomBGColorChange() {
-  //   let initialColor = this.state.bgColor;
-  //   let nextColor = getColor();
-  //   this.setState({bgColor: nextColor});
-  //   return {
-  //     from: {
-  //       'backgroundColor': initialColor
-  //     },
-  //     to: {
-  //       'backgroundColor': nextColor
-  //     },
-  //   };
-  // }
-  // goUp() {
-  //   const upVal = getRandomInt(60, 120);
-  //   return {
-  //     from: {
-  //       'translateY': 0, 'translateX': 0
-  //     },
-  //     to: {
-  //       'translateY': -upVal, 'translateX': this.state.xValue
-  //     },
-  //   };
-  // }
-  // goDown() {
-  //   return {
-  //     from: {
-  //       'translateY': 0, 'translateX': this.state.xValue
-  //     },
-  //     to: {
-  //       'translateY': 600, 'translateX': 3 * this.state.xValue
-  //     },
-  //   };
-  // }
-  flash(callback){
+  componentDidMount() {
+    const randColor = getColor();
+    const randColor2 = getColor();
+    let tileColor = this.props.dark ? colors.gray_3:colors.text_white;
+    let tileColor2 = this.props.dark ? colors.gray_3:colors.text_white;
+    tileColor = (this.props.text === " ")?randColor:tileColor;//colors.transparent
+    tileColor2 = (this.props.text === " ")?randColor2:tileColor2;//colors.transparent
+    let txtColor = this.props.dark ? colors.off_white2:colors.off_black;
+    let bordColor = this.props.dark ? colors.gray_1:colors.off_black;
+    this.setState({bgColor: tileColor, toColor: tileColor2, textColor: txtColor, borderColor: bordColor});
 
+    this.startColorCycling();
 
-    this.refs.outerTileView.pulse(600).then(() => {
-      this.refs.outerTileView.animate(flash1, 200).then(back =>
-        this.refs.outerTileView.animate(flash2, 200)
-      ).then(callback)
-    })
+  }
+  flash(ref, callback){
+    const animElement = this.tileRefs[ref];
+    animElement.style.setProperty('--animate-duration', '0.6s');
+    animateCSS(animElement, 'pulse').then(callback);// => {
   }
   pulse(animationType){//animPreference, callback
     if(animationType === 'pulse'){
@@ -211,7 +196,7 @@ class Tile extends Component {
     // }, 400)
   }
   animateOut(ref){//animPreference, callback
-    const animElement = this.tileRefs[ref];//document.querySelector('anim-element');
+    const animElement = this.tileRefs[ref];
     animElement.style.setProperty('--animate-duration', '0.7s');
     animateCSS(animElement, 'flare').then((message) => {
       animElement.style.setProperty('--animate-duration', '1.3s');
@@ -245,22 +230,27 @@ class Tile extends Component {
   //       })
   //     }
   // }
-  // animateUpThenDown(){
-  //   this.setState({bgColor: colors.gray_3, textColor: colors.red});
-  //   let shootUp = this.goUp();
-  //   let fallDown = this.goDown();
-  //   this.refs.outerTileView.pulse(600).then(() => {
-  //     this.refs.outerTileView.animate(shootUp, 300).then(down =>
-  //       this.refs.outerTileView.animate(fallDown, 800)
-  //     )
-  //   })
-  // }
-  // animateRedPulse(){
-  //   this.setState({bgColor: this.state.darkModeEnabled? colors.dark_red : colors.red, textColor: colors.text_white});
-  //   this.refs.outerTileView.pulse(400).then(() => {
-  //     this.refs.outerTileView.tada(800);
-  //   })
-  // }
+  animateUpThenDown(ref){
+    const animElement = this.tileRefs[ref];
+    animElement.style.setProperty('--animate-duration', '1.4s');
+    this.setState({bgColor: colors.gray_3, textColor: colors.red, xValue: posOrNeg() * getRandomInt(100, 700)});
+    const delayMSec = getRandomInt(1, 1000);
+    setTimeout(() => {
+      animateCSS(animElement, 'bounceOutDown');
+      setTimeout(() => {
+        this.setState({show: false});
+      }, 600);
+    }, delayMSec);
+  }
+  animateRedPulse(ref){
+    this.setState({bgColor: this.state.darkModeEnabled? colors.dark_red : colors.red, textColor: colors.text_white});
+    const animElement = this.tileRefs[ref];
+    animElement.style.setProperty('--animate-duration', '0.4s');
+    animateCSS(animElement, 'pulse').then(() => {
+      animElement.style.setProperty('--animate-duration', '0.7s');
+      animateCSS(animElement, 'tada');
+    });
+  }
   toFromDarkMode(onOrOff){
     const bg = onOrOff? colors.gray_3:colors.text_white;
     const txt = onOrOff ? colors.off_white:colors.off_black;
@@ -277,49 +267,66 @@ class Tile extends Component {
     let txtColor = (color === "white" || color === "yellow")?'#222222':'#ffffff';
     this.setState({bgColor: color, textColor: txtColor})
   }
-  // cycleBGColor(t){
-  //   if(this.refs.tileView){
-  //     let changeColor = this.randomBGColorChange();
-  //     this.refs.tileView.animate(changeColor, t);
-  //   }else{
-  //     clearInterval(this.state.intervalID);
-  //   }
-  // }
-  // startColorCycling(){
-  //   if(this.refs.tileView && this.state.intervalID === 0){
-  //     let ccTime = getRandomInt(900, 1200);
-  //     this.cycleBGColor(ccTime);
-  //     let intID = setInterval(() => {this.cycleBGColor(ccTime)}, ccTime);
-  //     this.setState({intervalID: intID});
-  //   }
-  // }
-  toggleColorCycle(ref){
-    if(!this.state.intervalID === 0){
+  cycleBGColor(){
+    if(this.state.tileKey !== this.state.tileKeyStored){
+      // console.log("now I'm in here!");
+      let initialColor = this.state.toColor;
+      let nextColor = getColor();
+      if(this.props.text === ' '){
+        this.setState({bgColor: initialColor, toColor: nextColor});
+      }
+      }else{
       clearInterval(this.state.intervalID);
-      this.setState({intervalID: 0});
     }
-  }//this.state.animation  this.state.duration
+  }
+  startColorCycling(){
+    if(this.state.intervalID === 0){
+      this.setState({tileKey: this.state.tileKey + 1});
+      // let ccTime = getRandomInt(900, 1200);
+      this.cycleBGColor();
+      let intID = setInterval(() => {this.cycleBGColor()}, 1950);
+      this.setState({intervalID: intID});
+    }
+  }
+  toggleColorCycle(){
+
+    if(this.state.intervalID !== 0){
+    console.log("clearing this.state.intervalID: " + this.state.intervalID);
+      clearInterval(this.state.intervalID);
+      this.setState({intervalID: 0, tileKey: this.state.tileKeyStored, bgColor: colors.text_white});
+    }
+  }
+
   render() {
-    // const anim = (this.props.animate === true)?"bounceInRight":"";
+    const animVal = (this.props.animate === true)?500:0;
     const { text, tileHeight, myRef } = this.props;
-    // let anim = this.state.animation;
-    // console.log("tileHeight: " + tileHeight);
     return (
       <AnimatePresence>
         {this.state.show && 
-        <motion.div //style={{...tile_styles.tile, height: tileHeight, width: tileHeight}}
-        initial={{ x: 500 }}
-        animate={{ x: 0 }}
-        exit={{ x: 400, opacity: 0 }}
-        onAnimationComplete={() => {console.log("finished!");}}
-        transition={{ type: "spring", stiffness: 250, damping: 18, duration: 0.4 }}
-        >
-          <div id={'id_' + myRef} className={'anim-element'} ref={node => {if (node) this.tileRefs[myRef] = node}} style={{...tile_styles.tile, height: tileHeight, width: tileHeight}}>
-          <div style={tile_styles.text}>
-            {text.toUpperCase()}
-          </div></div>
-        </motion.div>
-      }
+          <motion.div
+            initial={{ x: animVal }}
+            animate={{ x: 0 }}
+            exit={{ x: this.state.xValue, y: this.state.xValue === 400?0:50, opacity: 0 }}
+            onAnimationComplete={() => {console.log("finished!");}}
+            transition={{ type: "spring", stiffness: 250, damping: 18, duration: 0.4 }}
+          >
+            <motion.div 
+              id={'id_' + myRef} 
+              key={this.state.tileKey}
+              className={'anim-element'} 
+              ref={node => {if (node) this.tileRefs[myRef] = node}} 
+              style={{...tile_styles.tile, backgroundColor: this.state.bgColor, height: tileHeight, width: tileHeight}}
+              animate={this.state.tileKey === this.state.tileKeyStored ? {} : {
+                backgroundColor: [this.state.bgColor, this.state.toColor],
+            }}
+            transition={{ duration: 2, ease: "linear", repeat: Infinity }}
+              >
+              <div style={{...tile_styles.text, color: this.state.textColor}}>
+                {text.toUpperCase()}
+              </div>
+            </motion.div>
+          </motion.div>
+        }
       </AnimatePresence>
     );
 
@@ -334,14 +341,12 @@ const tile_styles = {
     justifyContent: 'center',
     alignItems: 'center',
     borderWidth: 1,
-    backgroundColor: colors.off_white,
     borderColor: colors.off_black, borderStyle: 'solid'
   },
   text: {
     fontSize: 36,
     fontFamily: 'Helvetica',
     fontWeight: 'bold',
-    color: colors.off_black
   }
 }
 

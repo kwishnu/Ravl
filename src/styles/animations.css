@@ -1,5 +1,4 @@
-
-.pulse_trigger{
+.pulse-trigger{
   animation:  .6s ease-out pulse
 }
 
@@ -8,46 +7,11 @@
     scale: 1;
   }
   50% {
-    scale: 1.1;
+    scale: 1.2;
   }
   to {
     scale: 1;
   }
-}
-
-@keyframes test {
-  from,
-  20%,
-  53%,
-  to {
-    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    transform: translate3d(0, 0, 0);
-  }
-
-  40%,
-  43% {
-    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
-    transform: translate3d(0, -30px, 0) scaleY(1.1);
-  }
-
-  70% {
-    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
-    transform: translate3d(0, -15px, 0) scaleY(1.05);
-  }
-
-  80% {
-    transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    transform: translate3d(0, 0, 0) scaleY(0.95);
-  }
-
-  90% {
-    transform: translate3d(0, -4px, 0) scaleY(1.02);
-  }
-}
-
-.animate__test {
-  animation-name: test;
-  transform-origin: center bottom;
 }
 
 @keyframes flare {
@@ -66,6 +30,137 @@
   }
 }
 .animate__flare {
-  animation-timing-function: ease-in-out;
+  animation-timing-function: ease;
   animation-name: flare;
+}
+
+/* @keyframes up-then-down {
+  from
+  {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  75% {
+    transform: scale(1.1);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+.animate__up-then-down {
+  animation-timing-function: ease;
+  animation-name: up-then-down;
+} */
+
+@keyframes flash-pink {
+  from
+  {
+    background-color: #00000000;
+    transform: scale(1);
+  }
+  50% {
+    background-color: #f31177;
+    transform: scale(1.1);
+  }
+  to {
+    background-color: #00000000;
+    transform: scale(1);
+  }
+}
+.animate__flash-pink {
+  animation-timing-function: ease;
+  animation-name: flash-pink;
+}
+
+@keyframes bump-up {
+  from
+  {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(0px, -15px);
+  }
+}
+.animate__bump-up {
+  animation-timing-function: ease;
+  animation-name: bump-up;
+}
+
+@keyframes bump-down {
+  from
+  {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(0px, 15px);
+  }
+}
+.animate__bump-down {
+  animation-timing-function: ease;
+  animation-name: bump-down;
+}
+
+@keyframes move-up-and-down {
+  0%
+  {
+    transform: translateY(0);
+  }
+  10%, 20%, 30%, 40%, 50%, 60%, 70%, 80% {
+    transform: translateY(-67px);
+  }
+  90%, 100% {
+    transform: translateY(0);
+  }}
+.animate__move-up-and-down {
+  animation-timing-function: ease;
+  animation-name: move-up-and-down;
+}
+
+@keyframes move-down-and-up {
+  0%
+  {
+    transform: translateY(0);
+  }
+  10%, 20%, 30%, 40%, 50%, 60%, 70%, 80% {
+    transform: translateY(67px);
+  }
+  90%, 100% {
+    transform: translateY(0);
+  }}
+.animate__move-down-and-up {
+  animation-timing-function: ease;
+  animation-name: move-down-and-up;
+}
+
+@keyframes move-up {
+  from
+  {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-67px);
+  }
+}
+.animate__move-up {
+  animation-timing-function: ease;
+  animation-name: move-up;
+}
+
+@keyframes move-down {
+  from
+  {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(67px);
+  }
+}
+.animate__move-down {
+  animation-timing-function: ease;
+  animation-name: move-down;
 }
