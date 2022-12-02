@@ -61,17 +61,17 @@ const headerStyles = {
 
   },
   supportImageStyle: {
-    width: config.isPC || config.isTablet?scrHeight * 0.03:scrHeight * 0.08,
-    height: config.isPC || config.isTablet?scrHeight * 0.03:scrHeight * 0.08,
+    width: config.isPC || config.isTablet?scrHeight * 0.03:scrWidth * 0.08,
+    height: config.isPC || config.isTablet?scrHeight * 0.03:scrWidth * 0.08,
   },
   menuImageStyle: {
-    width: config.isPC || config.isTablet?scrHeight * 0.03:scrHeight * 0.08,
-    height: config.isPC || config.isTablet?scrHeight * 0.03:scrHeight * 0.08,
+    width: config.isPC || config.isTablet?scrHeight * 0.03:scrWidth * 0.08,
+    height: config.isPC || config.isTablet?scrHeight * 0.03:scrWidth * 0.08,
     marginLeft: config.isPC || config.isTablet?marLeftOrRight:10,
   },
   helpImageStyle: {
-    width: config.isPC || config.isTablet?scrHeight * 0.03:scrHeight * 0.08,
-    height: config.isPC || config.isTablet?scrHeight * 0.03:scrHeight * 0.08,
+    width: config.isPC || config.isTablet?scrHeight * 0.03:scrWidth * 0.08,
+    height: config.isPC || config.isTablet?scrHeight * 0.03:scrWidth * 0.08,
     marginRight: config.isPC || config.isTablet?marLeftOrRight:10,
   },
   titleText: {
