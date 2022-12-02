@@ -176,6 +176,7 @@ class Tile extends Component {
 
   }
   flash(ref, callback){
+    console.log("tile says ref is: ", ref);
     const animElement = this.tileRefs[ref];
     animElement.style.setProperty('--animate-duration', '0.6s');
     animateCSS(animElement, 'pulse').then(callback);// => {
@@ -255,17 +256,17 @@ class Tile extends Component {
     const bg = onOrOff? colors.gray_3:colors.text_white;
     const txt = onOrOff ? colors.off_white:colors.off_black;
     let bc = onOrOff ? colors.gray_1:colors.off_black;
-    this.setState({bgColor: bg, textColor: txt, borderColor: bc});
+    this.setState({tileKey: this.state.tileKeyStored, bgColor: bg, textColor: txt, borderColor: bc});
   }
   ravlTileToFromDarkMode(onOrOff){
     const bg = onOrOff? colors.dark_red:colors.red;
     const txt = onOrOff ? colors.off_white2:colors.text_white;
     let bc = onOrOff ? colors.gray_1:colors.off_black;
-    this.setState({bgColor: bg, textColor: txt, borderColor: bc});
+    this.setState({tileKey: this.state.tileKeyStored, bgColor: bg, textColor: txt, borderColor: bc});
   }
   changeBGColor(color){
     let txtColor = (color === "white" || color === "yellow")?'#222222':'#ffffff';
-    this.setState({bgColor: color, textColor: txtColor})
+    this.setState({tileKey: this.state.tileKeyStored, bgColor: color, textColor: txtColor})
   }
   cycleBGColor(){
     if(this.state.tileKey !== this.state.tileKeyStored){
@@ -289,11 +290,9 @@ class Tile extends Component {
     }
   }
   toggleColorCycle(){
-
     if(this.state.intervalID !== 0){
-    console.log("clearing this.state.intervalID: " + this.state.intervalID);
       clearInterval(this.state.intervalID);
-      this.setState({intervalID: 0, tileKey: this.state.tileKeyStored, bgColor: colors.text_white});
+      this.setState({intervalID: 0, tileKey: this.state.tileKeyStored});
     }
   }
 
@@ -307,7 +306,7 @@ class Tile extends Component {
             initial={{ x: animVal }}
             animate={{ x: 0 }}
             exit={{ x: this.state.xValue, y: this.state.xValue === 400?0:50, opacity: 0 }}
-            onAnimationComplete={() => {console.log("finished!");}}
+            onAnimationComplete={() => this.props.checkForWords(this.props.myRef)}
             transition={{ type: "spring", stiffness: 250, damping: 18, duration: 0.4 }}
           >
             <motion.div 

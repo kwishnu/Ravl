@@ -91,20 +91,6 @@
   animation-name: bump-up;
 }
 
-@keyframes bump-down {
-  from
-  {
-    transform: translate(0, 0);
-  }
-  to {
-    transform: translate(0px, 15px);
-  }
-}
-.animate__bump-down {
-  animation-timing-function: ease;
-  animation-name: bump-down;
-}
-
 @keyframes move-up-and-down {
   0%
   {
@@ -135,32 +121,4 @@
 .animate__move-down-and-up {
   animation-timing-function: ease;
   animation-name: move-down-and-up;
-}
-
-@keyframes move-up {
-  from
-  {
-    transform: translateY(0);
-  }
-  to {
-    transform: translateY(-67px);
-  }
-}
-.animate__move-up {
-  animation-timing-function: ease;
-  animation-name: move-up;
-}
-
-@keyframes move-down {
-  from
-  {
-    transform: translateY(0);
-  }
-  to {
-    transform: translateY(67px);
-  }
-}
-.animate__move-down {
-  animation-timing-function: ease;
-  animation-name: move-down;
 }

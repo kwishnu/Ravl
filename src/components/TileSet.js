@@ -32,44 +32,54 @@ class TileSet extends Component {
       yOffsetInt: 0,
       bottom: (0.65 * scrHeight - (((this.props.letterArray.length + 2)/3) * (this.props.tileHeight + 2)))/2,
       bgColor: colors.transparent,
+      prevLocation: 0
     };
     this.rowRefs = [];
     this.colRefs = [];
 
   }
   flashWord(ref, callback){
-    if(this.rowRefs[ref]){
-      this.rowRefs[ref].flash(ref, callback);
+    const rowRef = ref.split(',')[1];
+    console.log("flashing ref ", rowRef);
+    if(this.rowRefs[rowRef]){
+      this.rowRefs[rowRef].flash(rowRef, callback);
     }
   }
   animateFail(ref){
-    if(this.rowRefs[ref]){
-      this.rowRefs[ref].animateUpThenDown(ref);//(ref) not currently needed
+    const rowRef = ref.split(',')[1];
+    if(this.rowRefs[rowRef]){
+      this.rowRefs[rowRef].animateUpThenDown(rowRef);
     }
   }
   showFailWord(ref){
-    if(this.rowRefs[ref]){
-      this.rowRefs[ref].animateRedPulse(ref);
+    const rowRef = ref.split(',')[1];
+    if(this.rowRefs[rowRef]){
+      this.rowRefs[rowRef].animateRedPulse(rowRef);
     }
   }
   goDark(ref, onOrOff){
-    if(this.rowRefs[ref]){
-      this.rowRefs[ref].toFromDarkMode(onOrOff);
+    const rowRef = ref.split(',')[1];
+    if(this.rowRefs[rowRef]){
+      this.rowRefs[rowRef].toFromDarkMode(onOrOff);
     }
   }
   ravlTileGoDark(ref, onOrOff){
-    if(this.rowRefs[ref]){
-      this.rowRefs[ref].ravlTileToFromDarkMode(onOrOff);
+    const rowRef = ref.split(',')[1];
+    if(this.rowRefs[rowRef]){
+      this.rowRefs[rowRef].ravlTileToFromDarkMode(onOrOff);
     }
   }
   changeColor(ref, color){
-    if(this.rowRefs[ref]){
-      this.rowRefs[ref].changeBGColor(color);
+    console.log("changing color...");
+    const rowRef = ref.split(',')[1];
+    if(this.rowRefs[rowRef]){
+      this.rowRefs[rowRef].changeBGColor(color);
     }
   }
   cycleColor(ref){
-    if(this.rowRefs[ref]){
-      this.rowRefs[ref].startColorCycling(ref);
+    const rowRef = ref.split(',')[1];
+    if(this.rowRefs[rowRef]){
+      this.rowRefs[rowRef].startColorCycling(rowRef);
     }
   }
   stopColorCycle(ref){
@@ -113,17 +123,20 @@ class TileSet extends Component {
     }, delay[col])
 
   }
-//   pingFromTile(ref){
-//     if(ref == 'col0,row' + (this.state.tilesInColumn - 1)){
-//       this.props.checkForWordsAtStart();
-//     }
-//   }
+  pingFromTile(ref){
+    if(ref === 'row' + (this.state.tilesInColumn - 1)){
+      this.props.checkForWordsAtStart();
+    }
+  }
   handleStop(e, data){
     let moveMultiple = Math.round(data.y/tilePlusMargin);
     moveMultiple = moveMultiple > 0 && moveMultiple > maxMove?maxMove:moveMultiple;
     moveMultiple = moveMultiple < 0 && moveMultiple < -maxMove?-maxMove:moveMultiple;
     this.setPosition(moveMultiple);
-    console.log("moveMultiple: " + moveMultiple + ", moveMultiple * tilePlusMargin: " + moveMultiple * tilePlusMargin);  
+    const numMoved = this.state.prevLocation - moveMultiple;
+    this.props.sendColToGame([this.props.colIndex, numMoved]);
+    this.setState({prevLocation: moveMultiple});
+    // console.log("moveMultiple: " + moveMultiple + ", numMoved: " + numMoved);  
   };
 
   setPosition(num){
@@ -151,7 +164,7 @@ class TileSet extends Component {
           ref={(ref) => this.rowRefs[rRef] = ref}
           myRef={'row' + i}
           text={`${cell.letter}`}
-          animate={false}
+          animate={this.props.animate}
           dark={this.props.dark}
           tileHeight={this.props.tileHeight}
           checkForWords={(tileRef)=>{this.pingFromTile(tileRef);}}

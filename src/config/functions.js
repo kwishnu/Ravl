@@ -66,7 +66,7 @@ export function  printGameArrayToConsole(sentArr) {
     let printArr = [];
     for (var z = 0; z < columns; z++) {
       let pushChar = "";
-      pushChar = sentArr[z][x].letter == "" ? "-" : sentArr[z][x].letter;
+      pushChar = sentArr[z][x].letter === "" ? "-" : sentArr[z][x].letter;
       printArr.push(pushChar);
     }
     console.log(JSON.stringify(printArr));
