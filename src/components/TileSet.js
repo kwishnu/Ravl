@@ -40,21 +40,20 @@ class TileSet extends Component {
   }
   flashWord(ref, callback){
     const rowRef = ref.split(',')[1];
-    console.log("flashing ref ", rowRef);
     if(this.rowRefs[rowRef]){
-      this.rowRefs[rowRef].flash(rowRef, callback);
+      this.rowRefs[rowRef].flash(ref, callback);
     }
   }
   animateFail(ref){
     const rowRef = ref.split(',')[1];
     if(this.rowRefs[rowRef]){
-      this.rowRefs[rowRef].animateUpThenDown(rowRef);
+      this.rowRefs[rowRef].animateUpThenDown(ref);
     }
   }
   showFailWord(ref){
     const rowRef = ref.split(',')[1];
     if(this.rowRefs[rowRef]){
-      this.rowRefs[rowRef].animateRedPulse(rowRef);
+      this.rowRefs[rowRef].animateRedPulse(ref);
     }
   }
   goDark(ref, onOrOff){
@@ -79,7 +78,7 @@ class TileSet extends Component {
   cycleColor(ref){
     const rowRef = ref.split(',')[1];
     if(this.rowRefs[rowRef]){
-      this.rowRefs[rowRef].startColorCycling(rowRef);
+      this.rowRefs[rowRef].startColorCycling(ref);
     }
   }
   stopColorCycle(ref){
@@ -146,13 +145,15 @@ class TileSet extends Component {
 
   }
   sendCellOut(ref){//animPref, , callback
-    if(this.rowRefs[ref]){
-      this.rowRefs[ref].animateOut(ref);//animPref, callback
+    const rowRef = ref.split(',')[1];
+    if(this.rowRefs[rowRef]){
+      this.rowRefs[rowRef].animateOut(ref);//animPref, callback
     }
   }
   pulseCell(ref, which){//animPref, , callback
     // if(this.rowRefs[ref]){
-      this.rowRefs[ref].pulse(which);//animPref, callback
+    const rowRef = ref.split(',')[1];
+      this.rowRefs[rowRef].pulse(which);//animPref, callback
     // }
   }
   renderTiles(cell, i){

@@ -150,8 +150,6 @@ class Tile extends Component {
       duration: 1,
       scale: 1,
       play: false,
-      showPulse: false,
-      showTada: false,
       xValue: 400,
       tileKey: this.props.myRef,
       tileKeyStored: this.props.myRef,
@@ -176,17 +174,23 @@ class Tile extends Component {
 
   }
   flash(ref, callback){
-    console.log("tile says ref is: ", ref);
-    const animElement = this.tileRefs[ref];
-    animElement.style.setProperty('--animate-duration', '0.6s');
-    animateCSS(animElement, 'pulse').then(callback);// => {
+    const rowRef = ref.split(',')[1];
+    const animElement = this.tileRefs[rowRef];
+    animElement.style.setProperty('--animate-duration', '3.0s');
+    animateCSS(animElement, 'pulse').then((message) => {
+      console.log("message: " + message);
+      setTimeout(() => {
+      console.log("calling callback");
+         callback();
+      }, 600);
+    })
   }
-  pulse(animationType){//animPreference, callback
-    if(animationType === 'pulse'){
-      this.setState({showPulse: true});
-    }else{
-      this.setState({showTada: true});
-    }
+  // pulse(animationType){//animPreference, callback
+  //   if(animationType === 'pulse'){
+  //     this.setState({showPulse: true});
+  //   }else{
+  //     this.setState({showTada: true});
+  //   }
     // setTimeout(() => {
     //   this.setState({play: true});
     //   console.log("animation: " + JSON.stringify(this.state.animation));
@@ -195,9 +199,10 @@ class Tile extends Component {
     // setTimeout(() => {
     //   this.setState({scale: 1});
     // }, 400)
-  }
+  // }
   animateOut(ref){//animPreference, callback
-    const animElement = this.tileRefs[ref];
+    const rowRef = ref.split(',')[1];
+    const animElement = this.tileRefs[rowRef];
     animElement.style.setProperty('--animate-duration', '0.7s');
     animateCSS(animElement, 'flare').then((message) => {
       animElement.style.setProperty('--animate-duration', '1.3s');
@@ -232,9 +237,10 @@ class Tile extends Component {
   //     }
   // }
   animateUpThenDown(ref){
-    const animElement = this.tileRefs[ref];
+    const rowRef = ref.split(',')[1];
+    const animElement = this.tileRefs[rowRef];
     animElement.style.setProperty('--animate-duration', '1.4s');
-    this.setState({bgColor: colors.gray_3, textColor: colors.red, xValue: posOrNeg() * getRandomInt(100, 700)});
+    this.setState({tileKey: this.state.tileKeyStored, bgColor: colors.gray_3, textColor: colors.red, xValue: posOrNeg() * getRandomInt(100, 700)});
     const delayMSec = getRandomInt(1, 1000);
     setTimeout(() => {
       animateCSS(animElement, 'bounceOutDown');
@@ -244,8 +250,9 @@ class Tile extends Component {
     }, delayMSec);
   }
   animateRedPulse(ref){
-    this.setState({bgColor: this.state.darkModeEnabled? colors.dark_red : colors.red, textColor: colors.text_white});
-    const animElement = this.tileRefs[ref];
+    this.setState({tileKey: this.state.tileKeyStored, bgColor: this.state.darkModeEnabled? colors.dark_red : colors.red, textColor: colors.text_white});
+    const rowRef = ref.split(',')[1];
+    const animElement = this.tileRefs[rowRef];
     animElement.style.setProperty('--animate-duration', '0.4s');
     animateCSS(animElement, 'pulse').then(() => {
       animElement.style.setProperty('--animate-duration', '0.7s');
@@ -283,7 +290,6 @@ class Tile extends Component {
   startColorCycling(){
     if(this.state.intervalID === 0){
       this.setState({tileKey: this.state.tileKey + 1});
-      // let ccTime = getRandomInt(900, 1200);
       this.cycleBGColor();
       let intID = setInterval(() => {this.cycleBGColor()}, 1950);
       this.setState({intervalID: intID});

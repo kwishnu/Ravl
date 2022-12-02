@@ -69,7 +69,7 @@ const scrWidth = config.SCREEN_WIDTH;
 const scrHeight = config.SCREEN_HEIGHT;
 const tablet = scrHeight/scrWidth > 1.77?false:true;
 const tileHeight = config.TILE_HEIGHT;
-const data = [
+const menuList = [
   {
     name: "RavL", icon: <HomeOutlined /> },
   { name: "Settings", icon: <SettingsOutlined /> },
@@ -77,7 +77,6 @@ const data = [
   { name: "Support", icon: <QuestionAnswerOutlined /> },
   { name: "Mega RavL", icon: <DraftsOutlined /> },
 ];
-
 let dateToday = formatDate(new Date(), "MM-dd-yyyy");
 let title = "";
 let description = "";
@@ -902,9 +901,7 @@ class App extends Component {
       this.colRefs[colRef].flashWord(cellRef, () => {
         if (!wordAdded) {
           wordAdded = true;
-          setTimeout(() => {
             this.updateGameArray([]);
-          }, 600);
         }
       });
     });
@@ -1220,6 +1217,7 @@ class App extends Component {
             this.lockScreen(2500);
             hasPuzzleWordArr[2].forEach((cellRef) => {
               const colRef = cellRef.split(",")[0];
+              console.log("showing fail word...");
               this.colRefs[colRef].showFailWord(cellRef);
             });
             this.setState({
@@ -1228,6 +1226,7 @@ class App extends Component {
               endMessage: this.state.endMessageFail,
             });
             setTimeout(() => {
+              console.log("animating game fail...");
               this.animateGameFail();
             }, 1500);
             setTimeout(() => {
@@ -2233,9 +2232,9 @@ renderFooterStartButtons() {
 
   getMenuItems(){
     return(
-    <div onClick={() => this.toggleDrawer()}>
-      {data.map((item, index) => (
-        <ListItem button key={index}>
+    <div onClick={(which) => this.toggleDrawer(which)}>
+      {menuList.map((item, index) => (
+        <ListItem button key={index} onClick={() => console.log("Index: ", index)}>
           <ListItemIcon>{item.icon}</ListItemIcon>
           <ListItemText primary={item.name} />
         </ListItem>
@@ -2245,7 +2244,6 @@ renderFooterStartButtons() {
   }  
   toggleDrawer(which){
     this.setState({isOpen: !this.state.isOpen});
-    console.log("which: " + which);
   }
   renderCol(col, i, anim, idFrag){
     const cRef = "col" + i
@@ -2358,6 +2356,12 @@ renderFooterStartButtons() {
                 <TileSet ref={this.col2} tilesInColumn={4} tileHeight={60} /> */}
               </div>
               <div  id="footerContainer" style={styles.footerContainer}>
+                <button style={styles.button} onClick={() => this.openWordsModal()} >
+                <div style={styles.button_text}>WORDS</div>
+                </button>
+                <button style={styles.button} onClick={() => this.giveHint()} >
+                <div style={styles.button_text}>HINT</div>
+                </button>
               </div>
             </div>
 
