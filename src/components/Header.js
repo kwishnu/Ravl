@@ -19,7 +19,7 @@ function Header(props) {
         </div>
       </div>
       <div style={headerStyles.right_div}>
-        <img src={SupportImage} alt={"Support"} style={headerStyles.imageStyle} onClick={() => props.clickMenu("Support")} />          
+        <img src={SupportImage} alt={"Support"} style={headerStyles.supportImageStyle} onClick={() => props.clickMenu("Support")} />          
         <img src={HelpImage} alt={"Help"} style={headerStyles.helpImageStyle} onClick={() => props.clickMenu("Help")} />          
       </div>
     </div>
@@ -60,18 +60,18 @@ const headerStyles = {
     alignItems: "center"
 
   },
-  imageStyle: {
-    width: 38,
-    height: 38,
+  supportImageStyle: {
+    width: config.isPC || config.isTablet?scrHeight * 0.03:scrHeight * 0.08,
+    height: config.isPC || config.isTablet?scrHeight * 0.03:scrHeight * 0.08,
   },
   menuImageStyle: {
-    width: 44,
-    height: 44,
+    width: config.isPC || config.isTablet?scrHeight * 0.03:scrHeight * 0.08,
+    height: config.isPC || config.isTablet?scrHeight * 0.03:scrHeight * 0.08,
     marginLeft: config.isPC || config.isTablet?marLeftOrRight:10,
   },
   helpImageStyle: {
-    width: 44,
-    height: 44,
+    width: config.isPC || config.isTablet?scrHeight * 0.03:scrHeight * 0.08,
+    height: config.isPC || config.isTablet?scrHeight * 0.03:scrHeight * 0.08,
     marginRight: config.isPC || config.isTablet?marLeftOrRight:10,
   },
   titleText: {

@@ -176,14 +176,8 @@ class Tile extends Component {
   flash(ref, callback){
     const rowRef = ref.split(',')[1];
     const animElement = this.tileRefs[rowRef];
-    animElement.style.setProperty('--animate-duration', '3.0s');
-    animateCSS(animElement, 'pulse').then((message) => {
-      console.log("message: " + message);
-      setTimeout(() => {
-      console.log("calling callback");
-         callback();
-      }, 600);
-    })
+    animElement.style.setProperty('--animate-duration', '0.6s');
+    animateCSS(animElement, 'pulse').then(callback(ref));
   }
   // pulse(animationType){//animPreference, callback
   //   if(animationType === 'pulse'){
@@ -266,10 +260,11 @@ class Tile extends Component {
     this.setState({tileKey: this.state.tileKeyStored, bgColor: bg, textColor: txt, borderColor: bc});
   }
   ravlTileToFromDarkMode(onOrOff){
+    console.log("setting color to red...");
     const bg = onOrOff? colors.dark_red:colors.red;
     const txt = onOrOff ? colors.off_white2:colors.text_white;
     let bc = onOrOff ? colors.gray_1:colors.off_black;
-    this.setState({tileKey: this.state.tileKeyStored, bgColor: bg, textColor: txt, borderColor: bc});
+    this.setState({bgColor: bg, tileKey: this.state.tileKeyStored, textColor: txt, borderColor: bc});//tileKey: this.state.tileKeyStored, 
   }
   changeBGColor(color){
     let txtColor = (color === "white" || color === "yellow")?'#222222':'#ffffff';
@@ -325,12 +320,13 @@ class Tile extends Component {
                 backgroundColor: [this.state.bgColor, this.state.toColor],
             }}
             transition={{ duration: 2, ease: "linear", repeat: Infinity }}
-              >
-              <div style={{...tile_styles.text, color: this.state.textColor}}>
+            >
+
+              <div style={{...tile_styles.text, fontSize: tileHeight/1.8, color: this.state.textColor}}>
                 {text.toUpperCase()}
               </div>
             </motion.div>
-          </motion.div>
+            </motion.div>
         }
       </AnimatePresence>
     );
@@ -346,11 +342,12 @@ const tile_styles = {
     justifyContent: 'center',
     alignItems: 'center',
     borderWidth: 1,
-    borderColor: colors.off_black, borderStyle: 'solid'
+    borderColor: colors.off_black, 
+    borderStyle: 'solid',
+    padding: 0
   },
   text: {
-    fontSize: 36,
-    fontFamily: 'Helvetica',
+    fontFamily: 'system-ui',
     fontWeight: 'bold',
   }
 }

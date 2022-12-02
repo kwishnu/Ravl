@@ -898,9 +898,10 @@ class App extends Component {
       const colRef = cellRef.split(",")[0];
       // const rowRef = cellRef.split(",")[1];
       console.log("cellRef: ", cellRef);
-      this.colRefs[colRef].flashWord(cellRef, () => {
+      this.colRefs[colRef].flashWord(cellRef, (refSent) => {
         if (!wordAdded) {
           wordAdded = true;
+            console.log("refSent is: " + refSent);
             this.updateGameArray([]);
         }
       });
@@ -2346,14 +2347,6 @@ renderFooterStartButtons() {
                 gameArray10.map((column, index) => this.renderCol(column, index, true, keyIDFragment))}
               {this.state.gameDone && this.renderDone(this.state.clearedLevel)}
               {this.state.lockScreenInput && this.displayLockScreen()}
-                
-                {/* {
-                arr.map((column, index) => this.renderCol(column, index))
-                } */}
-
-                {/* <TileSet ref={this.col0} tilesInColumn={4} tileHeight={60}/>
-                <TileSet ref={this.col1} tilesInColumn={4} tileHeight={60}/>
-                <TileSet ref={this.col2} tilesInColumn={4} tileHeight={60} /> */}
               </div>
               <div  id="footerContainer" style={styles.footerContainer}>
                 <button style={styles.button} onClick={() => this.openWordsModal()} >

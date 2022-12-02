@@ -17,7 +17,7 @@ const animateCSS = (element, animation, prefix = 'animate__') =>
     element.classList.remove(`${prefix}animated`, animationName);
     resolve('Animation ended');
   }
-  element.addEventListener('animationend', handleAnimationEnd, {once: true});
+  element.addEventListener('animationend', handleAnimationEnd);//, {once: true});
 });
 
 class TileSet extends Component {
@@ -63,6 +63,7 @@ class TileSet extends Component {
     }
   }
   ravlTileGoDark(ref, onOrOff){
+    console.log("ravl tile is " + ref);
     const rowRef = ref.split(',')[1];
     if(this.rowRefs[rowRef]){
       this.rowRefs[rowRef].ravlTileToFromDarkMode(onOrOff);
@@ -139,7 +140,7 @@ class TileSet extends Component {
   };
 
   setPosition(num){
-    const yPosition = num * tilePlusMargin;
+    const yPosition = num * tilePlusMargin + (num)/2;
     this.setState({position: yPosition});
     //setPosition({ x: 0, y: num * tilePlusMargin });
 
@@ -208,7 +209,7 @@ const styles = {
     flexDirection: 'column',
     justifyContent: 'flex-end',
     marginLeft: 1,
-    marginRight: 1,
+    // marginRight: 1,
     marginBottom: 2,
   }
 }
