@@ -63,14 +63,12 @@ class TileSet extends Component {
     }
   }
   ravlTileGoDark(ref, onOrOff){
-    console.log("ravl tile is " + ref);
     const rowRef = ref.split(',')[1];
     if(this.rowRefs[rowRef]){
       this.rowRefs[rowRef].ravlTileToFromDarkMode(onOrOff);
     }
   }
   changeColor(ref, color){
-    console.log("changing color...");
     const rowRef = ref.split(',')[1];
     if(this.rowRefs[rowRef]){
       this.rowRefs[rowRef].changeBGColor(color);
@@ -88,15 +86,9 @@ class TileSet extends Component {
       this.rowRefs[rowRef].toggleColorCycle();
     }
   }
-//   dropColumn(ref){
-//     if(this.refs[ref]){
-//       let val = this.state.yOffsetInt * this.state.tilePlusMargin + this.state.tilePlusMargin;
-//       Animated.spring(
-//         this.pan,
-//         { toValue: { x: 0, y: val }, easing: Easing.bounce(), useNativeDriver: false }
-//       ).start();
-//     }
-//   }
+  dropColumn(){
+    this.setPosition(-1);
+  }
   nudgeUpAndDown(col, forward){
     const r = "col" + col;
     const animElement = this.colRefs[r];
@@ -133,7 +125,7 @@ class TileSet extends Component {
     moveMultiple = moveMultiple > 0 && moveMultiple > maxMove?maxMove:moveMultiple;
     moveMultiple = moveMultiple < 0 && moveMultiple < -maxMove?-maxMove:moveMultiple;
     this.setPosition(moveMultiple);
-    const numMoved = this.state.prevLocation - moveMultiple;
+    const numMoved = moveMultiple - this.state.prevLocation;
     this.props.sendColToGame([this.props.colIndex, numMoved]);
     this.setState({prevLocation: moveMultiple});
     // console.log("moveMultiple: " + moveMultiple + ", numMoved: " + numMoved);  
@@ -145,10 +137,11 @@ class TileSet extends Component {
     //setPosition({ x: 0, y: num * tilePlusMargin });
 
   }
-  sendCellOut(ref){//animPref, , callback
+  sendCellOut(animPref, ref, callback){
+    console.log("animation pref: " + animPref);
     const rowRef = ref.split(',')[1];
     if(this.rowRefs[rowRef]){
-      this.rowRefs[rowRef].animateOut(ref);//animPref, callback
+      this.rowRefs[rowRef].animateOut(ref, callback);//animPref
     }
   }
   pulseCell(ref, which){//animPref, , callback

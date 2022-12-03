@@ -69,7 +69,7 @@ export function  printGameArrayToConsole(sentArr) {
       pushChar = sentArr[z][x].letter === "" ? "-" : sentArr[z][x].letter;
       printArr.push(pushChar);
     }
-    console.log(JSON.stringify(printArr));
+    console.log(JSON.stringify(printArr) + " " + x);
   }
   console.log("\n");
   }

@@ -18,14 +18,18 @@ export function getColor(){//https://stackoverflow.com/questions/43193341/how-to
              Math.floor(40 + 20 * Math.random()) + '%)'//lightness
 }
 const animateCSS = (element, animation, prefix = 'animate__') =>
+  // We create a Promise and return it
   new Promise((resolve, reject) => {
-    const animationName = `${prefix}${animation}`;//
+    const animationName = `${prefix}${animation}`;
     element.classList.add(`${prefix}animated`, animationName);
-    function handleAnimationEnd(event) {
+
+    // When the animation ends, we clean the classes and resolve the Promise
+    const handleAnimationEnd = (event) => {
       event.stopPropagation();
       element.classList.remove(`${prefix}animated`, animationName);
       resolve('Animation ended');
     }
+
     element.addEventListener('animationend', handleAnimationEnd, {once: true});
   });
 
@@ -174,37 +178,25 @@ class Tile extends Component {
 
   }
   flash(ref, callback){
+    console.log("sent ref " + ref);
     const rowRef = ref.split(',')[1];
     const animElement = this.tileRefs[rowRef];
     animElement.style.setProperty('--animate-duration', '0.6s');
-    animateCSS(animElement, 'pulse').then(callback(ref));
+    animateCSS(animElement, 'pulse').then(() => callback(ref));
   }
-  // pulse(animationType){//animPreference, callback
-  //   if(animationType === 'pulse'){
-  //     this.setState({showPulse: true});
-  //   }else{
-  //     this.setState({showTada: true});
-  //   }
-    // setTimeout(() => {
-    //   this.setState({play: true});
-    //   console.log("animation: " + JSON.stringify(this.state.animation));
-    // }, 200);
-    // this.setState({scale: 1.1});
-    // setTimeout(() => {
-    //   this.setState({scale: 1});
-    // }, 400)
-  // }
-  animateOut(ref){//animPreference, callback
+  animateOut(ref, callback){//animPreference
+    console.log("should be leaving now...");
     const rowRef = ref.split(',')[1];
     const animElement = this.tileRefs[rowRef];
     animElement.style.setProperty('--animate-duration', '0.7s');
-    animateCSS(animElement, 'flare').then((message) => {
+    animateCSS(animElement, 'flare').then((callback) => {
       animElement.style.setProperty('--animate-duration', '1.3s');
       setTimeout(() => {
         this.setState({show: false});
       }, 400);
       animateCSS(animElement, 'bounceOutRight');
-    });
+    })
+    .then(callback);
 
     // animElement.classList.add('animate__animated', 'animate__bounceOutLeft');
 
@@ -231,6 +223,7 @@ class Tile extends Component {
   //     }
   // }
   animateUpThenDown(ref){
+    console.log("ref from tile: " + ref);
     const rowRef = ref.split(',')[1];
     const animElement = this.tileRefs[rowRef];
     animElement.style.setProperty('--animate-duration', '1.4s');
@@ -260,7 +253,6 @@ class Tile extends Component {
     this.setState({tileKey: this.state.tileKeyStored, bgColor: bg, textColor: txt, borderColor: bc});
   }
   ravlTileToFromDarkMode(onOrOff){
-    console.log("setting color to red...");
     const bg = onOrOff? colors.dark_red:colors.red;
     const txt = onOrOff ? colors.off_white2:colors.text_white;
     let bc = onOrOff ? colors.gray_1:colors.off_black;
@@ -272,7 +264,6 @@ class Tile extends Component {
   }
   cycleBGColor(){
     if(this.state.tileKey !== this.state.tileKeyStored){
-      // console.log("now I'm in here!");
       let initialColor = this.state.toColor;
       let nextColor = getColor();
       if(this.props.text === ' '){
@@ -293,7 +284,9 @@ class Tile extends Component {
   toggleColorCycle(){
     if(this.state.intervalID !== 0){
       clearInterval(this.state.intervalID);
-      this.setState({intervalID: 0, tileKey: this.state.tileKeyStored});
+      setTimeout(() => {
+        this.setState({intervalID: 0, tileKey: this.state.tileKeyStored});
+      }, 250);
     }
   }
 
@@ -316,17 +309,22 @@ class Tile extends Component {
               className={'anim-element'} 
               ref={node => {if (node) this.tileRefs[myRef] = node}} 
               style={{...tile_styles.tile, backgroundColor: this.state.bgColor, height: tileHeight, width: tileHeight}}
-              animate={this.state.tileKey === this.state.tileKeyStored ? {} : {
-                backgroundColor: [this.state.bgColor, this.state.toColor],
-            }}
-            transition={{ duration: 2, ease: "linear", repeat: Infinity }}
+              animate={this.state.tileKey === this.state.tileKeyStored ? 
+                { scale: [1, 1.1, 1] } 
+                : 
+                { backgroundColor: [this.state.bgColor, this.state.toColor] }
+              }
+              transition={this.state.tileKey === this.state.tileKeyStored ? 
+                { duration: 0.6, ease: "easeIn" }
+                :
+                { duration: 2, ease: "linear", repeat: Infinity }
+              }
             >
-
-              <div style={{...tile_styles.text, fontSize: tileHeight/1.8, color: this.state.textColor}}>
-                {text.toUpperCase()}
-              </div>
+            <div style={{...tile_styles.text, fontSize: tileHeight/1.6, color: this.state.textColor}}>
+              {text.toUpperCase()}
+            </div>
             </motion.div>
-            </motion.div>
+          </motion.div>
         }
       </AnimatePresence>
     );
