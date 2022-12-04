@@ -72,7 +72,7 @@ const footer_styles = {
     width: config.scrWidth,
     paddingTop: 10,
     backgroundColor: colors.dark_purple,
-
+    zIndex: 1
   },
   left_div: {
     width: config.isPC || config.isTablet?widthLeftOrRight:0,

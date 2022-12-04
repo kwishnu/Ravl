@@ -1,17 +1,10 @@
-import {
-  Drawer,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  // Button,
-} from "@material-ui/core";
-import {
-  QuestionAnswerOutlined,
-  DraftsOutlined,
-  HomeOutlined,
-  SettingsOutlined,
-  ContactSupportOutlined,
-} from "@material-ui/icons";
+// import {
+//   QuestionAnswerOutlined,
+//   DraftsOutlined,
+//   HomeOutlined,
+//   SettingsOutlined,
+//   ContactSupportOutlined,
+// } from "@material-ui/icons";
 import { CircularProgress } from '@mui/material';
 // import { useState } from "react";
 import React, { Component } from 'react';
@@ -39,6 +32,7 @@ import words7letter from "./words/7letter_bonus";
 import words8letter from "./words/8letter_bonus";
 import words9letter from "./words/9letter_bonus";
 import words10letter from "./words/10letter_bonus";
+import Menu from './components/Menu.js';
 import Header from './components/Header.js';
 import Footer from './components/Footer.js';
 import HintNag from "./modal/HintNagModal";
@@ -70,14 +64,13 @@ const scrHeight = config.scrHeight;
 const tablet = config.isTablet;
 const isPC = config.isPC;
 const tileHeight = config.TILE_HEIGHT;
-const menuList = [
-  {
-    name: "RavL", icon: <HomeOutlined /> },
-  { name: "Settings", icon: <SettingsOutlined /> },
-  { name: "Help", icon: <ContactSupportOutlined /> },
-  { name: "Support", icon: <QuestionAnswerOutlined /> },
-  { name: "Mega RavL", icon: <DraftsOutlined /> },
-];
+// const menuList = [
+//   { name: "RavL", icon: <HomeOutlined /> },
+//   { name: "Settings", icon: <SettingsOutlined /> },
+//   { name: "Help", icon: <ContactSupportOutlined /> },
+//   { name: "Support", icon: <QuestionAnswerOutlined /> },
+//   { name: "Mega RavL", icon: <DraftsOutlined /> },
+// ];
 let dateToday = formatDate(new Date(), "MM-dd-yyyy");
 let title = "";
 let description = "";
@@ -216,7 +209,7 @@ class App extends Component {
       lockScreenInput: false,
       modalCall: this.props.modalCall,
       megaPuzzle: false,
-      isOpen: false
+      showMenu: false
       // xValue: posOrNeg() * getRandomInt(20, 100)
     };
     this.colRefs = [];
@@ -1088,7 +1081,6 @@ class App extends Component {
       }
     }
     let wordForHints = puzzWordArray[wordIndex];
-    console.log("this.state.hintsGiven: " + this.state.hintsGiven);
     for (var j = 0; j < this.state.hintsGiven + 2; j++) {
       for (var k = 0; k < numRows; k++) {
         if (gArray[j][k].letter === wordForHints[j]) {
@@ -2274,23 +2266,11 @@ renderFooterStartButtons() {
     </div>
   );
 }
+toggleDrawer(which){
+  this.setState({showMenu: !this.state.showMenu});
+}
 
 
-  getMenuItems(){
-    return(
-    <div onClick={(which) => this.toggleDrawer(which)}>
-      {menuList.map((item, index) => (
-        <ListItem button key={index} onClick={() => console.log("Index: ", index)}>
-          <ListItemIcon>{item.icon}</ListItemIcon>
-          <ListItemText primary={item.name} />
-        </ListItem>
-      ))}
-    </div>
-    )
-  }  
-  toggleDrawer(which){
-    this.setState({isOpen: !this.state.isOpen});
-  }
   renderCol(col, i, anim, idFrag){
     const cRef = "col" + i
     const numC = this.state.gameArray0.length;
@@ -2301,7 +2281,6 @@ renderFooterStartButtons() {
     const th2 = tablet?650/this.state.initialArrayHeight:isPC?580/this.state.initialArrayHeight:500/this.state.initialArrayHeight;
     const scrDividedWidth = cWidth/(numC + 1);
     const scrDividedHeight = cHeight/(numR + 2);
-    if(i === 0)console.log("th1: " + th1 + ", th2: " + th2 + ", scrDividedWidth: " + scrDividedWidth + ", scrDividedHeight: " + scrDividedHeight);
     const th = Math.min(th1, th2, scrDividedWidth, scrDividedHeight);//tile height
     const le = (cWidth - numC * (th + 2))/2;//left edge
     if(this.state.lettersetContainerWidth > 0){
@@ -2356,6 +2335,7 @@ renderFooterStartButtons() {
       return (
         <div>
 
+            <Menu showMenu={this.state.showMenu}/>
           <div style={styles.container}>
             <div style={styles.AppLeftBox}>
 
@@ -2404,9 +2384,8 @@ renderFooterStartButtons() {
               </div>
             </div>
 
-              <Drawer anchor={"left"} open={this.state.isOpen} onClose={() => this.setState({isOpen: false})}>
-                {this.getMenuItems()}
-              </Drawer>
+
+
               <Header 
                 clickMenu={(which) => this.toggleDrawer(which)}
               />
