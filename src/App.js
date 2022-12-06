@@ -39,9 +39,9 @@ import HintNag from "./modal/HintNagModal";
 import TileSet from './components/TileSet';
 import styles from './styles/appStyles.js';
 import genWordArray from "./config/genWordArray";
-// import Settings from "../screens/settings";
-// import Help from "../screens/help";
-// import Support from "../screens/support";
+// import Settings from "./screens/settings";
+import Help from "./screens/help";
+// import Support from "./screens/support";
 // import Words from "./modal/WordsModal";
 // import EndGame from "./modal/EndGameModal";
 // import ThankYou from "./modal/ThankYouModal";
@@ -1922,7 +1922,7 @@ class App extends Component {
       <div style={tut_styles.tut_screen}>
         <div style={tut_styles.tut_dialog1}>
           <div style={[tut_styles.tut_text, {marginBottom: 20}]}>Move the columns of letters up and down to form words going across...</div>
-          <button style={[tut_styles.button, { marginLeft: 60 }]} onPress={() => this.closeTutScreen1()} >
+          <button style={[tut_styles.button, { marginLeft: 60 }]} onClick={() => this.closeTutScreen1()} >
             <div style={tut_styles.button_text}>OK</div>
           </button>
         </div>
@@ -1944,7 +1944,7 @@ class App extends Component {
       <div style={tut_styles.tut_screen}>
         <div style={tut_styles.tut_dialog2}>
           <div style={tut_styles.tut_text}>{tutText}</div>
-          <button style={[tut_styles.button, { marginLeft: 120 }]} onPress={() => this.closeTutScreen2()} >
+          <button style={[tut_styles.button, { marginLeft: 120 }]} onClick={() => this.closeTutScreen2()} >
             <div style={tut_styles.button_text}>OK</div>
           </button>
         </div>
@@ -1966,24 +1966,37 @@ class App extends Component {
         window.alert('AsyncStorage error: ' + error.message);
     }
   }
-  closeModal(){
-    this.setState({
-      // showSettingsModal: false,
-      // showHelpModal: false,
-      // showSupportModal: false,
-      // showWordsModal: false,
-      // showEndGameModal: false,
-      // showThankYouModal: false,
-      showHintNagModal: false,
-      // modalCall: "None"
-    });
+  toggleModal(which, open){
+    console.log("toggleModal: setting " + which + " to " + open);
+    if(open){
+      switch(which){
+        case "Help":
+          this.setState({showHelpModal: true});
+          break;
+        default:
+          console.log("No default case...");
+
+      }
+    }else{
+      this.setState({
+        // showSettingsModal: false,
+        showHelpModal: false,
+        // showSupportModal: false,
+        // showWordsModal: false,
+        // showEndGameModal: false,
+        // showThankYouModal: false,
+        showHintNagModal: false,
+        // modalCall: "None"
+      });
+      
+    }
   }
   goToStartScreen(){
     this.setState({currentGameIndex: -1, megaPuzzle: false});
     setTimeout(() => {
       this.nextGame(true);
     }, 200)
-    this.closeModal();
+    this.toggleModal(false);
   }
   getDimensions(node) {
     if (node && !this.state.height) {
@@ -2204,7 +2217,7 @@ renderGameOverButton() {
   return (
     <div style={styles.game_over_button_view}>
       {this.state.nextBtnText === "NEXT" &&
-        <button style={styles.game_over_button} onPress={() => this.goToStartScreen()}>
+        <button style={styles.game_over_button} onClick={() => this.goToStartScreen()}>
           <img
             source={img2}
             style={styles.game_over_image}
@@ -2212,7 +2225,7 @@ renderGameOverButton() {
           />
         </button>
       }
-      <button style={styles.game_over_button} onPress={() => this.transitionToGame(consideredDaily)}>
+      <button style={styles.game_over_button} onClick={() => this.transitionToGame(consideredDaily)}>
         <img
           source={img1}
           style={styles.game_over_image}
@@ -2228,10 +2241,10 @@ renderFooterStartButtons() {
       <div style={footer_styles.start_buttons_row}>
         <div style={footer_styles.footer_spacer}>
         </div>
-        <button style={footer_styles.start_button} onPress={() => this.transitionToGame(true)}>
+        <button style={footer_styles.start_button} onClick={() => this.transitionToGame(true)}>
           <div style={[styles.button_text_white, {color: this.state.dailyPuzzleCompleted && this.state.currentGameIndex === -1 ? colors.gray_2 : colors.text_white}]}>PLAY  DAILY</div>
         </button>
-        <button style={footer_styles.start_button} onPress={() => this.transitionToGame(false)}>
+        <button style={footer_styles.start_button} onClick={() => this.transitionToGame(false)}>
           <div style={styles.button_text_white}>PLAY</div>
         </button>
         <div style={footer_styles.footer_spacer}>
@@ -2266,8 +2279,12 @@ renderFooterStartButtons() {
     </div>
   );
 }
-toggleDrawer(which){
+toggleDrawer(){
   this.setState({showMenu: !this.state.showMenu});
+}
+showModal(which){
+  this.toggleModal(which, true);
+
 }
 
 
@@ -2334,9 +2351,13 @@ toggleDrawer(which){
       } = this.state;
       return (
         <div>
-
-            <Menu showMenu={this.state.showMenu}/>
-          <div style={styles.container}>
+            <Menu showMenu={this.state.showMenu} closeMenu={() => this.toggleDrawer()}/>
+          <div style={styles.container} onClick={this.state.showMenu?() => this.toggleDrawer():null}>
+            <Header 
+              clickMenu={(which) => this.toggleDrawer(which)} 
+              showModal={(which) => this.showModal(which)}
+            />
+            
             <div style={styles.AppLeftBox}>
 
             </div>
@@ -2386,9 +2407,6 @@ toggleDrawer(which){
 
 
 
-              <Header 
-                clickMenu={(which) => this.toggleDrawer(which)}
-              />
               {this.state.currentGameIndex === -1 &&
                 <Footer puzzleStreak={'3'} startGame={(daily) => this.transitionToGame(daily)}/>
               }
@@ -2414,6 +2432,12 @@ toggleDrawer(which){
                 pauseOnHover
                 theme="light"
               />
+              <Help
+                isModalVisible={this.state.showHelpModal}
+                requestModalClose={(which, open) => {this.toggleModal(which, open)}}
+                darkModeEnabled={this.state.darkModeEnabled}
+              />
+
             </div>
           </div>
       );

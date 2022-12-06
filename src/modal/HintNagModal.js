@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+// import Modal from 'react-modal';
 import config from '../config/config';
 import {convertFont} from '../config/config';
 import colors from '../config/colors';

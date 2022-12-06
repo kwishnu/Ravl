@@ -1,8 +1,8 @@
 import colors from '../config/colors';
 import config from '../config/config';
 import MenuImage from '../images/menu.png';
-import SupportImage from '../images/heart.png';
-import HelpImage from '../images/question.png';
+import SupportImage from '../images/question.png';
+import HelpImage from '../images/heart.png';
 const scrWidth = config.scrWidth;
 const scrHeight = config.scrHeight;
 const marLeftOrRight = (scrWidth - scrHeight * 9/16)/2;
@@ -19,12 +19,11 @@ function Header(props) {
         </div>
       </div>
       <div style={headerStyles.right_div}>
-        <img src={SupportImage} alt={"Support"} style={headerStyles.supportImageStyle} onClick={() => props.clickMenu("Support")} />          
-        <img src={HelpImage} alt={"Help"} style={headerStyles.helpImageStyle} onClick={() => props.clickMenu("Help")} />          
+        <img src={HelpImage} alt={"Help"} style={headerStyles.helpImageStyle} onClick={() => props.showModal("Help")} />          
+        <img src={SupportImage} alt={"Support"} style={headerStyles.supportImageStyle} onClick={() => props.showModal("Support")} />          
       </div>
     </div>
   )
-
 }
 
 const headerStyles = {
@@ -60,19 +59,19 @@ const headerStyles = {
     alignItems: "center"
 
   },
-  supportImageStyle: {
-    width: config.isPC || config.isTablet?scrHeight * 0.03:scrWidth * 0.08,
-    height: config.isPC || config.isTablet?scrHeight * 0.03:scrWidth * 0.08,
-  },
   menuImageStyle: {
     width: config.isPC || config.isTablet?scrHeight * 0.03:scrWidth * 0.08,
     height: config.isPC || config.isTablet?scrHeight * 0.03:scrWidth * 0.08,
     marginLeft: config.isPC || config.isTablet?marLeftOrRight:10,
   },
-  helpImageStyle: {
+  supportImageStyle: {
     width: config.isPC || config.isTablet?scrHeight * 0.03:scrWidth * 0.08,
     height: config.isPC || config.isTablet?scrHeight * 0.03:scrWidth * 0.08,
     marginRight: config.isPC || config.isTablet?marLeftOrRight:10,
+  },
+  helpImageStyle: {
+    width: config.isPC || config.isTablet?scrHeight * 0.03:scrWidth * 0.08,
+    height: config.isPC || config.isTablet?scrHeight * 0.03:scrWidth * 0.08,
   },
   titleText: {
     fontFamily: "Acme",
