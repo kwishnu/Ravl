@@ -62,6 +62,7 @@ const menu_header_styles = {
     fontFamily: 'Acme',
     fontSize: convertFont(24),
     color: colors.off_white,
+    userSelect: 'none',
     marginLeft: 15
   },
 }

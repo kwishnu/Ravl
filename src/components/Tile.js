@@ -347,6 +347,7 @@ const tile_styles = {
   text: {
     fontFamily: 'system-ui',
     fontWeight: 'bold',
+    userSelect: 'none'
   }
 }
 

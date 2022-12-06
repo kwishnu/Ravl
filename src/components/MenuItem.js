@@ -59,6 +59,7 @@ const menu_item_styles = {
   menu_label: {
     fontSize: convertFont(19),
     color: colors.off_white,
+    userSelect: 'none'
   },
 }
 

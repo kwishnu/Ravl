@@ -2351,7 +2351,7 @@ showModal(which){
       } = this.state;
       return (
         <div>
-            <Menu showMenu={this.state.showMenu} closeMenu={() => this.toggleDrawer()}/>
+            <Menu showMenu={this.state.showMenu} closeMenu={() => this.toggleDrawer()} showModal={(which, open) => {this.toggleModal(which, open)}}/>
           <div style={styles.container} onClick={this.state.showMenu?() => this.toggleDrawer():null}>
             <Header 
               clickMenu={(which) => this.toggleDrawer(which)} 
@@ -2404,8 +2404,6 @@ showModal(which){
                 </button>
               </div>
             </div>
-
-
 
               {this.state.currentGameIndex === -1 &&
                 <Footer puzzleStreak={'3'} startGame={(daily) => this.transitionToGame(daily)}/>
