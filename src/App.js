@@ -19,7 +19,6 @@ import config from './config/config';
 import colors from './config/colors';
 import animStyles from './styles/anim.module.css';
 import tut_styles from './styles/tut_styles';
-import footer_styles from './styles/footer_styles';
 import {puzzTitle, puzzDescription,  puzzles} from './data/dailyDataHelper';//numPuzzles,
 import { getRandom, getRandomInt, shuffleArray, transposeArray, allElementsEqual, getColor, printWordsToConsole, printGameArrayToConsole } from './config/functions';
 import gamePlatitudes from "./data/game_plats";
@@ -180,6 +179,8 @@ class App extends Component {
       starsContainerWidth: 0,
       starsContainerHeight: 0,
       numberOfStars: 0,
+      bwOffset: 0,
+      swOffset: 0,
       megaRavlRef: "",
       keyIDFragment: "",
       solvedWord: "",
@@ -854,46 +855,50 @@ class App extends Component {
   }
   sendRowOut(rowArr, row) {
     console.log("sending row out...");
+    // debugger;
     this.lockScreen(1250);
 //    if(this.state.currentHintsArray.length === 0)this.setState({hintsGiven: 0});
     const pts = this.state.gameArray0.length;//this.getPointsToAdd();
     this.changeScore(pts);
     let doneDropping = false;
     rowArr.forEach((cellRef) => {
+      // debugger;
       const colRef = cellRef.split(",")[0];
-      this.colRefs[colRef].sendCellOut(this.state.animationStyle, cellRef, () => {
+      this.colRefs[colRef].sendCellOut(cellRef, () => {//this.state.animationStyle, cellRef,...
         if (!doneDropping) {
           doneDropping = true;
           const gArray = this.state.gameArray0;
-          console.log("calling splice fnxn");
-          this.spliceArray(gArray, row);
-          if (this.state.rowsInPuzzle - this.state.onRow === 1) {
-            let dropArray = this.getDropTileArray();
-            if (dropArray.length < this.state.gameArray0.length) {
-              dropArray.forEach((cellRef) => {
-                const colRef = cellRef.split(",")[0];
-                this.colRefs[colRef].dropColumn();
-              });
-            }
-          }
+          setTimeout(() => {
+            this.spliceArray(gArray, row);
+            this.updateGameArray([]);
+          
+          }, 800);
+          // if (this.state.rowsInPuzzle - this.state.onRow === 1) {
+          //   let dropArray = this.getDropTileArray();
+          //   if (dropArray.length < this.state.gameArray0.length) {
+          //     dropArray.forEach((cellRef) => {
+          //       const colRef = cellRef.split(",")[0];
+          //       this.colRefs[colRef].dropColumn();
+          //     });
+          //   }
+          // }
           this.resetSolvedWord();//resets padding for the "solved word" animation
           this.resetTileColors(this.state.darkModeEnabled);//called in case a hint (green) tile isn't removed
-          this.updateGameArray([]);
         }
       });
     });
   }
   flashWord(rowArr) {
-    console.log("rowArr is ", rowArr);
-    this.lockScreen(1000);
+    console.log("rowArr is " + JSON.stringify(rowArr));
+    this.lockScreen(1800);
     // const pts = this.state.gameArray0.length;
     // this.changeScore(pts);
     let wordAdded = false;
     rowArr.forEach((cellRef) => {
       const colRef = cellRef.split(",")[0];
       // const rowRef = cellRef.split(",")[1];
-      console.log("cellRef: ", cellRef);
       this.colRefs[colRef].flashWord(cellRef, (refSent) => {
+        console.log("App is flashing " + cellRef);
         if (!wordAdded) {
           wordAdded = true;
             console.log("refSent is: " + refSent);
@@ -1183,6 +1188,20 @@ class App extends Component {
     this.setState({ gameArray: gArray });
   }
   updateGameArray(colIndexArr) {
+    // const wat = this.colRefs;
+    // console.log(wat);
+    // debugger;
+    console.log("updateGameArray...");
+    if (this.state.rowsInPuzzle - this.state.onRow === 1) {
+      console.log("uGA attempting column drop...");
+      let dropArray = this.getDropTileArray();
+      if (dropArray.length < this.state.gameArray0.length) {
+        dropArray.forEach((cellRef) => {
+          const colRef = cellRef.split(",")[0];
+          this.colRefs[colRef].dropColumn();
+        });
+      }
+    }
     if(this.state.currentGameIndex < 0)return;//avoids response to home screen animation
     let gameIndex = this.state.currentGameIndex;
     const ravlCellRef = this.state.megaPuzzle? this.state.megaRavlRef : this.state.ravlTiles[gameIndex];
@@ -1270,34 +1289,55 @@ class App extends Component {
         currentHintsArray: newHintArr,
         hintsGiven: newHintsGiven
       });
-      this.sendRowOut(hasPuzzleWordArr[2], hasPuzzleWordArr[1]);
+      console.log("calling sendRowOut in update...");
+      switch(this.state.solvedWords[this.state.currentGameIndex].length - this.state.swOffset){
+        case 0:
+            this.sendRowOut(hasPuzzleWordArr[2], hasPuzzleWordArr[1]);
+          break;
+        case 1:
+          setTimeout(() => {
+            this.sendRowOut(hasPuzzleWordArr[2], hasPuzzleWordArr[1]);
+          }, 800);
+          break;
+        case 2:
+          setTimeout(() => {
+            this.sendRowOut(hasPuzzleWordArr[2], hasPuzzleWordArr[1]);
+          }, 1600);
+          break;
+        default:
+          console.log("hit puzzleword default");
+          this.sendRowOut(hasPuzzleWordArr[2], hasPuzzleWordArr[1]);
+      }
+      this.setState({swOffset: this.state.solvedWords[this.state.currentGameIndex].length});
+
+      // this.sendRowOut(hasPuzzleWordArr[2], hasPuzzleWordArr[1]);
       return;
     }
     let hasAnyWordArr = this.evalForAnyWords(gArray); //[word, [refArray]]
     if (noPuzzleWords && hasAnyWordArr[0]) {//has a bonus word
-      console.log("has a bonus word");
       notAnyWords = false;
-      switch(this.state.bonusWords[this.state.currentGameIndex].length){
+      // debugger;
+      switch(this.state.bonusWords[this.state.currentGameIndex].length - this.state.bwOffset){
         case 1:
-          console.log("length is 1");
-          this.flashWord(hasAnyWordArr[1]);
+          setTimeout(() => {
+            this.flashWord(hasAnyWordArr[1]);
+          }, 800);
           break;
         case 2:
-          console.log("length is 2");
           setTimeout(() => {
             this.flashWord(hasAnyWordArr[1]);
-          }, 1000);
+          }, 1600);
           break;
         case 3:
-          console.log("length is 3");
           setTimeout(() => {
             this.flashWord(hasAnyWordArr[1]);
-          }, 2000);
+          }, 2400);
           break;
         default:
           console.log("hit default");
           this.flashWord(hasAnyWordArr[1]);
       }
+      this.setState({bwOffset: this.state.bonusWords[this.state.currentGameIndex].length});
       return;
     }
     if (noPuzzleWords && notAnyWords && colIndexArr[1]) {//inconsequential move, deduct a point
@@ -1443,7 +1483,6 @@ class App extends Component {
     this.changeTileMode(remainingTilesArr, mode, dark);
   }
   evalForPuzzleWords(gArray) {
-    console.log("evaluating...");
     const numRows = gArray[0].length;
     const numColumns = gArray.length;
     let returnArr = [];
@@ -1456,7 +1495,6 @@ class App extends Component {
       }
       let legitWord = false;
       if (tempWord.length === numColumns) {
-        console.log("tempWord: " + tempWord);
         switch (numColumns) {
           case 3:
             if (puzzleWords0.includes(tempWord) || (this.state.isDailyGame && (puzzleWords8.includes(tempWord) || puzzleWords9.includes(tempWord) || puzzleWords10.includes(tempWord)))) legitWord = true;
@@ -1632,21 +1670,23 @@ class App extends Component {
     }
   }
   spliceArray(arr, row) {
-    console.log("should be splicing " + arr);
     for (var k = 0; k < arr.length; k++) {
       arr[k].splice(row, 1);
     }
     this.setState({ gameArray: arr });
-    let rows = arr[0].length;
-    let columns = arr.length;
-    for (var x = 0; x < rows; x++) {
-      let printArr = [];
-      for (var z = 0; z < columns; z++) {
-        let pushChar = "";
-        pushChar = arr[z][x].letter === "" ? "-" : arr[z][x].letter;
-        printArr.push(pushChar);
-      }
-    }
+    printGameArrayToConsole(arr);
+
+    // let rows = arr[0].length;
+    // let columns = arr.length;
+    // let printArr = [];
+    // for (var x = 0; x < rows; x++) {
+    //   for (var z = 0; z < columns; z++) {
+    //     let pushChar = "";
+    //     pushChar = arr[z][x].letter === "" ? "-" : arr[z][x].letter;
+    //     printArr.push(pushChar);
+    //   }
+    // }
+    // console.log("printArr: " + JSON.stringify(printArr));
   }
   transitionToGame(isDaily) {
     if(this.state.nextBtnText === "CLOSE"){
@@ -2235,50 +2275,6 @@ renderGameOverButton() {
     </div>
   );
 }
-renderFooterStartButtons() {
-  return (
-    <div style={[footer_styles.footer_start_buttons, {backgroundColor: global.bgColor, marginLeft: tablet?-(scrWidth - this.state.lettersetContainerWidth)/2:0, marginRight: tablet?-(scrWidth - this.state.lettersetContainerWidth)/2:0}]}>
-      <div style={footer_styles.start_buttons_row}>
-        <div style={footer_styles.footer_spacer}>
-        </div>
-        <button style={footer_styles.start_button} onClick={() => this.transitionToGame(true)}>
-          <div style={[styles.button_text_white, {color: this.state.dailyPuzzleCompleted && this.state.currentGameIndex === -1 ? colors.gray_2 : colors.text_white}]}>PLAY  DAILY</div>
-        </button>
-        <button style={footer_styles.start_button} onClick={() => this.transitionToGame(false)}>
-          <div style={styles.button_text_white}>PLAY</div>
-        </button>
-        <div style={footer_styles.footer_spacer}>
-        </div>
-      </div>
-      <div style={footer_styles.streak_row}>
-        <div style={footer_styles.streak_cell1}>
-          <div style={footer_styles.streak_text}>{(this.state.puzzleStreak === '0')?'':"Streak:"}</div>
-        </div>
-        <div style={footer_styles.streak_cell2}>
-          {(this.state.puzzleStreak !== '0' && this.state.puzzleStreak !== '0,01-01-2001') &&
-            <div style={footer_styles.streak_text_bubble}>
-              <div style={footer_styles.streak_number_text}>
-                {
-                  (parseInt(this.state.puzzleStreak) > 2)?'🔥 ' + this.state.puzzleStreak:
-                  this.state.puzzleStreak
-                }
-              </div>
-            </div>
-          }
-        </div>
-        <div style={footer_styles.streak_cell1}>
-          <div style={footer_styles.streak_text}>
-            {
-              (this.state.puzzleStreak === '0')?'':
-              (this.state.puzzleStreak === '1')?"day":
-              "days"
-            }
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
 toggleDrawer(){
   this.setState({showMenu: !this.state.showMenu});
 }
@@ -2286,7 +2282,16 @@ showModal(which){
   this.toggleModal(which, true);
 
 }
+testAnimation(){
+  let rowArr = ['col0,row4','col1,row4','col2,row4','col3,row4']
+  rowArr.forEach((cellRef) => {
+    const colRef = cellRef.split(",")[0];
+    this.colRefs[colRef].sendCellOut(cellRef, () => {
+      console.log("callback...");
+    });
+  });
 
+}
 
   renderCol(col, i, anim, idFrag){
     const cRef = "col" + i

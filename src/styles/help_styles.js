@@ -1,13 +1,10 @@
 import config from '../config/config';
 import {convertFont} from '../config/config';
-import colors from '../config/colors';
 const scrWidth = config.scrWidth;
 const scrHeight = config.scrHeight;
 const tablet = scrHeight/scrWidth > 1.77?false:true;
-let modalHeight = scrHeight * 0.9;
-let line = tablet?config.LINE_HEIGHT * 0.85:config.LINE_HEIGHT;
 
- const help_styles = {
+const help_styles = {
 
 containerView: {
   display: 'flex',
@@ -19,7 +16,7 @@ containerView: {
   right: 0,
   justifyContent: "center",
   alignItems: "center",
-  backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  backgroundColor: 'rgba(0, 0, 0, 0)',
 },
 modalView: {
   display: 'flex',
@@ -46,7 +43,7 @@ modalHeader: {
   flexDirection: 'row',
   justifyContent: "flex-start",
   alignItems: "center",
-  height: line * 5,
+  height: 74,
   alignSelf: "stretch",
   paddingLeft: tablet?scrWidth * 0.01:0,
 },
@@ -128,37 +125,6 @@ section4_container: {
   marginBottom: 10
   // height: line * 2,
 },
-button: {
-  width: scrWidth/4,
-  height: 45,
-  borderRadius: config.button_radius,
-  justifyContent: "center",
-  marginTop: 20,
-  backgroundColor: colors.button_blue,
-  shadowColor: colors.black,
-  shadowOffset: { width: 0, height: 2 },
-  shadowOpacity: 0.5,
-  shadowRadius: 2,
-  elevation: 6,
-},
-button_text: {
-  fontFamily: "Acme",
-  fontSize: 18,
-  color: colors.off_white,
-  textAlign: "center",
-},
-board_image: {
-  height: modalHeight * 0.25,
-  width: scrWidth * 0.25,
-  marginLeft: 14,
-  resizeMode: 'contain',
-},
-arrow_image: {
-  height: modalHeight * 0.25,
-  width: 60,
-  marginLeft: 10,
-  resizeMode: 'contain',
-},
 close_image: {
   height: 35,
   width: 35,
@@ -176,10 +142,6 @@ section_heading: {
 text: {
   fontSize: config.isPC?convertFont(15):convertFont(21),
 },
-text_small: {
-  fontSize: 14,
-},
-
 
 }
 

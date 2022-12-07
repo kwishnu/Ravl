@@ -22,7 +22,6 @@ const animateCSS = (element, animation, prefix = 'animate__') =>
   new Promise((resolve, reject) => {
     const animationName = `${prefix}${animation}`;
     element.classList.add(`${prefix}animated`, animationName);
-
     // When the animation ends, we clean the classes and resolve the Promise
     const handleAnimationEnd = (event) => {
       event.stopPropagation();
@@ -32,108 +31,6 @@ const animateCSS = (element, animation, prefix = 'animate__') =>
 
     element.addEventListener('animationend', handleAnimationEnd, {once: true});
   });
-
-
-
-// import {getColor} from '../config/functions';//randomBoolean, getRandomInt, posOrNeg
-
-// const flare1 = {
-//   from: {
-//     backgroundColor: '#00000000', scale: 1
-//   },
-//   to: {
-//     backgroundColor: '#adfa75', scale: 1.2
-//   },
-// };
-// const flare2 = {
-//   0: {
-//     backgroundColor: '#00000000', scale: 1
-//   },
-//   0.5: {
-//     backgroundColor: '#adfa75', scale: 1.2
-//   },
-//   1: {
-//     backgroundColor: '#adfa75', scale: 1
-//   },
-// };
-// const flash1 = {
-//   from: {
-//     backgroundColor: '#00000000', scale: 1
-//   },
-//   to: {
-//     backgroundColor: 'pink', scale: 1.2
-//   },
-// };
-// const flash2 = {
-//   from: {
-//     backgroundColor: 'pink', scale: 1.2
-//   },
-//   to: {
-//     backgroundColor: '#00000000', scale: 1.0
-//   },
-// };
-// eslint-disable-next-line 
-// const test = 
-// [
-//   { 0: 'scale: 1, rotate: 0deg' }, 
-//   { 10: 'scale: 0.9, rotate: -3deg' },
-//   { 20: 'scale: 0.9, rotate: -3deg' },
-//   { 30: 'scale: 1.1, rotate: -3deg' },
-//   { 40: 'rotate: 3deg' }, 
-//   { 50: 'rotate: -3deg' },
-//   { 60: 'rotate: 3deg' }, 
-//   { 70: 'rotate: -3deg' },
-//   { 80: 'rotate: 3deg' },
-//   { 90: 'scale: 1.1, rotate: 3deg' }, 
-//   { 100: 'scale: 1, rotate: 0deg' },
-// ];
-const pulse = 
-[
-  { 0: 'scale: 1' }, // 0%
-  { 50: 'scale: 1.1' }, // 50%
-  { 100: 'scale: 1' } // 100%
-];
-// const disappear = {
-//   from: {
-//     opacity: 1
-//   },
-//   to: {
-//     opacity: 0
-//   },
-// };
-// const pulse1_1 = {
-//   0: {
-//     scale: 1
-//   },
-//   0.5: {
-//     scale: 1.1
-//   },
-//   1: {
-//     scale: 1
-//   },
-// };
-// const pulse1_2 = {
-//   0: {
-//     scale: 1
-//   },
-//   0.5: {
-//     scale: 1.2
-//   },
-//   1: {
-//     scale: 1
-//   },
-// };
-// const flip = {
-//   0: {
-//     rotateX: '0deg'
-//   },
-//   0.5: {
-//     rotateX: '180deg'
-//   },
-//   1: {
-//     rotateX: '0deg'
-//   },
-// };
 
 class Tile extends Component {
   constructor(props) {
@@ -150,10 +47,6 @@ class Tile extends Component {
       textColor: colors.off_black,
       darkModeEnabled: this.props.dark,
       show: true,
-      animation: pulse,
-      duration: 1,
-      scale: 1,
-      play: false,
       xValue: 400,
       tileKey: this.props.myRef,
       tileKeyStored: this.props.myRef,
@@ -178,18 +71,22 @@ class Tile extends Component {
 
   }
   flash(ref, callback){
-    console.log("sent ref " + ref);
-    const rowRef = ref.split(',')[1];
-    const animElement = this.tileRefs[rowRef];
+    console.log("flashing in Tile " + ref);
+    // const wat = this.tileRefs;
+    // console.log(wat);
+
+
+    const animElement = this.tileRefs[ref];
     animElement.style.setProperty('--animate-duration', '0.6s');
     animateCSS(animElement, 'pulse').then(() => callback(ref));
+    // this.setRef(animElement, this.state.myRef);
   }
   animateOut(ref, callback){//animPreference
-    console.log("should be leaving now...");
-    const rowRef = ref.split(',')[1];
-    const animElement = this.tileRefs[rowRef];
+    console.log("flashing in animateOut " + ref);
+    const animElement = this.tileRefs[ref];
     animElement.style.setProperty('--animate-duration', '0.7s');
-    animateCSS(animElement, 'flare').then((callback) => {
+    animateCSS(animElement, 'pulse').then((message) => {
+      console.log("message: " + message);
       animElement.style.setProperty('--animate-duration', '1.3s');
       setTimeout(() => {
         this.setState({show: false});
@@ -223,9 +120,7 @@ class Tile extends Component {
   //     }
   // }
   animateUpThenDown(ref){
-    console.log("ref from tile: " + ref);
-    const rowRef = ref.split(',')[1];
-    const animElement = this.tileRefs[rowRef];
+    const animElement = this.tileRefs[ref];
     animElement.style.setProperty('--animate-duration', '1.4s');
     this.setState({tileKey: this.state.tileKeyStored, bgColor: colors.gray_3, textColor: colors.red, xValue: posOrNeg() * getRandomInt(100, 700)});
     const delayMSec = getRandomInt(1, 1000);
@@ -238,8 +133,7 @@ class Tile extends Component {
   }
   animateRedPulse(ref){
     this.setState({tileKey: this.state.tileKeyStored, bgColor: this.state.darkModeEnabled? colors.dark_red : colors.red, textColor: colors.text_white});
-    const rowRef = ref.split(',')[1];
-    const animElement = this.tileRefs[rowRef];
+    const animElement = this.tileRefs[ref];
     animElement.style.setProperty('--animate-duration', '0.4s');
     animateCSS(animElement, 'pulse').then(() => {
       animElement.style.setProperty('--animate-duration', '0.7s');
@@ -260,7 +154,7 @@ class Tile extends Component {
   }
   changeBGColor(color){
     let txtColor = (color === "white" || color === "yellow")?'#222222':'#ffffff';
-    this.setState({tileKey: this.state.tileKeyStored, bgColor: color, textColor: txtColor})
+    this.setState({tileKey: this.state.tileKeyStored, bgColor: color, toColor: color, textColor: txtColor})
   }
   cycleBGColor(){
     if(this.state.tileKey !== this.state.tileKeyStored){
@@ -289,8 +183,12 @@ class Tile extends Component {
       }, 250);
     }
   }
+  // setRef = (node, myRef) => {
+  //   this.tileRefs[myRef] = node; 
+  // }
 
   render() {
+console.log("this.state.tileKey: " + this.state.tileKey);
     const animVal = (this.props.animate === true)?500:0;
     const { text, tileHeight, myRef } = this.props;
     return (
@@ -304,20 +202,21 @@ class Tile extends Component {
             transition={{ type: "spring", stiffness: 250, damping: 18, duration: 0.4 }}
           >
             <motion.div 
-              id={'id_' + myRef} 
+              id={myRef} 
               key={this.state.tileKey}
               className={'anim-element'} 
-              ref={node => {if (node) this.tileRefs[myRef] = node}} 
+              ref={(ref) => this.tileRefs[myRef] = ref} 
+              // ref={node => {if (node) this.tileRefs[myRef] = node}} 
               style={{...tile_styles.tile, backgroundColor: this.state.bgColor, height: tileHeight, width: tileHeight}}
               animate={this.state.tileKey === this.state.tileKeyStored ? 
-                { scale: [1, 1.1, 1] } 
+                {} 
                 : 
                 { backgroundColor: [this.state.bgColor, this.state.toColor] }
               }
               transition={this.state.tileKey === this.state.tileKeyStored ? 
                 { duration: 0.6, ease: "easeIn" }
                 :
-                { duration: 2, ease: "linear", repeat: Infinity }
+                { duration: 1.5, ease: "linear", repeat: Infinity }
               }
             >
             <div style={{...tile_styles.text, fontSize: tileHeight/1.6, color: this.state.textColor}}>

@@ -1,6 +1,10 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+import { motion, AnimatePresence } from "framer-motion"
 import help_styles from "../styles/help_styles";
 import colors from '../config/colors';
+import config from '../config/config';
+const scrHeight = config.scrHeight;
+
 // const KEY_ModePref = 'modePrefKey';
 
 class Help extends Component {
@@ -42,16 +46,23 @@ class Help extends Component {
     const row2Text5 = "\u2022  Form a word with the RavL tile early, or";
     const row2Text51 = "\u2022  Run out of points (1 point for each move that doesn't form a word)" ;  
     const row2Text52 = "...or the round will fail \n\n \u2605  Completing a game without using hints or failing as described will earn a star for your home screen!";
-    // const row2Text53 = "\u2605  Completing a game without using hints or failing as described will earn a star for your home screen!";
     const row3Text1 = "\u2022  Cost 5 points for the first, 10 thereafter";
     const row4Text1 = "\u2022  1 point earned for each letter in the word formed";
     const { isModalVisible } = this.props;
     const closeImage = this.props.darkModeEnabled? require("../images/close.png"):require("../images/close_black.png");
     let { darkModeEnabled } = this.props;
-console.log("isModalVisible; " + isModalVisible);
+
     return(
-        isModalVisible &&
-        <div style={help_styles.containerView}>
+      <AnimatePresence>
+      {isModalVisible && 
+        <motion.div
+          initial={{ y: scrHeight }}
+          animate={{ y: -2 }}
+          exit={{ y: scrHeight }}
+          style={{...help_styles.containerView}}
+          transition={{ type: "spring", bounce: 0, duration: 0.4 }}
+        >
+
           <div style={{...help_styles.modalView, backgroundColor: darkModeEnabled ? colors.gray_4:colors.off_white}}>
             <div style={help_styles.modalHeader}>
               <div style={help_styles.titleContainer}>
@@ -145,9 +156,11 @@ console.log("isModalVisible; " + isModalVisible);
               </div>
             </div>
           </div>
-        </div>
-     )
-   }
+        </motion.div>
+        }
+        </AnimatePresence>
+      );
+  }
 }
 
 export default Help;

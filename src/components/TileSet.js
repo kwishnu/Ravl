@@ -39,55 +39,51 @@ class TileSet extends Component {
 
   }
   flashWord(ref, callback){
-    const rowRef = ref.split(',')[1];
-    if(this.rowRefs[rowRef]){
-      this.rowRefs[rowRef].flash(ref, callback);
+    const wat = this.colRefs;
+    console.log(wat);
+
+    // const rowRef = ref.split(',')[1];
+    if(this.rowRefs[ref]){
+      this.rowRefs[ref].flash(ref, callback);
     }
   }
   animateFail(ref){
-    const rowRef = ref.split(',')[1];
-    if(this.rowRefs[rowRef]){
-      this.rowRefs[rowRef].animateUpThenDown(ref);
+    if(this.rowRefs[ref]){
+      this.rowRefs[ref].animateUpThenDown(ref);
     }
   }
   showFailWord(ref){
-    const rowRef = ref.split(',')[1];
-    if(this.rowRefs[rowRef]){
-      this.rowRefs[rowRef].animateRedPulse(ref);
+    if(this.rowRefs[ref]){
+      this.rowRefs[ref].animateRedPulse(ref);
     }
   }
   goDark(ref, onOrOff){
-    const rowRef = ref.split(',')[1];
-    if(this.rowRefs[rowRef]){
-      this.rowRefs[rowRef].toFromDarkMode(onOrOff);
+    if(this.rowRefs[ref]){
+      this.rowRefs[ref].toFromDarkMode(onOrOff);
     }
   }
   ravlTileGoDark(ref, onOrOff){
-    const rowRef = ref.split(',')[1];
-    if(this.rowRefs[rowRef]){
-      this.rowRefs[rowRef].ravlTileToFromDarkMode(onOrOff);
+    if(this.rowRefs[ref]){
+      this.rowRefs[ref].ravlTileToFromDarkMode(onOrOff);
     }
   }
   changeColor(ref, color){
-    const rowRef = ref.split(',')[1];
-    if(this.rowRefs[rowRef]){
-      this.rowRefs[rowRef].changeBGColor(color);
+    if(this.rowRefs[ref]){
+      this.rowRefs[ref].changeBGColor(color);
     }
   }
   cycleColor(ref){
-    const rowRef = ref.split(',')[1];
-    if(this.rowRefs[rowRef]){
-      this.rowRefs[rowRef].startColorCycling(ref);
+    if(this.rowRefs[ref]){
+      this.rowRefs[ref].startColorCycling(ref);
     }
   }
   stopColorCycle(ref){
-    const rowRef = ref.split(',')[1];
-    if(this.rowRefs[rowRef]){
-      this.rowRefs[rowRef].toggleColorCycle();
+    if(this.rowRefs[ref]){
+      this.rowRefs[ref].toggleColorCycle();
     }
   }
   dropColumn(){
-    this.setPosition(-1);
+    this.setPosition(0);
   }
   nudgeUpAndDown(col, forward){
     const r = "col" + col;
@@ -116,7 +112,7 @@ class TileSet extends Component {
 
   }
   pingFromTile(ref){
-    if(ref === 'row' + (this.state.tilesInColumn - 1)){
+    if(ref === 'col0,row' + (this.state.tilesInColumn - 1)){
       this.props.checkForWordsAtStart();
     }
   }
@@ -137,27 +133,23 @@ class TileSet extends Component {
     //setPosition({ x: 0, y: num * tilePlusMargin });
 
   }
-  sendCellOut(animPref, ref, callback){
-    console.log("animation pref: " + animPref);
-    const rowRef = ref.split(',')[1];
-    if(this.rowRefs[rowRef]){
-      this.rowRefs[rowRef].animateOut(ref, callback);//animPref
+  sendCellOut(ref, callback){//animPref, ref, callback
+    if(this.rowRefs[ref]){
+      this.rowRefs[ref].animateOut(ref, callback);
     }
   }
   pulseCell(ref, which){//animPref, , callback
     // if(this.rowRefs[ref]){
-    const rowRef = ref.split(',')[1];
-      this.rowRefs[rowRef].pulse(which);//animPref, callback
+      this.rowRefs[ref].pulse(which);//animPref, callback
     // }
   }
   renderTiles(cell, i){
     if(cell.letter){
-      const rRef = "row" + i
       return (
         <Tile
           key={`${cell.ref}`}
-          ref={(ref) => this.rowRefs[rRef] = ref}
-          myRef={'row' + i}
+          ref={(ref) => this.rowRefs[`${cell.ref}`] = ref}
+          myRef={`${cell.ref}`}
           text={`${cell.letter}`}
           animate={this.props.animate}
           dark={this.props.dark}
@@ -173,13 +165,9 @@ class TileSet extends Component {
     const cRef = "col" + colIndex;
     tilePlusMargin = tileHeight + 3;//2.3
     maxMove = this.state.tilesInColumn - 1;
-    // const arr = ["row0", "row1", "row2", "row3"]; 
     let colObj = this.state.letterArray;
     return (
-      <div 
-        className={'anim-element'}
-        ref={(ref) => this.colRefs[cRef] = ref}
-      >
+      <div ref={(ref) => this.colRefs[cRef] = ref}>
       <Draggable 
         axis={'y'} 
         bounds={{top: -(tilePlusMargin * (maxMove + 0.4)), bottom: (tilePlusMargin * (maxMove + 0.4))}} 
