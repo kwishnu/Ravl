@@ -3,32 +3,18 @@ import React, { Component } from 'react';
 import colors from '../config/colors';
 import '../styles/animations.css';
 import { motion, AnimatePresence } from "framer-motion"
+import { getRandomInt, posOrNeg, getColor } from '../config/functions';
 import 'animate.css';
-function getRandomInt(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
-}
-function posOrNeg(){
-  return Math.round(Math.random()) * 2 - 1;
-}
-export function getColor(){//https://stackoverflow.com/questions/43193341/how-to-generate-random-pastel-or-brighter-color-in-javascript
-  return "hsl(" + Math.floor(360 * Math.random()) + ',' +//hue
-             Math.floor(70 + 10 * Math.random()) + '%,' +//saturation
-             Math.floor(40 + 20 * Math.random()) + '%)'//lightness
-}
+
 const animateCSS = (element, animation, prefix = 'animate__') =>
-  // We create a Promise and return it
   new Promise((resolve, reject) => {
     const animationName = `${prefix}${animation}`;
     element.classList.add(`${prefix}animated`, animationName);
-    // When the animation ends, we clean the classes and resolve the Promise
     const handleAnimationEnd = (event) => {
       event.stopPropagation();
       element.classList.remove(`${prefix}animated`, animationName);
       resolve('Animation ended');
     }
-
     element.addEventListener('animationend', handleAnimationEnd, {once: true});
   });
 
@@ -54,7 +40,6 @@ class Tile extends Component {
     };
 
     this.tileRefs = [];
-
   }
   componentDidMount() {
     const randColor = getColor();
@@ -71,23 +56,15 @@ class Tile extends Component {
 
   }
   flash(ref, callback){
-    console.log("flashing in Tile " + ref);
-    // const wat = this.tileRefs;
-    // console.log(wat);
-
-
     const animElement = this.tileRefs[ref];
     animElement.style.setProperty('--animate-duration', '0.6s');
     animateCSS(animElement, 'pulse').then(() => callback(ref));
-    // this.setRef(animElement, this.state.myRef);
   }
   animateOut(ref, callback){//animPreference
-    console.log("flashing in animateOut " + ref);
     const animElement = this.tileRefs[ref];
     animElement.style.setProperty('--animate-duration', '0.7s');
-    animateCSS(animElement, 'pulse').then((message) => {
-      console.log("message: " + message);
-      animElement.style.setProperty('--animate-duration', '1.3s');
+    animateCSS(animElement, 'pulse').then(() => {
+      animElement.style.setProperty('--animate-duration', '1.6s');
       setTimeout(() => {
         this.setState({show: false});
       }, 400);
@@ -132,6 +109,7 @@ class Tile extends Component {
     }, delayMSec);
   }
   animateRedPulse(ref){
+    console.log("fail ref = " + ref);
     this.setState({tileKey: this.state.tileKeyStored, bgColor: this.state.darkModeEnabled? colors.dark_red : colors.red, textColor: colors.text_white});
     const animElement = this.tileRefs[ref];
     animElement.style.setProperty('--animate-duration', '0.4s');
@@ -154,7 +132,7 @@ class Tile extends Component {
   }
   changeBGColor(color){
     let txtColor = (color === "white" || color === "yellow")?'#222222':'#ffffff';
-    this.setState({tileKey: this.state.tileKeyStored, bgColor: color, toColor: color, textColor: txtColor})
+    this.setState({bgColor: color, textColor: txtColor})
   }
   cycleBGColor(){
     if(this.state.tileKey !== this.state.tileKeyStored){
@@ -188,7 +166,6 @@ class Tile extends Component {
   // }
 
   render() {
-console.log("this.state.tileKey: " + this.state.tileKey);
     const animVal = (this.props.animate === true)?500:0;
     const { text, tileHeight, myRef } = this.props;
     return (
@@ -201,6 +178,7 @@ console.log("this.state.tileKey: " + this.state.tileKey);
             onAnimationComplete={() => this.props.checkForWords(this.props.myRef)}
             transition={{ type: "spring", stiffness: 250, damping: 18, duration: 0.4 }}
           >
+            {text === ' ' ?
             <motion.div 
               id={myRef} 
               key={this.state.tileKey}
@@ -223,6 +201,18 @@ console.log("this.state.tileKey: " + this.state.tileKey);
               {text.toUpperCase()}
             </div>
             </motion.div>
+              :
+            <div 
+              id={myRef} 
+              className={'anim-element'} 
+              ref={(ref) => this.tileRefs[myRef] = ref} 
+              style={{...tile_styles.tile, backgroundColor: this.state.bgColor, height: tileHeight, width: tileHeight}}
+            >
+            <div style={{...tile_styles.text, fontSize: tileHeight/1.6, color: this.state.textColor}}>
+              {text.toUpperCase()}
+            </div>
+            </div>
+            }
           </motion.div>
         }
       </AnimatePresence>

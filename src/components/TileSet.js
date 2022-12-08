@@ -6,6 +6,8 @@ import 'animate.css';
 import config from '../config/config';
 import colors from '../config/colors';
 const scrHeight = config.SCREEN_HEIGHT;
+const KEY_LowColPositions = 'lowColPositions';
+
 let tilePlusMargin = 0;
 let maxMove = 0;
 const animateCSS = (element, animation, prefix = 'animate__') =>
@@ -38,11 +40,14 @@ class TileSet extends Component {
     this.colRefs = [];
 
   }
-  flashWord(ref, callback){
-    const wat = this.colRefs;
-    console.log(wat);
+  componentDidMount() {
+    global.lowColPosition = 0;
+  }
 
-    // const rowRef = ref.split(',')[1];
+  flashWord(ref, callback){
+    // const wat = this.colRefs;
+    // console.log(wat);
+
     if(this.rowRefs[ref]){
       this.rowRefs[ref].flash(ref, callback);
     }
@@ -83,7 +88,13 @@ class TileSet extends Component {
     }
   }
   dropColumn(){
-    this.setPosition(0);
+    let lowPosition = -10;
+    let lcp = JSON.parse(localStorage.getItem(KEY_LowColPositions));
+console.log("lcp: " + JSON.stringify(lcp));
+    for(let j=0; j<10;j++){
+      lowPosition = (lcp[j] > lowPosition)?lcp[j]:lowPosition;
+    }
+    this.setPosition(lowPosition);
   }
   nudgeUpAndDown(col, forward){
     const r = "col" + col;
@@ -124,7 +135,12 @@ class TileSet extends Component {
     const numMoved = moveMultiple - this.state.prevLocation;
     this.props.sendColToGame([this.props.colIndex, numMoved]);
     this.setState({prevLocation: moveMultiple});
-    // console.log("moveMultiple: " + moveMultiple + ", numMoved: " + numMoved);  
+
+    let lcp = JSON.parse(localStorage.getItem(KEY_LowColPositions));
+    lcp[this.props.colIndex] = moveMultiple;
+    window.localStorage.setItem(KEY_LowColPositions, JSON.stringify(lcp));
+
+    console.log("moveMultiple: " + moveMultiple + ", numMoved: " + numMoved);  
   };
 
   setPosition(num){

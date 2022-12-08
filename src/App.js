@@ -1,12 +1,4 @@
-// import {
-//   QuestionAnswerOutlined,
-//   DraftsOutlined,
-//   HomeOutlined,
-//   SettingsOutlined,
-//   ContactSupportOutlined,
-// } from "@material-ui/icons";
 import { CircularProgress } from '@mui/material';
-// import { useState } from "react";
 import React, { Component } from 'react';
 import formatDate from 'date-fns/format';
 import parse from 'date-fns/parse';
@@ -58,18 +50,12 @@ const KEY_NumStars = 'numStarsKey';
 const KEY_CurrentStarColor = 'curStarColorKey';
 const KEY_StarColorString = 'starColorKey';
 const KEY_HasUpgrade = 'hasUpgradeKey';
+const KEY_LowColPositions = 'lowColPositions';
 const scrWidth = config.scrWidth;
 const scrHeight = config.scrHeight;
 const tablet = config.isTablet;
 const isPC = config.isPC;
 const tileHeight = config.TILE_HEIGHT;
-// const menuList = [
-//   { name: "RavL", icon: <HomeOutlined /> },
-//   { name: "Settings", icon: <SettingsOutlined /> },
-//   { name: "Help", icon: <ContactSupportOutlined /> },
-//   { name: "Support", icon: <QuestionAnswerOutlined /> },
-//   { name: "Mega RavL", icon: <DraftsOutlined /> },
-// ];
 let dateToday = formatDate(new Date(), "MM-dd-yyyy");
 let title = "";
 let description = "";
@@ -92,8 +78,6 @@ let bonusWords = [];
 class App extends Component {
   constructor(props) {
     super(props);
-    // this.handleViewRef = ref => this.view = ref;
-    // this.handleTileRef = ref2 => this.view = ref2;
     this.state = {
       level0Saved: [],
       gameArray0: [],
@@ -125,8 +109,8 @@ class App extends Component {
       animationTimerIDs: [],
       starColorArray: ['#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333'],
       currentStarColor: '#FFD700',
-      // bonusWords: this.props.bonusWords,
-      // solvedWords: this.props.solvedWords,
+      bonusWords: this.props.bonusWords,
+      solvedWords: this.props.solvedWords,
       showPlayRavl: false,
       showStars: true,
       isDailyGame: false,
@@ -751,6 +735,12 @@ class App extends Component {
         window.alert('window.localStorage error: ' + error.message);
       }
     }
+    const lowColPositions = [-10,-10,-10,-10,-10,-10,-10,-10,-10,-10];
+      try {
+        window.localStorage.setItem(KEY_LowColPositions, JSON.stringify(lowColPositions));
+      } catch (error) {
+        window.alert('window.localStorage error: ' + error.message);
+      }
     if(cgi > -1){
       this.setState({gameStarted: true});
       this.lockScreen(2000);
@@ -898,10 +888,8 @@ class App extends Component {
       const colRef = cellRef.split(",")[0];
       // const rowRef = cellRef.split(",")[1];
       this.colRefs[colRef].flashWord(cellRef, (refSent) => {
-        console.log("App is flashing " + cellRef);
         if (!wordAdded) {
           wordAdded = true;
-            console.log("refSent is: " + refSent);
             this.updateGameArray([]);
         }
       });
@@ -1191,15 +1179,15 @@ class App extends Component {
     // const wat = this.colRefs;
     // console.log(wat);
     // debugger;
-    console.log("updateGameArray...");
+
     if (this.state.rowsInPuzzle - this.state.onRow === 1) {
-      console.log("uGA attempting column drop...");
       let dropArray = this.getDropTileArray();
       if (dropArray.length < this.state.gameArray0.length) {
         dropArray.forEach((cellRef) => {
           const colRef = cellRef.split(",")[0];
           this.colRefs[colRef].dropColumn();
         });
+        console.log("dropArray: " + JSON.stringify(dropArray));
       }
     }
     if(this.state.currentGameIndex < 0)return;//avoids response to home screen animation
@@ -1215,10 +1203,8 @@ class App extends Component {
     let notAnyWords = true;
     if (colIndexArr[1]) {//number of tile moves in TileSet drop
       if (colIndexArr[1] < 0) {
-        console.log("moving up " + colIndexArr[1]);
         this.moveTileSetUp(colIndexArr, gArray);
       } else {
-        console.log("moving down " + colIndexArr[1]);
         this.moveTileSetDown(colIndexArr, gArray);
       }
     }
@@ -1289,7 +1275,6 @@ class App extends Component {
         currentHintsArray: newHintArr,
         hintsGiven: newHintsGiven
       });
-      console.log("calling sendRowOut in update...");
       switch(this.state.solvedWords[this.state.currentGameIndex].length - this.state.swOffset){
         case 0:
             this.sendRowOut(hasPuzzleWordArr[2], hasPuzzleWordArr[1]);
