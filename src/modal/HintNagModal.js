@@ -70,14 +70,7 @@ const hn_modal_styles = {
     padding: 25,
     borderRadius: 5,
     alignItems: "center",
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 10,
+    boxShadow: `8px 8px 28px ${colors.gray_3}`,
   },
   button_container: {
     display: 'flex',

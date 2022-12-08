@@ -35,11 +35,7 @@ start_button: {
   justifyContent: "center",
   backgroundColor: colors.button_blue,
   marginBottom: 16,
-  shadowColor: '#000',
-  shadowOffset: { width: 0, height: 2 },
-  shadowOpacity: 0.5,
-  shadowRadius: 2,
-  elevation: 10,
+  boxShadow: `10px 20px 20px ${colors.off_black}`,
   borderColor: colors.transparent,
   borderLeftWidth: tablet?10:8,
   borderRightWidth:  tablet?10:8

@@ -1,4 +1,5 @@
 import config from '../config/config';
+import colors from '../config/colors';
 import {convertFont} from '../config/config';
 const scrWidth = config.scrWidth;
 const scrHeight = config.scrHeight;
@@ -27,16 +28,7 @@ modalView: {
   borderRadius: 5,
   padding: 10,
   alignItems: "center",
-  shadowColor: "#000",
-  shadowOffset: {
-    width: 0,
-    height: 2,
-    borderColor: 'red', borderWidth: 2, borderStyle: 'solid'
-
-  },
-  shadowOpacity: 0.25,
-  shadowRadius: 4,
-  elevation: 10,
+  boxShadow: `10px 20px 20px ${colors.off_black}`,
   zIndex: 100
 },
 modalHeader: {

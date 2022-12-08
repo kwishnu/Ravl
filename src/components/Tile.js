@@ -97,26 +97,30 @@ class Tile extends Component {
   //     }
   // }
   animateUpThenDown(ref){
-    const animElement = this.tileRefs[ref];
-    animElement.style.setProperty('--animate-duration', '1.4s');
-    this.setState({tileKey: this.state.tileKeyStored, bgColor: colors.gray_3, textColor: colors.red, xValue: posOrNeg() * getRandomInt(100, 700)});
-    const delayMSec = getRandomInt(1, 1000);
-    setTimeout(() => {
-      animateCSS(animElement, 'bounceOutDown');
+    if(this.tileRefs[ref]){
+      const animElement = this.tileRefs[ref];
+      animElement.style.setProperty('--animate-duration', '1.4s');
+      this.setState({tileKey: this.state.tileKeyStored, bgColor: colors.gray_3, textColor: colors.red, xValue: posOrNeg() * getRandomInt(100, 400)});
+      const delayMSec = getRandomInt(1, 1000);
       setTimeout(() => {
-        this.setState({show: false});
-      }, 600);
-    }, delayMSec);
+        animateCSS(animElement, 'bounceOutDown');
+        setTimeout(() => {
+          this.setState({show: false});
+        }, 600);
+      }, delayMSec);
+    }
   }
-  animateRedPulse(ref){
-    console.log("fail ref = " + ref);
-    this.setState({tileKey: this.state.tileKeyStored, bgColor: this.state.darkModeEnabled? colors.dark_red : colors.red, textColor: colors.text_white});
-    const animElement = this.tileRefs[ref];
-    animElement.style.setProperty('--animate-duration', '0.4s');
-    animateCSS(animElement, 'pulse').then(() => {
-      animElement.style.setProperty('--animate-duration', '0.7s');
-      animateCSS(animElement, 'tada');
-    });
+animateRedPulse(ref){
+    if(this.tileRefs[ref]){
+      console.log("fail ref = " + ref);
+      this.setState({tileKey: this.state.tileKeyStored, bgColor: this.state.darkModeEnabled? colors.dark_red : colors.red, textColor: colors.text_white});
+      const animElement = this.tileRefs[ref];
+      animElement.style.setProperty('--animate-duration', '0.4s');
+      animateCSS(animElement, 'pulse').then(() => {
+        animElement.style.setProperty('--animate-duration', '0.7s');
+        animateCSS(animElement, 'tada');
+      });
+    }
   }
   toFromDarkMode(onOrOff){
     const bg = onOrOff? colors.gray_3:colors.text_white;

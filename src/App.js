@@ -5,6 +5,7 @@ import parse from 'date-fns/parse';
 // import eachDayOfInterval from 'date-fns/eachDayOfInterval';
 import differenceInDays from 'date-fns/differenceInDays';
 import { ToastContainer, toast } from 'react-toastify';
+import { motion, AnimatePresence } from "framer-motion"
 import 'react-toastify/dist/ReactToastify.css';
   // import {getAnimatedWordLeft} from './config/config';
 import config from './config/config';
@@ -2194,36 +2195,69 @@ renderSolvedWords(word, i){
   );
 }
 renderDone(cleared) {
-  // const img = cleared? require("./images/thumbs_up.png"):require("./images/thumbs_down.png");
-  // let msg = cleared? this.state.endMessage:this.state.endMessageFail;
-  // msg = cleared && this.state.newHighScore && this.state.playedGameOnce ? "Wow \u2014 that's a new\nhigh score!" : msg;
+  const img = cleared? require("./images/thumbs_up.png"):require("./images/thumbs_down.png");
+  const altText = cleared?"Thumbs up!":"Thumbs down";
   const imageDim = this.state.lettersetContainerWidth/5;
-  if(imageDim > 0){
-    return (
-      <div style={styles.done_container}>
-        {/* <Animatable.View animation={"bounceInRight"} duration={1600}>
-          <Animatable.Image
-            animation="slideInDown"
-            iterationCount={"infinite"}
-            direction="alternate"
-            source={img}
-            style={{ width: imageDim, height: imageDim }}
-          />
-        </Animatable.View>
-        <Animatable.View
-          animation={"bounceInRight"}
-          duration={1600}
-          delay={200}
-          style={{ marginStart: 30, marginEnd: 30 }}
+  let msg = cleared? this.state.endMessage:this.state.endMessageFail;
+  msg = cleared && this.state.newHighScore && this.state.playedGameOnce ? "Wow \u2014 that's a new\nhigh score!" : msg;
+  return (
+    <AnimatePresence>
+      {this.state.nextButtonEnabled &&
+      <div>
+        <motion.div style={styles.thumb_view}
+          // initial={{ y: 0 }}
+          animate={{ y: -scrHeight * 0.18 }}
+          // exit={{ y: 0 }}
+          transition={{ ease: "easeInOut", duration: 1, repeat: Infinity, repeatType: 'reverse' }}
         >
-          <Text style={[styles.done_text, {color: this.state.darkModeEnabled ? colors.off_white:colors.off_black}]}>{msg}</Text>
-        </Animatable.View> */}
+        <motion.div 
+          initial={{ x: 400 }}
+          animate={{ x: 0 }}
+          exit={{ x: 400 }}
+          transition={{ type: "spring", stiffness: 250, damping: 18, duration: 0.4 }}
+        >
+          <div >
+            <img src={img} style={{ width: imageDim, height: imageDim }} alt={altText} />  
+          </div>
+        </motion.div>
+        </motion.div>
+        <motion.div style={styles.done_container}
+          initial={{ x: 400 }}
+          animate={{ x: 0 }}
+          exit={{ x: 400 }}
+          transition={{ type: "spring", stiffness: 250, damping: 18, duration: 0.4, delay: 0.6 }}
+        >
+          <div style={{...styles.done_text, color: this.state.darkModeEnabled ? colors.off_white:colors.off_black}}>{msg}</div>  
+        </motion.div>
       </div>
-    );
-  }
+    }
+    </AnimatePresence>
+  );
+  
+  
+  // const imageDim = this.state.lettersetContainerWidth/5;
+  // if(imageDim > 0){
+  //   return (
+  //     <AnimatePresence>
+  //       {this.state.gameDone &&
+  //         <motion.div 
+  //           style={styles.done_container}
+  //           initial={{ x: 400 }}
+  //           animate={{ x: 0 }}
+  //           exit={{ x: 400 }}
+  //           transition={{ type: "spring", stiffness: 250, damping: 18, duration: 0.4 }}
+  //         >
+  //           <img src={img} style={styles.game_over_button} onClick={() => this.goToStartScreen()} alt={"Back"} />
+  //         </motion.div>
+  //       }
+  //     </AnimatePresence>
+  //   );
+  // }
 }
 renderGameOverButton() {
+  console.log("should be rendering...");
   let img1 = null;
+  let img1altText = "Forward";
   let img2 = require("./images/arrow_back.png");
   const consideredDaily = this.state.isDailyGame || this.state.megaPuzzle?true:false;
   switch(this.state.nextBtnText){
@@ -2235,29 +2269,27 @@ renderGameOverButton() {
       break;
     case "RETRY":
       img1 = require("./images/retry.png");
+      img1altText = "Retry"
       break;
     default:
       console.log("No default case...");
   }
   return (
-    <div style={styles.game_over_button_view}>
+    <AnimatePresence>
+      {this.state.nextButtonEnabled &&
+    <motion.div style={styles.game_over_button_view}
+      initial={{ opacity: 0, scale: 0.5 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0 }}
+      transition={{ type: "spring", stiffness: 250, damping: 18, duration: 0.8 }}
+    >
       {this.state.nextBtnText === "NEXT" &&
-        <button style={styles.game_over_button} onClick={() => this.goToStartScreen()}>
-          <img
-            source={img2}
-            style={styles.game_over_image}
-            alt={"Arrow back"}
-          />
-        </button>
+        <img src={img2} style={styles.game_over_button} onClick={() => this.goToStartScreen()} alt={"Back"} />
       }
-      <button style={styles.game_over_button} onClick={() => this.transitionToGame(consideredDaily)}>
-        <img
-          source={img1}
-          style={styles.game_over_image}
-          alt={"Arrow forward"}
-        />
-      </button>
-    </div>
+      <img src={img1} style={styles.game_over_button} onClick={() => this.transitionToGame(consideredDaily)} alt={img1altText} />
+    </motion.div>
+    }
+    </AnimatePresence>
   );
 }
 toggleDrawer(){
@@ -2408,6 +2440,10 @@ testAnimation(){
             </div>
           }
             <div>
+            {this.state.nextButtonEnabled && this.renderGameOverButton()}
+            {/* {!this.state.gameStarted && this.renderFooterStartButtons()}
+            {!this.state.showedTutScreen1 && this.state.currentGameIndex != -1 && this.displayTutScreen1()}
+            {!this.state.showedTutScreen2 && this.state.currentGameIndex != -1 && this.displayTutScreen2()} */}
               <ToastContainer
                 position="bottom-center"
                 autoClose={2400}
