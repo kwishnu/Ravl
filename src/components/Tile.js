@@ -198,7 +198,7 @@ animateRedPulse(ref){
               transition={this.state.tileKey === this.state.tileKeyStored ? 
                 { duration: 0.6, ease: "easeIn" }
                 :
-                { duration: 1.5, ease: "linear", repeat: Infinity }
+                { duration: 2, ease: "linear", repeat: Infinity }
               }
             >
             <div style={{...tile_styles.text, fontSize: tileHeight/1.6, color: this.state.textColor}}>

@@ -2,6 +2,7 @@ import { CircularProgress } from '@mui/material';
 import React, { Component } from 'react';
 import formatDate from 'date-fns/format';
 import parse from 'date-fns/parse';
+import { nanoid } from 'nanoid';
 // import eachDayOfInterval from 'date-fns/eachDayOfInterval';
 import differenceInDays from 'date-fns/differenceInDays';
 import { ToastContainer, toast } from 'react-toastify';
@@ -243,6 +244,7 @@ class App extends Component {
     eligibility
   )
   {
+    const keyIDFrag = nanoid();
     puzzleWords0 = p0;//['FIG','BAD','SAP'];
     puzzleWords1 = p1;
     puzzleWords2 = p2;
@@ -564,7 +566,7 @@ class App extends Component {
       endMessage: gameEndMsg,
       gameDone: false,
       eligibleForStar: eligibility,
-      // keyIDFragment: keyIDFrag
+      keyIDFragment: keyIDFrag
     });
 
     const showed = window.localStorage.getItem(KEY_ShowedTutorial);      
@@ -1120,6 +1122,7 @@ class App extends Component {
     }
   }
   changeScore(amt) {
+    console.log("changeScore called");
     const scr = this.state.score + amt;
     if (amt > 0) {
       setTimeout(() => {
@@ -1144,11 +1147,11 @@ class App extends Component {
               nextBtnText: "RETRY",
             });
           }, 1000);
-          setTimeout(() => {
-            this.setState({
-              nextButtonEnabled: true,
-            });
-          }, 2000);
+          // setTimeout(() => {
+          //   this.setState({
+          //     nextButtonEnabled: true,
+          //   });
+          // }, 2000);
         }
       }, 200);
     } else if (amt === 0){
@@ -1229,21 +1232,26 @@ class App extends Component {
               eligibleForStar: false,
               endMessage: this.state.endMessageFail,
             });
-            setTimeout(() => {
-              console.log("animating game fail...");
-              this.animateGameFail();
-            }, 1500);
-            setTimeout(() => {
-              this.setState({
-                gameDone: true,
-                nextBtnText: "RETRY",
-              });
-            }, 2500);
-            setTimeout(() => {
-              this.setState({
-                nextButtonEnabled: true,
-              });
-            }, 3500);
+            if(!this.state.gameDone){
+              setTimeout(() => {
+                console.log("animating game fail...");
+                this.animateGameFail();
+              }, 1500);
+              setTimeout(() => {
+                // debugger;
+                console.log("line 1240.............game0 visible = " + this.state.showGame0);
+                this.setState({
+                  gameDone: true,
+                  nextBtnText: "RETRY",
+                });
+              }, 4000);
+            }
+
+            // setTimeout(() => {
+            //   this.setState({
+            //     nextButtonEnabled: true,
+            //   });
+            // }, 4000);
             return;
           }
         }
@@ -1340,6 +1348,7 @@ class App extends Component {
         }
         this.storeOnGameComplete(this.state.isDailyGame);
         const nbText = this.state.isDailyGame || this.state.megaPuzzle?"CLOSE":"NEXT";
+        console.log("line 1240.............");
         this.setState({
           gameDone: true,
           clearedLevel: true,
@@ -1348,9 +1357,9 @@ class App extends Component {
           showGame8: false,
           megaPuzzle: false
         });
-        setTimeout(() => {
-          this.setState({nextButtonEnabled: true});
-        }, 1000);
+        // setTimeout(() => {
+        //   this.setState({nextButtonEnabled: true});
+        // }, 1000);
         if(!this.state.playedGameOnce){
           console.log("Played game once...");
           try {
@@ -2036,39 +2045,39 @@ class App extends Component {
 //   let dims = event.nativeEvent.layout;
 //   this.setState({starsContainerWidth: dims.width, starsContainerHeight: dims.height});
 // }
-updateSettingsValue(changeArray){
-  const mode = changeArray[0];
-  switch(mode){
-    case "Dark Mode":
-      const darkModeEnabledBool = changeArray[1]
-      this.setState({darkModeEnabled: darkModeEnabledBool});
-      if(this.state.currentGameIndex === -1)return;
-      const remainingTilesArr = this.getRemainingTiles();
-      const ravlRef = this.state.megaPuzzle? this.state.megaRavlRef:this.state.ravlTiles[this.state.currentGameIndex]
-      const ravlIndex = remainingTilesArr.indexOf(ravlRef);
-      if (ravlIndex > -1) {
-        remainingTilesArr.splice(ravlIndex, 1);
-      }
-      if(this.state.currentHintsArray[0]){
-        this.state.currentHintsArray.forEach((ref) => {
-          const htIndex = remainingTilesArr.indexOf(ref);
-          remainingTilesArr.splice(htIndex, 1);
-        });
-      }
-      this.changeTileMode(remainingTilesArr, mode, darkModeEnabledBool);
-      break;
-    case "Animation Style":
-      const styleStr = changeArray[1]
-      this.setState({animationStyle: styleStr});
-      break;
-    case "Open Support":
-      setTimeout(() => {
-        this.setState({showSupportModal: true});
-      }, 200);
-      this.setState({showSettingsModal: false});
-      break;
-    default:
-      console.log("No default case...");
+  updateSettingsValue(changeArray){
+    const mode = changeArray[0];
+    switch(mode){
+      case "Dark Mode":
+        const darkModeEnabledBool = changeArray[1]
+        this.setState({darkModeEnabled: darkModeEnabledBool});
+        if(this.state.currentGameIndex === -1)return;
+        const remainingTilesArr = this.getRemainingTiles();
+        const ravlRef = this.state.megaPuzzle? this.state.megaRavlRef:this.state.ravlTiles[this.state.currentGameIndex]
+        const ravlIndex = remainingTilesArr.indexOf(ravlRef);
+        if (ravlIndex > -1) {
+          remainingTilesArr.splice(ravlIndex, 1);
+        }
+        if(this.state.currentHintsArray[0]){
+          this.state.currentHintsArray.forEach((ref) => {
+            const htIndex = remainingTilesArr.indexOf(ref);
+            remainingTilesArr.splice(htIndex, 1);
+          });
+        }
+        this.changeTileMode(remainingTilesArr, mode, darkModeEnabledBool);
+        break;
+      case "Animation Style":
+        const styleStr = changeArray[1]
+        this.setState({animationStyle: styleStr});
+        break;
+      case "Open Support":
+        setTimeout(() => {
+          this.setState({showSupportModal: true});
+        }, 200);
+        this.setState({showSettingsModal: false});
+        break;
+      default:
+        console.log("No default case...");
   }
 }
 // componentDidUpdate(prevProps, prevState){
@@ -2197,35 +2206,34 @@ renderSolvedWords(word, i){
 renderDone(cleared) {
   const img = cleared? require("./images/thumbs_up.png"):require("./images/thumbs_down.png");
   const altText = cleared?"Thumbs up!":"Thumbs down";
-  const imageDim = this.state.lettersetContainerWidth/5;
+  const imageDim = config.isPC? this.state.lettersetContainerWidth/5.5 : this.state.lettersetContainerWidth/4.3;
   let msg = cleared? this.state.endMessage:this.state.endMessageFail;
   msg = cleared && this.state.newHighScore && this.state.playedGameOnce ? "Wow \u2014 that's a new\nhigh score!" : msg;
   return (
     <AnimatePresence>
-      {this.state.nextButtonEnabled &&
+      {this.state.gameDone &&
       <div>
         <motion.div style={styles.thumb_view}
-          // initial={{ y: 0 }}
           animate={{ y: -scrHeight * 0.18 }}
-          // exit={{ y: 0 }}
-          transition={{ ease: "easeInOut", duration: 1, repeat: Infinity, repeatType: 'reverse' }}
+          transition={{ ease: "easeInOut", duration: 1, repeat: Infinity, repeatType: 'reverse', delay: 0.6 }}
         >
-        <motion.div 
-          initial={{ x: 400 }}
-          animate={{ x: 0 }}
-          exit={{ x: 400 }}
-          transition={{ type: "spring", stiffness: 250, damping: 18, duration: 0.4 }}
-        >
-          <div >
-            <img src={img} style={{ width: imageDim, height: imageDim }} alt={altText} />  
-          </div>
-        </motion.div>
+          <motion.div 
+            initial={{ x: 600 }}
+            animate={{ x: 0 }}
+            exit={{ x: 400 }}
+            transition={{ type: "spring", stiffness: 100, damping: 18, duration: 0.4 }}
+          >
+            <div >
+              <img src={img} style={{ width: imageDim, height: imageDim }} alt={altText} />  
+            </div>
+          </motion.div>
         </motion.div>
         <motion.div style={styles.done_container}
-          initial={{ x: 400 }}
+          initial={{ x: 200 }}
           animate={{ x: 0 }}
           exit={{ x: 400 }}
-          transition={{ type: "spring", stiffness: 250, damping: 18, duration: 0.4, delay: 0.6 }}
+          transition={{ type: "spring", stiffness: 200, damping: 18, duration: 0.4 }}
+          onAnimationComplete={() => this.setState({nextButtonEnabled: true})}
         >
           <div style={{...styles.done_text, color: this.state.darkModeEnabled ? colors.off_white:colors.off_black}}>{msg}</div>  
         </motion.div>
@@ -2233,29 +2241,8 @@ renderDone(cleared) {
     }
     </AnimatePresence>
   );
-  
-  
-  // const imageDim = this.state.lettersetContainerWidth/5;
-  // if(imageDim > 0){
-  //   return (
-  //     <AnimatePresence>
-  //       {this.state.gameDone &&
-  //         <motion.div 
-  //           style={styles.done_container}
-  //           initial={{ x: 400 }}
-  //           animate={{ x: 0 }}
-  //           exit={{ x: 400 }}
-  //           transition={{ type: "spring", stiffness: 250, damping: 18, duration: 0.4 }}
-  //         >
-  //           <img src={img} style={styles.game_over_button} onClick={() => this.goToStartScreen()} alt={"Back"} />
-  //         </motion.div>
-  //       }
-  //     </AnimatePresence>
-  //   );
-  // }
 }
 renderGameOverButton() {
-  console.log("should be rendering...");
   let img1 = null;
   let img1altText = "Forward";
   let img2 = require("./images/arrow_back.png");
@@ -2343,6 +2330,7 @@ testAnimation(){
 
 
   render() {
+    console.log("rendering game...this.state.nextButtonEnabled = " + this.state.nextButtonEnabled + ", this.state.gameDone: " + this.state.gameDone);
     if (this.state.lettersetContainerHeight === 0) {
       return (
         <div style={styles.loading_container}>
@@ -2391,7 +2379,7 @@ testAnimation(){
               {this.state.showPlayRavl &&
               playRavlStr.map((column, index) => this.renderCol(column, index, false, keyIDFragment))}
               {this.state.showGame0 &&
-                gameArray0.map((column, index) => this.renderCol(column, index, true, ""))}
+                gameArray0.map((column, index) => this.renderCol(column, index, true, keyIDFragment))}
               {this.state.showGame1 &&
                 gameArray1.map((column, index) => this.renderCol(column, index, true, keyIDFragment))}
               {this.state.showGame2 &&
