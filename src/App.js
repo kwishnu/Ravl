@@ -76,6 +76,7 @@ let puzzleWords9 = [];
 let puzzleWords10 = [];
 let solvedWords = [];
 let bonusWords = [];
+let allowIntoUpdateGameArray = true;
 
 class App extends Component {
   constructor(props) {
@@ -1122,7 +1123,6 @@ class App extends Component {
     }
   }
   changeScore(amt) {
-    console.log("changeScore called");
     const scr = this.state.score + amt;
     if (amt > 0) {
       setTimeout(() => {
@@ -1183,7 +1183,7 @@ class App extends Component {
     // const wat = this.colRefs;
     // console.log(wat);
     // debugger;
-
+if(!allowIntoUpdateGameArray)return;
     if (this.state.rowsInPuzzle - this.state.onRow === 1) {
       let dropArray = this.getDropTileArray();
       if (dropArray.length < this.state.gameArray0.length) {
@@ -1221,6 +1221,7 @@ class App extends Component {
             const colRef = ravlCellRef.split(",")[0];
             this.colRefs[colRef].changeColor(ravlCellRef, colors.green);
           } else {//Fail
+            allowIntoUpdateGameArray = false;
             this.lockScreen(2500);
             hasPuzzleWordArr[2].forEach((cellRef) => {
               const colRef = cellRef.split(",")[0];
@@ -1232,7 +1233,6 @@ class App extends Component {
               eligibleForStar: false,
               endMessage: this.state.endMessageFail,
             });
-            if(!this.state.gameDone){
               setTimeout(() => {
                 console.log("animating game fail...");
                 this.animateGameFail();
@@ -1244,8 +1244,7 @@ class App extends Component {
                   gameDone: true,
                   nextBtnText: "RETRY",
                 });
-              }, 4000);
-            }
+              }, 3500);
 
             // setTimeout(() => {
             //   this.setState({
@@ -1754,6 +1753,7 @@ class App extends Component {
     }
   }
   nextGame(goToStart) {//reloads current game if failed
+    allowIntoUpdateGameArray = true;
     let swArray = [[],[],[],[],[],[],[],[],[],[],[]];
     let bwArray = [[],[],[],[],[],[],[],[],[],[],[]];
     let targetLevel = -1;
