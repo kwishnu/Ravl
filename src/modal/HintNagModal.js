@@ -70,7 +70,7 @@ const hn_modal_styles = {
   },
   modaldiv: {
     flexDirection: 'column',
-    width: config.isPC?scrHeight * 0.2:config.isTablet?scrWidth * 0.5:scrWidth * 0.7,
+    width: config.isPC?scrHeight * 0.2:scrWidth * 0.5,
     padding: 25,
     borderRadius: 5,
     alignItems: "center",
@@ -89,8 +89,6 @@ const hn_modal_styles = {
   button: {
     borderRadius: 7,
     justifyContent: "center",
-    marginLeft: 10,
-    marginRight: 10,
     paddingTop: line,
     paddingBottom: line,
     paddingLeft: line * 2,

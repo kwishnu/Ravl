@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import Tile from './Tile';
 import Draggable from "react-draggable";
+import { browserName } from "react-device-detect";
 import '../styles/animations.css';
 import 'animate.css';
-import config from '../config/config';
+// import config from '../config/config';
 import colors from '../config/colors';
-const scrHeight = config.SCREEN_HEIGHT;
+// const scrHeight = config.SCREEN_HEIGHT;
 const KEY_LowColPositions = 'lowColPositions';
 
 let tilePlusMargin = 0;
@@ -32,7 +33,7 @@ class TileSet extends Component {
       tileHeight: this.props.tileHeight,
       tilePlusMargin: this.props.tileHeight + 2,
       yOffsetInt: 0,
-      bottom: (0.65 * scrHeight - (((this.props.letterArray.length + 2)/3) * (this.props.tileHeight + 2)))/2,
+      // bottom: (0.65 * scrHeight - (((this.props.letterArray.length + 2)/3) * (this.props.tileHeight + 2)))/2,
       bgColor: colors.transparent,
       prevLocation: 0
     };
@@ -87,7 +88,6 @@ class TileSet extends Component {
     for(let j=0;j<this.props.numCols;j++){
       lowPosition = (lcp[j] > lowPosition)?lcp[j]:lowPosition;//lcp: -1,-1,0,0,0,0,0,0,0,0
     }
-    console.log("lowPosition: " + lowPosition);
     this.setPosition(lowPosition);
   }
   nudgeUpAndDown(col, forward){
@@ -129,17 +129,16 @@ class TileSet extends Component {
     this.props.sendColToGame([this.props.colIndex, numMoved]);
     this.setState({prevLocation: moveMultiple});
 
+    console.log("browserName is ", browserName);
+
     let lcp = JSON.parse(localStorage.getItem(KEY_LowColPositions));
     lcp[this.props.colIndex] = moveMultiple;
-
-    console.log("lcp: " + lcp);
     window.localStorage.setItem(KEY_LowColPositions, JSON.stringify(lcp));
   };
   setPosition(num){
-    const yPosition = num * tilePlusMargin + (num)/2;
+    const browserAdjustmentDivisor = browserName === 'Chrome'?0.85:2;
+    const yPosition = num * tilePlusMargin + (num)/browserAdjustmentDivisor;///2;
     this.setState({position: yPosition});
-    //setPosition({ x: 0, y: num * tilePlusMargin });
-
   }
   sendCellOut(ref, callback){//animPref, ref, callback
     if(this.rowRefs[ref]){

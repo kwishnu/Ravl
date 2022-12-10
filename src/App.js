@@ -14,7 +14,7 @@ import colors from './config/colors';
 import animStyles from './styles/anim.module.css';
 import tut_styles from './styles/tut_styles';
 import {puzzTitle, puzzDescription,  puzzles} from './data/dailyDataHelper';//numPuzzles,
-import { getRandom, getRandomInt, shuffleArray, transposeArray, allElementsEqual, getColor, printWordsToConsole, printGameArrayToConsole } from './config/functions';
+import { getRandom, getRandomInt, shuffleArray, transposeArray, allElementsEqual, getColor, printWordsToConsole,  } from './config/functions';//printGameArrayToConsole
 import gamePlatitudes from "./data/game_plats";
 import playRavlStr from "./data/PlayRavlStr";
 import words3letter from "./words/3letter_bonus";
@@ -1163,14 +1163,14 @@ class App extends Component {
     for (var i = 0; i < Math.abs(colArray[1]); i++) {
       gArray[colArray[0]].push(gArray[colArray[0]].shift());
     }
-    printGameArrayToConsole(gArray);
+    // printGameArrayToConsole(gArray);
     this.setState({ gameArray: gArray });
   }
   moveTileSetDown(colArray, gArray) {
     for (var i = 0; i < Math.abs(colArray[1]); i++) {
       gArray[colArray[0]].unshift(gArray[colArray[0]].pop());
     }
-    printGameArrayToConsole(gArray);
+    // printGameArrayToConsole(gArray);
     this.setState({ gameArray: gArray });
   }
   updateGameArray(colIndexArr) {

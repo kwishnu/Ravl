@@ -24,7 +24,7 @@ modalView: {
   display: 'flex',
   flexDirection: 'column',
   height: "auto",
-  width: config.isPC?scrHeight * 0.4:scrWidth * 0.95,
+  width: config.isPC?scrHeight * 0.4:scrWidth * 0.85,
   borderRadius: 5,
   padding: 10,
   alignItems: "center",
