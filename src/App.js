@@ -739,7 +739,7 @@ class App extends Component {
         window.alert('window.localStorage error: ' + error.message);
       }
     }
-    const lowColPositions = [-10,-10,-10,-10,-10,-10,-10,-10,-10,-10];
+    const lowColPositions = [0,0,0,0,0,0,0,0,0,0];
       try {
         window.localStorage.setItem(KEY_LowColPositions, JSON.stringify(lowColPositions));
       } catch (error) {
@@ -848,8 +848,6 @@ class App extends Component {
     return "col" + val1 + ",row" + val2;
   }
   sendRowOut(rowArr, row) {
-    console.log("sending row out...");
-    // debugger;
     this.lockScreen(1250);
 //    if(this.state.currentHintsArray.length === 0)this.setState({hintsGiven: 0});
     const pts = this.state.gameArray0.length;//this.getPointsToAdd();
@@ -883,8 +881,8 @@ class App extends Component {
     });
   }
   flashWord(rowArr) {
-    console.log("rowArr is " + JSON.stringify(rowArr));
-    this.lockScreen(1800);
+    // console.log("rowArr is " + JSON.stringify(rowArr));
+    this.lockScreen(1000);
     // const pts = this.state.gameArray0.length;
     // this.changeScore(pts);
     let wordAdded = false;
@@ -1147,11 +1145,7 @@ class App extends Component {
               nextBtnText: "RETRY",
             });
           }, 1000);
-          // setTimeout(() => {
-          //   this.setState({
-          //     nextButtonEnabled: true,
-          //   });
-          // }, 2000);
+          this.resetLowColPositions();
         }
       }, 200);
     } else if (amt === 0){
@@ -1180,10 +1174,7 @@ class App extends Component {
     this.setState({ gameArray: gArray });
   }
   updateGameArray(colIndexArr) {
-    // const wat = this.colRefs;
-    // console.log(wat);
-    // debugger;
-if(!allowIntoUpdateGameArray)return;
+    if(!allowIntoUpdateGameArray)return;
     if (this.state.rowsInPuzzle - this.state.onRow === 1) {
       let dropArray = this.getDropTileArray();
       if (dropArray.length < this.state.gameArray0.length) {
@@ -1191,7 +1182,6 @@ if(!allowIntoUpdateGameArray)return;
           const colRef = cellRef.split(",")[0];
           this.colRefs[colRef].dropColumn();
         });
-        console.log("dropArray: " + JSON.stringify(dropArray));
       }
     }
     if(this.state.currentGameIndex < 0)return;//avoids response to home screen animation
@@ -1225,7 +1215,6 @@ if(!allowIntoUpdateGameArray)return;
             this.lockScreen(2500);
             hasPuzzleWordArr[2].forEach((cellRef) => {
               const colRef = cellRef.split(",")[0];
-              console.log("showing fail word...");
               this.colRefs[colRef].showFailWord(cellRef);
             });
             this.setState({
@@ -1234,29 +1223,22 @@ if(!allowIntoUpdateGameArray)return;
               endMessage: this.state.endMessageFail,
             });
               setTimeout(() => {
-                console.log("animating game fail...");
                 this.animateGameFail();
               }, 1500);
               setTimeout(() => {
-                // debugger;
-                console.log("line 1240.............game0 visible = " + this.state.showGame0);
                 this.setState({
                   gameDone: true,
                   nextBtnText: "RETRY",
                 });
               }, 3500);
-
-            // setTimeout(() => {
-            //   this.setState({
-            //     nextButtonEnabled: true,
-            //   });
-            // }, 4000);
+              this.resetLowColPositions();
             return;
           }
         }
       } else {//turn ravl tile green before ending
         const colRef = ravlCellRef.split(",")[0];
         this.colRefs[colRef].changeColor(ravlCellRef, colors.green);
+        this.resetLowColPositions();
       }
       noPuzzleWords = false;
       let swArray = this.state.solvedWords;
@@ -1290,12 +1272,12 @@ if(!allowIntoUpdateGameArray)return;
         case 1:
           setTimeout(() => {
             this.sendRowOut(hasPuzzleWordArr[2], hasPuzzleWordArr[1]);
-          }, 800);
+          }, 600);
           break;
         case 2:
           setTimeout(() => {
             this.sendRowOut(hasPuzzleWordArr[2], hasPuzzleWordArr[1]);
-          }, 1600);
+          }, 1200);
           break;
         default:
           console.log("hit puzzleword default");
@@ -1312,19 +1294,17 @@ if(!allowIntoUpdateGameArray)return;
       // debugger;
       switch(this.state.bonusWords[this.state.currentGameIndex].length - this.state.bwOffset){
         case 1:
-          setTimeout(() => {
             this.flashWord(hasAnyWordArr[1]);
-          }, 800);
           break;
         case 2:
           setTimeout(() => {
             this.flashWord(hasAnyWordArr[1]);
-          }, 1600);
+          }, 600);
           break;
         case 3:
           setTimeout(() => {
             this.flashWord(hasAnyWordArr[1]);
-          }, 2400);
+          }, 1200);
           break;
         default:
           console.log("hit default");
@@ -1347,7 +1327,6 @@ if(!allowIntoUpdateGameArray)return;
         }
         this.storeOnGameComplete(this.state.isDailyGame);
         const nbText = this.state.isDailyGame || this.state.megaPuzzle?"CLOSE":"NEXT";
-        console.log("line 1240.............");
         this.setState({
           gameDone: true,
           clearedLevel: true,
@@ -1356,9 +1335,7 @@ if(!allowIntoUpdateGameArray)return;
           showGame8: false,
           megaPuzzle: false
         });
-        // setTimeout(() => {
-        //   this.setState({nextButtonEnabled: true});
-        // }, 1000);
+        this.resetLowColPositions();
         if(!this.state.playedGameOnce){
           console.log("Played game once...");
           try {
@@ -1368,6 +1345,14 @@ if(!allowIntoUpdateGameArray)return;
           }
         }
       }
+    }
+  }
+  resetLowColPositions(){
+    const lowColPositions = [null,null,null,null,null,null,null,null,null,null];
+    try {
+      window.localStorage.setItem(KEY_LowColPositions, JSON.stringify(lowColPositions));
+    } catch (error) {
+      window.alert('window.localStorage error: ' + error.message);
     }
   }
   storeOnGameComplete(daily){
@@ -1518,7 +1503,6 @@ if(!allowIntoUpdateGameArray)return;
             console.log("No default case...");
         }
         if (legitWord) {
-          console.log("legit word");
           returnArr.push(tempWord); //word
           returnArr.push(i); //row
           returnArr.push(tempArray); //ref array
@@ -1668,19 +1652,7 @@ if(!allowIntoUpdateGameArray)return;
       arr[k].splice(row, 1);
     }
     this.setState({ gameArray: arr });
-    printGameArrayToConsole(arr);
-
-    // let rows = arr[0].length;
-    // let columns = arr.length;
-    // let printArr = [];
-    // for (var x = 0; x < rows; x++) {
-    //   for (var z = 0; z < columns; z++) {
-    //     let pushChar = "";
-    //     pushChar = arr[z][x].letter === "" ? "-" : arr[z][x].letter;
-    //     printArr.push(pushChar);
-    //   }
-    // }
-    // console.log("printArr: " + JSON.stringify(printArr));
+    // printGameArrayToConsole(arr);
   }
   transitionToGame(isDaily) {
     if(this.state.nextBtnText === "CLOSE"){
@@ -2002,7 +1974,6 @@ if(!allowIntoUpdateGameArray)return;
     }
   }
   toggleModal(which, open){
-    console.log("toggleModal: setting " + which + " to " + open);
     if(open){
       switch(which){
         case "Help":
@@ -2316,6 +2287,7 @@ testAnimation(){
           letterArray={col}
           ref={(ref) => this.colRefs[cRef] = ref}
           colIndex={i}
+          numCols={numC}
           tileHeight={th}
           left={le}
           animate={anim}
@@ -2330,7 +2302,6 @@ testAnimation(){
 
 
   render() {
-    console.log("rendering game...this.state.nextButtonEnabled = " + this.state.nextButtonEnabled + ", this.state.gameDone: " + this.state.gameDone);
     if (this.state.lettersetContainerHeight === 0) {
       return (
         <div style={styles.loading_container}>
@@ -2406,14 +2377,15 @@ testAnimation(){
               {this.state.lockScreenInput && this.displayLockScreen()}
               </div>
               <div  id="footerContainer" style={styles.footerContainer}>
-                <button style={styles.button} onClick={() => this.openWordsModal()} >
+                <motion.button style={styles.button}  whileTap={{ scale: 0.97 }} onClick={() => this.openWordsModal()} >
                 <div style={styles.button_text}>WORDS</div>
-                </button>
-                <button style={styles.button} onClick={() => this.giveHint()} >
+                </motion.button>
+                <motion.button style={styles.button} whileTap={{ scale: 0.97 }} onClick={() => this.giveHint()} >
                 <div style={styles.button_text}>HINT</div>
-                </button>
+                </motion.button>
               </div>
             </div>
+         
 
               {this.state.currentGameIndex === -1 &&
                 <Footer puzzleStreak={'3'} startGame={(daily) => this.transitionToGame(daily)}/>
@@ -2422,36 +2394,31 @@ testAnimation(){
 
             </div>
           </div>
-          {this.state.showHintNagModal &&
-            <div>
-              <HintNag isModalVisible={this.state.showHintNagModal} isDarkModeEnabled={this.state.darkModeEnabled} requestModalClose={()=>{this.closeModal()}}/>
-            </div>
-          }
-            <div>
+          <div>
             {this.state.nextButtonEnabled && this.renderGameOverButton()}
             {/* {!this.state.gameStarted && this.renderFooterStartButtons()}
             {!this.state.showedTutScreen1 && this.state.currentGameIndex != -1 && this.displayTutScreen1()}
             {!this.state.showedTutScreen2 && this.state.currentGameIndex != -1 && this.displayTutScreen2()} */}
-              <ToastContainer
-                position="bottom-center"
-                autoClose={2400}
-                hideProgressBar
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme="light"
-              />
-              <Help
-                isModalVisible={this.state.showHelpModal}
-                requestModalClose={(which, open) => {this.toggleModal(which, open)}}
-                darkModeEnabled={this.state.darkModeEnabled}
-              />
-
-            </div>
+            <ToastContainer
+              position="bottom-center"
+              autoClose={2400}
+              hideProgressBar
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="light"
+            />
+            <HintNag isModalVisible={this.state.showHintNagModal} isDarkModeEnabled={this.state.darkModeEnabled} requestModalClose={()=>{this.toggleModal(null, false)}}/>
+            <Help
+              isModalVisible={this.state.showHelpModal}
+              requestModalClose={(which, open) => {this.toggleModal(which, open)}}
+              darkModeEnabled={this.state.darkModeEnabled}
+            />
           </div>
+        </div>
       );
     }
   }

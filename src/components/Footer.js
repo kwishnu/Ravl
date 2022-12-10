@@ -1,3 +1,4 @@
+import { motion } from "framer-motion"
 import config from '../config/config';
 import {convertFont} from '../config/config';
 import colors from '../config/colors';
@@ -15,12 +16,12 @@ function Footer(props) {
         <div style={footer_styles.start_buttons_row}>
           <div style={footer_styles.footer_spacer}>
           </div>
-          <button style={footer_styles.start_button} onClick={() => props.startGame(true)}>
+          <motion.button style={footer_styles.start_button} whileTap={{ scale: 0.97 }} onClick={() => props.startGame(true)}>
             <div style={footer_styles.button_text_white}>PLAY DAILY</div>
-          </button>
-          <button style={footer_styles.start_button} onClick={() => props.startGame(false)}>
+          </motion.button>
+          <motion.button style={footer_styles.start_button} whileTap={{ scale: 0.97 }} onClick={() => props.startGame(false)}>
           <div style={footer_styles.button_text_white}>PLAY</div>
-          </button>
+          </motion.button>
           <div style={footer_styles.footer_spacer}>
           </div>
         </div>

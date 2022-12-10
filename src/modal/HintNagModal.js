@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import Modal from 'react-modal';
+import { motion, AnimatePresence } from "framer-motion"
 import config from '../config/config';
 import {convertFont} from '../config/config';
 import colors from '../config/colors';
@@ -24,14 +24,17 @@ class HintNagModal extends Component {
   }
 
   render() {
-    const { 
-            isDarkModeEnabled,//isModalVisible
-          } = this.props;
-    // let modalVisible = isModalVisible;
-console.log("rendering...");
+    const { isDarkModeEnabled, isModalVisible } = this.props;
     return(
-
-<div style={hn_modal_styles.centereddiv}>
+      <AnimatePresence>
+      {isModalVisible && 
+        <motion.div
+          style={hn_modal_styles.centereddiv}
+          initial={{ y: scrHeight }}
+          animate={{ y: 0 }}
+          exit={{ y: scrHeight }}
+          transition={{ type: "spring", bounce: 0, duration: 0.4 }}
+        >
           <div style={{...hn_modal_styles.modaldiv, backgroundColor: isDarkModeEnabled ? colors.off_black:colors.off_white}}>
             <div style={hn_modal_styles.text_container}>
               <div style={{...hn_modal_styles.modal_title, color: isDarkModeEnabled ? colors.gray_1:colors.off_black}}>Nice Try!</div>
@@ -46,9 +49,10 @@ console.log("rendering...");
               </button>
             </div>
           </div>
-        </div>
-
-    );
+        </motion.div>
+      }
+      </AnimatePresence>
+      );
   }
 }
 

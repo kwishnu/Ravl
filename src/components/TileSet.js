@@ -40,14 +40,8 @@ class TileSet extends Component {
     this.colRefs = [];
 
   }
-  componentDidMount() {
-    global.lowColPosition = 0;
-  }
 
   flashWord(ref, callback){
-    // const wat = this.colRefs;
-    // console.log(wat);
-
     if(this.rowRefs[ref]){
       this.rowRefs[ref].flash(ref, callback);
     }
@@ -90,10 +84,10 @@ class TileSet extends Component {
   dropColumn(){
     let lowPosition = -10;
     let lcp = JSON.parse(localStorage.getItem(KEY_LowColPositions));
-console.log("lcp: " + JSON.stringify(lcp));
-    for(let j=0; j<10;j++){
-      lowPosition = (lcp[j] > lowPosition)?lcp[j]:lowPosition;
+    for(let j=0;j<this.props.numCols;j++){
+      lowPosition = (lcp[j] > lowPosition)?lcp[j]:lowPosition;//lcp: -1,-1,0,0,0,0,0,0,0,0
     }
+    console.log("lowPosition: " + lowPosition);
     this.setPosition(lowPosition);
   }
   nudgeUpAndDown(col, forward){
@@ -120,7 +114,6 @@ console.log("lcp: " + JSON.stringify(lcp));
     setTimeout(() => {
       animateCSS(animElement, 'move-down-and-up')
     }, delay[col])
-
   }
   pingFromTile(ref){
     if(ref === 'col0,row' + (this.state.tilesInColumn - 1)){
@@ -138,11 +131,10 @@ console.log("lcp: " + JSON.stringify(lcp));
 
     let lcp = JSON.parse(localStorage.getItem(KEY_LowColPositions));
     lcp[this.props.colIndex] = moveMultiple;
+
+    console.log("lcp: " + lcp);
     window.localStorage.setItem(KEY_LowColPositions, JSON.stringify(lcp));
-
-    console.log("moveMultiple: " + moveMultiple + ", numMoved: " + numMoved);  
   };
-
   setPosition(num){
     const yPosition = num * tilePlusMargin + (num)/2;
     this.setState({position: yPosition});
@@ -153,11 +145,6 @@ console.log("lcp: " + JSON.stringify(lcp));
     if(this.rowRefs[ref]){
       this.rowRefs[ref].animateOut(ref, callback);
     }
-  }
-  pulseCell(ref, which){//animPref, , callback
-    // if(this.rowRefs[ref]){
-      this.rowRefs[ref].pulse(which);//animPref, callback
-    // }
   }
   renderTiles(cell, i){
     if(cell.letter){

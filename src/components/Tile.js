@@ -46,8 +46,8 @@ class Tile extends Component {
     const randColor2 = getColor();
     let tileColor = this.props.dark ? colors.gray_3:colors.text_white;
     let tileColor2 = this.props.dark ? colors.gray_3:colors.text_white;
-    tileColor = (this.props.text === " ")?randColor:tileColor;//colors.transparent
-    tileColor2 = (this.props.text === " ")?randColor2:tileColor2;//colors.transparent
+    tileColor = (this.props.text === " ")?randColor:tileColor;
+    tileColor2 = (this.props.text === " ")?randColor2:tileColor2;
     let txtColor = this.props.dark ? colors.off_white2:colors.off_black;
     let bordColor = this.props.dark ? colors.gray_1:colors.off_black;
     this.setState({bgColor: tileColor, toColor: tileColor2, textColor: txtColor, borderColor: bordColor});
@@ -63,11 +63,11 @@ class Tile extends Component {
   animateOut(ref, callback){//animPreference
     const animElement = this.tileRefs[ref];
     animElement.style.setProperty('--animate-duration', '0.7s');
-    animateCSS(animElement, 'pulse').then(() => {
+    animateCSS(animElement, 'tada').then(() => {
       animElement.style.setProperty('--animate-duration', '1.6s');
       setTimeout(() => {
         this.setState({show: false});
-      }, 400);
+      }, 500);
       animateCSS(animElement, 'bounceOutRight');
     })
     .then(callback);
@@ -110,9 +110,8 @@ class Tile extends Component {
       }, delayMSec);
     }
   }
-animateRedPulse(ref){
+  animateRedPulse(ref){
     if(this.tileRefs[ref]){
-      console.log("fail ref = " + ref);
       this.setState({tileKey: this.state.tileKeyStored, bgColor: this.state.darkModeEnabled? colors.dark_red : colors.red, textColor: colors.text_white});
       const animElement = this.tileRefs[ref];
       animElement.style.setProperty('--animate-duration', '0.4s');
@@ -129,6 +128,7 @@ animateRedPulse(ref){
     this.setState({tileKey: this.state.tileKeyStored, bgColor: bg, textColor: txt, borderColor: bc});
   }
   ravlTileToFromDarkMode(onOrOff){
+    if(this.state.bgColor === colors.green)return;
     const bg = onOrOff? colors.dark_red:colors.red;
     const txt = onOrOff ? colors.off_white2:colors.text_white;
     let bc = onOrOff ? colors.gray_1:colors.off_black;
@@ -165,9 +165,6 @@ animateRedPulse(ref){
       }, 250);
     }
   }
-  // setRef = (node, myRef) => {
-  //   this.tileRefs[myRef] = node; 
-  // }
 
   render() {
     const animVal = (this.props.animate === true)?500:0;
