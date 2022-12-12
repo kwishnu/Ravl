@@ -156,7 +156,7 @@ const appStyles = {
   gameContainer: {
     display: "flex",
     flexDirection: "row",
-    flex: pc?24:19,
+    flex: pc?24:18,
     width: pc || config.isTablet?scrHeight * 9/16:scrWidth,
     alignItems: 'center',
     justifyContent: 'center',
