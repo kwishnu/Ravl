@@ -1910,7 +1910,7 @@ class App extends Component {
     this.setState({ showHeaderComment: true, headerComment: text });
     setTimeout(() => {
       this.setState({ showHeaderComment: false });
-    }, 4000);
+    }, 3000);
   }
   displayLockScreen(){
     return (
@@ -2258,14 +2258,8 @@ showModal(which){
 
 }
 testAnimation(){
-  let rowArr = ['col0,row4','col1,row4','col2,row4','col3,row4']
-  rowArr.forEach((cellRef) => {
-    const colRef = cellRef.split(",")[0];
-    this.colRefs[colRef].sendCellOut(cellRef, () => {
-      console.log("callback...");
-    });
-  });
-
+this.showHeaderCommentAnimation("Progress Saved");
+  // this.setState({headerComment: "Hi there!", showHeaderComment: true});
 }
 
   renderCol(col, i, anim, idFrag){
@@ -2344,7 +2338,30 @@ testAnimation(){
             </div>
 
             <div style={styles.appContainer}>
-              <div id="messageHeader" style={styles.messageHeader}>
+              <div id="messageHeader" style={styles.messageOuterContainer}>
+                <div id="messageHeader" style={styles.messageContainer}>
+                  <div id="messageHeader" style={styles.header_text}>{this.state.headerText}</div>
+                  <AnimatePresence>
+                    {this.state.showHeaderComment &&
+                      <motion.div
+                        initial={{ y: 40 }}
+                        animate={{ y: 0 }}
+                        exit={{ y: 40 }}
+                        style={styles.header_text_white}
+                        transition={{ duration: 0.8 }}
+                      >
+                        <div id="messageHeader" style={styles.header_text}>{this.state.headerComment}</div>
+                      </motion.div>
+                    }
+                  </AnimatePresence>
+                </div>
+              </div>
+              <div style={styles.scoreContainer}>
+                <div style={styles.solved_words_inner_container}>
+                </div>
+                <div style={styles.counter_inner_container}>
+
+                </div>
               </div>
               <div id="gameContainer" style={styles.gameContainer} ref={this.lettersetContainer}>
               {this.state.showPlayRavl &&
@@ -2377,7 +2394,7 @@ testAnimation(){
               {this.state.lockScreenInput && this.displayLockScreen()}
               </div>
               <div  id="footerContainer" style={styles.footerContainer}>
-                <motion.button style={styles.button}  whileTap={{ scale: 0.97 }} onClick={() => this.openWordsModal()} >
+                <motion.button style={styles.button}  whileTap={{ scale: 0.97 }} onClick={() => this.testAnimation()} >
                 <div style={styles.button_text}>WORDS</div>
                 </motion.button>
                 <motion.button style={styles.button} whileTap={{ scale: 0.97 }} onClick={() => this.giveHint()} >
@@ -2385,7 +2402,7 @@ testAnimation(){
                 </motion.button>
               </div>
             </div>
-         
+         {/* openWordsModal */}
 
               {this.state.currentGameIndex === -1 &&
                 <Footer puzzleStreak={'3'} startGame={(daily) => this.transitionToGame(daily)}/>
