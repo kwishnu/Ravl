@@ -68,7 +68,7 @@ const appStyles = {
     backgroundColor: colors.gray_4,
     border: colors.off_black, 
     borderWidth: 3, 
-    borderStyle: pc?"none solid solid solid":"none none solid none",
+    borderStyle: pc || tablet?"none solid solid solid":"none none solid none",
   },
   messageContainer: {
     display: "flex",
@@ -156,7 +156,7 @@ const appStyles = {
   gameContainer: {
     display: "flex",
     flexDirection: "row",
-    flex: 24,
+    flex: pc?24:19,
     width: pc || config.isTablet?scrHeight * 9/16:scrWidth,
     alignItems: 'center',
     justifyContent: 'center',
