@@ -155,6 +155,7 @@ const appStyles = {
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: colors.off_black,
+    zIndex: 1000
   },
   gameContainer: {
     display: "flex",
@@ -242,7 +243,8 @@ const appStyles = {
     alignSelf: "center"
   },
   counter_text: {
-    fontSize: convertFont(30),
+    fontSize: convertFont(34),
+    fontFamily: 'system-ui',
     color: colors.text_white,
   },
   done_text: {

@@ -126,6 +126,7 @@ class App extends Component {
       animationTimerIDs: [],
       starColorArray: ['#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333'],
       currentStarColor: '#FFD700',
+      counterPulseColor: colors.bright_green,
       bonusWords: this.props.bonusWords,
       solvedWords: this.props.solvedWords,
       showPlayRavl: false,
@@ -182,6 +183,7 @@ class App extends Component {
       numberOfStars: 0,
       bwOffset: 0,
       swOffset: 0,
+      counterKey: "",
       megaRavlRef: "",
       keyIDFragment: "",
       solvedWord: "",
@@ -260,6 +262,7 @@ class App extends Component {
   )
   {
     const keyIDFrag = nanoid();
+    const counterKeyID = nanoid();
     puzzleWords0 = p0;//['FIG','BAD','SAP'];
     puzzleWords1 = p1;
     puzzleWords2 = p2;
@@ -581,7 +584,8 @@ class App extends Component {
       endMessage: gameEndMsg,
       gameDone: false,
       eligibleForStar: eligibility,
-      keyIDFragment: keyIDFrag
+      keyIDFragment: keyIDFrag,
+      counterKey: counterKeyID
     });
 
     const showed = window.localStorage.getItem(KEY_ShowedTutorial);      
@@ -877,28 +881,19 @@ class App extends Component {
           setTimeout(() => {
             this.spliceArray(gArray, row);
             this.updateGameArray([]);
-          
           }, 800);
-          // if (this.state.rowsInPuzzle - this.state.onRow === 1) {
-          //   let dropArray = this.getDropTileArray();
-          //   if (dropArray.length < this.state.gameArray0.length) {
-          //     dropArray.forEach((cellRef) => {
-          //       const colRef = cellRef.split(",")[0];
-          //       this.colRefs[colRef].dropColumn();
-          //     });
-          //   }
-          // }
-          this.resetSolvedWord();//resets padding for the "solved word" animation
+          setTimeout(() => {
+            this.resetSolvedWord();//resets padding and visibility for the "solved word" animation
+          }, 150);
           this.resetTileColors(this.state.darkModeEnabled);//called in case a hint (green) tile isn't removed
         }
       });
     });
   }
   flashWord(rowArr) {
-    // console.log("rowArr is " + JSON.stringify(rowArr));
     this.lockScreen(1000);
-    // const pts = this.state.gameArray0.length;
-    // this.changeScore(pts);
+    const pts = this.state.gameArray0.length;
+    this.changeScore(pts);
     let wordAdded = false;
     rowArr.forEach((cellRef) => {
       const colRef = cellRef.split(",")[0];
@@ -1017,7 +1012,6 @@ class App extends Component {
     const gArray = this.state.gameArray0;
     const refStr = this.state.megaPuzzle? this.state.megaRavlRef : this.state.ravlTiles[this.state.currentGameIndex];
     const ravlTileCol = parseInt(refStr.substring(3, 4));
-    // const ravlTileRow = parseInt(refStr.substring(8, 9));
     let ravlLetter = "";
     for (let r = 0; r < gArray[0].length; r++) {
       if (gArray[ravlTileCol][r].ref ===refStr) {
@@ -1030,7 +1024,11 @@ class App extends Component {
       return;
     }
     if (this.state.score - this.state.hintPenalty <= 0) {
-      // this.pulseDown();
+      const newKey = nanoid();
+      this.setState({counterPulseColor: colors.red});
+      setTimeout(() => {
+        this.setState({ counterKey: newKey });
+      }, 200);
       return;
     }
     let changeArr = this.state.currentHintsArray;
@@ -1136,17 +1134,20 @@ class App extends Component {
   }
   changeScore(amt) {
     const scr = this.state.score + amt;
+    const newKey = nanoid();
     if (amt > 0) {
+      this.setState({counterPulseColor: colors.bright_green});
       setTimeout(() => {
         this.setState({ score: scr });
       }, 1000);
       setTimeout(() => {
-        // this.pulseUp();
+        this.setState({counterKey: newKey});
       }, 1500);
     } else if (amt === -1) {
-      this.setState({ score: scr });
+      this.setState({ counterPulseColor: colors.red, score: scr });
+      this.setState({});
       setTimeout(() => {
-        // this.pulseDown();
+        this.setState({ counterKey: newKey});
         if (scr <= 0) {
           this.setState({
             clearedLevel: false,
@@ -1163,13 +1164,14 @@ class App extends Component {
         }
       }, 200);
     } else if (amt === 0){
-      // this.pulseDown();
+      this.setState({counterPulseColor: colors.red, counterKey: newKey});
     } else {
+      this.setState({counterPulseColor: colors.red});
       setTimeout(() => {
         this.setState({ score: scr });
       }, 1000);
       setTimeout(() => {
-        // this.pulseDown();
+        this.setState({counterKey: newKey});
       }, 1500);
     }
   }
@@ -1279,10 +1281,26 @@ class App extends Component {
         currentHintsArray: newHintArr,
         hintsGiven: newHintsGiven
       });
-setTimeout(() => {
+      let whichAnimation = "";
+      switch(yValue){
+        case -40:
+          whichAnimation = "animate__animatesolvedword-40"
+          break;
+        case -13:
+          whichAnimation = "animate__animatesolvedword-13"
+          break;
+        case 13:
+          whichAnimation = "animate__animatesolvedword13"
+          break;
+          default:
+          whichAnimation = "animate__animatesolvedword40"
+            
+
+      }
+      setTimeout(() => {
 	      const element = document.querySelector('.anim-node');
-	      element.classList.add('animate__animated', 'animate__animatesolvedword');
-}, 100);
+	      element.classList.add('animate__animated', whichAnimation);
+      }, 100);
 
       switch(this.state.solvedWords[this.state.currentGameIndex].length - this.state.swOffset){
         case 0:
@@ -1451,7 +1469,6 @@ setTimeout(() => {
   updateHighScore(){
     try {
       window.localStorage.setItem(KEY_HighScore, this.state.score + '');
-//      Alert.alert('Score Updated', this.state.score + " points...that's a new high score!" );
     } catch (error) {
       window.alert('window.localStorage error: ' + error.message);
     }
@@ -1746,7 +1763,7 @@ setTimeout(() => {
     allowIntoUpdateGameArray = true;
     let swArray = [[],[],[],[],[],[],[],[],[],[],[]];
     let bwArray = [[],[],[],[],[],[],[],[],[],[],[]];
-    let targetLevel = -1;
+    let targetLevel = 0;
     let showSts = true;
     let scoreVal = 10;
     let elig = true;
@@ -1767,7 +1784,7 @@ setTimeout(() => {
       elig = false;//eligibility for star
       scoreVal = (this.state.score - 5 < 10)?10:this.state.score - 5;
     }
-    targetLevel = this.state.megaPuzzle?100:targetLevel;
+    targetLevel = goToStart?-1:this.state.megaPuzzle?100:targetLevel;
     this.setState({puzzleDisplayed: false, showStars: showSts, nextBtnText: "NEXT"});
 
     this.init( puzzleWords0,
@@ -2010,7 +2027,6 @@ setTimeout(() => {
         // showEndGameModal: false,
         // showThankYouModal: false,
         showHintNagModal: false,
-        // modalCall: "None"
       });
       
     }
@@ -2020,7 +2036,7 @@ setTimeout(() => {
     setTimeout(() => {
       this.nextGame(true);
     }, 200)
-    this.toggleModal(false);
+    this.toggleModal(null, false);
   }
   getDimensions(node) {
     if (node && !this.state.height) {
@@ -2412,7 +2428,15 @@ this.showHeaderCommentAnimation("Progress Saved");
 
 
                 <div style={styles.counter_inner_container}>
-
+                <motion.div
+                  style={styles.counter_text}
+                  key={this.state.counterKey}
+                  initial={{ scale: 1, color: colors.text_white }}
+                  animate={{ scale: 1.2, color: this.state.counterPulseColor }}
+                  transition={{ repeat: 1, repeatType: "mirror", duration: 0.2, delay: 0.1 }}
+                >
+                  {this.state.score}
+                </motion.div>
                 </div>
               </div>
               <div id="gameContainer" style={styles.gameContainer} ref={this.lettersetContainer}>

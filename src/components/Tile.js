@@ -53,7 +53,6 @@ class Tile extends Component {
     this.setState({bgColor: tileColor, toColor: tileColor2, textColor: txtColor, borderColor: bordColor});
 
     this.startColorCycling();
-
   }
   flash(ref, callback){
     const animElement = this.tileRefs[ref];
@@ -71,9 +70,6 @@ class Tile extends Component {
       animateCSS(animElement, 'bounceOutRight');
     })
     .then(callback);
-
-    // animElement.classList.add('animate__animated', 'animate__bounceOutLeft');
-
   }
     //   switch(animPreference){
   //     case "Spin":
@@ -226,7 +222,7 @@ const tile_styles = {
   tile: {
     display: "flex",
     margin: 1,
-    borderRadius: 7,
+    borderRadius: 5,
     justifyContent: 'center',
     alignItems: 'center',
     borderWidth: 1,
