@@ -62,7 +62,6 @@ class Tile extends Component {
   }
   animateOut(ref, callback){//animPreference
     const animElement = this.tileRefs[ref];
-    console.log("should animate");
     animElement.style.setProperty('--animate-duration', '0.5s');
     animateCSS(animElement, 'showoff').then(() => {
       animElement.style.setProperty('--animate-duration', '1.6s');

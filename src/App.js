@@ -6,12 +6,14 @@ import { nanoid } from 'nanoid';
 // import eachDayOfInterval from 'date-fns/eachDayOfInterval';
 import differenceInDays from 'date-fns/differenceInDays';
 import { ToastContainer, toast } from 'react-toastify';
-import { motion, AnimatePresence } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion";
+import 'animate.css';
 import 'react-toastify/dist/ReactToastify.css';
-  // import {getAnimatedWordLeft} from './config/config';
+import {getAnimatedWordLeft} from './config/config';
 import config from './config/config';
 import colors from './config/colors';
 import animStyles from './styles/anim.module.css';
+import './styles/animations.css';
 import tut_styles from './styles/tut_styles';
 import {puzzTitle, puzzDescription,  puzzles} from './data/dailyDataHelper';//numPuzzles,
 import { getRandom, getRandomInt, shuffleArray, transposeArray, allElementsEqual, getColor, printWordsToConsole,  } from './config/functions';//printGameArrayToConsole
@@ -77,6 +79,18 @@ let puzzleWords10 = [];
 let solvedWords = [];
 let bonusWords = [];
 let allowIntoUpdateGameArray = true;
+
+// const animateCSS = (element, animation, prefix = 'animate__') =>
+//   new Promise((resolve, reject) => {
+//     const animationName = `${prefix}${animation}`;
+//     element.classList.add(`${prefix}animated`, animationName);
+//     const handleAnimationEnd = (event) => {
+//       event.stopPropagation();
+//       element.classList.remove(`${prefix}animated`, animationName);
+//       resolve('Animation ended');
+//     }
+//     element.addEventListener('animationend', handleAnimationEnd, {once: true});
+// });
 
 class App extends Component {
   constructor(props) {
@@ -1265,6 +1279,11 @@ class App extends Component {
         currentHintsArray: newHintArr,
         hintsGiven: newHintsGiven
       });
+setTimeout(() => {
+	      const element = document.querySelector('.anim-node');
+	      element.classList.add('animate__animated', 'animate__animatesolvedword');
+}, 100);
+
       switch(this.state.solvedWords[this.state.currentGameIndex].length - this.state.swOffset){
         case 0:
             this.sendRowOut(hasPuzzleWordArr[2], hasPuzzleWordArr[1]);
@@ -1285,7 +1304,6 @@ class App extends Component {
       }
       this.setState({swOffset: this.state.solvedWords[this.state.currentGameIndex].length});
 
-      // this.sendRowOut(hasPuzzleWordArr[2], hasPuzzleWordArr[1]);
       return;
     }
     let hasAnyWordArr = this.evalForAnyWords(gArray); //[word, [refArray]]
@@ -2170,7 +2188,7 @@ renderStars100() {//scrWidth * 0.026
 renderSolvedWords(word, i){
   return (
     <div key={i} style={styles.solved_words_slot}>
-      <div style={styles.debug_text}>{word}</div>
+      <p style={styles.debug_text}>{word}</p>
     </div>
   );
 }
@@ -2316,7 +2334,7 @@ this.showHeaderCommentAnimation("Progress Saved");
         gameArray8,
         gameArray9,
         gameArray10,
-        // solvedWords,
+        solvedWords,
         // modalVisible,
         // showPuzzWordsModal,
         // solvedModalMessage,
@@ -2324,6 +2342,7 @@ this.showHeaderCommentAnimation("Progress Saved");
         // dividerString,
         keyIDFragment
       } = this.state;
+
       return (
         <div>
             <Menu showMenu={this.state.showMenu} closeMenu={() => this.toggleDrawer()} showModal={(which, open) => {this.toggleModal(which, open)}}/>
@@ -2358,7 +2377,40 @@ this.showHeaderCommentAnimation("Progress Saved");
               </div>
               <div style={styles.scoreContainer}>
                 <div style={styles.solved_words_inner_container}>
+                  {/* <div style={{...styles.animated_solved_word, top: config.isPC?scrHeight/8.6:scrHeight/6.2, left: getAnimatedWordLeft(3)}}>
+                    <div style={{...styles.solved_text, padding: this.state.solvedPadding}}>
+                      Test
+                    </div>
+                  </div> */}
+                <AnimatePresence>
+                  {this.state.showSolvedWord &&
+                    <div style={{...styles.animated_solved_word, top: config.isPC?scrHeight/8.6:scrHeight/6.2, left: getAnimatedWordLeft(this.state.solvedWord.length)}}>
+                      <div className={'anim-node'} style={{...styles.solved_text, padding: this.state.solvedPadding}}>{this.state.solvedWord}</div>
+                    </div>
+
+                  }
+                </AnimatePresence>
+                  {this.state.showSolvedWords &&
+                    <div style={styles.solved_words}>
+                      <div style={styles.solved_words_row}>
+                          {solvedWords[0 + this.state.solvedWordsRowOffset].map((word, index) => this.renderSolvedWords(word, index))}
+                      </div>
+                      <div style={styles.solved_words_row}>
+                          {solvedWords[1 + this.state.solvedWordsRowOffset].map((word, index) => this.renderSolvedWords(word, index))}
+                      </div>
+                      <div style={styles.solved_words_row}>
+                          {solvedWords[2 + this.state.solvedWordsRowOffset].map((word, index) => this.renderSolvedWords(word, index))}
+                      </div>
+                      {solvedWords[3 + this.state.solvedWordsRowOffset] &&
+                      <div style={styles.solved_words_row}>
+                          {solvedWords[3 + this.state.solvedWordsRowOffset].map((word, index) => this.renderSolvedWords(word, index))}
+                      </div>
+                      }
+                    </div>
+                  }
                 </div>
+
+
                 <div style={styles.counter_inner_container}>
 
                 </div>

@@ -129,8 +129,6 @@ class TileSet extends Component {
     this.props.sendColToGame([this.props.colIndex, numMoved]);
     this.setState({prevLocation: moveMultiple});
 
-    console.log("browserName is ", browserName);
-
     let lcp = JSON.parse(localStorage.getItem(KEY_LowColPositions));
     lcp[this.props.colIndex] = moveMultiple;
     window.localStorage.setItem(KEY_LowColPositions, JSON.stringify(lcp));

@@ -5,6 +5,8 @@ const scrWidth = config.scrWidth;
 const scrHeight = config.scrHeight;
 const tablet = config.isTablet;
 const pc = config.isPC;
+const phone = config.isPhone;
+
 // const phone = config.isPhone;
 const widthLeftOrRight = (scrWidth - scrHeight * 9/16)/2;
 
@@ -120,35 +122,36 @@ const appStyles = {
   solved_words: {
     display: "flex",
     flexDirection: 'column',
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    height: scrHeight * 0.11,
-    width: scrWidth,
+    alignSelf:'stretch',
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
   },
   solved_words_row: {
     display: "flex",
     flexDirection: 'row',
-    justifyContent: 'center',
+    justifyContent: 'flex-end',
     alignItems: 'center',
     height: scrHeight * 0.025,
+    zIndex: 101,
+    textAlign: "center",
   },
   solved_words_slot: {
+    display: "flex",
     height: scrHeight * 0.025,
     justifyContent: 'center',
     alignItems: 'center',
-    marginRight: 9,
+    alignSelf: "center",
+    marginRight: 2,
+    marginLeft: 7,
   },
   animated_solved_word: {
-    position: 'relative',
-    top: 22,
+    position: 'absolute',
     paddingLeft: 10,
     paddingRight: 10,
     borderRadius: 4,
     borderColor: colors.bright_green,
     borderWidth: 1,
+    borderStyle: "solid",
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: colors.off_black,
@@ -185,6 +188,7 @@ const appStyles = {
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: colors.transparent,
+    zIndex: 1000
   },
   game_over_button_view: {
     display: "flex",
@@ -212,13 +216,10 @@ const appStyles = {
     alignItems: 'center',
     marginLeft: convertFont(18),
     marginRight: convertFont(18),
+    marginTop: phone?100:0,
     backgroundColor: colors.button_blue,
     boxShadow: `10px 10px 28px ${colors.off_black}`,
-    // shadowColor: colors.black,
-    // shadowOffset: { width: 0, height: 20 },
-    // shadowOpacity: 0.5,
-    // shadowRadius: 2,
-    // elevation: 6,
+
   },
    button: {
     height: tablet? scrHeight * 0.06:pc? scrHeight * 0.04:scrWidth * 0.1,
@@ -262,7 +263,16 @@ const appStyles = {
     color: colors.off_white,
     textAlign: "center",
   },
- 
+  debug_text: {
+    fontSize: convertFont(16),
+    fontFamily: 'system-ui',
+    color: colors.bright_green,
+  },
+  solved_text: {
+    fontSize: convertFont(25),
+    fontFamily: 'system-ui',
+    color: colors.bright_green,
+  },
 
 
 }

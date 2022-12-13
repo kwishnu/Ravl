@@ -151,3 +151,65 @@
 .animate__showoff {
   animation-name: showoff;
 }
+
+@keyframes animatesolvedword {
+  from {
+    opacity: 1;
+    scale: 1;
+    transform: translateY(0) translateX(0);
+  }
+  10% {
+    opacity: 1;
+    scale: 1;
+    transform: translateY(0) translateX(0);
+  }
+  20% {
+    opacity: 1;
+    scale: 1;
+    transform: translateY(0) translateX(0);
+  }
+  30% {
+    opacity: 1;
+    scale: 1;
+    transform: translateY(0) translateX(0);
+  }
+  40% {
+    opacity: 1;
+    scale: 1.2;
+    transform: translateY(0) translateX(0);
+  }
+  50% {
+    opacity: 1;
+    scale: 1.2;
+    transform: translateY(0) translateX(0);
+  }
+  60% {
+    opacity: 1;
+    scale: 1.2;
+    transform: translateY(0) translateX(0);
+  }
+  70% {
+    opacity: 1;
+    scale: 1;
+    transform: translateY(0) translateX(0);
+  }
+  to {
+    opacity: 0;
+    scale: 1;
+    transform: translateY(-40px) translateX(-200px);
+  }
+  /* from {transform: translateY(0) translateX(0) opacity(1) scale(1);}
+  10% {transform: translateY(0) translateX(0) opacity(1) scale(1);}
+  20% {transform: translateY(0) translateX(0) opacity(1) scale(1);}
+  30% {transform: translateY(0) translateX(0) opacity(1) scale(1);}
+  40% {transform: translateY(0) translateX(0) opacity(1) scale(1.2);}
+  50% {transform: translateY(0) translateX(0) opacity(1) scale(1.2);}
+  60% {transform: translateY(0) translateX(0) opacity(1) scale(1.2);}
+  70% {transform: translateY(0) translateX(0) opacity(1) scale(1);}
+  to {transform: translateY(-40) translateX(-120) opacity(0) scale(1);} */
+}
+
+.animate__animatesolvedword {
+  animation-name: animatesolvedword;
+  animation-duration: 800ms;
+}
