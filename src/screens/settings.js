@@ -7,14 +7,11 @@ import settings_styles from "../styles/settings_styles";
 import colors from '../config/colors';
 import config from '../config/config';
 const scrHeight = config.scrHeight;
-const scrWidth = config.scrWidth;
 const KEY_BGColorPref = 'bgColorPrefKey';
 const KEY_ModePref = 'modePrefKey';
 const KEY_AnimationPref = 'animationPrefKey';
 const KEY_BGColorSliderValue = 'bgColorValueSliderKey';
 const KEY_BGValSliderValue = 'bgValValueSliderKey';
-const tablet = scrHeight/scrWidth > 1.77?false:true;
-const line = tablet?config.LINE_HEIGHT * 0.7:config.LINE_HEIGHT;
 
 class Settings extends Component {
   constructor(props) {
@@ -58,6 +55,32 @@ class Settings extends Component {
           this.setState({leaveAnimationChecked: true});
       }
       this.setState({animationPreference: ap});
+    }
+    const bgColorValue =  window.localStorage.getItem(KEY_BGColorSliderValue);
+    if (bgColorValue !== null) {
+      const bgCV = bgColorValue;
+      const bgCVInt = parseInt(bgCV);
+      this.setState({colorSliderValue: bgCVInt});
+    }else{
+      this.setState({colorSliderValue: 276});
+      try {
+        window.localStorage.setItem(KEY_BGColorSliderValue, '276');
+      } catch (error) {
+          window.alert('localStorage error: ' + error.message);
+      }
+    }
+    const bgValValue =  window.localStorage.getItem(KEY_BGValSliderValue);
+    if (bgValValue !== null) {
+      const bgV = bgValValue;
+      const bgVInt = parseInt(bgV);
+      this.setState({valSliderValue: bgVInt});
+    }else{
+      this.setState({valSliderValue: 29});
+      try {
+        window.localStorage.setItem(KEY_BGValSliderValue, '29');
+      } catch (error) {
+          window.alert('localStorage error: ' + error.message);
+      }
     }
   }   
   showAlert(){
@@ -178,9 +201,9 @@ class Settings extends Component {
     global.bgColor = colors.dark_purple;
     this.props.sendValueToGame(["Dark Mode", false]);
     this.props.sendValueToGame(["Animation Style", "Leave"]);
-    this.props.navigation.setOptions({
-      headerStyle: {backgroundColor: global.bgColor, height: tablet?scrHeight * 0.07:scrWidth * 0.22}
-    });
+    // this.props.navigation.setOptions({
+    //   headerStyle: {backgroundColor: global.bgColor, height: tablet?scrHeight * 0.07:scrWidth * 0.22}
+    // });
     try {
         window.localStorage.setItem(KEY_BGColorSliderValue, '276');
     } catch (error) {
@@ -291,7 +314,7 @@ class Settings extends Component {
                   <div style={settings_styles.radioImageContainer}>
                     <img
                       onClick={() => this.handleAnimationRadio("Leave")}
-                      style = {{height: line * 2.6, width: line * 2.6, marginRight: 10}}
+                      style = {settings_styles.radioImage}
                       src = {leaveCheckImg}
                       alt = {"Leave Animation"}
                     />
@@ -305,7 +328,7 @@ class Settings extends Component {
                   <div style={settings_styles.radioImageContainer}>
                     <img 
                       onClick={() => this.handleAnimationRadio("Spin")}
-                      style = {{height: line * 2.6, width: line * 2.6, marginRight: 10}}
+                      style = {settings_styles.radioImage}
                       src = {spinCheckImg}
                       alt = {"Spin Animation"}
                     />
@@ -319,7 +342,7 @@ class Settings extends Component {
                   <div style={settings_styles.radioImageContainer}>
                     <img 
                       onClick={() => this.handleAnimationRadio("None")}
-                      style = {{height: line * 2.6, width: line * 2.6, marginRight: 10}}
+                      style = {settings_styles.radioImage}
                       src = {noneCheckImg}
                       alt = {"No Animation"}
                     />

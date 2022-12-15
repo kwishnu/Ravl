@@ -70,7 +70,7 @@ const menu_styles = {
     borderColor: colors.off_black, 
     borderStyle: 'solid',
     padding: 10,
-    zIndex: 20
+    zIndex: 99
   },
   divider: {
     display: "flex",

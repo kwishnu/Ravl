@@ -25,7 +25,7 @@ modalView: {
   display: 'flex',
   flexDirection: 'column',
   height: "auto",
-  width: config.isPC?scrHeight * 0.36:scrWidth * 0.6,
+  width: config.isPC?scrHeight * 0.36:scrWidth * 0.85,
   borderRadius: 5,
   padding: 10,
   alignItems: "center",
@@ -106,7 +106,7 @@ radiobuttonRow: {
   flexDirection: 'row',
   justifyContent: "center",
   alignItems: "center",
-  height: line * 3.2,
+  height: config.isPC? line * 3.2:line * 2,
 },
 radioImageContainer: {
   display: 'flex',
@@ -114,6 +114,11 @@ radioImageContainer: {
   justifyContent: "center",
   alignItems: "center",
   height: line * 2,
+},
+radioImage: {
+  height: config.isPC?line * 2.6:line * 1.5,
+  width: config.isPC?line * 2.6:line * 1.5,
+  marginRight: 10
 },
 sliderContainer: {
   display: 'flex',
@@ -127,40 +132,42 @@ sliderContainer: {
 slider1View: {
   position: "absolute",
   top: 0,
-  left: 0,
-  width: 329,
+  left: config.isPC?0:scrWidth * 0.07,
+  width: config.isPC?329:scrWidth * 0.66,
   height: "auto",
 },
 colorPickerImage: {
   position: "absolute",
   top: 12,
   left: 0,
+  width: config.isPC?329:scrWidth * 0.66
 },
 slider2View: {
   position: "absolute",
-  top: line * 3.5,
-  left: 0,
-  width: 329,
+  top: config.isPC?line * 3.5:line * 2,
+  left: config.isPC?0:scrWidth * 0.07,
+  width: config.isPC?329:scrWidth * 0.66,
   height: "auto",
 },
 valuePickerImage: {
   position: "absolute",
   top: 12,
   left: 0,
+  width: config.isPC?329:scrWidth * 0.66
 },
 swatch: {
   position: "absolute",
-  top: 0,
-  right: 0,
-  width: line * 6,
-  height: line * 6,
+  top: config.isPC?0:100,
+  right: config.isPC?0:(scrWidth * 0.85 - line * 3.6 - 24)/2,
+  width: config.isPC?line * 6:line * 3.6,
+  height: config.isPC?line * 6:line * 3.6,
   borderRadius: 5,
   borderColor: colors.black, 
   borderWidth: 1, 
   borderStyle: 'solid'
 },
 spacer: {
-  height: line * 3,
+  height: config.isPC?line * 3:line * 2,
 },
 defaultsButtonContainer: {
   display: 'flex',
@@ -200,11 +207,11 @@ section_heading: {
   textDecorationLine: "underline"
 },
 text: {
-  fontSize: config.isPC?convertFont(15):convertFont(21),
+  fontSize: config.isPC?convertFont(15):convertFont(22),
   fontFamily: "system-ui",
 },
 text_small: {
-  fontSize: convertFont(14),
+  fontSize: config.isPC?convertFont(14):convertFont(18),
   fontFamily: "system-ui",
 },
 }

@@ -95,7 +95,7 @@ const appStyles = {
     borderRadius: 5,
     borderWidth: 2, 
     borderStyle: "none solid solid solid",
-    zIndex: 100
+    zIndex: 10
   },
   solved_words_inner_container: {
     display: "flex",
