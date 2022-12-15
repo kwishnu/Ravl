@@ -48,9 +48,8 @@ class Help extends Component {
     const row2Text52 = "...or the round will fail \n\n \u2605  Completing a game without using hints or failing as described will earn a star for your home screen!";
     const row3Text1 = "\u2022  Cost 5 points for the first, 10 thereafter";
     const row4Text1 = "\u2022  1 point earned for each letter in the word formed";
-    const { isModalVisible } = this.props;
     const closeImage = this.props.darkModeEnabled? require("../images/close.png"):require("../images/close_black.png");
-    let { darkModeEnabled } = this.props;
+    const { isModalVisible, darkModeEnabled } = this.props;
 
     return(
       <AnimatePresence>

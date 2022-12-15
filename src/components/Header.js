@@ -9,7 +9,7 @@ const marLeftOrRight = (scrWidth - scrHeight * 9/16)/2;
 
 function Header(props) {
   return(
-    <div style={headerStyles.container}>
+    <div style={{...headerStyles.container, backgroundColor: global.bgColor}}>
       <div style={headerStyles.left_div}>
       <img src={MenuImage} alt={"Menu"} style={headerStyles.menuImageStyle} onClick={() => props.clickMenu("Menu")} />          
       </div>
@@ -35,8 +35,6 @@ const headerStyles = {
     left: 0,
     width: config.scrWidth,
     height: 60,
-    backgroundColor: colors.dark_purple,
-
   },
   left_div: {
     display: "flex",

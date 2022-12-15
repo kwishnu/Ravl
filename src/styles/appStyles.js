@@ -28,7 +28,6 @@ const appStyles = {
     width: "100%",
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: colors.gray_4,
   },
   appContainer: {
     display: "flex",
@@ -243,7 +242,7 @@ const appStyles = {
     alignSelf: "center"
   },
   counter_text: {
-    fontSize: convertFont(34),
+    fontSize: pc? convertFont(34):convertFont(31),
     fontFamily: 'system-ui',
     color: colors.text_white,
   },

@@ -40,13 +40,13 @@ class Menu extends Component {
             transition={{ type: "spring", bounce: 0, duration: 0.4 }}
           >
             <div style={{...menu_styles.text, fontSize: 16, color: 'black'}}>
-              <MenuHeader text={"RavL"} imageUrl={closeImage} altText={"RavL - Close Menu Link"} closeMenu={() => this.closeMenu()}/>
-              <MenuItem text={"RavL Start"} imageUrl={gameImage} altText={"RavL Start Link"} showModal={(which) => this.showModal(which, true)}/>
+              <MenuHeader text={"RavL"} imageUrl={closeImage} altText={"RavL - Close Menu"} closeMenu={() => this.closeMenu()}/>
+              <MenuItem text={"RavL Start"} imageUrl={gameImage} altText={"RavL Start"} showModal={(which) => this.showModal(which, true)}/>
               <div style={menu_styles.divider}></div>
-              <MenuItem text={"Settings"} imageUrl={settingsImage} altText={"Settings Link"} showModal={(which) => this.showModal(which, true)}/>
-              <MenuItem text={"Help"} imageUrl={helpImage} altText={"Help Link"} showModal={(which) => this.showModal(which, true)}/>
-              <MenuItem text={"Support"} imageUrl={supportImage} altText={"Support Link"} showModal={(which) => this.showModal(which, true)}/>
-              <MenuItem text={"Mega RavL"} imageUrl={gameImage} altText={"Mega RavL Link"} showModal={(which) => this.showModal(which, true)}/>
+              <MenuItem text={"Settings"} imageUrl={settingsImage} altText={"Settings"} showModal={(which) => this.showModal(which, true)}/>
+              <MenuItem text={"Help"} imageUrl={helpImage} altText={"Help"} showModal={(which) => this.showModal(which, true)}/>
+              <MenuItem text={"Support"} imageUrl={supportImage} altText={"Support"} showModal={(which) => this.showModal(which, true)}/>
+              <MenuItem text={"Mega RavL"} imageUrl={gameImage} altText={"Mega RavL"} showModal={(which) => this.showModal(which, true)}/>
             </div>
             </motion.div>
         }

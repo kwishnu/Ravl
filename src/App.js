@@ -34,11 +34,11 @@ import HintNag from "./modal/HintNagModal";
 import TileSet from './components/TileSet';
 import styles from './styles/appStyles.js';
 import genWordArray from "./config/genWordArray";
-// import Settings from "./screens/settings";
+import Settings from "./screens/settings";
 import Help from "./screens/help";
 // import Support from "./screens/support";
-// import Words from "./modal/WordsModal";
-// import EndGame from "./modal/EndGameModal";
+import Words from "./modal/WordsModal";
+import EndGame from "./modal/EndGameModal";
 // import ThankYou from "./modal/ThankYouModal";
 // const tut_styles = require("./styles/tut_styles");
 const KEY_LastOpenedDate = 'lastOpenedKey';
@@ -79,18 +79,8 @@ let puzzleWords10 = [];
 let solvedWords = [];
 let bonusWords = [];
 let allowIntoUpdateGameArray = true;
-
-// const animateCSS = (element, animation, prefix = 'animate__') =>
-//   new Promise((resolve, reject) => {
-//     const animationName = `${prefix}${animation}`;
-//     element.classList.add(`${prefix}animated`, animationName);
-//     const handleAnimationEnd = (event) => {
-//       event.stopPropagation();
-//       element.classList.remove(`${prefix}animated`, animationName);
-//       resolve('Animation ended');
-//     }
-//     element.addEventListener('animationend', handleAnimationEnd, {once: true});
-// });
+global.upgradeStatus = false;
+global.bgColor = colors.dark_purple;
 
 class App extends Component {
   constructor(props) {
@@ -150,11 +140,10 @@ class App extends Component {
       gameDone: false,
       clearedLevel: true,
       showActionButton: false,
-      // showPuzzWordsModal: false,
+      showPuzzWordsModal: false,
       showHeaderComment: false,
       showSolvedWord: false,
       showSolvedWords: false,
-      // modalVisible: false,
       puzzleDisplayed: false,
       darkModeEnabled: false,
       newHighScore: false,
@@ -193,7 +182,7 @@ class App extends Component {
       headerComment: "",
       dailyGameDescription: "",
       nextBtnText: "NEXT",
-      // solvedModalMessage: "",
+      solvedModalMessage: "",
       // bonusModalMessage: "",
       puzzleStreak: "0,01-01-2001",
       dailyStreak: "0,01-01-2001",
@@ -208,7 +197,7 @@ class App extends Component {
       showEndGameModal: false,
       showThankYouModal: false,
       showHintNagModal: false,
-      // dividerString: "",
+      dividerString: "",
       playedGameOnce: false,
       lockScreenInput: false,
       modalCall: this.props.modalCall,
@@ -219,6 +208,38 @@ class App extends Component {
     this.colRefs = [];
     this.lettersetContainer = React.createRef();
   }
+  openWordsModal = () => {
+    console.log("in openWordsModal" );
+  let showPuzzWords = (this.state.solvedWords[0].length || this.state.solvedWords[8].length) ? true : false;
+  let solvedArray = this.state.solvedWords;
+  let bonusArray = this.state.bonusWords;
+  let sBlankArray = [];
+  let bBlankArray = [];
+  solvedArray.forEach((innerArray) => {
+    let wordsOfOneLevel = "";
+    if(innerArray.length){
+      wordsOfOneLevel = innerArray.join("  ");
+      sBlankArray.push(wordsOfOneLevel);
+    }
+  });
+  bonusArray.forEach((innerArray) => {
+    let wordsOfOneLevel = "";
+    if(innerArray.length){
+      wordsOfOneLevel = innerArray.join("  ");
+      bBlankArray.push(wordsOfOneLevel);
+    }
+  });
+  const sWordModalMsg = sBlankArray.join("\n");
+  const bWordModalMsg = bBlankArray.join("\n");
+  const dividerStr = "_______";
+  this.setState({
+    showPuzzWordsModal: showPuzzWords,
+    solvedModalMessage: sWordModalMsg,
+    bonusModalMessage: bWordModalMsg,
+    dividerString: dividerStr,
+    showWordsModal: true,
+  });
+};
 
   componentDidMount() {
     dateToday = formatDate(new Date(), "MM-dd-yyyy");
@@ -2011,6 +2032,16 @@ class App extends Component {
   toggleModal(which, open){
     if(open){
       switch(which){
+        case "RavL Start":
+          if(this.state.currentGameIndex === -1){
+            this.toggleDrawer();
+          }else{
+            this.setState({showEndGameModal: true});
+          }
+          break;
+        case "Settings":
+          this.setState({showSettingsModal: true});
+          break;
         case "Help":
           this.setState({showHelpModal: true});
           break;
@@ -2020,11 +2051,11 @@ class App extends Component {
       }
     }else{
       this.setState({
-        // showSettingsModal: false,
+        showSettingsModal: false,
         showHelpModal: false,
         // showSupportModal: false,
-        // showWordsModal: false,
-        // showEndGameModal: false,
+        showWordsModal: false,
+        showEndGameModal: false,
         // showThankYouModal: false,
         showHintNagModal: false,
       });
@@ -2037,6 +2068,7 @@ class App extends Component {
       this.nextGame(true);
     }, 200)
     this.toggleModal(null, false);
+    if (this.state.showMenu)this.toggleDrawer();
   }
   getDimensions(node) {
     if (node && !this.state.height) {
@@ -2351,18 +2383,18 @@ this.showHeaderCommentAnimation("Progress Saved");
         gameArray9,
         gameArray10,
         solvedWords,
-        // modalVisible,
-        // showPuzzWordsModal,
-        // solvedModalMessage,
-        // bonusModalMessage,
-        // dividerString,
+        darkModeEnabled,
+        showPuzzWordsModal,
+        solvedModalMessage,
+        bonusModalMessage,
+        dividerString,
         keyIDFragment
       } = this.state;
 
       return (
         <div>
             <Menu showMenu={this.state.showMenu} closeMenu={() => this.toggleDrawer()} showModal={(which, open) => {this.toggleModal(which, open)}}/>
-          <div style={styles.container} onClick={this.state.showMenu?() => this.toggleDrawer():null}>
+          <div style={{...styles.container, backgroundColor: darkModeEnabled ? colors.gray_4:colors.off_white}} onClick={this.state.showMenu?() => this.toggleDrawer():null}>
             <Header 
               clickMenu={(which) => this.toggleDrawer(which)} 
               showModal={(which) => this.showModal(which)}
@@ -2393,19 +2425,13 @@ this.showHeaderCommentAnimation("Progress Saved");
               </div>
               <div style={styles.scoreContainer}>
                 <div style={styles.solved_words_inner_container}>
-                  {/* <div style={{...styles.animated_solved_word, top: config.isPC?scrHeight/8.6:scrHeight/6.2, left: getAnimatedWordLeft(3)}}>
-                    <div style={{...styles.solved_text, padding: this.state.solvedPadding}}>
-                      Test
-                    </div>
-                  </div> */}
-                <AnimatePresence>
-                  {this.state.showSolvedWord &&
-                    <div style={{...styles.animated_solved_word, top: config.isPC?scrHeight/8.6:scrHeight/6.2, left: getAnimatedWordLeft(this.state.solvedWord.length)}}>
-                      <div className={'anim-node'} style={{...styles.solved_text, padding: this.state.solvedPadding}}>{this.state.solvedWord}</div>
-                    </div>
-
-                  }
-                </AnimatePresence>
+                  <AnimatePresence>
+                    {this.state.showSolvedWord &&
+                      <div style={{...styles.animated_solved_word, top: config.isPC?scrHeight/8.6:scrHeight/6.2, left: getAnimatedWordLeft(this.state.solvedWord.length)}}>
+                        <div className={'anim-node'} style={{...styles.solved_text, padding: this.state.solvedPadding}}>{this.state.solvedWord}</div>
+                      </div>
+                    }
+                  </AnimatePresence>
                   {this.state.showSolvedWords &&
                     <div style={styles.solved_words}>
                       <div style={styles.solved_words_row}>
@@ -2425,23 +2451,21 @@ this.showHeaderCommentAnimation("Progress Saved");
                     </div>
                   }
                 </div>
-
-
                 <div style={styles.counter_inner_container}>
-                <motion.div
-                  style={styles.counter_text}
-                  key={this.state.counterKey}
-                  initial={{ scale: 1, color: colors.text_white }}
-                  animate={{ scale: 1.2, color: this.state.counterPulseColor }}
-                  transition={{ repeat: 1, repeatType: "mirror", duration: 0.2, delay: 0.1 }}
-                >
-                  {this.state.score}
-                </motion.div>
+                  <motion.div
+                    style={styles.counter_text}
+                    key={this.state.counterKey}
+                    initial={{ scale: 1, color: colors.text_white }}
+                    animate={{ scale: 1.2, color: this.state.counterPulseColor }}
+                    transition={{ repeat: 1, repeatType: "mirror", duration: 0.2, delay: 0.1 }}
+                  >
+                    {this.state.score}
+                  </motion.div>
                 </div>
               </div>
               <div id="gameContainer" style={styles.gameContainer} ref={this.lettersetContainer}>
               {this.state.showPlayRavl &&
-              playRavlStr.map((column, index) => this.renderCol(column, index, false, keyIDFragment))}
+                playRavlStr.map((column, index) => this.renderCol(column, index, false, keyIDFragment))}
               {this.state.showGame0 &&
                 gameArray0.map((column, index) => this.renderCol(column, index, true, keyIDFragment))}
               {this.state.showGame1 &&
@@ -2470,7 +2494,7 @@ this.showHeaderCommentAnimation("Progress Saved");
               {this.state.lockScreenInput && this.displayLockScreen()}
               </div>
               <div  id="footerContainer" style={styles.footerContainer}>
-                <motion.button style={styles.button}  whileTap={{ scale: 0.97 }} onClick={() => this.testAnimation()} >
+                <motion.button style={styles.button}  whileTap={{ scale: 0.97 }} onClick={() => this.openWordsModal()} >
                 <div style={styles.button_text}>WORDS</div>
                 </motion.button>
                 <motion.button style={styles.button} whileTap={{ scale: 0.97 }} onClick={() => this.giveHint()} >
@@ -2478,7 +2502,7 @@ this.showHeaderCommentAnimation("Progress Saved");
                 </motion.button>
               </div>
             </div>
-         {/* openWordsModal */}
+         {/*  */}
 
               {this.state.currentGameIndex === -1 &&
                 <Footer puzzleStreak={'3'} startGame={(daily) => this.transitionToGame(daily)}/>
@@ -2504,6 +2528,45 @@ this.showHeaderCommentAnimation("Progress Saved");
               pauseOnHover
               theme="light"
             />
+          <Settings
+            isModalVisible={this.state.showSettingsModal}
+            requestModalClose={() => {this.toggleModal(null, false)}}
+            sendValueToGame={(val) => {this.updateSettingsValue(val)}}
+            navigation={this.props.navigation}
+          />
+          <Help
+            isModalVisible={this.state.showHelpModal}
+            requestModalClose={() => {this.closeModal()}}
+            darkModeEnabled={this.state.darkModeEnabled}
+          />
+          {/* <Support
+            isModalVisible={this.state.showSupportModal}
+            requestModalClose={() => {this.closeModal()}}
+            darkModeEnabled={this.state.darkModeEnabled}
+            startPurchaseInGame={(val) => {this.initiatePurchase(val)}}
+            navigation={this.props.navigation}
+          /> */}
+          <Words
+            isModalVisible={this.state.showWordsModal}
+            isDarkModeEnabled={this.state.darkModeEnabled}
+            showPuzzWordsModal={showPuzzWordsModal}
+            solvedModalMessage={solvedModalMessage}
+            bonusModalMessage={bonusModalMessage}
+            dividerString={dividerString}
+            requestModalClose={()=>{this.toggleModal(null, false)}}
+          />
+          <EndGame
+            isModalVisible={this.state.showEndGameModal}
+            isDarkModeEnabled={this.state.darkModeEnabled}
+            requestModalClose={()=>{this.toggleModal(null, false)}}
+            requestGoToStart={()=>{this.goToStartScreen()}}
+          />
+          {/* <ThankYou
+            isModalVisible={this.state.showThankYouModal}
+            isDarkModeEnabled={this.state.darkModeEnabled}
+            requestModalClose={()=>{this.closeModal()}}
+          /> */}
+
             <HintNag isModalVisible={this.state.showHintNagModal} isDarkModeEnabled={this.state.darkModeEnabled} requestModalClose={()=>{this.toggleModal(null, false)}}/>
             <Help
               isModalVisible={this.state.showHelpModal}

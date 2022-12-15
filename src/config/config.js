@@ -5,7 +5,7 @@ const deviceType = width > 800?"PC":height/width > 1.77?"phone":"tablet";
 const isPC = deviceType === "PC"?true:false;
 const isTablet = deviceType === "tablet"?true:false;
 const isPhone = deviceType === "phone"?true:false;
-const SLIDER_WIDTH = width * 0.66;
+const SLIDER_WIDTH = isPC?height * 9/16 * 0.66:width * 0.66;
 const LINE_HEIGHT = isPC?Math.floor(height/80):isTablet?Math.floor(width/22):Math.floor(width/18);
 
 

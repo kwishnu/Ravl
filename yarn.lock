@@ -8259,6 +8259,18 @@
   optionalDependencies:
     "fsevents" "^2.3.2"
 
+"react-simple-range@^2.0.0":
+  "integrity" "sha512-6rUvhIKHctjR2W4jWXUvl4OPEPZT5bB9CcxD9Zd8/abHeNsZuRCB/XCGSE8m2g+2u1bkMHQ1kpJWEjFMuQUFkw=="
+  "resolved" "https://registry.npmjs.org/react-simple-range/-/react-simple-range-2.0.0.tgz"
+  "version" "2.0.0"
+
+"react-switch@^7.0.0":
+  "integrity" "sha512-KkDeW+cozZXI6knDPyUt3KBN1rmhoVYgAdCJqAh7st7tk8YE6N0iR89zjCWO8T8dUTeJGTR0KU+5CHCRMRffiA=="
+  "resolved" "https://registry.npmjs.org/react-switch/-/react-switch-7.0.0.tgz"
+  "version" "7.0.0"
+  dependencies:
+    "prop-types" "^15.7.2"
+
 "react-toastify@^9.1.1":
   "integrity" "sha512-pkFCla1z3ve045qvjEmn2xOJOy4ZciwRXm1oMPULVkELi5aJdHCN/FHnuqXq8IwGDLB7PPk2/J6uP9D8ejuiRw=="
   "resolved" "https://registry.npmjs.org/react-toastify/-/react-toastify-9.1.1.tgz"
@@ -9272,6 +9284,11 @@
   "integrity" "sha512-lBN9zLN/oAf68o3zNXYrdCt1kP8WsiGW8Oo2ka41b2IM5JL/S1CTyX1rW0mb/zSuJun0ZUrDxx4sqvYS2FWzPA=="
   "resolved" "https://registry.npmjs.org/tiny-warning/-/tiny-warning-1.0.3.tgz"
   "version" "1.0.3"
+
+"tinycolor2@^1.4.2":
+  "integrity" "sha512-vJhccZPs965sV/L2sU4oRQVAos0pQXwsvTLkWYdqJ+a8Q5kPFzJTuOFwy7UniPli44NKQGAglksjvOcpo95aZA=="
+  "resolved" "https://registry.npmjs.org/tinycolor2/-/tinycolor2-1.4.2.tgz"
+  "version" "1.4.2"
 
 "tmpl@1.0.5":
   "integrity" "sha512-3f0uOEAQwIqGuWW2MVzYg8fV/QNnc/IpuJNG837rLuczAaLVHslWHZQj4IGiEl5Hs3kkbhwL9Ab7Hrsmuj+Smw=="

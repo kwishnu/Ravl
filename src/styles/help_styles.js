@@ -28,7 +28,7 @@ modalView: {
   borderRadius: 5,
   padding: 10,
   alignItems: "center",
-  boxShadow: `10px 20px 20px ${colors.off_black}`,
+  boxShadow: `10px 20px 30px ${colors.off_black}`,
   zIndex: 100
 },
 modalHeader: {

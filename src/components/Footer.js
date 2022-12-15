@@ -9,7 +9,7 @@ const widthLeftOrRight = (scrWidth - scrHeight * 9/16)/2;
 
 function Footer(props) {
   return(
-    <div style={footer_styles.container}>
+    <div style={{...footer_styles.container, backgroundColor: global.bgColor}}>
       <div style={footer_styles.left_div}>
       </div>
       <div style={footer_styles.center_div}>
@@ -72,7 +72,6 @@ const footer_styles = {
     alignItems: "center",
     width: config.scrWidth,
     paddingTop: 10,
-    backgroundColor: colors.dark_purple,
     zIndex: 1
   },
   left_div: {
@@ -162,7 +161,8 @@ const footer_styles = {
     alignSelf: 'stretch',
   },
   streak_text: {
-    fontSize: convertFont(16),
+    fontSize: convertFont(18),
+    fontFamily: "system-ui",
     color: colors.off_white,
     marginBottom: 12,
   },
@@ -179,6 +179,7 @@ const footer_styles = {
   },
   streak_number_text: {
     fontSize: convertFont(20),
+    fontFamily: "system-ui",
     color: colors.bright_green,
   },
 }
