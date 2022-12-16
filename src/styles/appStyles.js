@@ -84,6 +84,7 @@ const appStyles = {
     display: "flex",
     flexDirection: "row",
     flex: 3,
+    position: "relative",
     width: pc || config.isTablet?scrHeight * 9/16:scrWidth,
     alignItems: 'center',
     justifyContent: 'center',
@@ -159,6 +160,7 @@ const appStyles = {
   gameContainer: {
     display: "flex",
     flexDirection: "row",
+    position: "relative",
     flex: pc?24:18,
     width: pc || config.isTablet?scrHeight * 9/16:scrWidth,
     alignItems: 'center',
@@ -172,7 +174,6 @@ const appStyles = {
     width: pc || config.isTablet?scrHeight * 9/16:scrWidth,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: colors.dark_purple,
     borderColor: colors.black, 
     borderWidth: 2, 
     borderStyle: "solid none none none"
@@ -220,6 +221,49 @@ const appStyles = {
     backgroundColor: colors.button_blue,
     boxShadow: `10px 10px 28px ${colors.off_black}`,
 
+  },
+  stars_container: {
+    display: "flex",
+    flexDirection: 'column',
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
+    padding: 4,
+    alignItems: 'flex-start',
+    justifyContent: 'center',
+    backgroundColor: colors.gray_4,
+    zIndex: 101
+  },
+  stars100_container: {
+    display: "flex",
+    flexDirection: 'row',
+    position: 'absolute',
+    top: 2,
+    right: 0,
+    left: 0,
+    height: convertFont(30),
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    backgroundColor: colors.gray_4,
+    borderRadius: config.button_radius,
+    borderWidth: 2,
+    borderStyle: 'solid'
+  },
+  star_row: {
+    display: "flex",
+    flexDirection: 'row',
+    alignSelf:'stretch',
+    zIndex: 102,
+  },
+  star: {
+    fontSize: convertFont(24),
+    marginTop: -10
+  },
+  star100: {
+    fontSize: convertFont(32),
+    marginTop: -10
   },
    button: {
     height: tablet? scrHeight * 0.06:pc? scrHeight * 0.04:scrWidth * 0.1,

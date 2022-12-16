@@ -9,7 +9,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import { motion, AnimatePresence } from "framer-motion";
 import 'animate.css';
 import 'react-toastify/dist/ReactToastify.css';
-import {getAnimatedWordLeft} from './config/config';
+import {getAnimatedWordLeft, convertFont} from './config/config';
 import config from './config/config';
 import colors from './config/colors';
 import animStyles from './styles/anim.module.css';
@@ -114,7 +114,7 @@ class App extends Component {
       megaWords: [],
       currentHintsArray: [],
       animationTimerIDs: [],
-      starColorArray: ['#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333'],
+      starColorArray: ['#00ff00','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#00ff00'],
       currentStarColor: '#FFD700',
       counterPulseColor: colors.bright_green,
       bonusWords: this.props.bonusWords,
@@ -704,7 +704,7 @@ class App extends Component {
       this.setState({starColorArray: scArray});
     }else{
       try {
-        window.localStorage.setItem(KEY_StarColorString, '#333333,#333333,#333333,#333333,#333333,#333333,#333333,#333333,#333333,#333333,#333333,#333333,#333333,#333333,#333333,#333333,#333333,#333333,#333333,#333333');
+        window.localStorage.setItem(KEY_StarColorString, '#00ff00,#333333,#333333,#333333,#333333,#333333,#333333,#333333,#333333,#333333,#333333,#333333,#333333,#333333,#333333,#333333,#333333,#333333,#333333,#00ff00');
       } catch (error) {
         window.alert('window.localStorage error: ' + error.message);
       }
@@ -1989,7 +1989,7 @@ class App extends Component {
     return (
       <div style={tut_styles.tut_screen}>
         <div style={tut_styles.tut_dialog1}>
-          <div style={[tut_styles.tut_text, {marginBottom: 20}]}>Move the columns of letters up and down to form words going across...</div>
+          <div style={{...tut_styles.tut_text, marginBottom: 20}}>Move the columns of letters up and down to form words going across...</div>
           <button style={[tut_styles.button, { marginLeft: 60 }]} onClick={() => this.closeTutScreen1()} >
             <div style={tut_styles.button_text}>OK</div>
           </button>
@@ -2075,14 +2075,14 @@ class App extends Component {
     this.toggleModal(null, false);
     if (this.state.showMenu)this.toggleDrawer();
   }
-  getDimensions(node) {
-    if (node && !this.state.height) {
-      this.setState({
-          lettersetContainerHeight: node.clientHeight,
-          lettersetContainerWidth: node.clientWidth
-      });
-    }
-}
+//   getDimensions(node) {
+//     if (node && !this.state.height) {
+//       this.setState({
+//           lettersetContainerHeight: node.clientHeight,
+//           lettersetContainerWidth: node.clientWidth
+//       });
+//     }
+// }
 // getStarDimensions(event){
 //   let dims = event.nativeEvent.layout;
 //   this.setState({starsContainerWidth: dims.width, starsContainerHeight: dims.height});
@@ -2168,7 +2168,7 @@ renderStars() {
   let starString4 = "";
   let starString5 = "";
   let singleStar = "\u2605";
-  for(let i = 0; i < this.state.numberOfStars; i++){
+  for(let i = 0; i < 100; i++){//this.state.numberOfStars;
     switch(true){
       case (i > 79):
         starString5 += singleStar;
@@ -2189,52 +2189,52 @@ renderStars() {
           console.log("No default case...");
       }
   }
-  if(this.state.starsContainerHeight > 0){
+  // if(this.state.starsContainerHeight > 0){
     return (
       <div>
-        <div style={[styles.star_row, {height: this.state.starsContainerHeight/5.5}]}>
-          <div style={[styles.star, {color: this.state.currentStarColor}]}>{starString1}</div>
+        <div style={{...styles.star_row, height: convertFont(20)}}>
+          <div style={{...styles.star, color: this.state.currentStarColor}}>{starString1}</div>
         </div>
-        <div style={[styles.star_row, {height: this.state.starsContainerHeight/5.5}]}>
-          <div style={[styles.star, {color: this.state.currentStarColor}]}>{starString2}</div>
+        <div style={{...styles.star_row, height: convertFont(20)}}>
+          <div style={{...styles.star, color: this.state.currentStarColor}}>{starString2}</div>
         </div>
-        <div style={[styles.star_row, {height: this.state.starsContainerHeight/5.5}]}>
-          <div style={[styles.star, {color: this.state.currentStarColor}]}>{starString3}</div>
+        <div style={{...styles.star_row, height: convertFont(20)}}>
+          <div style={{...styles.star, color: this.state.currentStarColor}}>{starString3}</div>
         </div>
-        <div style={[styles.star_row, {height: this.state.starsContainerHeight/5.5}]}>
-          <div style={[styles.star, {color: this.state.currentStarColor}]}>{starString4}</div>
+        <div style={{...styles.star_row, height: convertFont(20)}}>
+          <div style={{...styles.star, color: this.state.currentStarColor}}>{starString4}</div>
         </div>
-        <div style={[styles.star_row, {height: this.state.starsContainerHeight/5.5}]}>
-          <div style={[styles.star, {color: this.state.currentStarColor}]}>{starString5}</div>
+        <div style={{...styles.star_row, height: convertFont(20)}}>
+          <div style={{...styles.star, color: this.state.currentStarColor}}>{starString5}</div>
         </div>
       </div>
     );
-  }
+  // }
 }
-renderStars100() {//scrWidth * 0.026
+renderStars100() {
   let singleStar = "\u2605";
   return (
     <div style={styles.star_row}>
-      <div style={[styles.star, {marginLeft: tablet?scrWidth * 0.01:2, color: this.state.starColorArray[0]}]}>{singleStar}</div>
-      <div style={[styles.star, {color: this.state.starColorArray[1]}]}>{singleStar}</div>
-      <div style={[styles.star, {color: this.state.starColorArray[2]}]}>{singleStar}</div>
-      <div style={[styles.star, {color: this.state.starColorArray[3]}]}>{singleStar}</div>
-      <div style={[styles.star, {color: this.state.starColorArray[4]}]}>{singleStar}</div>
-      <div style={[styles.star, {color: this.state.starColorArray[5]}]}>{singleStar}</div>
-      <div style={[styles.star, {color: this.state.starColorArray[6]}]}>{singleStar}</div>
-      <div style={[styles.star, {color: this.state.starColorArray[7]}]}>{singleStar}</div>
-      <div style={[styles.star, {color: this.state.starColorArray[8]}]}>{singleStar}</div>
-      <div style={[styles.star, {color: this.state.starColorArray[9]}]}>{singleStar}</div>
-      <div style={[styles.star, {color: this.state.starColorArray[10]}]}>{singleStar}</div>
-      <div style={[styles.star, {color: this.state.starColorArray[11]}]}>{singleStar}</div>
-      <div style={[styles.star, {color: this.state.starColorArray[12]}]}>{singleStar}</div>
-      <div style={[styles.star, {color: this.state.starColorArray[13]}]}>{singleStar}</div>
-      <div style={[styles.star, {color: this.state.starColorArray[14]}]}>{singleStar}</div>
-      <div style={[styles.star, {color: this.state.starColorArray[15]}]}>{singleStar}</div>
-      <div style={[styles.star, {color: this.state.starColorArray[16]}]}>{singleStar}</div>
-      <div style={[styles.star, {color: this.state.starColorArray[17]}]}>{singleStar}</div>
-      <div style={[styles.star, {color: this.state.starColorArray[18]}]}>{singleStar}</div>
-      <div style={[styles.star, {color: this.state.starColorArray[19]}]}>{singleStar}</div>
+      <div style={{...styles.star100, marginLeft: tablet?scrWidth * 0.01:2, color: this.state.starColorArray[0]}}>{singleStar}</div>
+      <div style={{...styles.star100, color: this.state.starColorArray[1]}}>{singleStar}</div>
+      <div style={{...styles.star100, color: this.state.starColorArray[2]}}>{singleStar}</div>
+      <div style={{...styles.star100, color: this.state.starColorArray[3]}}>{singleStar}</div>
+      <div style={{...styles.star100, color: this.state.starColorArray[4]}}>{singleStar}</div>
+      <div style={{...styles.star100, color: this.state.starColorArray[5]}}>{singleStar}</div>
+      <div style={{...styles.star100, color: this.state.starColorArray[6]}}>{singleStar}</div>
+      <div style={{...styles.star100, color: this.state.starColorArray[7]}}>{singleStar}</div>
+      <div style={{...styles.star100, color: this.state.starColorArray[8]}}>{singleStar}</div>
+      <div style={{...styles.star100, color: this.state.starColorArray[9]}}>{singleStar}</div>
+      <div style={{...styles.star100, color: this.state.starColorArray[10]}}>{singleStar}</div>
+      <div style={{...styles.star100, color: this.state.starColorArray[11]}}>{singleStar}</div>
+      <div style={{...styles.star100, color: this.state.starColorArray[12]}}>{singleStar}</div>
+      <div style={{...styles.star100, color: this.state.starColorArray[13]}}>{singleStar}</div>
+      <div style={{...styles.star100, color: this.state.starColorArray[14]}}>{singleStar}</div>
+      <div style={{...styles.star100, color: this.state.starColorArray[15]}}>{singleStar}</div>
+      <div style={{...styles.star100, color: this.state.starColorArray[16]}}>{singleStar}</div>
+      <div style={{...styles.star100, color: this.state.starColorArray[17]}}>{singleStar}</div>
+      <div style={{...styles.star100, color: this.state.starColorArray[18]}}>{singleStar}</div>
+      <div style={{...styles.star100, color: this.state.starColorArray[19]}}>{singleStar}</div>
     </div>
   );
 }
@@ -2429,6 +2429,12 @@ this.showHeaderCommentAnimation("Progress Saved");
                 </div>
               </div>
               <div style={styles.scoreContainer}>
+              {this.state.showStars &&
+                <div id="starsContainer" style={styles.stars_container}>
+                  {this.renderStars()}
+                </div>
+              }
+{/* this.state.showStars this.state.starColorArray[0] !== '#333333' */}
                 <div style={styles.solved_words_inner_container}>
                   <AnimatePresence>
                     {this.state.showSolvedWord &&
@@ -2469,6 +2475,11 @@ this.showHeaderCommentAnimation("Progress Saved");
                 </div>
               </div>
               <div id="gameContainer" style={styles.gameContainer} ref={this.lettersetContainer}>
+              {true && 
+                <div style={{...styles.stars100_container, borderColor: this.state.darkModeEnabled ? colors.gray_4:colors.dark_green}}>
+                  {this.renderStars100()}
+                </div>
+              }
               {this.state.showPlayRavl &&
                 playRavlStr.map((column, index) => this.renderCol(column, index, false, keyIDFragment))}
               {this.state.showGame0 &&
