@@ -2192,7 +2192,7 @@ renderStars() {
   // if(this.state.starsContainerHeight > 0){
     return (
       <div>
-        <div style={{...styles.star_row, height: convertFont(20)}}>
+        <div style={{...styles.star_row, height: convertFont(20), marginTop: 2}}>
           <div style={{...styles.star, color: this.state.currentStarColor}}>{starString1}</div>
         </div>
         <div style={{...styles.star_row, height: convertFont(20)}}>

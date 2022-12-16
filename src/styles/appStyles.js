@@ -255,15 +255,15 @@ const appStyles = {
     display: "flex",
     flexDirection: 'row',
     alignSelf:'stretch',
-    zIndex: 102,
   },
   star: {
     fontSize: convertFont(24),
-    marginTop: -10
+    marginTop: -10,
+    marginRight: pc?0:1
   },
   star100: {
-    fontSize: convertFont(32),
-    marginTop: -10
+    fontSize: pc?convertFont(32):convertFont(24),
+    marginTop: pc?-10:-4
   },
    button: {
     height: tablet? scrHeight * 0.06:pc? scrHeight * 0.04:scrWidth * 0.1,
