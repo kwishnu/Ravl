@@ -1504,6 +1504,7 @@ class App extends Component {
   resetTileColors(dark){
     const mode = "Dark Mode";
     const remainingTilesArr = this.getRemainingTiles();
+    console.log("remainingTilesArr: " + JSON.stringify(remainingTilesArr));
     const ravlRef = this.state.megaPuzzle? this.state.megaRavlRef:this.state.ravlTiles[this.state.currentGameIndex]
     const ravlIndex = remainingTilesArr.indexOf(ravlRef);
     if (ravlIndex > -1) {
@@ -1636,18 +1637,22 @@ class App extends Component {
       return returnArr;
   }
   getRemainingTiles() {
-    const gArray = this.state.gameArray0;
-    const numRows = gArray[0].length;
-    const numColumns = gArray.length;
-    let remainingTileArray = [];
-    for (var l = 0; l < numRows; l++) {
-      for (var m = 0; m < numColumns; m++) {
-        if (gArray[m][l].letter !== "") {
-          remainingTileArray.push(gArray[m][l].ref);
+    if(this.state.currentGameIndex === -1){
+      return ["col0,row4","col1,row4","col2,row4","col3,row4","col0,row5","col1,row5","col2,row5","col3,row5"];
+    }else{
+      const gArray = this.state.gameArray0;
+      const numRows = gArray[0].length;
+      const numColumns = gArray.length;
+      let remainingTileArray = [];
+      for (var l = 0; l < numRows; l++) {
+        for (var m = 0; m < numColumns; m++) {
+          if (gArray[m][l].letter !== "") {
+            remainingTileArray.push(gArray[m][l].ref);
+          }
         }
       }
+      return remainingTileArray;
     }
-    return remainingTileArray;
   }
   getRemainingColsAreFlush() {
     const gArray = this.state.gameArray0;
@@ -2493,7 +2498,7 @@ this.showHeaderCommentAnimation("Progress Saved");
               {this.state.gameDone && this.renderDone(this.state.clearedLevel)}
               {this.state.lockScreenInput && this.displayLockScreen()}
               </div>
-              <div  id="footerContainer" style={styles.footerContainer}>
+              <div  id="footerContainer" style={{...styles.footerContainer, backgroundColor: global.bgColor}}>
                 <motion.button style={styles.button}  whileTap={{ scale: 0.97 }} onClick={() => this.openWordsModal()} >
                 <div style={styles.button_text}>WORDS</div>
                 </motion.button>

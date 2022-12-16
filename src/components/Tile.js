@@ -135,7 +135,10 @@ class Tile extends Component {
     this.setState({bgColor: color, textColor: txtColor})
   }
   cycleBGColor(){
-    if(this.state.tileKey !== this.state.tileKeyStored){
+    // debugger;
+	    // console.log("this.state.tileKey: " + this.state.tileKey + ", this.state.tileKeyStored: " + this.state.tileKeyStored);
+	
+      if(this.state.tileKey !== this.state.tileKeyStored){
       let initialColor = this.state.toColor;
       let nextColor = getColor();
       if(this.props.text === ' '){

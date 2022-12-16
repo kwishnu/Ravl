@@ -134,6 +134,7 @@ section_heading: {
 },
 text: {
   fontSize: config.isPC?convertFont(15):convertFont(21),
+  fontFamily: "system-ui",
 },
 
 }

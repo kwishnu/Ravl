@@ -32,6 +32,5 @@
     }],  "lang": "en-US",
   "start_url": "/index.html",
   "display": "standalone",
-  "background_color": "#2E034B",
-  "theme_color": "#2E034B"
+  "background_color": "#2E034B"
 }

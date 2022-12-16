@@ -145,6 +145,7 @@ class Settings extends Component {
   handleColorChangeComplete(sliderSetting){
     const colResult = tinycolor({ h: sliderSetting.value, s: 96, l: this.state.valSliderValue }).toHexString();
     this.setState({colorSliderValue: sliderSetting.value});
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', colResult);
     global.bgColor = colResult;
     // this.props.navigation.setOptions({
     //   headerStyle: {backgroundColor: global.bgColor, height: tablet?scrHeight * 0.07:scrWidth * 0.22}
@@ -240,7 +241,6 @@ class Settings extends Component {
       spinAnimationChecked,
       noneAnimationChecked
     } = this.state;
-    console.log("leaveAnimationChecked: " + leaveAnimationChecked + "spinAnimationChecked: " + spinAnimationChecked + "noneAnimationChecked: " + noneAnimationChecked );
     const closeImage = darkModeEnabled? require("../images/close.png"):require("../images/close_black.png");
     const { isModalVisible } = this.props;
     const leaveCheckImg = leaveAnimationChecked && !darkModeEnabled? require("../images/checkbox_checked.png") :
