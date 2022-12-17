@@ -73,6 +73,7 @@ const eg_modal_styles = {
     justifyContent: "center",
     alignItems: "center",
     width: scrWidth,
+    zIndex: 100
   },
   modaldiv: {
     display: 'flex',

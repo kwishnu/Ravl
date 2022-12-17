@@ -102,6 +102,7 @@ const appStyles = {
     display: "flex",
     flex: 10,
     flexDirection: 'column',
+    position: "relative",
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
     alignSelf:'stretch',
@@ -146,6 +147,8 @@ const appStyles = {
   },
   animated_solved_word: {
     position: 'absolute',
+    top: 50,
+    left: 100,
     paddingLeft: 10,
     paddingRight: 10,
     borderRadius: 4,
@@ -155,7 +158,7 @@ const appStyles = {
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: colors.off_black,
-    zIndex: 1000
+    zIndex: 200
   },
   gameContainer: {
     display: "flex",
@@ -262,8 +265,8 @@ const appStyles = {
     marginRight: pc?0:1
   },
   star100: {
-    fontSize: pc?convertFont(32):convertFont(24),
-    marginTop: pc?-10:-4
+    fontSize: pc || tablet?convertFont(32):convertFont(24),
+    marginTop: pc || tablet?-10:-4
   },
    button: {
     height: tablet? scrHeight * 0.06:pc? scrHeight * 0.04:scrWidth * 0.1,

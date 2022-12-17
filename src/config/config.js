@@ -26,18 +26,30 @@ export const config = {
 };
 
 export const getAnimatedWordLeft = (length) => {
-  const multiplier = isPC || isTablet?0.49:0.34;
+  const adjustedWidth = isPC || isTablet?height * 9/16:width;
+  const multiplier = isPC || isTablet?0.40:0.34;
   switch(length){
-    case 3: return multiplier * width;
-    case 4: return (multiplier - 0.02) * width;
-    case 5: return (multiplier - 0.04) * width;
-    case 6: return (multiplier - 0.06) * width;
-    case 7: return (multiplier - 0.08) * width;
-    case 8: return (multiplier - 0.10) * width;
-    case 9: return (multiplier - 0.12) * width;
-    case 10: return (multiplier - 0.14) * width;
-    default: return multiplier * width;
+    case 3: return multiplier * adjustedWidth;
+    case 4: return (multiplier - 0.02) * adjustedWidth;
+    case 5: return (multiplier - 0.04) * adjustedWidth;
+    case 6: return (multiplier - 0.06) * adjustedWidth;
+    case 7: return (multiplier - 0.08) * adjustedWidth;
+    case 8: return(multiplier - 0.10) * adjustedWidth;
+    case 9: return (multiplier - 0.12) * adjustedWidth;
+    case 10: return (multiplier - 0.14) * adjustedWidth;
+    default: return multiplier * adjustedWidth;
   }
+  // switch(length){
+  //   case 3: return multiplier * width;
+  //   case 4: return (multiplier - 0.02) * width;
+  //   case 5: return (multiplier - 0.04) * width;
+  //   case 6: return (multiplier - 0.06) * width;
+  //   case 7: return (multiplier - 0.08) * width;
+  //   case 8: return (multiplier - 0.10) * width;
+  //   case 9: return (multiplier - 0.12) * width;
+  //   case 10: return (multiplier - 0.14) * width;
+  //   default: return multiplier * width;
+  // }
 }
 
 export const convertFont = (inputFontSize) => isTablet || isPC?inputFontSize * height/1200:inputFontSize * width/460;

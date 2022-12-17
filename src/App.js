@@ -114,7 +114,7 @@ class App extends Component {
       megaWords: [],
       currentHintsArray: [],
       animationTimerIDs: [],
-      starColorArray: ['#00ff00','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#00ff00'],
+      starColorArray: ['#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333'],
       currentStarColor: '#FFD700',
       counterPulseColor: colors.bright_green,
       bonusWords: this.props.bonusWords,
@@ -203,7 +203,6 @@ class App extends Component {
       modalCall: this.props.modalCall,
       megaPuzzle: false,
       showMenu: false
-      // xValue: posOrNeg() * getRandomInt(20, 100)
     };
     this.colRefs = [];
     this.lettersetContainer = React.createRef();
@@ -446,18 +445,18 @@ class App extends Component {
         ref: "col" + i + ",row" + j,
       }));
     });
-    // if(this.state.megaPuzzle){
-    //   let straightArrayMega = this.buildStraightArray(this.state.megaWords);
-    //   megaPuzzleArr = this.buildGameArray(straightArrayMega);
-    //   const ravlRefMega = this.makeRavlTileRef(5, 9);
-    //   this.setState({megaRavlRef: ravlRefMega});
-    //   megaPuzzleArr = megaPuzzleArr.map((row, i) => {
-    //     return row.map((letter, j) => ({
-    //       letter,
-    //       ref: "col" + i + ",row" + j,
-    //     }));
-    //   });
-    // }
+    if(this.state.megaPuzzle){
+      let straightArrayMega = this.buildStraightArray(this.state.megaWords);
+      megaPuzzleArr = this.buildGameArray(straightArrayMega);
+      const ravlRefMega = this.makeRavlTileRef(5, 9);
+      this.setState({megaRavlRef: ravlRefMega});
+      megaPuzzleArr = megaPuzzleArr.map((row, i) => {
+        return row.map((letter, j) => ({
+          letter,
+          ref: "col" + i + ",row" + j,
+        }));
+      });
+    }
     for (var i = 0; i < 3; i++) {
       ravlArr.push(dailyRavlArr[i]);
     }
@@ -704,7 +703,7 @@ class App extends Component {
       this.setState({starColorArray: scArray});
     }else{
       try {
-        window.localStorage.setItem(KEY_StarColorString, '#00ff00,#333333,#333333,#333333,#333333,#333333,#333333,#333333,#333333,#333333,#333333,#333333,#333333,#333333,#333333,#333333,#333333,#333333,#333333,#00ff00');
+        window.localStorage.setItem(KEY_StarColorString, '#333333,#333333,#333333,#333333,#333333,#333333,#333333,#333333,#333333,#333333,#333333,#333333,#333333,#333333,#333333,#333333,#333333,#333333,#333333,#333333');
       } catch (error) {
         window.alert('window.localStorage error: ' + error.message);
       }
@@ -935,20 +934,8 @@ class App extends Component {
         }
       }, 200);
       this.playRavlAnimation(true);
-      this.setState({ showPlayRavl: true,
-                      showGame0: false,
-                      showGame1: false,
-                      showGame2: false,
-                      showGame3: false,
-                      showGame4: false,
-                      showGame5: false,
-                      showGame6: false,
-                      showGame7: false,
-                      showGame8: false,
-                      showGame9: false,
-                      showGame10: false,
-                      gameArray0: playRavlStr
-                    });
+      this.hideAllGames();
+      this.setState({ showPlayRavl: true, gameArray0: playRavlStr });
       let intervalID = setInterval(() => {this.playRavlAnimation(true)}, 9000);
       this.setState({playRavlIntervalID: intervalID});
     } else {
@@ -1967,6 +1954,21 @@ class App extends Component {
       });
     }
   }
+  hideAllGames(){
+    this.setState({
+      showGame0: false,
+      showGame1: false,
+      showGame2: false,
+      showGame3: false,
+      showGame4: false,
+      showGame5: false,
+      showGame6: false,
+      showGame7: false,
+      showGame8: false,
+      showGame9: false,
+      showGame10: false
+    });
+  }
   showHeaderCommentAnimation(text) {
     this.setState({ showHeaderComment: true, headerComment: text });
     setTimeout(() => {
@@ -2050,6 +2052,29 @@ class App extends Component {
         case "Help":
           this.setState({showHelpModal: true});
           break;
+        case "Mega RavL":
+          if(this.state.currentGameIndex === -1){
+            this.hideAllGames();
+            this.toggleDrawer();
+            let megaWordsArr = genWordArray(0);
+            console.log("megaWordsArr: " + JSON.stringify(megaWordsArr));
+            let straightArrayMega = this.buildStraightArray(megaWordsArr);
+            megaPuzzleArr = this.buildGameArray(straightArrayMega);
+            const ravlRefMega = this.makeRavlTileRef(5, 9);
+            this.setState({megaPuzzle: true, megaWords: megaWordsArr, megaRavlRef: ravlRefMega, solvedWordsRowOffset: 8});
+            megaPuzzleArr = megaPuzzleArr.map((row, i) => {
+              return row.map((letter, j) => ({
+                letter,
+                ref: "col" + i + ",row" + j,
+              }));
+            });
+            setTimeout(() => {
+              this.transitionToGame(true);
+            }, 200);
+          }else{
+            this.setState({showEndGameModal: true});
+          }
+          break;
         default:
           console.log("No default case...");
 
@@ -2075,18 +2100,6 @@ class App extends Component {
     this.toggleModal(null, false);
     if (this.state.showMenu)this.toggleDrawer();
   }
-//   getDimensions(node) {
-//     if (node && !this.state.height) {
-//       this.setState({
-//           lettersetContainerHeight: node.clientHeight,
-//           lettersetContainerWidth: node.clientWidth
-//       });
-//     }
-// }
-// getStarDimensions(event){
-//   let dims = event.nativeEvent.layout;
-//   this.setState({starsContainerWidth: dims.width, starsContainerHeight: dims.height});
-// }
   updateSettingsValue(changeArray){
     const mode = changeArray[0];
     switch(mode){
@@ -2121,218 +2134,172 @@ class App extends Component {
       default:
         console.log("No default case...");
   }
-}
-// componentDidUpdate(prevProps, prevState){
-//   if(this.props.modalCall !== prevProps.modalCall){
-//     const strArray = this.props.modalCall.split(" ");
-//     switch(strArray[1]){
-//       case "Start":
-//         if(this.state.currentGameIndex > -1) this.setState({showEndGameModal: true});
-//         this.props.navigation.closeDrawer();
-//       break;
-//       case "Settings":
-//         this.setState({modalCall: this.props.modalCall, showSettingsModal: true, showHelpModal: false, showSupportModal: false});
-//       break;
-//       case "Help":
-//         this.setState({modalCall: this.props.modalCall, showHelpModal: true, showSettingsModal: false, showSupportModal: false});
-//       break;
-//       case "Support":
-//         this.setState({modalCall: this.props.modalCall, showSupportModal: true, showSettingsModal: false, showHelpModal: false});
-//       break;
-//       case "Mega":
-//         this.props.navigation.closeDrawer();
-//         let megaWordsArr = genWordArray(0);
-//         console.log("megaWordsArr: " + JSON.stringify(megaWordsArr));
-//         let straightArrayMega = this.buildStraightArray(megaWordsArr);
-//         megaPuzzleArr = this.buildGameArray(straightArrayMega);
-//         const ravlRefMega = this.makeRavlTileRef(5, 9);
-//         this.setState({megaPuzzle: true, megaWords: megaWordsArr, megaRavlRef: ravlRefMega, solvedWordsRowOffset: 8});
-//         megaPuzzleArr = megaPuzzleArr.map((row, i) => {
-//           return row.map((letter, j) => ({
-//             letter,
-//             ref: "col" + i + ",row" + j,
-//           }));
-//         });
-//         setTimeout(() => {
-//           this.transitionToGame(true);
-//         }, 200);
-//       break;
-//     }
-//     console.log("Got a new prop! this.props.modalCall: " + this.props.modalCall);
-//   }
-// }
-renderStars() {
-  let starString1 = "";
-  let starString2 = "";
-  let starString3 = "";
-  let starString4 = "";
-  let starString5 = "";
-  let singleStar = "\u2605";
-  for(let i = 0; i < 100; i++){//this.state.numberOfStars;
-    switch(true){
-      case (i > 79):
-        starString5 += singleStar;
-        break;
-      case (i > 59):
-        starString4 += singleStar;
-        break;
-      case (i > 39):
-        starString3 += singleStar;
-        break;
-      case (i > 19):
-        starString2 += singleStar;
-        break;
-      case (i > -1):
-        starString1 += singleStar;
-        break;
-        default:
-          console.log("No default case...");
-      }
   }
-  // if(this.state.starsContainerHeight > 0){
+  renderStars() {
+    let starString1 = "";
+    let starString2 = "";
+    let starString3 = "";
+    let starString4 = "";
+    let starString5 = "";
+    let singleStar = "\u2605";
+    for(let i = 0; i < this.state.numberOfStars; i++){
+      switch(true){
+        case (i > 79):
+          starString5 += singleStar;
+          break;
+        case (i > 59):
+          starString4 += singleStar;
+          break;
+        case (i > 39):
+          starString3 += singleStar;
+          break;
+        case (i > 19):
+          starString2 += singleStar;
+          break;
+        case (i > -1):
+          starString1 += singleStar;
+          break;
+          default:
+            console.log("No default case...");
+        }
+    }
+      return (
+        <div>
+          <div style={{...styles.star_row, height: convertFont(20), marginTop: 4}}>
+            <div style={{...styles.star, color: this.state.currentStarColor}}>{starString1}</div>
+          </div>
+          <div style={{...styles.star_row, height: convertFont(20)}}>
+            <div style={{...styles.star, color: this.state.currentStarColor}}>{starString2}</div>
+          </div>
+          <div style={{...styles.star_row, height: convertFont(20)}}>
+            <div style={{...styles.star, color: this.state.currentStarColor}}>{starString3}</div>
+          </div>
+          <div style={{...styles.star_row, height: convertFont(20)}}>
+            <div style={{...styles.star, color: this.state.currentStarColor}}>{starString4}</div>
+          </div>
+          <div style={{...styles.star_row, height: convertFont(20)}}>
+            <div style={{...styles.star, color: this.state.currentStarColor}}>{starString5}</div>
+          </div>
+        </div>
+      );
+  }
+  renderStars100() {
+    let singleStar = "\u2605";
     return (
-      <div>
-        <div style={{...styles.star_row, height: convertFont(20), marginTop: 2}}>
-          <div style={{...styles.star, color: this.state.currentStarColor}}>{starString1}</div>
-        </div>
-        <div style={{...styles.star_row, height: convertFont(20)}}>
-          <div style={{...styles.star, color: this.state.currentStarColor}}>{starString2}</div>
-        </div>
-        <div style={{...styles.star_row, height: convertFont(20)}}>
-          <div style={{...styles.star, color: this.state.currentStarColor}}>{starString3}</div>
-        </div>
-        <div style={{...styles.star_row, height: convertFont(20)}}>
-          <div style={{...styles.star, color: this.state.currentStarColor}}>{starString4}</div>
-        </div>
-        <div style={{...styles.star_row, height: convertFont(20)}}>
-          <div style={{...styles.star, color: this.state.currentStarColor}}>{starString5}</div>
-        </div>
+      <div style={styles.star_row}>
+        <div style={{...styles.star100, marginLeft: tablet?scrWidth * 0.01:2, color: this.state.starColorArray[0]}}>{singleStar}</div>
+        <div style={{...styles.star100, color: this.state.starColorArray[1]}}>{singleStar}</div>
+        <div style={{...styles.star100, color: this.state.starColorArray[2]}}>{singleStar}</div>
+        <div style={{...styles.star100, color: this.state.starColorArray[3]}}>{singleStar}</div>
+        <div style={{...styles.star100, color: this.state.starColorArray[4]}}>{singleStar}</div>
+        <div style={{...styles.star100, color: this.state.starColorArray[5]}}>{singleStar}</div>
+        <div style={{...styles.star100, color: this.state.starColorArray[6]}}>{singleStar}</div>
+        <div style={{...styles.star100, color: this.state.starColorArray[7]}}>{singleStar}</div>
+        <div style={{...styles.star100, color: this.state.starColorArray[8]}}>{singleStar}</div>
+        <div style={{...styles.star100, color: this.state.starColorArray[9]}}>{singleStar}</div>
+        <div style={{...styles.star100, color: this.state.starColorArray[10]}}>{singleStar}</div>
+        <div style={{...styles.star100, color: this.state.starColorArray[11]}}>{singleStar}</div>
+        <div style={{...styles.star100, color: this.state.starColorArray[12]}}>{singleStar}</div>
+        <div style={{...styles.star100, color: this.state.starColorArray[13]}}>{singleStar}</div>
+        <div style={{...styles.star100, color: this.state.starColorArray[14]}}>{singleStar}</div>
+        <div style={{...styles.star100, color: this.state.starColorArray[15]}}>{singleStar}</div>
+        <div style={{...styles.star100, color: this.state.starColorArray[16]}}>{singleStar}</div>
+        <div style={{...styles.star100, color: this.state.starColorArray[17]}}>{singleStar}</div>
+        <div style={{...styles.star100, color: this.state.starColorArray[18]}}>{singleStar}</div>
+        <div style={{...styles.star100, color: this.state.starColorArray[19]}}>{singleStar}</div>
       </div>
     );
-  // }
-}
-renderStars100() {
-  let singleStar = "\u2605";
-  return (
-    <div style={styles.star_row}>
-      <div style={{...styles.star100, marginLeft: tablet?scrWidth * 0.01:2, color: this.state.starColorArray[0]}}>{singleStar}</div>
-      <div style={{...styles.star100, color: this.state.starColorArray[1]}}>{singleStar}</div>
-      <div style={{...styles.star100, color: this.state.starColorArray[2]}}>{singleStar}</div>
-      <div style={{...styles.star100, color: this.state.starColorArray[3]}}>{singleStar}</div>
-      <div style={{...styles.star100, color: this.state.starColorArray[4]}}>{singleStar}</div>
-      <div style={{...styles.star100, color: this.state.starColorArray[5]}}>{singleStar}</div>
-      <div style={{...styles.star100, color: this.state.starColorArray[6]}}>{singleStar}</div>
-      <div style={{...styles.star100, color: this.state.starColorArray[7]}}>{singleStar}</div>
-      <div style={{...styles.star100, color: this.state.starColorArray[8]}}>{singleStar}</div>
-      <div style={{...styles.star100, color: this.state.starColorArray[9]}}>{singleStar}</div>
-      <div style={{...styles.star100, color: this.state.starColorArray[10]}}>{singleStar}</div>
-      <div style={{...styles.star100, color: this.state.starColorArray[11]}}>{singleStar}</div>
-      <div style={{...styles.star100, color: this.state.starColorArray[12]}}>{singleStar}</div>
-      <div style={{...styles.star100, color: this.state.starColorArray[13]}}>{singleStar}</div>
-      <div style={{...styles.star100, color: this.state.starColorArray[14]}}>{singleStar}</div>
-      <div style={{...styles.star100, color: this.state.starColorArray[15]}}>{singleStar}</div>
-      <div style={{...styles.star100, color: this.state.starColorArray[16]}}>{singleStar}</div>
-      <div style={{...styles.star100, color: this.state.starColorArray[17]}}>{singleStar}</div>
-      <div style={{...styles.star100, color: this.state.starColorArray[18]}}>{singleStar}</div>
-      <div style={{...styles.star100, color: this.state.starColorArray[19]}}>{singleStar}</div>
-    </div>
-  );
-}
-renderSolvedWords(word, i){
-  return (
-    <div key={i} style={styles.solved_words_slot}>
-      <p style={styles.debug_text}>{word}</p>
-    </div>
-  );
-}
-renderDone(cleared) {
-  const img = cleared? require("./images/thumbs_up.png"):require("./images/thumbs_down.png");
-  const altText = cleared?"Thumbs up!":"Thumbs down";
-  const imageDim = config.isPC? this.state.lettersetContainerWidth/5.5 : this.state.lettersetContainerWidth/4.3;
-  let msg = cleared? this.state.endMessage:this.state.endMessageFail;
-  msg = cleared && this.state.newHighScore && this.state.playedGameOnce ? "Wow \u2014 that's a new\nhigh score!" : msg;
-  return (
-    <AnimatePresence>
-      {this.state.gameDone &&
-      <div>
-        <motion.div style={styles.thumb_view}
-          animate={{ y: -scrHeight * 0.18 }}
-          transition={{ ease: "easeInOut", duration: 1, repeat: Infinity, repeatType: 'reverse', delay: 0.6 }}
-        >
-          <motion.div 
-            initial={{ x: 600 }}
+  }
+  renderSolvedWords(word, i){
+    return (
+      <div key={i} style={styles.solved_words_slot}>
+        <p style={styles.debug_text}>{word}</p>
+      </div>
+    );
+  }
+  renderDone(cleared) {
+    const img = cleared? require("./images/thumbs_up.png"):require("./images/thumbs_down.png");
+    const altText = cleared?"Thumbs up!":"Thumbs down";
+    const imageDim = config.isPC? this.state.lettersetContainerWidth/5.5 : this.state.lettersetContainerWidth/4.3;
+    let msg = cleared? this.state.endMessage:this.state.endMessageFail;
+    msg = cleared && this.state.newHighScore && this.state.playedGameOnce ? "Wow \u2014 that's a new\nhigh score!" : msg;
+    return (
+      <AnimatePresence>
+        {this.state.gameDone &&
+        <div>
+          <motion.div style={styles.thumb_view}
+            animate={{ y: -scrHeight * 0.18 }}
+            transition={{ ease: "easeInOut", duration: 1, repeat: Infinity, repeatType: 'reverse', delay: 0.6 }}
+          >
+            <motion.div 
+              initial={{ x: 600 }}
+              animate={{ x: 0 }}
+              exit={{ x: 400 }}
+              transition={{ type: "spring", stiffness: 100, damping: 18, duration: 0.4 }}
+            >
+              <div >
+                <img src={img} style={{ width: imageDim, height: imageDim }} alt={altText} />  
+              </div>
+            </motion.div>
+          </motion.div>
+          <motion.div style={styles.done_container}
+            initial={{ x: 200 }}
             animate={{ x: 0 }}
             exit={{ x: 400 }}
-            transition={{ type: "spring", stiffness: 100, damping: 18, duration: 0.4 }}
+            transition={{ type: "spring", stiffness: 200, damping: 18, duration: 0.4 }}
+            onAnimationComplete={() => this.setState({nextButtonEnabled: true})}
           >
-            <div >
-              <img src={img} style={{ width: imageDim, height: imageDim }} alt={altText} />  
-            </div>
+            <div style={{...styles.done_text, color: this.state.darkModeEnabled ? colors.off_white:colors.off_black}}>{msg}</div>  
           </motion.div>
-        </motion.div>
-        <motion.div style={styles.done_container}
-          initial={{ x: 200 }}
-          animate={{ x: 0 }}
-          exit={{ x: 400 }}
-          transition={{ type: "spring", stiffness: 200, damping: 18, duration: 0.4 }}
-          onAnimationComplete={() => this.setState({nextButtonEnabled: true})}
-        >
-          <div style={{...styles.done_text, color: this.state.darkModeEnabled ? colors.off_white:colors.off_black}}>{msg}</div>  
-        </motion.div>
-      </div>
-    }
-    </AnimatePresence>
-  );
-}
-renderGameOverButton() {
-  let img1 = null;
-  let img1altText = "Forward";
-  let img2 = require("./images/arrow_back.png");
-  const consideredDaily = this.state.isDailyGame || this.state.megaPuzzle?true:false;
-  switch(this.state.nextBtnText){
-    case "NEXT":
-      img1 = require("./images/arrow_forward.png");
-      break;
-    case "CLOSE":
-      img1 = require("./images/arrow_back.png");
-      break;
-    case "RETRY":
-      img1 = require("./images/retry.png");
-      img1altText = "Retry"
-      break;
-    default:
-      console.log("No default case...");
-  }
-  return (
-    <AnimatePresence>
-      {this.state.nextButtonEnabled &&
-    <motion.div style={styles.game_over_button_view}
-      initial={{ opacity: 0, scale: 0.5 }}
-      animate={{ opacity: 1, scale: 1 }}
-      exit={{ opacity: 0, scale: 0 }}
-      transition={{ type: "spring", stiffness: 250, damping: 18, duration: 0.8 }}
-    >
-      {this.state.nextBtnText === "NEXT" &&
-        <img src={img2} style={styles.game_over_button} onClick={() => this.goToStartScreen()} alt={"Back"} />
+        </div>
       }
-      <img src={img1} style={styles.game_over_button} onClick={() => this.transitionToGame(consideredDaily)} alt={img1altText} />
-    </motion.div>
+      </AnimatePresence>
+    );
+  }
+  renderGameOverButton() {
+    let img1 = null;
+    let img1altText = "Forward";
+    let img2 = require("./images/arrow_back.png");
+    const consideredDaily = this.state.isDailyGame || this.state.megaPuzzle?true:false;
+    switch(this.state.nextBtnText){
+      case "NEXT":
+        img1 = require("./images/arrow_forward.png");
+        break;
+      case "CLOSE":
+        img1 = require("./images/arrow_back.png");
+        break;
+      case "RETRY":
+        img1 = require("./images/retry.png");
+        img1altText = "Retry"
+        break;
+      default:
+        console.log("No default case...");
     }
-    </AnimatePresence>
-  );
-}
-toggleDrawer(){
-  this.setState({showMenu: !this.state.showMenu});
-}
-showModal(which){
-  this.toggleModal(which, true);
+    return (
+      <AnimatePresence>
+        {this.state.nextButtonEnabled &&
+      <motion.div style={styles.game_over_button_view}
+        initial={{ opacity: 0, scale: 0.5 }}
+        animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0, scale: 0 }}
+        transition={{ type: "spring", stiffness: 250, damping: 18, duration: 0.8 }}
+      >
+        {this.state.nextBtnText === "NEXT" &&
+          <img src={img2} style={styles.game_over_button} onClick={() => this.goToStartScreen()} alt={"Back"} />
+        }
+        <img src={img1} style={styles.game_over_button} onClick={() => this.transitionToGame(consideredDaily)} alt={img1altText} />
+      </motion.div>
+      }
+      </AnimatePresence>
+    );
+  }
+  toggleDrawer(){
+    this.setState({showMenu: !this.state.showMenu});
+  }
+  showModal(which){
+    this.toggleModal(which, true);
 
-}
-testAnimation(){
-this.showHeaderCommentAnimation("Progress Saved");
-  // this.setState({headerComment: "Hi there!", showHeaderComment: true});
-}
-
+  }
   renderCol(col, i, anim, idFrag){
     const cRef = "col" + i
     const numC = this.state.gameArray0.length;
@@ -2343,7 +2310,8 @@ this.showHeaderCommentAnimation("Progress Saved");
     const th2 = tablet?650/this.state.initialArrayHeight:isPC?580/this.state.initialArrayHeight:500/this.state.initialArrayHeight;
     const scrDividedWidth = cWidth/(numC + 1);
     const scrDividedHeight = cHeight/(numR + 2);
-    const th = Math.min(th1, th2, scrDividedWidth, scrDividedHeight);//tile height
+    let th = Math.min(th1, th2, scrDividedWidth, scrDividedHeight);//tile height
+    th = (isPC || tablet) && numC > 5?th + numC * 2: th;
     const le = (cWidth - numC * (th + 2))/2;//left edge
     if(this.state.lettersetContainerWidth > 0){
       return (
@@ -2434,11 +2402,10 @@ this.showHeaderCommentAnimation("Progress Saved");
                   {this.renderStars()}
                 </div>
               }
-{/* this.state.showStars this.state.starColorArray[0] !== '#333333' */}
                 <div style={styles.solved_words_inner_container}>
                   <AnimatePresence>
                     {this.state.showSolvedWord &&
-                      <div style={{...styles.animated_solved_word, top: config.isPC?scrHeight/8.6:scrHeight/6.2, left: getAnimatedWordLeft(this.state.solvedWord.length)}}>
+                      <div style={{...styles.animated_solved_word, top: tablet?50:isPC?30:20, left: getAnimatedWordLeft(this.state.solvedWord.length)}}>
                         <div className={'anim-node'} style={{...styles.solved_text, padding: this.state.solvedPadding}}>{this.state.solvedWord}</div>
                       </div>
                     }
@@ -2475,7 +2442,7 @@ this.showHeaderCommentAnimation("Progress Saved");
                 </div>
               </div>
               <div id="gameContainer" style={styles.gameContainer} ref={this.lettersetContainer}>
-              {true && 
+              {this.state.showStars && this.state.starColorArray[0] !== '#333333' && 
                 <div style={{...styles.stars100_container, borderColor: this.state.darkModeEnabled ? colors.gray_4:colors.dark_green}}>
                   {this.renderStars100()}
                 </div>
@@ -2521,7 +2488,7 @@ this.showHeaderCommentAnimation("Progress Saved");
          {/*  */}
 
               {this.state.currentGameIndex === -1 &&
-                <Footer puzzleStreak={'3'} startGame={(daily) => this.transitionToGame(daily)}/>
+                <Footer puzzleStreak={this.state.puzzleStreak} startGame={(daily) => this.transitionToGame(daily)}/>
               }
             <div style={styles.AppRightBox}>
 
