@@ -9,7 +9,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import { motion, AnimatePresence } from "framer-motion";
 import 'animate.css';
 import 'react-toastify/dist/ReactToastify.css';
-import {getAnimatedWordLeft, convertFont} from './config/config';
+import {getAnimatedWordLeft} from './config/config';//convertFont,
 import config from './config/config';
 import colors from './config/colors';
 import animStyles from './styles/anim.module.css';
@@ -167,6 +167,7 @@ class App extends Component {
       playRavlIntervalID: 0,
       lettersetContainerWidth: null,
       lettersetContainerHeight: null,
+      scoreContainerHeight: null,
       starsContainerWidth: 0,
       starsContainerHeight: 0,
       numberOfStars: 0,
@@ -206,6 +207,7 @@ class App extends Component {
     };
     this.colRefs = [];
     this.lettersetContainer = React.createRef();
+    this.scoreContainer = React.createRef();
   }
   openWordsModal = () => {
     console.log("in openWordsModal" );
@@ -241,13 +243,15 @@ class App extends Component {
 };
 
   componentDidMount() {
+    console.log("tablet: " + tablet);
     dateToday = formatDate(new Date(), "MM-dd-yyyy");
     title = puzzTitle(dateToday);
     description = puzzDescription(dateToday);
     dailyPuzzlesArr = puzzles(dateToday);
     this.setState({
       lettersetContainerHeight: this.lettersetContainer.current.getBoundingClientRect().height,
-      lettersetContainerWidth: this.lettersetContainer.current.getBoundingClientRect().width
+      lettersetContainerWidth: this.lettersetContainer.current.getBoundingClientRect().width,
+      scoreContainerHeight: this.scoreContainer.current.getBoundingClientRect().height,
    });
     this.init(
       puzzleWords0,
@@ -2052,6 +2056,9 @@ class App extends Component {
         case "Help":
           this.setState({showHelpModal: true});
           break;
+        case "Support":
+          console.log("Support clicked");
+          break;
         case "Mega RavL":
           if(this.state.currentGameIndex === -1){
             this.hideAllGames();
@@ -2077,7 +2084,6 @@ class App extends Component {
           break;
         default:
           console.log("No default case...");
-
       }
     }else{
       this.setState({
@@ -2142,7 +2148,7 @@ class App extends Component {
     let starString4 = "";
     let starString5 = "";
     let singleStar = "\u2605";
-    for(let i = 0; i < this.state.numberOfStars; i++){
+    for(let i = 0; i < 100; i++){//this.state.numberOfStars
       switch(true){
         case (i > 79):
           starString5 += singleStar;
@@ -2165,19 +2171,19 @@ class App extends Component {
     }
       return (
         <div>
-          <div style={{...styles.star_row, height: convertFont(20), marginTop: 4}}>
+          <div style={{...styles.star_row, height: this.state.scoreContainerHeight/5.5}}>
             <div style={{...styles.star, color: this.state.currentStarColor}}>{starString1}</div>
           </div>
-          <div style={{...styles.star_row, height: convertFont(20)}}>
+          <div style={{...styles.star_row, height: this.state.scoreContainerHeight/5.5}}>
             <div style={{...styles.star, color: this.state.currentStarColor}}>{starString2}</div>
           </div>
-          <div style={{...styles.star_row, height: convertFont(20)}}>
+          <div style={{...styles.star_row, height: this.state.scoreContainerHeight/5.5}}>
             <div style={{...styles.star, color: this.state.currentStarColor}}>{starString3}</div>
           </div>
-          <div style={{...styles.star_row, height: convertFont(20)}}>
+          <div style={{...styles.star_row, height: this.state.scoreContainerHeight/5.5}}>
             <div style={{...styles.star, color: this.state.currentStarColor}}>{starString4}</div>
           </div>
-          <div style={{...styles.star_row, height: convertFont(20)}}>
+          <div style={{...styles.star_row, height: this.state.scoreContainerHeight/5.5}}>
             <div style={{...styles.star, color: this.state.currentStarColor}}>{starString5}</div>
           </div>
         </div>
@@ -2333,7 +2339,6 @@ class App extends Component {
     }
   }
 
-
   render() {
     if (this.state.lettersetContainerHeight === 0) {
       return (
@@ -2341,7 +2346,6 @@ class App extends Component {
           <CircularProgress colors={colors.off_white} />
         </div>
       );
-
     } else {
       let {
         gameArray0,
@@ -2378,7 +2382,7 @@ class App extends Component {
             </div>
 
             <div style={styles.appContainer}>
-              <div id="messageHeader" style={styles.messageOuterContainer}>
+              <div id="messageHeader" style={{...styles.messageOuterContainer, borderColor: global.bgColor}}>
                 <div id="messageHeader" style={styles.messageContainer}>
                   <div id="messageHeader" style={styles.header_text}>{this.state.headerText}</div>
                   <AnimatePresence>
@@ -2396,7 +2400,7 @@ class App extends Component {
                   </AnimatePresence>
                 </div>
               </div>
-              <div style={styles.scoreContainer}>
+              <div style={styles.scoreContainer}  ref={this.scoreContainer}>
               {this.state.showStars &&
                 <div id="starsContainer" style={styles.stars_container}>
                   {this.renderStars()}

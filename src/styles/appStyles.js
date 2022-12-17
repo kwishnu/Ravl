@@ -67,7 +67,6 @@ const appStyles = {
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: colors.gray_4,
-    border: colors.off_black, 
     borderWidth: 3, 
     borderStyle: pc || tablet?"none solid solid solid":"none none solid none",
   },
@@ -91,12 +90,53 @@ const appStyles = {
     backgroundColor: colors.off_black,
     marginStart: 5,
     marginEnd: 5,
-    marginTop: 2,
     border: colors.dark_green,
     borderRadius: 5,
     borderWidth: 2, 
     borderStyle: "none solid solid solid",
     zIndex: 10
+  },
+  stars_container: {
+    display: "flex",
+    flexDirection: 'column',
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
+    padding: 4,
+    alignItems: 'flex-start',
+    justifyContent: 'center',
+    backgroundColor: colors.off_black,
+    zIndex: 101
+  },
+  stars100_container: {
+    display: "flex",
+    flexDirection: 'row',
+    position: 'absolute',
+    top: 2,
+    right: 0,
+    left: 0,
+    height: convertFont(30),
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    backgroundColor: colors.gray_4,
+    borderRadius: config.button_radius,
+    borderWidth: 2,
+    borderStyle: 'solid'
+  },
+  star_row: {
+    display: "flex",
+    flexDirection: 'row',
+  },
+  star: {
+    fontSize: convertFont(24),
+    marginTop: -6,
+    marginRight: pc?0:1
+  },
+  star100: {
+    fontSize: pc || tablet?convertFont(32):convertFont(24),
+    marginTop: pc || tablet?-10:-4
   },
   solved_words_inner_container: {
     display: "flex",
@@ -224,49 +264,6 @@ const appStyles = {
     backgroundColor: colors.button_blue,
     boxShadow: `10px 10px 28px ${colors.off_black}`,
 
-  },
-  stars_container: {
-    display: "flex",
-    flexDirection: 'column',
-    position: 'absolute',
-    top: 0,
-    bottom: 0,
-    left: 0,
-    right: 0,
-    padding: 4,
-    alignItems: 'flex-start',
-    justifyContent: 'center',
-    backgroundColor: colors.gray_4,
-    zIndex: 101
-  },
-  stars100_container: {
-    display: "flex",
-    flexDirection: 'row',
-    position: 'absolute',
-    top: 2,
-    right: 0,
-    left: 0,
-    height: convertFont(30),
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-    backgroundColor: colors.gray_4,
-    borderRadius: config.button_radius,
-    borderWidth: 2,
-    borderStyle: 'solid'
-  },
-  star_row: {
-    display: "flex",
-    flexDirection: 'row',
-    alignSelf:'stretch',
-  },
-  star: {
-    fontSize: convertFont(24),
-    marginTop: -10,
-    marginRight: pc?0:1
-  },
-  star100: {
-    fontSize: pc || tablet?convertFont(32):convertFont(24),
-    marginTop: pc || tablet?-10:-4
   },
    button: {
     height: tablet? scrHeight * 0.06:pc? scrHeight * 0.04:scrWidth * 0.1,

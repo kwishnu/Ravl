@@ -153,9 +153,6 @@ class Settings extends Component {
     this.setState({colorSliderValue: sliderSetting.value});
     document.querySelector('meta[name="theme-color"]').setAttribute('content', colResult);
     global.bgColor = colResult;
-    // this.props.navigation.setOptions({
-    //   headerStyle: {backgroundColor: global.bgColor, height: tablet?scrHeight * 0.07:scrWidth * 0.22}
-    // });
     try {
         window.localStorage.setItem(KEY_BGColorSliderValue, sliderSetting.toString());
     } catch (error) {
@@ -174,12 +171,8 @@ class Settings extends Component {
   }
   handleColorValChangeComplete(sliderSetting){
     const colResult = tinycolor({ h: this.state.colorSliderValue, s: 96, l: sliderSetting.value }).toHexString();
-    console.log("colResult: " + colResult);
-    
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', colResult);
     global.bgColor = colResult;
-    // this.props.navigation.setOptions({
-    //   headerStyle: {backgroundColor: global.bgColor, height: tablet?scrHeight * 0.07:scrWidth * 0.22}
-    // });
     try {
         window.localStorage.setItem(KEY_BGValSliderValue, sliderSetting.toString());
     } catch (error) {
@@ -213,9 +206,7 @@ if(this.state.darkModeEnabled)this.toggleDarkMode();
     global.bgColor = colors.dark_purple;
     this.props.sendValueToGame(["Dark Mode", false]);
     this.props.sendValueToGame(["Animation Style", "Leave"]);
-    // this.props.navigation.setOptions({
-    //   headerStyle: {backgroundColor: global.bgColor, height: tablet?scrHeight * 0.07:scrWidth * 0.22}
-    // });
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', colors.dark_purple);
     try {
         window.localStorage.setItem(KEY_BGColorSliderValue, '276');
     } catch (error) {
