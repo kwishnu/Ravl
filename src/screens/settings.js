@@ -3,6 +3,7 @@ import Switch from "react-switch";
 import { motion, AnimatePresence } from "framer-motion"
 import tinycolor from 'tinycolor2';
 import ReactSimpleRange from "react-simple-range";
+import { nanoid } from 'nanoid';
 import settings_styles from "../styles/settings_styles";
 import colors from '../config/colors';
 import config from '../config/config';
@@ -26,10 +27,15 @@ class Settings extends Component {
       colorSliderValue: 276,
       valSliderValue: 29,
       swatchBG: global.bgColor,
-      blockPremiumFeatures: true
+      blockPremiumFeatures: true,
+      colorSliderKey: "",
+      valueSliderKey: ""
     };
   }
   componentDidMount() {
+    const csk = nanoid();
+    const vsk = nanoid();
+    this.setState({colorSliderKey: csk, valueSliderKey: vsk});
     const modePref = window.localStorage.getItem(KEY_ModePref);
       if (modePref !== null) {
         const modePrefBool = (modePref === 'true')?true:false;
@@ -198,7 +204,12 @@ class Settings extends Component {
       spinAnimationChecked: false,
       noneAnimationChecked: false,
     });
-    if(this.state.darkModeEnabled)this.toggleDarkMode();
+    const csk2 = nanoid();
+    const vsk2 = nanoid();
+    setTimeout(() => {
+	    this.setState({colorSliderKey: csk2, valueSliderKey: vsk2});
+    }, 200);    
+if(this.state.darkModeEnabled)this.toggleDarkMode();
     global.bgColor = colors.dark_purple;
     this.props.sendValueToGame(["Dark Mode", false]);
     this.props.sendValueToGame(["Animation Style", "Leave"]);
@@ -268,7 +279,6 @@ class Settings extends Component {
           style={{...settings_styles.containerView}}
           transition={{ type: "spring", bounce: 0, duration: 0.4 }}
         >
-
           <div style={{...settings_styles.modalView, backgroundColor: darkModeEnabled ? colors.gray_4:colors.off_white}}>
             <div style={settings_styles.modalHeader}>
               <div style={settings_styles.titleContainer}>
@@ -284,81 +294,82 @@ class Settings extends Component {
               </div>
             </div>
             <div style={{...settings_styles.modalBody, backgroundColor: darkModeEnabled ? colors.gray_3:colors.off_white2}}>
-            <div style={settings_styles.sectionHead}>
-                  <div style={{...settings_styles.text, color: this.state.darkModeEnabled ? colors.off_white:colors.off_black}}>Display</div>
+              <div style={settings_styles.sectionHead}>
+                <div style={{...settings_styles.text, color: this.state.darkModeEnabled ? colors.off_white:colors.off_black}}>Display</div>
+              </div>
+              <div style={settings_styles.switchRow}>
+                <div style={settings_styles.switchContainer}>
+                  <Switch
+                    height={20}
+                    width={50}
+                    handleDiameter={28}
+                    onColor={ "#81b0ff" }
+                    offColor={ "#767577" }
+                    onHandleColor={colors.button_blue}
+                    offHandleColor={colors.button_blue}
+                    onChange={() => {this.toggleDarkMode()}}
+                    checked={darkModeSwitchEnabled}
+                    checkedIcon={false}
+                    uncheckedIcon={false}
+                  />
                 </div>
-                <div style={settings_styles.switchRow}>
-                  <div style={settings_styles.switchContainer}>
-                    <Switch
-                      height={20}
-                      width={50}
-                      handleDiameter={28}
-                      onColor={ "#81b0ff" }
-                      offColor={ "#767577" }
-                      onHandleColor={colors.button_blue}
-                      offHandleColor={colors.button_blue}
-                      onChange={() => {this.toggleDarkMode()}}
-                      checked={darkModeSwitchEnabled}
-                      checkedIcon={false}
-                      uncheckedIcon={false}
-                    />
-                  </div>
-                  <div style={settings_styles.switchTextContainer}>
-                    <div style={{...settings_styles.text, color: this.state.darkModeEnabled ? colors.off_white:colors.off_black}}>DARK MODE</div>
-                  </div>
+                <div style={settings_styles.switchTextContainer}>
+                  <div style={{...settings_styles.text, color: this.state.darkModeEnabled ? colors.off_white:colors.off_black}}>DARK MODE</div>
                 </div>
-                <div style={settings_styles.sectionHead}>
-                  <div style={{...settings_styles.text, color: this.state.darkModeEnabled ? colors.off_white:colors.off_black}}>Animation Style</div>
+              </div>
+              <div style={settings_styles.sectionHead}>
+                <div style={{...settings_styles.text, color: this.state.darkModeEnabled ? colors.off_white:colors.off_black}}>Animation Style</div>
+              </div>
+              <div style={settings_styles.radiobuttonRow}>
+                <div style={settings_styles.radioImageContainer}>
+                  <img
+                    onClick={() => this.handleAnimationRadio("Leave")}
+                    style = {settings_styles.radioImage}
+                    src = {leaveCheckImg}
+                    alt = {"Leave Animation"}
+                  />
                 </div>
-                <div style={settings_styles.radiobuttonRow}>
-                  <div style={settings_styles.radioImageContainer}>
-                    <img
-                      onClick={() => this.handleAnimationRadio("Leave")}
-                      style = {settings_styles.radioImage}
-                      src = {leaveCheckImg}
-                      alt = {"Leave Animation"}
-                    />
-                  </div>
-                  <div style={settings_styles.switchTextContainer}>
-                    <div style={{...settings_styles.text, color: this.state.darkModeEnabled ? colors.off_white:colors.off_black}}>LEAVE</div>
-                    <div style={{...settings_styles.text_small, color: this.state.darkModeEnabled ? colors.off_white:colors.off_black}}>  {`\u2022  Zooms away`}</div>
-                  </div>
+                <div style={settings_styles.switchTextContainer}>
+                  <div style={{...settings_styles.text, color: this.state.darkModeEnabled ? colors.off_white:colors.off_black}}>LEAVE</div>
+                  <div style={{...settings_styles.text_small, color: this.state.darkModeEnabled ? colors.off_white:colors.off_black}}>  {`\u2022  Zooms away`}</div>
                 </div>
-                <div style={settings_styles.radiobuttonRow}>
-                  <div style={settings_styles.radioImageContainer}>
-                    <img 
-                      onClick={() => this.handleAnimationRadio("Spin")}
-                      style = {settings_styles.radioImage}
-                      src = {spinCheckImg}
-                      alt = {"Spin Animation"}
-                    />
-                  </div>
-                  <div style={settings_styles.switchTextContainer}>
-                    <div style={{...settings_styles.text, color: this.state.darkModeEnabled ? colors.off_white:colors.off_black}}>SPIN</div>
-                    <div style={{...settings_styles.text_small, color: this.state.darkModeEnabled ? colors.off_white:colors.off_black}}>  {`\u2022  Flips and fades`}</div>
-                  </div>
+              </div>
+              <div style={settings_styles.radiobuttonRow}>
+                <div style={settings_styles.radioImageContainer}>
+                  <img 
+                    onClick={() => this.handleAnimationRadio("Spin")}
+                    style = {settings_styles.radioImage}
+                    src = {spinCheckImg}
+                    alt = {"Spin Animation"}
+                  />
                 </div>
-                <div style={settings_styles.radiobuttonRow}>
-                  <div style={settings_styles.radioImageContainer}>
-                    <img 
-                      onClick={() => this.handleAnimationRadio("None")}
-                      style = {settings_styles.radioImage}
-                      src = {noneCheckImg}
-                      alt = {"No Animation"}
-                    />
-                  </div>
-                  <div style={settings_styles.switchTextContainer}>
-                    <div style={{...settings_styles.text, color: this.state.darkModeEnabled ? colors.off_white:colors.off_black}}>FADE</div>
-                    <div style={{...settings_styles.text_small, color: this.state.darkModeEnabled ? colors.off_white:colors.off_black}}>  {`\u2022  No-nonsense fade`}</div>
-                  </div>
+                <div style={settings_styles.switchTextContainer}>
+                  <div style={{...settings_styles.text, color: this.state.darkModeEnabled ? colors.off_white:colors.off_black}}>SPIN</div>
+                  <div style={{...settings_styles.text_small, color: this.state.darkModeEnabled ? colors.off_white:colors.off_black}}>  {`\u2022  Flips and fades`}</div>
                 </div>
-                <div style={settings_styles.sectionHead}>
-                  <div style={{...settings_styles.text, color: this.state.darkModeEnabled ? colors.off_white:colors.off_black}}>Background Color:</div>
+              </div>
+              <div style={settings_styles.radiobuttonRow}>
+                <div style={settings_styles.radioImageContainer}>
+                  <img 
+                    onClick={() => this.handleAnimationRadio("None")}
+                    style = {settings_styles.radioImage}
+                    src = {noneCheckImg}
+                    alt = {"No Animation"}
+                  />
                 </div>
+                <div style={settings_styles.switchTextContainer}>
+                  <div style={{...settings_styles.text, color: this.state.darkModeEnabled ? colors.off_white:colors.off_black}}>FADE</div>
+                  <div style={{...settings_styles.text_small, color: this.state.darkModeEnabled ? colors.off_white:colors.off_black}}>  {`\u2022  No-nonsense fade`}</div>
+                </div>
+              </div>
+              <div style={settings_styles.sectionHead}>
+                <div style={{...settings_styles.text, color: this.state.darkModeEnabled ? colors.off_white:colors.off_black}}>Background Color:</div>
+              </div>
                 <div style={settings_styles.sliderContainer}>
                   <div style={settings_styles.slider1View}>
                     <img style={settings_styles.colorPickerImage} src={hueSliderImage} alt = {"Hue Selection"}/>
                     <ReactSimpleRange
+                      key={this.state.colorSliderKey}
                       onChangeComplete={(value) => this.handleColorChangeComplete(value)}
                       onChange={(value) => this.handleColorChange(value)}
                       defaultValue={this.state.colorSliderValue}
@@ -382,6 +393,7 @@ class Settings extends Component {
                   <div style={settings_styles.slider2View}>
                     <img style={settings_styles.valuePickerImage} src={valueSliderImage} alt = {"Value Selection"}/>
                     <ReactSimpleRange
+                      key={this.state.valueSliderKey}
                       onChangeComplete={(value) => this.handleColorValChangeComplete(value)}
                       onChange={(value) => this.handleColorValChange(value)}
                       defaultValue={this.state.valSliderValue}
@@ -402,8 +414,10 @@ class Settings extends Component {
                       }                    
                     />
                   </div>
-                  <div style={{...settings_styles.swatch, backgroundColor: this.state.swatchBG}}>
                 </div>
+                  <div style={settings_styles.swatchContainer}>
+                    <div style={{...settings_styles.swatch, backgroundColor: this.state.swatchBG}}>
+                  </div>
                 </div>
                 <div style={settings_styles.spacer}>
                 </div>

@@ -30,7 +30,7 @@ modalView: {
   padding: 10,
   alignItems: "center",
   boxShadow: `10px 20px 30px ${colors.off_black}`,
-  zIndex: 100
+  zIndex: 100,
 },
 modalHeader: {
   display: 'flex',
@@ -70,8 +70,8 @@ sectionHead: {
   flexDirection: 'row',
   justifyContent: "flex-start",
   alignItems: "flex-start",
-  marginTop: 14,
-  marginBottom: 8
+  marginTop: 10,
+  marginBottom: 6
 },
 close_image: {
   height: 35,
@@ -106,7 +106,7 @@ radiobuttonRow: {
   flexDirection: 'row',
   justifyContent: "center",
   alignItems: "center",
-  height: config.isPC? line * 3.2:line * 2,
+  height: config.isPC? line * 3.2:line * 1.5,
 },
 radioImageContainer: {
   display: 'flex',
@@ -127,48 +127,54 @@ sliderContainer: {
   justifyContent: "center",
   alignItems: "center",
   alignSelf: "stretch",
-  height: line * 7,
+  height: config.isPC?line * 9:line * 4,
 },
 slider1View: {
   position: "absolute",
   top: 0,
-  left: config.isPC?0:scrWidth * 0.07,
-  width: config.isPC?329:scrWidth * 0.66,
-  height: "auto",
+  left: 0,
+  width: config.isPC?scrHeight * 0.36 - 30:scrWidth * 0.85 -30,
+  height: config.isPC?line * 3:line * 2,
 },
 colorPickerImage: {
   position: "absolute",
   top: 12,
   left: 0,
-  width: config.isPC?329:scrWidth * 0.66
+  width: config.isPC?scrHeight * 0.36 - 30:scrWidth * 0.85 -30,
+  // height: "auto"
 },
 slider2View: {
   position: "absolute",
   top: config.isPC?line * 3.5:line * 2,
-  left: config.isPC?0:scrWidth * 0.07,
-  width: config.isPC?329:scrWidth * 0.66,
-  height: "auto",
+  left: 0,
+  width: config.isPC?scrHeight * 0.36 - 30:scrWidth * 0.85 -30,
+  height: line * 2,
 },
 valuePickerImage: {
   position: "absolute",
   top: 12,
   left: 0,
-  width: config.isPC?329:scrWidth * 0.66
+  width: config.isPC?scrHeight * 0.36 - 30:scrWidth * 0.85 -30,
+},
+swatchContainer: {
+  display: 'flex',
+  justifyContent: "center",
+  alignItems: "center",
+  alignSelf: "stretch",
+  marginTop: line,
+  height: config.isPC?line * 6:line * 4,
 },
 swatch: {
-  position: "absolute",
-  top: config.isPC?0:100,
-  right: config.isPC?0:(scrWidth * 0.85 - line * 3.6 - 24)/2,
-  width: config.isPC?line * 6:line * 3.6,
-  height: config.isPC?line * 6:line * 3.6,
+  width: config.isPC?line * 6:line * 4,
+  height: config.isPC?line * 6:line * 4,
   borderRadius: 5,
   borderColor: colors.black, 
   borderWidth: 1, 
   borderStyle: 'solid'
 },
-spacer: {
-  height: config.isPC?line * 3:line * 2,
-},
+// spacer: {
+//   height: config.isPC?line * 3:line * 2,
+// },
 defaultsButtonContainer: {
   display: 'flex',
   flexDirection: 'row',

@@ -27,7 +27,7 @@ const menu_item_styles = {
     display: "flex",
     flexDirection: "row",
     height: 'auto',//tablet?scrHeight * 0.08:config.isPC?230:scrWidth * 0.15,
-    width: scrHeight * 0.2,
+    width: scrHeight * 0.26,
     justifyContent: "center",
     alignItems: "flex-start",
     marginBottom: 2,
