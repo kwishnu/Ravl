@@ -242,7 +242,6 @@ class App extends Component {
 };
 
   componentDidMount() {
-    console.log("tablet: " + tablet);
     dateToday = formatDate(new Date(), "MM-dd-yyyy");
     title = puzzTitle(dateToday);
     description = puzzDescription(dateToday);
@@ -2298,7 +2297,6 @@ class App extends Component {
     this.setState({showMenu: !this.state.showMenu});
   }
   showModal(which, open){
-    console.log("should be closing...");
     this.setState({
       showSettingsModal: false,
       showHelpModal: false,

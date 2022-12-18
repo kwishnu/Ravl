@@ -154,7 +154,7 @@ class Settings extends Component {
     document.querySelector('meta[name="theme-color"]').setAttribute('content', colResult);
     global.bgColor = colResult;
     try {
-        window.localStorage.setItem(KEY_BGColorSliderValue, sliderSetting.toString());
+        window.localStorage.setItem(KEY_BGColorSliderValue, sliderSetting.value.toString());
     } catch (error) {
         window.alert('window.localStorage error: ' + error.message);
     }
@@ -174,7 +174,7 @@ class Settings extends Component {
     document.querySelector('meta[name="theme-color"]').setAttribute('content', colResult);
     global.bgColor = colResult;
     try {
-        window.localStorage.setItem(KEY_BGValSliderValue, sliderSetting.toString());
+        window.localStorage.setItem(KEY_BGValSliderValue, sliderSetting.value.toString());
     } catch (error) {
         window.alert('window.localStorage error: ' + error.message);
     }
@@ -364,7 +364,6 @@ if(this.state.darkModeEnabled)this.toggleDarkMode();
                       onChangeComplete={(value) => this.handleColorChangeComplete(value)}
                       onChange={(value) => this.handleColorChange(value)}
                       defaultValue={this.state.colorSliderValue}
-                      value={this.state.colorSliderValue}
                       max={359}
                       min={1}
                       trackColor={darkModeEnabled ? colors.gray_3:colors.off_white2}
@@ -388,7 +387,6 @@ if(this.state.darkModeEnabled)this.toggleDarkMode();
                       onChangeComplete={(value) => this.handleColorValChangeComplete(value)}
                       onChange={(value) => this.handleColorValChange(value)}
                       defaultValue={this.state.valSliderValue}
-                      value={this.state.valSliderValue}
                       max={67}
                       min={0}
                       trackColor={darkModeEnabled ? colors.gray_3:colors.off_white2}
