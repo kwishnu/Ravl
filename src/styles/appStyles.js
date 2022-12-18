@@ -131,12 +131,12 @@ const appStyles = {
   },
   star: {
     fontSize: convertFont(24),
-    marginTop: -6,
+    marginTop: -8,
     marginRight: pc?0:1
   },
   star100: {
     fontSize: pc || tablet?convertFont(32):convertFont(24),
-    marginTop: pc || tablet?-10:-4
+    marginTop: pc || tablet?-6:-4
   },
   solved_words_inner_container: {
     display: "flex",

@@ -7,7 +7,7 @@ const scrHeight = config.scrHeight;
 
 function MenuHeader(props) {
   return(
-    <div style={menu_header_styles.container} onClick={() => props.closeMenu()}>
+    <div style={{...menu_header_styles.container, borderColor: props.bgC}} onClick={() => props.closeMenu()}>
       <div style={menu_header_styles.label_div}>
         <div style={menu_header_styles.menu_label}>
           {props.text}
@@ -31,7 +31,6 @@ const menu_header_styles = {
     alignItems: "flex-start",
     marginBottom: 4,
     backgroundColor: colors.off_black,
-    borderColor: colors.ravl_purple,
     borderWidth: 2,
     borderBottomLeftRadius: 22,
     borderBottomRightRadius: 6,

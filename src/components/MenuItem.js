@@ -8,7 +8,7 @@ const tablet = scrHeight/scrWidth > 1.77?false:true;
 
 function MenuItem(props) {
   return(
-    <div style={menu_item_styles.container} onClick={() => props.showModal(props.text)}>
+    <div style={{...menu_item_styles.container, backgroundColor: props.bgC}} onClick={() => props.showModal(props.text)}>
       <div style={menu_item_styles.image_div}>
         <img src={props.imageUrl} alt={props.altText} style={menu_item_styles.image_style} />
       </div>
@@ -35,7 +35,6 @@ const menu_item_styles = {
     borderWidth: 2,
     borderStyle: 'solid',
     borderRadius: 6,
-    backgroundColor: colors.ravl_purple,
   },
   image_div: {
     display: "flex",

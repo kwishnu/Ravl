@@ -19,8 +19,8 @@ function Header(props) {
         </div>
       </div>
       <div style={headerStyles.right_div}>
-        <img src={SupportImage} alt={"Support"} style={headerStyles.supportImageStyle} onClick={() => props.showModal("Support")} />          
-        <img src={HelpImage} alt={"Help"} style={headerStyles.helpImageStyle} onClick={() => props.showModal("Help")} />          
+        <img src={SupportImage} alt={"Support"} style={headerStyles.supportImageStyle} onClick={() => props.showModal("Support", true)} />          
+        <img src={HelpImage} alt={"Help"} style={headerStyles.helpImageStyle} onClick={() => props.showModal("Help", true)} />          
       </div>
     </div>
   )

@@ -16,11 +16,11 @@ function Footer(props) {
         <div style={footer_styles.start_buttons_row}>
           <div style={footer_styles.footer_spacer}>
           </div>
-          <motion.button style={footer_styles.start_button} whileTap={{ scale: 0.97 }} onClick={() => props.startGame(true)}>
-            <div style={footer_styles.button_text_white}>PLAY DAILY</div>
+          <motion.button style={footer_styles.start_button} whileTap={{ scale: 0.97 }} onClick={props.gameIndex === -1?() => props.startGame(true):() => props.showWords()}>
+            <div style={footer_styles.button_text_white}>{props.gameIndex === -1?"PLAY DAILY":"WORDS"}</div>
           </motion.button>
-          <motion.button style={footer_styles.start_button} whileTap={{ scale: 0.97 }} onClick={() => props.startGame(false)}>
-          <div style={footer_styles.button_text_white}>PLAY</div>
+          <motion.button style={footer_styles.start_button} whileTap={{ scale: 0.97 }} onClick={props.gameIndex === -1?() => props.startGame(false):() => props.callForHint()}>
+          <div style={footer_styles.button_text_white}>{props.gameIndex === -1?"PLAY":"HINT"}</div>
           </motion.button>
           <div style={footer_styles.footer_spacer}>
           </div>

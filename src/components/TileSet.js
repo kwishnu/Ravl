@@ -192,6 +192,7 @@ const styles = {
     marginLeft: 1,
     // marginRight: 1,
     marginBottom: 2,
+    zIndex: 150
   }
 }
 

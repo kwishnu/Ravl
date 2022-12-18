@@ -28,7 +28,7 @@ class Menu extends Component {
   }
       
   render() {
-    const { showMenu } = this.props;
+    const { showMenu, themeColor } = this.props;
     return (
       <AnimatePresence>
         {showMenu && 
@@ -40,13 +40,13 @@ class Menu extends Component {
             transition={{ type: "spring", bounce: 0, duration: 0.4 }}
           >
             <div style={{...menu_styles.text, fontSize: 16, color: 'black'}}>
-              <MenuHeader text={"RavL"} imageUrl={closeImage} altText={"RavL - Close Menu"} closeMenu={() => this.closeMenu()}/>
-              <MenuItem text={"RavL Start"} imageUrl={gameImage} altText={"RavL Start"} showModal={(which) => this.showModal(which, true)}/>
-              <div style={menu_styles.divider}></div>
-              <MenuItem text={"Settings"} imageUrl={settingsImage} altText={"Settings"} showModal={(which) => this.showModal(which, true)}/>
-              <MenuItem text={"Help"} imageUrl={helpImage} altText={"Help"} showModal={(which) => this.showModal(which, true)}/>
-              <MenuItem text={"Support"} imageUrl={supportImage} altText={"Support"} showModal={(which) => this.showModal(which, true)}/>
-              <MenuItem text={"Mega RavL"} imageUrl={gameImage} altText={"Mega RavL"} showModal={(which) => this.showModal(which, true)}/>
+              <MenuHeader text={"RavL"} imageUrl={closeImage} altText={"RavL - Close Menu"} closeMenu={() => this.closeMenu()} bgC={themeColor}/>
+              <MenuItem text={"RavL Start"} imageUrl={gameImage} altText={"RavL Start"} showModal={(which) => this.showModal(which, true)} bgC={themeColor}/>
+              <div style={{...menu_styles.divider, borderColor: themeColor}}></div>
+              <MenuItem text={"Settings"} imageUrl={settingsImage} altText={"Settings"} showModal={(which) => this.showModal(which, true)} bgC={themeColor}/>
+              <MenuItem text={"Help"} imageUrl={helpImage} altText={"Help"} showModal={(which) => this.showModal(which, true)} bgC={themeColor}/>
+              <MenuItem text={"Support"} imageUrl={supportImage} altText={"Support"} showModal={(which) => this.showModal(which, true)} bgC={themeColor}/>
+              <MenuItem text={"Mega RavL"} imageUrl={gameImage} altText={"Mega RavL"} showModal={(which) => this.showModal(which, true)} bgC={themeColor}/>
             </div>
             </motion.div>
         }
@@ -81,7 +81,6 @@ const menu_styles = {
     marginTop: 6,
     marginBottom: 6,
     backgroundColor: colors.off_black,
-    borderColor: colors.ravl_purple,
     borderWidth: 1,
     borderStyle: 'solid',
 

@@ -136,6 +136,8 @@ class App extends Component {
       showGame10: false,
       showedTutScreen1: false,
       showedTutScreen2: true,
+      showTutScreen1: true,
+      showTutScreen2: false,
       gameStarted: false,
       gameDone: false,
       clearedLevel: true,
@@ -168,8 +170,6 @@ class App extends Component {
       lettersetContainerWidth: null,
       lettersetContainerHeight: null,
       scoreContainerHeight: null,
-      starsContainerWidth: 0,
-      starsContainerHeight: 0,
       numberOfStars: 0,
       bwOffset: 0,
       swOffset: 0,
@@ -184,7 +184,6 @@ class App extends Component {
       dailyGameDescription: "",
       nextBtnText: "NEXT",
       solvedModalMessage: "",
-      // bonusModalMessage: "",
       puzzleStreak: "0,01-01-2001",
       dailyStreak: "0,01-01-2001",
       lastPuzzleDay: "01-01-2001",
@@ -615,7 +614,7 @@ class App extends Component {
     const showed = window.localStorage.getItem(KEY_ShowedTutorial);      
     if (showed !== null) {
       const showedBool = (showed === 'true')?true:false;
-      this.setState({ showedTutScreen1: showedBool});
+      this.setState({ showedTutScreen1: showedBool, showTutScreen1: !showedBool});
     }else{
       try {
         window.localStorage.setItem(KEY_ShowedTutorial, 'false');
@@ -1993,47 +1992,43 @@ class App extends Component {
   }
   displayTutScreen1(){
     return (
-      <div style={tut_styles.tut_screen}>
         <div style={tut_styles.tut_dialog1}>
           <div style={{...tut_styles.tut_text, marginBottom: 20}}>Move the columns of letters up and down to form words going across...</div>
-          <button style={[tut_styles.button, { marginLeft: 60 }]} onClick={() => this.closeTutScreen1()} >
+          <button style={tut_styles.button} onClick={() => this.closeTutScreen1()} >
             <div style={tut_styles.button_text}>OK</div>
           </button>
-        </div>
           <img
-            source={require("./images/red_arrow.png")}
+            src={require("./images/red_arrow.png")}
             style={tut_styles.arrow_image}
             alt={"Red arrow"}
           />
-      </div>
+        </div>
     )
   }
   closeTutScreen1(){
-    this.setState({showedTutScreen1: true, showedTutScreen2: false});
+    this.setState({showTutScreen1: false, showTutScreen2: true, showedTutScreen1: true, showedTutScreen2: false});
 
   }
   displayTutScreen2(){
     const tutText = "...but make sure the red RavL tile doesn't form a word until your last move!"
     return (
-      <div style={tut_styles.tut_screen}>
         <div style={tut_styles.tut_dialog2}>
           <div style={tut_styles.tut_text}>{tutText}</div>
-          <button style={[tut_styles.button, { marginLeft: 120 }]} onClick={() => this.closeTutScreen2()} >
+          <button style={tut_styles.button} onClick={() => this.closeTutScreen2()} >
             <div style={tut_styles.button_text}>OK</div>
           </button>
-        </div>
           <img
-            source={require("./images/exclamation_ravl_tile.png")}
-            style={{ width: scrWidth/6, height: scrWidth/6, position: 'absolute', top: scrHeight * 0.6, left: scrWidth * 0.15}}
+            src={require("./images/exclamation_ravl_tile.png")}
+            style={tut_styles.tile_image}
             className={animStyles.Tileimg}
             iterationCount={"infinite"}
             alt={"Oscillating exclamation point animation"}
           />
-      </div>
+        </div>
     )
   }
   closeTutScreen2(){
-    this.setState({showedTutScreen2: true});
+    this.setState({showTutScreen2: false, showedTutScreen2: true});
     try {
         window.localStorage.setItem(KEY_ShowedTutorial, 'true');
     } catch (error) {
@@ -2148,7 +2143,7 @@ class App extends Component {
     let starString4 = "";
     let starString5 = "";
     let singleStar = "\u2605";
-    for(let i = 0; i < 100; i++){//this.state.numberOfStars
+    for(let i = 0; i < this.state.numberOfStars; i++){
       switch(true){
         case (i > 79):
           starString5 += singleStar;
@@ -2302,8 +2297,21 @@ class App extends Component {
   toggleDrawer(){
     this.setState({showMenu: !this.state.showMenu});
   }
-  showModal(which){
-    this.toggleModal(which, true);
+  showModal(which, open){
+    console.log("should be closing...");
+    this.setState({
+      showSettingsModal: false,
+      showHelpModal: false,
+      // showSupportModal: false,
+      showWordsModal: false,
+      showEndGameModal: false,
+      // showThankYouModal: false,
+      showHintNagModal: false,
+      showTutScreen1: false,
+      showTutScreen2: false,
+    });
+
+    this.toggleModal(which, open);
 
   }
   renderCol(col, i, anim, idFrag){
@@ -2317,7 +2325,7 @@ class App extends Component {
     const scrDividedWidth = cWidth/(numC + 1);
     const scrDividedHeight = cHeight/(numR + 2);
     let th = Math.min(th1, th2, scrDividedWidth, scrDividedHeight);//tile height
-    th = (isPC || tablet) && numC > 5?th + numC * 2: th;
+    th = (isPC || tablet) && numC > 5?th + numC * 2:config.isPhone && (numC > 5 && numC < 10)? th + numC: th;
     const le = (cWidth - numC * (th + 2))/2;//left edge
     if(this.state.lettersetContainerWidth > 0){
       return (
@@ -2370,11 +2378,11 @@ class App extends Component {
 
       return (
         <div>
-            <Menu showMenu={this.state.showMenu} closeMenu={() => this.toggleDrawer()} showModal={(which, open) => {this.toggleModal(which, open)}}/>
+            <Menu showMenu={this.state.showMenu} closeMenu={() => this.toggleDrawer()} showModal={(which, open) => {this.showModal(which, open)}} themeColor={global.bgColor}/>
           <div style={{...styles.container, backgroundColor: darkModeEnabled ? colors.gray_4:colors.off_white}} onClick={this.state.showMenu?() => this.toggleDrawer():null}>
             <Header 
               clickMenu={(which) => this.toggleDrawer(which)} 
-              showModal={(which) => this.showModal(which)}
+              showModal={(which, open) => this.showModal(which, open)}
             />
             
             <div style={styles.AppLeftBox}>
@@ -2446,63 +2454,66 @@ class App extends Component {
                 </div>
               </div>
               <div id="gameContainer" style={styles.gameContainer} ref={this.lettersetContainer}>
-              {this.state.showStars && this.state.starColorArray[0] !== '#333333' && 
-                <div style={{...styles.stars100_container, borderColor: this.state.darkModeEnabled ? colors.gray_4:colors.dark_green}}>
-                  {this.renderStars100()}
+                {this.state.showTutScreen1 && !this.state.showedTutScreen1 && this.state.currentGameIndex !== -1 && this.displayTutScreen1()}
+                {this.state.showTutScreen2 && !this.state.showedTutScreen2 && this.state.currentGameIndex !== -1 && this.displayTutScreen2()}
+                {this.state.showStars && this.state.starColorArray[0] !== '#333333' && 
+                  <div style={{...styles.stars100_container, borderColor: this.state.darkModeEnabled ? colors.gray_4:colors.dark_green}}>
+                    {this.renderStars100()}
+                  </div>
+                }
+                {this.state.showPlayRavl &&
+                  playRavlStr.map((column, index) => this.renderCol(column, index, false, keyIDFragment))}
+                {this.state.showGame0 &&
+                  gameArray0.map((column, index) => this.renderCol(column, index, true, keyIDFragment))}
+                {this.state.showGame1 &&
+                  gameArray1.map((column, index) => this.renderCol(column, index, true, keyIDFragment))}
+                {this.state.showGame2 &&
+                  gameArray2.map((column, index) => this.renderCol(column, index, true, keyIDFragment))}
+                {this.state.showGame3 &&
+                  gameArray3.map((column, index) => this.renderCol(column, index, true, keyIDFragment))}
+                {this.state.showGame4 &&
+                  gameArray4.map((column, index) => this.renderCol(column, index, true, keyIDFragment))}
+                {this.state.showGame5 &&
+                  gameArray5.map((column, index) => this.renderCol(column, index, true, keyIDFragment))}
+                {this.state.showGame6 &&
+                  gameArray6.map((column, index) => this.renderCol(column, index, true, keyIDFragment))}
+                {this.state.showGame7 &&
+                  gameArray7.map((column, index) => this.renderCol(column, index, true, keyIDFragment))}
+                {this.state.showGame8 && !this.state.megaPuzzle &&
+                  gameArray8.map((column, index) => this.renderCol(column, index, true, keyIDFragment))}
+                {this.state.showGame8 && this.state.megaPuzzle &&
+                  megaPuzzleArr.map((column, index) => this.renderCol(column, index, true, keyIDFragment))}
+                {this.state.showGame9 &&
+                  gameArray9.map((column, index) => this.renderCol(column, index, true, keyIDFragment))}
+                {this.state.showGame10 &&
+                  gameArray10.map((column, index) => this.renderCol(column, index, true, keyIDFragment))}
+                {this.state.gameDone && this.renderDone(this.state.clearedLevel)}
+                {this.state.lockScreenInput && this.displayLockScreen()}
+              </div>
+              {/* (Following footer container no longer functional, see <Footer /> below) */}
+                <div  id="footerContainer" style={{...styles.footerContainer, backgroundColor: global.bgColor}}>
+                  <motion.button style={styles.button}  whileTap={{ scale: 0.97 }} onClick={() => this.openWordsModal()} >
+                  <div style={styles.button_text}>WORDS</div>
+                  </motion.button>
+                  <motion.button style={styles.button} whileTap={{ scale: 0.97 }} onClick={() => this.giveHint()} >
+                  <div style={styles.button_text}>HINT</div>
+                  </motion.button>
                 </div>
-              }
-              {this.state.showPlayRavl &&
-                playRavlStr.map((column, index) => this.renderCol(column, index, false, keyIDFragment))}
-              {this.state.showGame0 &&
-                gameArray0.map((column, index) => this.renderCol(column, index, true, keyIDFragment))}
-              {this.state.showGame1 &&
-                gameArray1.map((column, index) => this.renderCol(column, index, true, keyIDFragment))}
-              {this.state.showGame2 &&
-                gameArray2.map((column, index) => this.renderCol(column, index, true, keyIDFragment))}
-              {this.state.showGame3 &&
-                gameArray3.map((column, index) => this.renderCol(column, index, true, keyIDFragment))}
-              {this.state.showGame4 &&
-                gameArray4.map((column, index) => this.renderCol(column, index, true, keyIDFragment))}
-              {this.state.showGame5 &&
-                gameArray5.map((column, index) => this.renderCol(column, index, true, keyIDFragment))}
-              {this.state.showGame6 &&
-                gameArray6.map((column, index) => this.renderCol(column, index, true, keyIDFragment))}
-              {this.state.showGame7 &&
-                gameArray7.map((column, index) => this.renderCol(column, index, true, keyIDFragment))}
-              {this.state.showGame8 && !this.state.megaPuzzle &&
-                gameArray8.map((column, index) => this.renderCol(column, index, true, keyIDFragment))}
-              {this.state.showGame8 && this.state.megaPuzzle &&
-                megaPuzzleArr.map((column, index) => this.renderCol(column, index, true, keyIDFragment))}
-              {this.state.showGame9 &&
-                gameArray9.map((column, index) => this.renderCol(column, index, true, keyIDFragment))}
-              {this.state.showGame10 &&
-                gameArray10.map((column, index) => this.renderCol(column, index, true, keyIDFragment))}
-              {this.state.gameDone && this.renderDone(this.state.clearedLevel)}
-              {this.state.lockScreenInput && this.displayLockScreen()}
-              </div>
-              <div  id="footerContainer" style={{...styles.footerContainer, backgroundColor: global.bgColor}}>
-                <motion.button style={styles.button}  whileTap={{ scale: 0.97 }} onClick={() => this.openWordsModal()} >
-                <div style={styles.button_text}>WORDS</div>
-                </motion.button>
-                <motion.button style={styles.button} whileTap={{ scale: 0.97 }} onClick={() => this.giveHint()} >
-                <div style={styles.button_text}>HINT</div>
-                </motion.button>
-              </div>
             </div>
-         {/*  */}
-
-              {this.state.currentGameIndex === -1 &&
-                <Footer puzzleStreak={this.state.puzzleStreak} startGame={(daily) => this.transitionToGame(daily)}/>
-              }
+            <Footer 
+              puzzleStreak={this.state.puzzleStreak} 
+              gameIndex={this.state.currentGameIndex} 
+              startGame={(daily) => this.transitionToGame(daily)} 
+              showWords={() => this.openWordsModal()} 
+              callForHint={() => this.giveHint()}
+            />
             <div style={styles.AppRightBox}>
 
             </div>
           </div>
           <div>
             {this.state.nextButtonEnabled && this.renderGameOverButton()}
-            {/* {!this.state.gameStarted && this.renderFooterStartButtons()}
-            {!this.state.showedTutScreen1 && this.state.currentGameIndex != -1 && this.displayTutScreen1()}
-            {!this.state.showedTutScreen2 && this.state.currentGameIndex != -1 && this.displayTutScreen2()} */}
+
             <ToastContainer
               position="bottom-center"
               autoClose={2400}

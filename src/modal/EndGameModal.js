@@ -5,7 +5,8 @@ import {convertFont} from '../config/config';
 import colors from '../config/colors';
 const scrWidth = config.scrWidth;
 const scrHeight = config.scrHeight;
-const line = config.LINE_HEIGHT;
+const pc = config.isPC;
+const tablet = config.isTablet;
 
 class EndGameModal extends Component {
   constructor(props) {
@@ -97,12 +98,9 @@ const eg_modal_styles = {
   button: {
     display: 'flex',
     justifyContent: "center",
-    width: config.isPC?scrHeight * 0.1:scrWidth * 0.25,
-    paddingTop: line,
-    paddingBottom: line,
+    width: pc?scrHeight/10:tablet?scrWidth/7:scrWidth/4,
+    padding: 8,
     margin: 5,
-    // paddingLeft: line * 2,
-    // paddingRight: line * 2,
     borderRadius: 7,
     backgroundColor: colors.button_blue,
   },

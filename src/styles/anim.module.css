@@ -5,9 +5,9 @@
 
 @keyframes oscImage {
   20%, 40% {
-      transform: rotate(20deg);
+      transform: rotate(10deg);
   }
   60%, 80% {
-      transform: rotate(-20deg);
+      transform: rotate(-10deg);
   }
 }

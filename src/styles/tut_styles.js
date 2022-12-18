@@ -2,61 +2,70 @@
 import config from '../config/config';
 import {convertFont} from '../config/config';
 import colors from '../config/colors';
-const scrWidth = config.SCREEN_WIDTH;
-const scrHeight = config.SCREEN_HEIGHT;
-const tablet = scrHeight/scrWidth > 1.77?false:true;
+const scrWidth = config.scrWidth;
+const scrHeight = config.scrHeight;
+const tablet = config.isTablet;
+const pc = config.isPC;
 
 //import { normalizeFont }  from '../config/pixelRatio';
 
 const tut_styles = {
-tut_screen: {
-  position: 'absolute',
-  left: 0,
-  right: 0,
-  top: 0,
-  bottom: 0,
-  alignItems: 'center',
-  justifyContent: 'center',
-  backgroundColor: colors.transparent,
-},
+// tut_screen: {
+//   display: "flex",
+//   position: 'absolute',
+//   left: 0,
+//   right: 0,
+//   top: 0,
+//   bottom: 0,
+//   alignItems: 'center',
+//   justifyContent: 'center',
+//   backgroundColor: colors.transparent,
+// },
 tut_dialog1: {
+  display: "flex",
+  flexDirection: "column",
   alignItems: 'center',
   justifyContent: 'center',
-  width: tablet?scrWidth * 0.5:scrWidth * 0.6,
-  height: scrHeight * 0.3,
+  position: "absolute",
+  top: tablet?-40:-20,
+  left: pc?scrHeight * 0.2:tablet?scrWidth * 0.28:scrWidth * 0.22,
+  width: pc?scrHeight * 0.3: tablet?scrWidth * 0.5:scrWidth * 0.6,
+  height: "auto",
   backgroundColor: colors.text_white,
-  padding: scrWidth * 0.06,
+  padding: 30,
   borderRadius: 8,
-  marginLeft: 65,
   marginBottom: tablet?scrHeight * 0.56:scrHeight * 0.47,
   boxShadow: `10px 20px 20px ${colors.off_black}`,
+  zIndex: 200
 },
 tut_dialog2: {
+  display: "flex",
+  flexDirection: "column",
   alignItems: 'center',
   justifyContent: 'center',
-  width: tablet?scrWidth * 0.6:scrWidth * 0.75,
-  height: scrHeight * 0.25,
+  position: "absolute",
+  top: scrHeight * 0.35,
+  left: pc?0:tablet?0:scrWidth * 0.1,
+  width: scrHeight * 0.25,
+  height: "auto",
   backgroundColor: colors.text_white,
   borderRadius: 8,
   marginRight: 50,
-  paddingTop: 10,
-  paddingLeft: scrWidth * 0.06,
-  paddingRight: scrWidth * 0.06,
-  marginTop: scrHeight * 0.6,
+  padding: 30,
   boxShadow: `10px 20px 20px ${colors.off_black}`,
+  zIndex: 200
 },
 tut_text: {
   fontSize: convertFont(23),
+  fontFamily: "system-ui",
   color: colors.off_black,
 },
 button: {
-  width: tablet?scrWidth/7:scrWidth/4,
-  height: 45,
+  width: pc?scrHeight/12:tablet?scrWidth/8:scrWidth/5,
+  padding: 8,
+  marginTop: 15,
   borderRadius: config.button_radius,
-  justifyContent: "center",
-  marginTop: 20,
   backgroundColor: colors.button_blue,
-  boxShadow: `10px 20px 20px ${colors.off_black}`,
 },
 button_text: {
   fontFamily: "Acme",
@@ -65,11 +74,18 @@ button_text: {
   textAlign: "center",
 },
 arrow_image: {
-  width: scrWidth/6,
-  height: scrWidth/4,
+  width: pc?scrHeight/15:scrWidth/6,
+  height: pc?scrHeight/10:scrWidth/4,
   position: 'absolute',
-  top: scrHeight * 0.3,
-  left: tablet?scrWidth * 0.22:scrWidth * 0.3,
+  top: pc?scrHeight * 0.17:scrHeight * 0.2,
+  left: 0,
+},
+tile_image: {
+  width: pc?scrHeight/15:scrWidth/6, 
+  height: pc?scrHeight/15:scrWidth/6, 
+  position: 'absolute',
+  top: tablet?-scrHeight/10:-scrHeight/18,
+  left: 0,
 }
 
 
