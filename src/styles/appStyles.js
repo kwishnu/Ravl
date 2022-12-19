@@ -283,12 +283,14 @@ const appStyles = {
     fontFamily: "system-ui",
     color: colors.text_white,
     marginRight: 15,
-    alignSelf: "center"
+    alignSelf: "center",
+    userSelect: 'none'
   },
   counter_text: {
     fontSize: pc? convertFont(34):convertFont(31),
     fontFamily: 'system-ui',
     color: colors.text_white,
+    userSelect: 'none'
   },
   done_text: {
     fontSize: convertFont(29),

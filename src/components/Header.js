@@ -76,7 +76,8 @@ const headerStyles = {
     fontSize: 30,
     color: colors.off_white,
     textAlign: "center",
-    marginTop: 8
+    marginTop: 8,
+    userSelect: 'none'
   },
 
 }

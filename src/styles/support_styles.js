@@ -3,9 +3,11 @@ import colors from '../config/colors';
 import {convertFont} from '../config/config';
 const scrWidth = config.scrWidth;
 const scrHeight = config.scrHeight;
-const tablet = scrHeight/scrWidth > 1.77?false:true;
+const tablet = config.isTablet;
+const pc = config.isPC;
+let line = tablet?config.LINE_HEIGHT * 0.7:config.LINE_HEIGHT;
 
-const help_styles = {
+const support_styles = {
 
 containerView: {
   display: 'flex',
@@ -46,14 +48,14 @@ titleContainer: {
   justifyContent: "flex-start",
   alignItems: "flex-start",
 },
-r_tile_container: {
+tile_container: {
   display: 'flex',
   flex: 1,
   zIndex: 100
 },
-r_tile_image: {
-  height: 80,
-  width: 80,
+heart_tile_image: {
+  width: pc?scrHeight/15:tablet?scrWidth/8:scrWidth/6, 
+  height: pc?scrHeight/15:tablet?scrWidth/8:scrWidth/6, 
   marginTop: 15,
   marginRight: 30
 },
@@ -76,56 +78,78 @@ modalBody: {
   borderRadius: 10,
 
 },
-sectionHeading: {
+section: {
   display: 'flex',
   height: "auto",
-  flexDirection: 'row',
   justifyContent: "flex-start",
   alignItems: "flex-start",
-  marginTop: 4,
+  marginTop: tablet?20:4,
 },
-section1_container: {
+button_container: {
   display: 'flex',
-  height: "auto",
-  flexDirection: 'column',
-  justifyContent: "flex-start",
-  alignItems: "flex-start",
-  alignSelf: 'stretch',
-  // height: line * 10,
+  flex: 0,
+  justifyContent: "center",
+  alignItems: "center",
+  alignSelf: "stretch",
+  height: line * 6,
+  margin: 30
 },
-section2_container: {
-  display: 'flex',
-  height: "auto",
-  flexDirection: 'column',
-  justifyContent: "flex-start",
-  alignItems: "flex-start",
-  // height: line * 8,
+button: {
+  padding: tablet || pc? scrHeight * 0.02:scrWidth * 0.05,
+  justifyContent: "center",
+  backgroundColor: colors.button_blue,
+  boxShadow: `8px 8px 28px ${colors.gray_3}`,
+  borderRadius: config.button_radius + 10,
+  borderColor: colors.transparent,
+  borderLeftWidth: tablet?10:8,
+  borderRightWidth:  tablet?10:8
 },
-section3_container: {
+copyrightContainer: {
   display: 'flex',
+  flexDirection: "column",
   height: "auto",
-  flexDirection: 'column',
-  justifyContent: "flex-start",
-  alignItems: "flex-start",
-  // height: line * 1,
+  justifyContent: "center",
+  alignItems: "center",
+  alignSelf: "stretch",
+  margin: 20,
 },
-section4_container: {
-  display: 'flex',
-  height: "auto",
-  flexDirection: 'column',
-  justifyContent: "flex-start",
-  alignItems: "flex-start",
-  marginBottom: 10
-  // height: line * 2,
+button_text_white: {
+  fontFamily: "Acme",
+  fontSize: convertFont(22),
+  color: colors.off_white,
+  textAlign: "center",
+  userSelect: 'none'
 },
 close_image: {
   height: 35,
   width: 35,
   marginRight: 10
 },
-title: {
-  fontSize: config.isPC?convertFont(32):convertFont(38),
+underlinedAcme: {
+  fontSize: convertFont(18),
   fontFamily: "Acme",
+  textDecorationLine: "underline",
+  userSelect: 'none'
+},
+text_small: {
+  fontSize: convertFont(16),
+  fontFamily: "system-ui",
+  userSelect: 'none'
+},
+link_text: {
+  fontSize: convertFont(16),
+  fontFamily: "system-ui",
+  userSelect: 'none'
+},
+link_text_small: {
+  fontSize: convertFont(16),
+  userSelect: 'none'
+},
+copyright: {
+  fontSize: convertFont(16),
+  fontWeight: "bold",
+  fontFamily: "system-ui",
+  alignText: "center",
   userSelect: 'none'
 },
 section_heading: {
@@ -135,11 +159,12 @@ section_heading: {
   userSelect: 'none'
 },
 text: {
-  fontSize: config.isPC?convertFont(15):convertFont(21),
+  fontSize: config.isPC?convertFont(15):convertFont(18),
   fontFamily: "system-ui",
+  marginTop: 10,
   userSelect: 'none'
 },
 
 }
 
-export default help_styles;
+export default support_styles;

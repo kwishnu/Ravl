@@ -202,23 +202,28 @@ button_text_white: {
   fontSize: convertFont(20),
   color: colors.off_white,
   textAlign: "center",
+  userSelect: 'none'
 },
 title: {
   fontSize: config.isPC?convertFont(32):convertFont(38),
   fontFamily: "Acme",
+  userSelect: 'none'
 },
 section_heading: {
   fontSize: config.isPC?convertFont(23):convertFont(26),
   fontFamily: "Acme",
-  textDecorationLine: "underline"
+  textDecorationLine: "underline",
+  userSelect: 'none'
 },
 text: {
   fontSize: config.isPC?convertFont(15):convertFont(22),
   fontFamily: "system-ui",
+  userSelect: 'none'
 },
 text_small: {
   fontSize: config.isPC?convertFont(14):convertFont(18),
   fontFamily: "system-ui",
+  userSelect: 'none'
 },
 }
 

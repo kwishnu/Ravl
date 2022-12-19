@@ -59,6 +59,7 @@ tut_text: {
   fontSize: convertFont(23),
   fontFamily: "system-ui",
   color: colors.off_black,
+  userSelect: 'none'
 },
 button: {
   width: pc?scrHeight/12:tablet?scrWidth/8:scrWidth/5,
@@ -72,6 +73,7 @@ button_text: {
   fontSize: convertFont(20),
   color: colors.off_white,
   textAlign: "center",
+  userSelect: 'none'
 },
 arrow_image: {
   width: pc?scrHeight/15:scrWidth/6,

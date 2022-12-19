@@ -36,11 +36,10 @@ import styles from './styles/appStyles.js';
 import genWordArray from "./config/genWordArray";
 import Settings from "./screens/settings";
 import Help from "./screens/help";
-// import Support from "./screens/support";
+import Support from "./screens/support";
 import Words from "./modal/WordsModal";
 import EndGame from "./modal/EndGameModal";
 // import ThankYou from "./modal/ThankYouModal";
-// const tut_styles = require("./styles/tut_styles");
 const KEY_LastOpenedDate = 'lastOpenedKey';
 const KEY_ShowedTutorial = 'showedTutKey';
 const KEY_PlayedFirstGame = 'playedGameKey';
@@ -653,9 +652,7 @@ class App extends Component {
     const bgPref = window.localStorage.getItem(KEY_BGColorPref);
     if (bgPref !== null) {
       global.bgColor = bgPref;
-      // this.props.navigation.setOptions({
-      //   headerStyle: {backgroundColor: global.bgColor, height: tablet?scrHeight * 0.07:scrWidth * 0.22}
-      // });      
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', bgPref);
     }else{
       try {
         window.localStorage.setItem(KEY_BGColorPref, '#2E034B');
@@ -790,7 +787,10 @@ class App extends Component {
       this.lockScreen(2000);
     }
     this.setState({isLoading: false})
-    if(cgi === -1)this.runPlayRavlAnimation();
+    if(cgi === -1){
+      this.runPlayRavlAnimation();
+      this.setState({lockScreenInput: true});
+    }
 
     printWordsToConsole(puzzleWords0, puzzleWords1, puzzleWords2, puzzleWords3, puzzleWords4, puzzleWords5, puzzleWords6, puzzleWords7, puzzleWords8, puzzleWords9, puzzleWords10);
 
@@ -2027,7 +2027,7 @@ class App extends Component {
     )
   }
   closeTutScreen2(){
-    this.setState({showTutScreen2: false, showedTutScreen2: true});
+    this.setState({showTutScreen2: false, showedTutScreen2: true, lockScreenInput: false});
     try {
         window.localStorage.setItem(KEY_ShowedTutorial, 'true');
     } catch (error) {
@@ -2051,7 +2051,7 @@ class App extends Component {
           this.setState({showHelpModal: true});
           break;
         case "Support":
-          console.log("Support clicked");
+          this.setState({showSupportModal: true});
           break;
         case "Mega RavL":
           if(this.state.currentGameIndex === -1){
@@ -2083,7 +2083,7 @@ class App extends Component {
       this.setState({
         showSettingsModal: false,
         showHelpModal: false,
-        // showSupportModal: false,
+        showSupportModal: false,
         showWordsModal: false,
         showEndGameModal: false,
         // showThankYouModal: false,
@@ -2300,7 +2300,7 @@ class App extends Component {
     this.setState({
       showSettingsModal: false,
       showHelpModal: false,
-      // showSupportModal: false,
+      showSupportModal: false,
       showWordsModal: false,
       showEndGameModal: false,
       // showThankYouModal: false,
@@ -2498,13 +2498,17 @@ class App extends Component {
                   </motion.button>
                 </div>
             </div>
-            <Footer 
+
+            {/* <Footer 
               puzzleStreak={this.state.puzzleStreak} 
               gameIndex={this.state.currentGameIndex} 
               startGame={(daily) => this.transitionToGame(daily)} 
               showWords={() => this.openWordsModal()} 
               callForHint={() => this.giveHint()}
-            />
+            /> */}
+            {this.state.currentGameIndex === -1 &&
+              <Footer puzzleStreak={this.state.puzzleStreak} startGame={(daily) => this.transitionToGame(daily)} gameIndex={this.state.currentGameIndex}/>
+            }
             <div style={styles.AppRightBox}>
 
             </div>
@@ -2532,16 +2536,15 @@ class App extends Component {
           />
           <Help
             isModalVisible={this.state.showHelpModal}
-            requestModalClose={() => {this.closeModal()}}
+            requestModalClose={(which, open) => {this.toggleModal(which, open)}}
             darkModeEnabled={this.state.darkModeEnabled}
           />
-          {/* <Support
+          <Support
             isModalVisible={this.state.showSupportModal}
-            requestModalClose={() => {this.closeModal()}}
+            requestModalClose={(which, open) => {this.toggleModal(which, open)}}
             darkModeEnabled={this.state.darkModeEnabled}
             startPurchaseInGame={(val) => {this.initiatePurchase(val)}}
-            navigation={this.props.navigation}
-          /> */}
+          />
           <Words
             isModalVisible={this.state.showWordsModal}
             isDarkModeEnabled={this.state.darkModeEnabled}
@@ -2562,13 +2565,7 @@ class App extends Component {
             isDarkModeEnabled={this.state.darkModeEnabled}
             requestModalClose={()=>{this.closeModal()}}
           /> */}
-
             <HintNag isModalVisible={this.state.showHintNagModal} isDarkModeEnabled={this.state.darkModeEnabled} requestModalClose={()=>{this.toggleModal(null, false)}}/>
-            <Help
-              isModalVisible={this.state.showHelpModal}
-              requestModalClose={(which, open) => {this.toggleModal(which, open)}}
-              darkModeEnabled={this.state.darkModeEnabled}
-            />
           </div>
         </div>
       );

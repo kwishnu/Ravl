@@ -77,12 +77,12 @@ class WordsModal extends Component {
               </div>
             </div>
             <div style={words_modal_styles.button_container}>
-              <button
+              <div
                 style={words_modal_styles.button}
                 onClick={() => this.closeSelf()}
               >
                 <div style={words_modal_styles.button_text}>OK</div>
-              </button>
+              </div>
             </div>
           </div>
         </motion.div>
@@ -130,10 +130,12 @@ const words_modal_styles = {
     paddingLeft: line * 2,
     paddingRight: line * 2,
     backgroundColor: colors.button_blue,
+    userSelect: 'none'
   },
   button_text: {
     color: "white",
     fontSize: convertFont(23),
+    fontFamily: 'system-ui',
     fontWeight: 'bold',
     textAlign: "center"
   },
