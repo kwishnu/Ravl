@@ -82,9 +82,9 @@ console.log("Upgrading...");
                 </div>
               </div>
               <div style={support_styles.button_container}>
-                <button style={support_styles.button} onClick={() => this.startPurchaseFlow()} >
+                <div style={support_styles.button} onClick={() => this.startPurchaseFlow()} >
                   <div style={support_styles.button_text_white}>{"UPGRADE \u2022 RAVL"}</div>
-                </button>
+                </div>
               </div>
 
               <div style={{...support_styles.underlinedAcme, color: darkModeEnabled ? colors.off_white:colors.off_black}}>...oh, and the fine print:</div>

@@ -135,7 +135,7 @@ section_heading: {
   userSelect: 'none'
 },
 text: {
-  fontSize: config.isPC?convertFont(15):convertFont(21),
+  fontSize: config.isPC?convertFont(15):convertFont(18),
   fontFamily: "system-ui",
   userSelect: 'none'
 },

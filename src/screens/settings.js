@@ -230,8 +230,8 @@ if(this.state.darkModeEnabled)this.toggleDarkMode();
   }
   // displayPremiumBlock(){
   //   return (
-  //     <button style={settings_styles.premium_block} onClick={() => this.showAlert()}>
-  //     </button>
+  //     <div style={settings_styles.premium_block} onClick={() => this.showAlert()}>
+  //     </div>
   //   )
   // }
 
@@ -411,9 +411,9 @@ if(this.state.darkModeEnabled)this.toggleDarkMode();
                 <div style={settings_styles.spacer}>
                 </div>
                 <div style={settings_styles.defaultsButtonContainer}>
-                  <button style={settings_styles.button} onClick={() => this.restoreDefaults()} >
+                  <div style={settings_styles.button} onClick={() => this.restoreDefaults()} >
                     <div style={settings_styles.button_text_white}>RESTORE DEFAULTS</div>
-                  </button>
+                  </div>
                 </div>
                 </div>
                 {/* {!global.upgradeStatus && this.displayPremiumBlock()} */}

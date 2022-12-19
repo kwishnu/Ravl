@@ -20,16 +20,13 @@ const appStyles = {
     width: scrWidth,
     justifyContent: 'center',
     alignItems: 'center',
-
-    backgroundColor: colors.dark_purple,
   },
   container: {
     height: "100%",
     width: "100%",
-    alignItems: 'center',
-    justifyContent: 'center',
   },
   appContainer: {
+    // position: "relative",
     display: "flex",
     flex: 1,
     flexDirection: "column",
@@ -41,6 +38,17 @@ const appStyles = {
     justifyContent: 'flex-start',
     backgroundColor: colors.transparent,
   },
+  adBox: {
+    display: "flex",
+    flexDirection: "row",
+    position: "absolute",
+    top: 0,
+    bottom: 0,
+    width: pc?widthLeftOrRight - 20:0,
+    borderStyle: "solid",
+    borderWidth: 2,
+    zIndex: 1000,
+  },
   screen_lock: {
     position: 'absolute',
     left: 0,
@@ -48,16 +56,6 @@ const appStyles = {
     top: 0,
     bottom: 0,
     backgroundColor: colors.transparent,
-  },
-  AppLeftBox: {
-    height:"100%",
-    width: pc || config.isTablet?widthLeftOrRight:0,
-    textAlign: "center"
-  },
-  AppRightBox: {
-    height:"100%",
-    width: pc || config.isTablet?widthLeftOrRight:0,
-    textAlign: "center"
   },
   messageOuterContainer: {
     display: "flex",
@@ -296,29 +294,34 @@ const appStyles = {
     fontSize: convertFont(29),
     fontFamily: 'system-ui',
     margin: 10,
-    textAlign: 'center'
+    textAlign: 'center',
+    userSelect: 'none'
   },
   button_text: {
     fontFamily: "Acme",
     fontSize: convertFont(22),
     color: colors.off_white,
     textAlign: "center",
+    userSelect: 'none'
   },
   button_text_white: {
     fontFamily: "Acme",
     fontSize: convertFont(22),
     color: colors.off_white,
     textAlign: "center",
+    userSelect: 'none'
   },
   debug_text: {
     fontSize: convertFont(16),
     fontFamily: 'system-ui',
     color: colors.bright_green,
+    userSelect: 'none'
   },
   solved_text: {
     fontSize: convertFont(25),
     fontFamily: 'system-ui',
     color: colors.bright_green,
+    userSelect: 'none'
   },
 
 

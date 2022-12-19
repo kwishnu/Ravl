@@ -1993,9 +1993,9 @@ class App extends Component {
     return (
         <div style={tut_styles.tut_dialog1}>
           <div style={{...tut_styles.tut_text, marginBottom: 20}}>Move the columns of letters up and down to form words going across...</div>
-          <button style={tut_styles.button} onClick={() => this.closeTutScreen1()} >
+          <div style={tut_styles.button} onClick={() => this.closeTutScreen1()} >
             <div style={tut_styles.button_text}>OK</div>
-          </button>
+          </div>
           <img
             src={require("./images/red_arrow.png")}
             style={tut_styles.arrow_image}
@@ -2013,9 +2013,9 @@ class App extends Component {
     return (
         <div style={tut_styles.tut_dialog2}>
           <div style={tut_styles.tut_text}>{tutText}</div>
-          <button style={tut_styles.button} onClick={() => this.closeTutScreen2()} >
+          <div style={tut_styles.button} onClick={() => this.closeTutScreen2()} >
             <div style={tut_styles.button_text}>OK</div>
-          </button>
+          </div>
           <img
             src={require("./images/exclamation_ravl_tile.png")}
             style={tut_styles.tile_image}
@@ -2348,7 +2348,7 @@ class App extends Component {
   render() {
     if (this.state.lettersetContainerHeight === 0) {
       return (
-        <div style={styles.loading_container}>
+        <div style={{...styles.loading_container, backgroundColor: global.bgColor}}>
           <CircularProgress colors={colors.off_white} />
         </div>
       );
@@ -2383,11 +2383,16 @@ class App extends Component {
               showModal={(which, open) => this.showModal(which, open)}
             />
             
-            <div style={styles.AppLeftBox}>
+
+            <div style={styles.appContainer}>
+            <div id="appLeftBox" style={{...styles.adBox, backgroundColor: darkModeEnabled ? colors.gray_4:colors.off_white, borderRightColor: colors.off_black, left: 0}}>
+
+            </div>
+            <div style={{...styles.adBox, backgroundColor: darkModeEnabled ? colors.gray_4:colors.off_white, borderLeftColor: colors.off_black, right: 0}}>
 
             </div>
 
-            <div style={styles.appContainer}>
+
               <div id="messageHeader" style={{...styles.messageOuterContainer, borderColor: global.bgColor}}>
                 <div id="messageHeader" style={styles.messageContainer}>
                   <div id="messageHeader" style={styles.header_text}>{this.state.headerText}</div>
@@ -2488,30 +2493,18 @@ class App extends Component {
                 {this.state.gameDone && this.renderDone(this.state.clearedLevel)}
                 {this.state.lockScreenInput && this.displayLockScreen()}
               </div>
-              {/* (Following footer container no longer functional, see <Footer /> below) */}
-                <div  id="footerContainer" style={{...styles.footerContainer, backgroundColor: global.bgColor}}>
-                  <motion.button style={styles.button}  whileTap={{ scale: 0.97 }} onClick={() => this.openWordsModal()} >
-                  <div style={styles.button_text}>WORDS</div>
-                  </motion.button>
-                  <motion.button style={styles.button} whileTap={{ scale: 0.97 }} onClick={() => this.giveHint()} >
-                  <div style={styles.button_text}>HINT</div>
-                  </motion.button>
-                </div>
+              <div  id="footerContainer" style={{...styles.footerContainer, backgroundColor: global.bgColor}}>
+                <motion.button style={styles.button}  whileTap={{ scale: 0.97 }} onClick={() => this.openWordsModal()} >
+                <div style={styles.button_text}>WORDS</div>
+                </motion.button>
+                <motion.button style={styles.button} whileTap={{ scale: 0.97 }} onClick={() => this.giveHint()} >
+                <div style={styles.button_text}>HINT</div>
+                </motion.button>
+              </div>
             </div>
-
-            {/* <Footer 
-              puzzleStreak={this.state.puzzleStreak} 
-              gameIndex={this.state.currentGameIndex} 
-              startGame={(daily) => this.transitionToGame(daily)} 
-              showWords={() => this.openWordsModal()} 
-              callForHint={() => this.giveHint()}
-            /> */}
             {this.state.currentGameIndex === -1 &&
               <Footer puzzleStreak={this.state.puzzleStreak} startGame={(daily) => this.transitionToGame(daily)} gameIndex={this.state.currentGameIndex}/>
             }
-            <div style={styles.AppRightBox}>
-
-            </div>
           </div>
           <div>
             {this.state.nextButtonEnabled && this.renderGameOverButton()}

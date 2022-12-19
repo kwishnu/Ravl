@@ -42,18 +42,18 @@ class EndGameModal extends Component {
               <div style={{...eg_modal_styles.modal_text, color: this.props.isDarkModeEnabled ? colors.gray_2:colors.off_black}}>This will end the current game.  Exit game?</div>
             </div>
             <div style={eg_modal_styles.button_container}>
-              <button
+              <div
                 style={eg_modal_styles.button}
                 onClick={() => this.closeSelf()}
               >
                 <div style={eg_modal_styles.button_text}>Cancel</div>
-              </button>
-              <button
+              </div>
+              <div
                 style={eg_modal_styles.button}
                 onClick={() => this.goToStart()}
               >
                 <div style={eg_modal_styles.button_text}>OK</div>
-              </button>
+              </div>
             </div>
           </div>
         </motion.div>
@@ -108,20 +108,23 @@ const eg_modal_styles = {
     color: "white",
     fontSize: convertFont(23),
     fontWeight: 'bold',
-    textAlign: "center"
+    textAlign: "center",
+    userSelect: 'none'
   },
   modal_title: {
     fontSize: convertFont(30),
     fontFamily: 'Acme',
     marginBottom: 15,
-    textAlign: "left"
+    textAlign: "left",
+    userSelect: 'none'
   },
   modal_text: {
     fontFamily: 'system-ui',
     fontSize: convertFont(22),
     marginBottom: 30,
     marginTop: 15,
-    textAlign: "left"
+    textAlign: "left",
+    userSelect: 'none'
   },
 }
 

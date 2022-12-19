@@ -41,12 +41,12 @@ class HintNagModal extends Component {
               <div style={{...hn_modal_styles.modal_text, color: isDarkModeEnabled ? colors.gray_2:colors.off_black}}>{"You'll have to get that last one by yourself!"}</div>
             </div>
             <div style={hn_modal_styles.button_container}>
-              <button
+              <div
                 style={hn_modal_styles.button}
                 onClick={() => this.closeSelf()}
               >
                 <div style={hn_modal_styles.button_text}>OK</div>
-              </button>
+              </div>
             </div>
           </div>
         </motion.div>
@@ -99,19 +99,22 @@ const hn_modal_styles = {
     color: "white",
     fontSize: convertFont(23),
     fontWeight: 'bold',
-    textAlign: "center"
+    textAlign: "center",
+    userSelect: 'none'
   },
   modal_title: {
     fontSize: convertFont(30),
     fontFamily: 'Acme',
     marginBottom: 15,
-    textAlign: "left"
+    textAlign: "left",
+    userSelect: 'none'
   },
   modal_text: {
     fontSize: convertFont(22),
     marginBottom: 30,
     marginTop: 15,
-    textAlign: "left"
+    textAlign: "left",
+    userSelect: 'none'
   },
 }
 

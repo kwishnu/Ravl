@@ -9,8 +9,9 @@ import settingsImage from '../images/settings.png';
 import helpImage from '../images/question.png';
 import supportImage from '../images/heart.png';
 import gameImage from '../images/ravl_menu_icon.png';
-// const scrWidth = config.scrWidth;
+const pc = config.isPC;
 const scrHeight = config.scrHeight;
+const scrWidth = config.scrWidth;
 
 
 class Menu extends Component {
@@ -29,13 +30,16 @@ class Menu extends Component {
       
   render() {
     const { showMenu, themeColor } = this.props;
+    const xInitial = pc?(scrWidth - scrHeight * 9/16)/2 - scrHeight * 0.26 : -scrHeight * 0.2;
+    const xAnimate = pc?(scrWidth - scrHeight * 9/16)/2 -20 : -2;
+
     return (
       <AnimatePresence>
         {showMenu && 
           <motion.div
-            initial={{ x: -scrHeight * 0.2 }}
-            animate={{ x: -2 }}
-            exit={{ x: -scrHeight * 0.2 }}
+            initial={{ x: xInitial }}
+            animate={{ x: xAnimate }}
+            exit={{ x: xInitial }}
             style={{...menu_styles.menu}}
             transition={{ type: "spring", bounce: 0, duration: 0.4 }}
           >

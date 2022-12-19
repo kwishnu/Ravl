@@ -129,6 +129,7 @@ underlinedAcme: {
   fontSize: convertFont(18),
   fontFamily: "Acme",
   textDecorationLine: "underline",
+  marginBottom: 10,
   userSelect: 'none'
 },
 text_small: {

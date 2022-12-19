@@ -9,7 +9,7 @@ const marLeftOrRight = (scrWidth - scrHeight * 9/16)/2;
 
 function Header(props) {
   return(
-    <div style={{...headerStyles.container, backgroundColor: global.bgColor}}>
+    <div style={{...headerStyles.container, backgroundColor: global.bgColor}} onClick={() => console.log("Click")}>
       <div style={headerStyles.left_div}>
       <img src={MenuImage} alt={"Menu"} style={headerStyles.menuImageStyle} onClick={() => props.clickMenu("Menu")} />          
       </div>
