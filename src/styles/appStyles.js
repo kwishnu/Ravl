@@ -66,7 +66,7 @@ const appStyles = {
     justifyContent: 'center',
     backgroundColor: colors.gray_4,
     borderWidth: 3, 
-    borderStyle: pc || tablet?"none solid solid solid":"none none solid none",
+    borderStyle: "none none solid none",
   },
   messageContainer: {
     display: "flex",
@@ -277,7 +277,7 @@ const appStyles = {
     boxShadow: `8px 8px 28px ${colors.off_black}`,
   },
   header_text: {
-    fontSize: tablet?convertFont(20):convertFont(21),
+    fontSize: tablet || pc?convertFont(20):convertFont(19),
     fontFamily: "system-ui",
     color: colors.text_white,
     marginRight: 15,
@@ -291,7 +291,7 @@ const appStyles = {
     userSelect: 'none'
   },
   done_text: {
-    fontSize: convertFont(29),
+    fontSize: pc || tablet?convertFont(29):convertFont(25),
     fontFamily: 'system-ui',
     margin: 10,
     textAlign: 'center',

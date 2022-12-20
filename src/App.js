@@ -1,5 +1,5 @@
-import { CircularProgress } from '@mui/material';
 import React, { Component } from 'react';
+import { CircularProgress } from '@mui/material';
 import formatDate from 'date-fns/format';
 import parse from 'date-fns/parse';
 import { nanoid } from 'nanoid';
@@ -1420,9 +1420,9 @@ class App extends Component {
         position: "bottom-center",
         autoClose: 2400,
         hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
+        closeOnClick: false,
+        pauseOnHover: false,
+        draggable: false,
         progress: undefined,
         theme: "light",
       });
@@ -1493,7 +1493,6 @@ class App extends Component {
   resetTileColors(dark){
     const mode = "Dark Mode";
     const remainingTilesArr = this.getRemainingTiles();
-    console.log("remainingTilesArr: " + JSON.stringify(remainingTilesArr));
     const ravlRef = this.state.megaPuzzle? this.state.megaRavlRef:this.state.ravlTiles[this.state.currentGameIndex]
     const ravlIndex = remainingTilesArr.indexOf(ravlRef);
     if (ravlIndex > -1) {
@@ -2324,6 +2323,7 @@ class App extends Component {
     const scrDividedHeight = cHeight/(numR + 2);
     let th = Math.min(th1, th2, scrDividedWidth, scrDividedHeight);//tile height
     th = (isPC || tablet) && numC > 5?th + numC * 2:config.isPhone && (numC > 5 && numC < 10)? th + numC: th;
+    th = this.state.currentGameIndex === -1?th * 0.8:th;
     const le = (cWidth - numC * (th + 2))/2;//left edge
     if(this.state.lettersetContainerWidth > 0){
       return (
@@ -2382,8 +2382,6 @@ class App extends Component {
               clickMenu={(which) => this.toggleDrawer(which)} 
               showModal={(which, open) => this.showModal(which, open)}
             />
-            
-
             <div style={styles.appContainer}>
             <div id="appLeftBox" style={{...styles.adBox, backgroundColor: darkModeEnabled ? colors.gray_4:colors.off_white, borderRightColor: colors.off_black, left: 0}}>
 
@@ -2391,8 +2389,6 @@ class App extends Component {
             <div style={{...styles.adBox, backgroundColor: darkModeEnabled ? colors.gray_4:colors.off_white, borderLeftColor: colors.off_black, right: 0}}>
 
             </div>
-
-
               <div id="messageHeader" style={{...styles.messageOuterContainer, borderColor: global.bgColor}}>
                 <div id="messageHeader" style={styles.messageContainer}>
                   <div id="messageHeader" style={styles.header_text}>{this.state.headerText}</div>
@@ -2511,6 +2507,7 @@ class App extends Component {
 
             <ToastContainer
               position="bottom-center"
+              style={{ width: isPC?scrHeight/4.5:scrWidth*0.7 }}
               autoClose={2400}
               hideProgressBar
               newestOnTop={false}

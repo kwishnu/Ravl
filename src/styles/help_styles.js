@@ -124,7 +124,7 @@ close_image: {
   marginRight: 10
 },
 title: {
-  fontSize: config.isPC?convertFont(32):convertFont(38),
+  fontSize: config.isPC?convertFont(32):convertFont(30),
   fontFamily: "Acme",
   userSelect: 'none'
 },

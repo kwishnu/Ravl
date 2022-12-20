@@ -21,6 +21,14 @@ containerView: {
   backgroundColor: 'rgba(0, 0, 0, 0)',
   zIndex: 100
 },
+loading_container: {
+  display: 'flex',
+  flex: 1,
+  height: 100,
+  width: 100,
+  justifyContent: 'center',
+  alignItems: 'center',
+},
 modalView: {
   display: 'flex',
   flexDirection: 'column',
@@ -56,6 +64,7 @@ closeButtonContainer: {
 },
 modalBody: {
   display: 'flex',
+  position: "relative",
   flex: 1,
   flexDirection: 'column',
   justifyContent: "flex-start",
@@ -63,6 +72,16 @@ modalBody: {
   alignSelf: 'stretch',
   padding: 12,
   borderRadius: 10,
+},
+premium_block: {
+  display: 'flex',
+  height: "auto",
+  alignSelf: 'stretch',
+  flexDirection: 'column',
+  justifyContent: "flex-start",
+  alignItems: "flex-start",
+  marginTop: config.isPC?10:20,
+  zIndex: 1000
 },
 sectionHead: {
   display: 'flex',
@@ -172,9 +191,6 @@ swatch: {
   borderWidth: 1, 
   borderStyle: 'solid'
 },
-// spacer: {
-//   height: config.isPC?line * 3:line * 2,
-// },
 defaultsButtonContainer: {
   display: 'flex',
   flexDirection: 'row',
@@ -205,8 +221,9 @@ button_text_white: {
   userSelect: 'none'
 },
 title: {
-  fontSize: config.isPC?convertFont(32):convertFont(38),
+  fontSize: config.isPC?convertFont(32):convertFont(30),
   fontFamily: "Acme",
+  marginBottom: 10,
   userSelect: 'none'
 },
 section_heading: {
