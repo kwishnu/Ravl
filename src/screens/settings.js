@@ -329,12 +329,12 @@ render() {
                 <div style={{...settings_styles.text, color: this.state.darkModeEnabled ? colors.off_white:colors.off_black}}>DARK MODE</div>
               </div>
             </div>
-          <div style={{...settings_styles.premium_block, backgroundColor: !global.upgradeStatus?colors.translucent:colors.transparent, pointerEvents: !global.upgradeStatus? "none":null}}>
+          <div style={{...settings_styles.premium_block, backgroundColor: !global.upgradeStatus?colors.translucent:colors.transparent}} onClick={!global.upgradeStatus?() => this.showAlert():null}>
             <div style={settings_styles.sectionHead}>
               <div style={{...settings_styles.text, color: this.state.darkModeEnabled ? colors.off_white:colors.off_black}}>Animation Style</div>
             </div>
             <div style={settings_styles.radiobuttonRow}>
-              <div style={settings_styles.radioImageContainer}>
+              <div style={{...settings_styles.radioImageContainer, pointerEvents: !global.upgradeStatus? "none":null}}>
                 <img
                   onClick={() => this.handleAnimationRadio("Leave")}
                   style = {settings_styles.radioImage}
@@ -348,7 +348,7 @@ render() {
               </div>
             </div>
             <div style={settings_styles.radiobuttonRow}>
-              <div style={settings_styles.radioImageContainer}>
+              <div style={{...settings_styles.radioImageContainer, pointerEvents: !global.upgradeStatus? "none":null}}>
                 <img 
                   onClick={() => this.handleAnimationRadio("Spin")}
                   style = {settings_styles.radioImage}
@@ -362,7 +362,7 @@ render() {
               </div>
             </div>
             <div style={settings_styles.radiobuttonRow}>
-              <div style={settings_styles.radioImageContainer}>
+              <div style={{...settings_styles.radioImageContainer, pointerEvents: !global.upgradeStatus? "none":null}}>
                 <img 
                   onClick={() => this.handleAnimationRadio("None")}
                   style = {settings_styles.radioImage}
@@ -378,7 +378,7 @@ render() {
             <div style={settings_styles.sectionHead}>
               <div style={{...settings_styles.text, color: this.state.darkModeEnabled ? colors.off_white:colors.off_black}}>Background Color:</div>
             </div>
-              <div style={settings_styles.sliderContainer}>
+              <div style={{...settings_styles.sliderContainer, pointerEvents: !global.upgradeStatus? "none":null}}>
                 <div style={settings_styles.slider1View}>
                   <img style={settings_styles.colorPickerImage} src={hueSliderImage} alt = {"Hue Selection"}/>
                   <ReactSimpleRange
@@ -432,7 +432,7 @@ render() {
               </div>
               <div style={settings_styles.spacer}>
               </div>
-              <div style={settings_styles.defaultsButtonContainer}>
+              <div style={{...settings_styles.defaultsButtonContainer, pointerEvents: !global.upgradeStatus? "none":null}}>
                 <div style={settings_styles.button} onClick={() => this.restoreDefaults()} >
                   <div style={settings_styles.button_text_white}>RESTORE DEFAULTS</div>
                 </div>

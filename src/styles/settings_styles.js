@@ -181,6 +181,7 @@ swatchContainer: {
   alignItems: "center",
   alignSelf: "stretch",
   marginTop: line,
+  marginBottom: config.isPC?10:0,
   height: config.isPC?line * 6:line * 4,
 },
 swatch: {

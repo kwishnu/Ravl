@@ -791,9 +791,7 @@ class App extends Component {
       this.runPlayRavlAnimation();
       this.setState({lockScreenInput: true});
     }
-
     printWordsToConsole(puzzleWords0, puzzleWords1, puzzleWords2, puzzleWords3, puzzleWords4, puzzleWords5, puzzleWords6, puzzleWords7, puzzleWords8, puzzleWords9, puzzleWords10);
-
   }
 
   buildStraightArray(wordsSent) {
@@ -1739,6 +1737,7 @@ class App extends Component {
             nextButtonEnabled: false,
             headerText: headerTextToUse,
             showSolvedWords: true,
+            lockScreenInput: false,
             solvedWords: [[],[],[],[],[],[],[],[],[],[],[]],
             bonusWords: [[],[],[],[],[],[],[],[],[],[],[]]
           });
@@ -1764,6 +1763,7 @@ class App extends Component {
             nextBtnText: "NEXT",
             headerText: "Level  1  of  8",
             showSolvedWords: true,
+            lockScreenInput: false,
             solvedWords: [[],[],[],[],[],[],[],[],[],[],[]],
             bonusWords: [[],[],[],[],[],[],[],[],[],[],[]]
           });
@@ -2054,6 +2054,7 @@ class App extends Component {
           break;
         case "Mega RavL":
           if(this.state.currentGameIndex === -1){
+            this.setState({lockScreenInput: false});
             this.hideAllGames();
             this.toggleDrawer();
             let megaWordsArr = genWordArray(0);

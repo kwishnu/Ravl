@@ -98,7 +98,7 @@ const eg_modal_styles = {
   button: {
     display: 'flex',
     justifyContent: "center",
-    width: pc?scrHeight/10:tablet?scrWidth/7:scrWidth/4,
+    width: pc?scrHeight/12:tablet?scrWidth/7:scrWidth/4,
     padding: 8,
     margin: 5,
     borderRadius: 7,
@@ -109,6 +109,7 @@ const eg_modal_styles = {
     fontSize: convertFont(23),
     fontWeight: 'bold',
     textAlign: "center",
+    fontFamily: "system-ui",
     userSelect: 'none'
   },
   modal_title: {

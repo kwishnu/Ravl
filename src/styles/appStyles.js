@@ -60,7 +60,7 @@ const appStyles = {
   messageOuterContainer: {
     display: "flex",
     flex: 1,
-    width: pc || config.isTablet?scrHeight * 9/16:scrWidth,
+    width: pc?scrWidth - (widthLeftOrRight - 20) * 2:scrWidth,
     marginTop: 60,
     alignItems: 'center',
     justifyContent: 'center',

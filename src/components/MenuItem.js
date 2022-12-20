@@ -3,6 +3,7 @@ import {convertFont} from '../config/config';
 import colors from '../config/colors';
 const scrWidth = config.scrWidth;
 const scrHeight = config.scrHeight;
+const pc = config.isPC;
 const tablet = scrHeight/scrWidth > 1.77?false:true;
 // const widthLeftOrRight = (scrWidth - scrHeight * 9/16)/2;
 
@@ -56,7 +57,7 @@ const menu_item_styles = {
     alignItems: "center",
   },
   menu_label: {
-    fontSize: convertFont(19),
+    fontSize: pc?convertFont(22):convertFont(19),
     color: colors.off_white,
     userSelect: 'none'
   },

@@ -1,7 +1,7 @@
 import config from '../config/config';
 import {convertFont} from '../config/config';
 import colors from '../config/colors';
-// const scrWidth = config.scrWidth;
+const pc = config.isPC;
 const scrHeight = config.scrHeight;
 // const tablet = scrHeight/scrWidth > 1.77?false:true;
 
@@ -59,7 +59,7 @@ const menu_header_styles = {
   },
   menu_label: {
     fontFamily: 'Acme',
-    fontSize: convertFont(24),
+    fontSize: pc?convertFont(30):convertFont(24),
     color: colors.off_white,
     userSelect: 'none',
     marginLeft: 15
