@@ -27,6 +27,7 @@
       //   global.scrHeight = global.scrWidth;
       //   global.scrWidth = temp;
       // })
+      window.onorientationchange = () => window.location.reload();
       window.addEventListener('touchmove', ev => {
         if (true) {
           ev.preventDefault();

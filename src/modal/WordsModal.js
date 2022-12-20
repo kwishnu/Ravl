@@ -5,7 +5,8 @@ import {convertFont} from '../config/config';
 import colors from '../config/colors';
 const scrWidth = config.scrWidth;
 const scrHeight = config.scrHeight;
-const line = config.LINE_HEIGHT;
+const pc = config.isPC;
+const tablet = config.isTablet;
 
 class WordsModal extends Component {
   constructor(props) {
@@ -47,7 +48,7 @@ class WordsModal extends Component {
           {showPuzzWordsModal && (
               <div style={words_modal_styles.text_container}>
                 <div style={{...words_modal_styles.modal_title, color: this.props.isDarkModeEnabled ? colors.gray_1:colors.off_black}}>Puzzle Words:</div>
-                <div style={{...words_modal_styles.modal_text, color: this.props.isDarkModeEnabled ? colors.gray_2:colors.off_black}}>
+                <div style={{...words_modal_styles.modal_text, whiteSpace: 'pre-line', color: this.props.isDarkModeEnabled ? colors.gray_2:colors.off_black}}>
                   {solvedModalMessage}
                 </div>
               </div>
@@ -72,7 +73,7 @@ class WordsModal extends Component {
               >
               {!this.props.solvedModalMessage && !this.props.bonusModalMessage? "Words:":"Bonus Words:"}
               </div>
-              <div style={{...words_modal_styles.modal_text, color: this.props.isDarkModeEnabled ? colors.gray_2:colors.off_black}}>
+              <div style={{...words_modal_styles.modal_text, whiteSpace: 'pre-line', color: this.props.isDarkModeEnabled ? colors.gray_2:colors.off_black}}>
                 {bonusModalMessage || "None yet!"}
               </div>
             </div>
@@ -123,12 +124,10 @@ const words_modal_styles = {
     alignSelf: 'stretch',
   },
   button: {
-    borderRadius: 7,
+    borderRadius: 5,
     justifyContent: "center",
-    paddingTop: line,
-    paddingBottom: line,
-    paddingLeft: line * 2,
-    paddingRight: line * 2,
+    width: pc?scrHeight/12:tablet?scrWidth/8:scrWidth/5,
+    padding: 8,
     backgroundColor: colors.button_blue,
     userSelect: 'none'
   },

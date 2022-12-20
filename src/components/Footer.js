@@ -17,7 +17,7 @@ function Footer(props) {
           <div style={footer_styles.footer_spacer}>
           </div>
           <motion.button style={footer_styles.start_button} whileTap={{ scale: 0.97 }} onClick={props.gameIndex === -1?() => props.startGame(true):() => props.showWords()}>
-            <div style={footer_styles.button_text_white}>{props.gameIndex === -1?"PLAY DAILY":"WORDS"}</div>
+            <div style={{...footer_styles.button_text, color: props.buttonColor}}>{props.gameIndex === -1?"PLAY DAILY":"WORDS"}</div>
           </motion.button>
           <motion.button style={footer_styles.start_button} whileTap={{ scale: 0.97 }} onClick={props.gameIndex === -1?() => props.startGame(false):() => props.callForHint()}>
           <div style={footer_styles.button_text_white}>{props.gameIndex === -1?"PLAY":"HINT"}</div>
@@ -123,6 +123,11 @@ const footer_styles = {
     borderColor: colors.transparent,
     borderLeftWidth: tablet?10:8,
     borderRightWidth:  tablet?10:8
+  },
+  button_text: {
+    fontFamily: "Acme",
+    fontSize: convertFont(22),
+    textAlign: "center",
   },
   button_text_white: {
     fontFamily: "Acme",

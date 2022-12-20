@@ -2323,7 +2323,10 @@ class App extends Component {
     const scrDividedWidth = cWidth/(numC + 1);
     const scrDividedHeight = cHeight/(numR + 2);
     let th = Math.min(th1, th2, scrDividedWidth, scrDividedHeight);//tile height
-    th = (isPC || tablet) && numC > 5?th + numC * 2:config.isPhone && (numC > 5 && numC < 10)? th + numC: th;
+    th = (isPC || tablet) && numC > 5?th + numC * 2 :
+          config.isPhone && (numC > 5 && numC < 10)? th + numC :
+          config.isPhone && (numC === 10)? th + 6 :
+          th;
     th = this.state.currentGameIndex === -1?th * 0.8:th;
     const le = (cWidth - numC * (th + 2))/2;//left edge
     if(this.state.lettersetContainerWidth > 0){
@@ -2392,7 +2395,7 @@ class App extends Component {
             </div>
               <div id="messageHeader" style={{...styles.messageOuterContainer, borderColor: global.bgColor}}>
                 <div id="messageHeader" style={styles.messageContainer}>
-                  <div id="messageHeader" style={styles.header_text}>{this.state.headerText}</div>
+                  <div id="messageHeader" style={{...styles.header_text, color: this.state.dailyPuzzleCompleted && this.state.currentGameIndex === -1 ? colors.gray_2 : colors.text_white}}>{this.state.headerText}</div>
                   <AnimatePresence>
                     {this.state.showHeaderComment &&
                       <motion.div
@@ -2500,7 +2503,12 @@ class App extends Component {
               </div>
             </div>
             {this.state.currentGameIndex === -1 &&
-              <Footer puzzleStreak={this.state.puzzleStreak} startGame={(daily) => this.transitionToGame(daily)} gameIndex={this.state.currentGameIndex}/>
+              <Footer 
+                puzzleStreak={this.state.puzzleStreak} 
+                startGame={(daily) => this.transitionToGame(daily)} 
+                gameIndex={this.state.currentGameIndex}
+                buttonColor={this.state.dailyPuzzleCompleted && this.state.currentGameIndex === -1 ? colors.gray_2 : colors.text_white}
+              />
             }
           </div>
           <div>
