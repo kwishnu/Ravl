@@ -1778,7 +1778,6 @@ class App extends Component {
     let swArray = [[],[],[],[],[],[],[],[],[],[],[]];
     let bwArray = [[],[],[],[],[],[],[],[],[],[],[]];
     let targetLevel = 0;
-    let showSts = true;
     let scoreVal = 10;
     let elig = true;
     if (this.state.clearedLevel === true || goToStart) {//load new game
@@ -1794,12 +1793,11 @@ class App extends Component {
       swArray = this.state.solvedWords;
       bwArray = this.state.bonusWords;
       targetLevel = this.state.progressSavedLevel;
-      showSts = false;
       elig = false;//eligibility for star
       scoreVal = (this.state.score - 5 < 10)?10:this.state.score - 5;
     }
     targetLevel = goToStart?-1:this.state.megaPuzzle?100:targetLevel;
-    this.setState({puzzleDisplayed: false, showStars: showSts, nextBtnText: "NEXT"});
+    this.setState({puzzleDisplayed: false, showStars: goToStart, nextBtnText: "NEXT"});
 
     this.init( puzzleWords0,
                puzzleWords1,

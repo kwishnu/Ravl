@@ -95,14 +95,9 @@ button_container: {
   margin: 30
 },
 button: {
-  padding: tablet || pc? scrHeight * 0.02:scrWidth * 0.05,
-  justifyContent: "center",
-  backgroundColor: colors.button_blue,
-  boxShadow: `8px 8px 28px ${colors.gray_3}`,
-  borderRadius: config.button_radius + 10,
-  borderColor: colors.transparent,
-  borderLeftWidth: tablet?10:8,
-  borderRightWidth:  tablet?10:8
+  height: 60, 
+  width: 217,
+  boxShadow: `4px 8px 12px ${colors.gray_4}`,
 },
 copyrightContainer: {
   display: 'flex',

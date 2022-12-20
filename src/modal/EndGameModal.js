@@ -98,7 +98,7 @@ const eg_modal_styles = {
   button: {
     display: 'flex',
     justifyContent: "center",
-    width: pc?scrHeight/12:tablet?scrWidth/7:scrWidth/4,
+    width: pc?scrHeight/12:tablet?scrWidth/8:scrWidth/5,
     padding: 8,
     margin: 5,
     borderRadius: 7,

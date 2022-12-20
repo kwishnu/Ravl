@@ -77,14 +77,13 @@ console.log("Upgrading...");
                 {"Thank you for playing RavL!\n\nIf you would like to support my little game, please upgrade for the cost of a coffee \u2014 special benefits include:" +
                 "\n\n\u2022 COOL SETTINGS \u2014 change the app color theme and animations\n\u2022 NO ADs ever \u2014 no unsightly interruptions to your RavL play (future)" +
                 "\n\u2022 MEGA RAVL \u2014 a special menu button that will dial up a monster RavL puzzle any time you feel masochistically inclined!" +
-                "\n\nSo please, poke away at the button and make the jump!"
+                "\n\nSo please, poke away at the coffee button below and make the jump!"
                 }
                 </div>
               </div>
               <div style={support_styles.button_container}>
-                <div style={support_styles.button} onClick={() => this.startPurchaseFlow()} >
-                  <div style={support_styles.button_text_white}>{"UPGRADE \u2022 RAVL"}</div>
-                </div>
+                  {/* <div style={support_styles.button_text_white}>{"UPGRADE \u2022 RAVL"}</div> */}
+                  <a href="https://www.buymeacoffee.com/kwish1777N" target="_blank" rel="noreferrer"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style={support_styles.button} /></a>
               </div>
 
               <div style={{...support_styles.underlinedAcme, color: darkModeEnabled ? colors.off_white:colors.off_black}}>...oh, and the fine print:</div>
