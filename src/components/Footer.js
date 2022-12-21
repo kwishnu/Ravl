@@ -27,7 +27,7 @@ function Footer(props) {
         </div>
         <div style={footer_styles.streak_row}>
           <div style={footer_styles.streak_cell1}>
-            <div style={footer_styles.streak_text}>{(props.puzzleStreak === '0')?'':"Streak:"}</div>
+            <div style={footer_styles.streak_text}>{(props.puzzleStreak === '0' || props.puzzleStreak === '0,01-01-2001')?'':"Streak:"}</div>
           </div>
           <div style={footer_styles.streak_cell2}>
             {(props.puzzleStreak !== '0' && props.puzzleStreak !== '0,01-01-2001') &&
@@ -44,7 +44,7 @@ function Footer(props) {
           <div style={footer_styles.streak_cell3}>
             <div style={footer_styles.streak_text}>
               {
-                (props.puzzleStreak === '0')?'':
+                (props.puzzleStreak === '0' || props.puzzleStreak === '0,01-01-2001')?'':
                 (props.puzzleStreak === '1')?"day":
                 "days"
               }
