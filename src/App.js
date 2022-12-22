@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { CircularProgress } from '@mui/material';
+import PageVisibility from 'react-page-visibility';
 import formatDate from 'date-fns/format';
 import parse from 'date-fns/parse';
 import { nanoid } from 'nanoid';
@@ -2346,6 +2347,29 @@ class App extends Component {
       );
     }
   }
+  handleVisibilityChange(visible){
+    if(visible){
+      dateToday = formatDate(new Date(), "MM-dd-yyyy");
+      const openedStr = window.localStorage.getItem(KEY_LastOpenedDate);
+      if (openedStr !== null) {
+        if(dateToday !== openedStr){
+          title = puzzTitle(dateToday);
+          description = puzzDescription(dateToday);
+          dailyPuzzlesArr = puzzles(dateToday);
+          this.setState({clearedLevel: true, dailyPuzzleCompleted: false});
+          setTimeout(() => {
+            this.nextGame(true);
+          }, 200);
+        }
+      }else{
+        try {
+            window.localStorage.setItem(KEY_LastOpenedDate, dateToday);
+        } catch (error) {
+            window.alert('window.localStorage error: ' + error.message);
+        }
+      }
+    }
+  }
 
   render() {
     if (this.state.lettersetContainerHeight === 0) {
@@ -2377,6 +2401,7 @@ class App extends Component {
       } = this.state;
 
       return (
+        <PageVisibility onChange={isVisible => this.handleVisibilityChange(isVisible)}>
         <div>
             <Menu showMenu={this.state.showMenu} closeMenu={() => this.toggleDrawer()} showModal={(which, open) => {this.showModal(which, open)}} themeColor={global.bgColor}/>
           <div style={{...styles.container, backgroundColor: darkModeEnabled ? colors.gray_4:colors.off_white}} onClick={this.state.showMenu?() => this.toggleDrawer():null}>
@@ -2564,7 +2589,8 @@ class App extends Component {
           /> */}
             <HintNag isModalVisible={this.state.showHintNagModal} isDarkModeEnabled={this.state.darkModeEnabled} requestModalClose={()=>{this.toggleModal(null, false)}}/>
           </div>
-        </div>
+          </div>
+        </PageVisibility>
       );
     }
   }

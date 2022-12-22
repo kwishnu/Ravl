@@ -20,6 +20,7 @@
     "react-device-detect": "^2.2.2",
     "react-dom": "^18.2.0",
     "react-draggable": "^4.4.5",
+    "react-page-visibility": "^7.0.0",
     "react-scripts": "5.0.1",
     "react-simple-range": "^2.0.0",
     "react-switch": "^7.0.0",
