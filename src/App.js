@@ -43,6 +43,7 @@ import EndGame from "./modal/EndGameModal";
 // import ThankYou from "./modal/ThankYouModal";
 const KEY_LastOpenedDate = 'lastOpenedKey';
 const KEY_ShowedTutorial = 'showedTutKey';
+const KEY_GameInProgress = 'gameInProgress';
 const KEY_PlayedFirstGame = 'playedGameKey';
 const KEY_HighScore = 'highScoreKey';
 const KEY_BGColorPref = 'bgColorPrefKey';
@@ -55,6 +56,19 @@ const KEY_CurrentStarColor = 'curStarColorKey';
 const KEY_StarColorString = 'starColorKey';
 const KEY_HasUpgrade = 'hasUpgradeKey';
 const KEY_LowColPositions = 'lowColPositions';
+const KEY_PWords0 = 'pWordsKey0';
+const KEY_PWords1 = 'pWordsKey1';
+const KEY_PWords2 = 'pWordsKey2';
+const KEY_PWords3 = 'pWordsKey3';
+const KEY_PWords4 = 'pWordsKey4';
+const KEY_PWords5 = 'pWordsKey5';
+const KEY_PWords6 = 'pWordsKey6';
+const KEY_PWords7 = 'pWordsKey7';
+const KEY_SolvedWords = 'solvedWordsKey';
+const KEY_BonusWords = 'bonusWordsKey';
+const KEY_GameIndex = 'gameIndexKey';
+const KEY_Score = 'scoreKey';
+const KEY_StarEligibility = 'starEligibilityKey';
 const scrWidth = config.scrWidth;
 const scrHeight = config.scrHeight;
 const tablet = config.isTablet;
@@ -250,22 +264,65 @@ class App extends Component {
       lettersetContainerHeight: this.lettersetContainer.current.getBoundingClientRect().height,
       lettersetContainerWidth: this.lettersetContainer.current.getBoundingClientRect().width,
       scoreContainerHeight: this.scoreContainer.current.getBoundingClientRect().height,
-   });
-    this.init(
-      puzzleWords0,
-      puzzleWords1,
-      puzzleWords2,
-      puzzleWords3,
-      puzzleWords4,
-      puzzleWords5,
-      puzzleWords6,
-      puzzleWords7,
-      [[],[],[],[],[],[],[],[],[],[],[]],// this.props.solvedWords,
-      [[],[],[],[],[],[],[],[],[],[],[]],// this.props.bonusWords,
-      15,// this.props.score,
-      -1,// this.props.currentGameIndex,
-      true//eligibility for star
-    )
+    });
+    let gameInProgressBool = false;
+    const gameInProgress = window.localStorage.getItem(KEY_GameInProgress);      
+    if (gameInProgress !== null) {
+      gameInProgressBool = (gameInProgress === 'true')?true:false;
+    }else{
+      try {
+        window.localStorage.setItem(KEY_GameInProgress, 'false');
+      } catch (error) {
+        window.alert('window.localStorage error: ' + error.message);
+      }
+    }
+    if(gameInProgressBool){
+      puzzleWords0 = JSON.parse(window.localStorage.getItem(KEY_PWords0));      
+      puzzleWords1 = JSON.parse(window.localStorage.getItem(KEY_PWords1));      
+      puzzleWords2 = JSON.parse(window.localStorage.getItem(KEY_PWords2));      
+      puzzleWords3 = JSON.parse(window.localStorage.getItem(KEY_PWords3));      
+      puzzleWords4 = JSON.parse(window.localStorage.getItem(KEY_PWords4));      
+      puzzleWords5 = JSON.parse(window.localStorage.getItem(KEY_PWords5));      
+      puzzleWords6 = JSON.parse(window.localStorage.getItem(KEY_PWords6));      
+      puzzleWords7 = JSON.parse(window.localStorage.getItem(KEY_PWords7));      
+      const solvedWs = JSON.parse(window.localStorage.getItem(KEY_SolvedWords));      
+      const bonusWs = JSON.parse(window.localStorage.getItem(KEY_BonusWords));      
+      const scoreInt = parseInt(window.localStorage.getItem(KEY_Score));      
+      const gIndex = parseInt(window.localStorage.getItem(KEY_GameIndex));      
+      const sEligBool = window.localStorage.getItem(KEY_StarEligibility) === 'true'?true:false;  
+      
+      this.init(
+        puzzleWords0,
+        puzzleWords1,
+        puzzleWords2,
+        puzzleWords3,
+        puzzleWords4,
+        puzzleWords5,
+        puzzleWords6,
+        puzzleWords7,
+        solvedWs,
+        bonusWs,
+        scoreInt,
+        gIndex,
+        sEligBool
+      )
+   }else{
+      this.init(
+        puzzleWords0,
+        puzzleWords1,
+        puzzleWords2,
+        puzzleWords3,
+        puzzleWords4,
+        puzzleWords5,
+        puzzleWords6,
+        puzzleWords7,
+        [[],[],[],[],[],[],[],[],[],[],[]],// this.props.solvedWords,
+        [[],[],[],[],[],[],[],[],[],[],[]],// this.props.bonusWords,
+        15,// this.props.score,
+        -1,// this.props.currentGameIndex,
+        true//eligibility for star
+      )
+    }
   }
   init(
     p0,
@@ -283,6 +340,24 @@ class App extends Component {
     eligibility
   )
   {
+    try{
+      window.localStorage.setItem(KEY_PWords0, JSON.stringify(p0));
+      window.localStorage.setItem(KEY_PWords1, JSON.stringify(p1));
+      window.localStorage.setItem(KEY_PWords2, JSON.stringify(p2));
+      window.localStorage.setItem(KEY_PWords3, JSON.stringify(p3));
+      window.localStorage.setItem(KEY_PWords4, JSON.stringify(p4));
+      window.localStorage.setItem(KEY_PWords5, JSON.stringify(p5));
+      window.localStorage.setItem(KEY_PWords6, JSON.stringify(p6));
+      window.localStorage.setItem(KEY_PWords7, JSON.stringify(p7));
+      window.localStorage.setItem(KEY_SolvedWords, JSON.stringify(sw));
+      window.localStorage.setItem(KEY_BonusWords, JSON.stringify(bw));
+      window.localStorage.setItem(KEY_Score, sc + '');
+      window.localStorage.setItem(KEY_GameIndex, cgi + '');
+      window.localStorage.setItem(KEY_StarEligibility, eligibility.toString() );
+    } catch (error) {
+      window.alert('window.localStorage error: ' + error.message);
+    }
+
     const keyIDFrag = nanoid();
     const counterKeyID = nanoid();
     puzzleWords0 = p0;//['FIG','BAD','SAP'];
@@ -784,7 +859,7 @@ class App extends Component {
         window.alert('window.localStorage error: ' + error.message);
       }
     if(cgi > -1){
-      this.setState({gameStarted: true});
+      this.setState({gameStarted: true, showStars: false});
       this.lockScreen(2000);
     }
     this.setState({isLoading: false})
@@ -1275,6 +1350,11 @@ class App extends Component {
             return arr.sort();
           })
           this.setState({solvedWords: swArray});
+          try{
+            window.localStorage.setItem(KEY_SolvedWords, JSON.stringify(swArray));
+          } catch (error){
+            window.alert('window.localStorage error: ' + error.message);
+          }
         }, 800);
       }
       const yValue = this.getSolvedAnimYValue(this.state.currentGameIndex - this.state.solvedWordsRowOffset);
@@ -1336,7 +1416,6 @@ class App extends Component {
     let hasAnyWordArr = this.evalForAnyWords(gArray); //[word, [refArray]]
     if (noPuzzleWords && hasAnyWordArr[0]) {//has a bonus word
       notAnyWords = false;
-      // debugger;
       switch(this.state.bonusWords[this.state.currentGameIndex].length - this.state.bwOffset){
         case 1:
             this.flashWord(hasAnyWordArr[1]);
@@ -1380,6 +1459,11 @@ class App extends Component {
           showGame8: false,
           megaPuzzle: false
         });
+        try{
+          window.localStorage.setItem(KEY_GameInProgress, 'false');
+        } catch (error){
+          window.alert('window.localStorage error: ' + error.message);
+        }
         this.resetLowColPositions();
         if(!this.state.playedGameOnce){
           console.log("Played game once...");
@@ -1617,6 +1701,11 @@ class App extends Component {
             solvedWord: tempWord,
             solvedPadding: 5,
           });
+          try{
+            window.localStorage.setItem(KEY_BonusWords, JSON.stringify(bwArray));
+          } catch (error){
+            window.alert('window.localStorage error: ' + error.message);
+          }
           break;
         }
       }
@@ -1707,6 +1796,11 @@ class App extends Component {
       this.goToStartScreen();
       return;
     }
+    try{
+      window.localStorage.setItem(KEY_GameInProgress, 'true');
+    } catch (error){
+      window.alert('window.localStorage error: ' + error.message);
+    }
     if(this.state.playRavlIntervalID !== 0 || (isDaily && this.state.clearedLevel)){//coming from start screen
       for(let i=0;i<5;i++){
         if(this.state.animationTimerIDs[i])clearTimeout(this.state.animationTimerIDs[i]);//clear animation setTimeouts
@@ -1742,6 +1836,11 @@ class App extends Component {
             solvedWords: [[],[],[],[],[],[],[],[],[],[],[]],
             bonusWords: [[],[],[],[],[],[],[],[],[],[],[]]
           });
+          try{
+            window.localStorage.setItem(KEY_GameIndex, '8');
+          } catch (error){
+            window.alert('window.localStorage error: ' + error.message);
+          }
         }, 500);
       }else{
         setTimeout(() => {
@@ -1768,6 +1867,11 @@ class App extends Component {
             solvedWords: [[],[],[],[],[],[],[],[],[],[],[]],
             bonusWords: [[],[],[],[],[],[],[],[],[],[],[]]
           });
+          try{
+            window.localStorage.setItem(KEY_GameIndex, '0');
+          } catch (error){
+            window.alert('window.localStorage error: ' + error.message);
+          }
         }, 500);
       }
     }else{//coming from failed or completed game
@@ -1817,15 +1921,16 @@ class App extends Component {
   }
   nextPuzzle() {
     this.lockScreen(2000);
-    let swArray = this.state.solvedWords;
-    let bwArray = this.state.bonusWords;
     this.setState({
-      solvedWords: swArray,
-      bonusWords: bwArray,
       hintsGiven: 0,
       onRow: 0,
       puzzleDisplayed: false,
     });
+    try{
+      window.localStorage.setItem(KEY_GameIndex, (this.state.currentGameIndex + 1) + "");
+    } catch (error){
+      window.alert('window.localStorage error: ' + error.message);
+    }
     if (this.state.currentGameIndex === 0) {
       this.setState({
         gameArray0: this.state.gameArray1,
@@ -2093,6 +2198,11 @@ class App extends Component {
   }
   goToStartScreen(){
     this.setState({currentGameIndex: -1, megaPuzzle: false});
+    try{
+      window.localStorage.setItem(KEY_GameInProgress, 'false');
+    } catch (error){
+      window.alert('window.localStorage error: ' + error.message);
+    }
     setTimeout(() => {
       this.nextGame(true);
     }, 200)
@@ -2416,9 +2526,9 @@ class App extends Component {
             <div style={{...styles.adBox, backgroundColor: darkModeEnabled ? colors.gray_4:colors.off_white, borderLeftColor: colors.off_black, right: 0}}>
 
             </div>
-              <div id="messageHeader" style={{...styles.messageOuterContainer, borderColor: global.bgColor}}>
-                <div id="messageHeader" style={styles.messageContainer}>
-                  <div id="messageHeader" style={{...styles.header_text, color: this.state.dailyPuzzleCompleted && this.state.currentGameIndex === -1 ? colors.gray_2 : colors.text_white}}>{this.state.headerText}</div>
+              <div style={{...styles.messageOuterContainer, borderColor: global.bgColor}}>
+                <div style={styles.messageContainer}>
+                  <div style={{...styles.header_text, color: this.state.dailyPuzzleCompleted && this.state.currentGameIndex === -1 ? colors.gray_2 : colors.text_white}}>{this.state.headerText}</div>
                   <AnimatePresence>
                     {this.state.showHeaderComment &&
                       <motion.div
@@ -2428,7 +2538,7 @@ class App extends Component {
                         style={styles.header_text_white}
                         transition={{ duration: 0.8 }}
                       >
-                        <div id="messageHeader" style={styles.header_text}>{this.state.headerComment}</div>
+                        <div style={styles.header_text}>{this.state.headerComment}</div>
                       </motion.div>
                     }
                   </AnimatePresence>
