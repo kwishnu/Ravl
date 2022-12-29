@@ -53,9 +53,10 @@ class Settings extends Component {
           window.alert('window.localStorage error: ' + error.message);
       }
     }
-    const animPref = window.localStorage.getItem(KEY_ModePref);
+    const animPref = window.localStorage.getItem(KEY_AnimationPref);
     if (animPref !== null) {
       const ap = animPref;
+      console.log("in Settings, pref = " + ap);
       switch(ap){
         case "Spin":
           this.setState({spinAnimationChecked: true});

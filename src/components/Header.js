@@ -1,3 +1,4 @@
+import React from 'react';
 import colors from '../config/colors';
 import config from '../config/config';
 import MenuImage from '../images/menu.png';

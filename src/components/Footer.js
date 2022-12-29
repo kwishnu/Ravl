@@ -1,3 +1,4 @@
+import React from 'react';
 import { motion } from "framer-motion"
 import config from '../config/config';
 import {convertFont} from '../config/config';

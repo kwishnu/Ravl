@@ -138,9 +138,9 @@ class TileSet extends Component {
     const yPosition = num * tilePlusMargin + (num)/browserAdjustmentDivisor;///2;
     this.setState({position: yPosition});
   }
-  sendCellOut(ref, callback){//animPref, ref, callback
+  sendCellOut(ref, animPref, callback){
     if(this.rowRefs[ref]){
-      this.rowRefs[ref].animateOut(ref, callback);
+      this.rowRefs[ref].animateOut(ref, animPref, callback);
     }
   }
   renderTiles(cell, i){

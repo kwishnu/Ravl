@@ -63,24 +63,21 @@ class Tile extends Component {
     const animElement = this.tileRefs[ref];
     switch(animPreference){
       case "Spin":
-        animElement.style.setProperty('--animate-duration', '0.5s');
-        animateCSS(animElement, 'showoff').then(() => {
-          animElement.style.setProperty('--animate-duration', '1.6s');
+        animElement.style.setProperty('--animate-duration', '0.3s');
+        animateCSS(animElement, 'pulse').then(() => {
+          animElement.style.setProperty('--animate-duration', '0.6s');
           setTimeout(() => {
             this.setState({show: false});
-          }, 500);
-          animateCSS(animElement, 'flipOutY');
+          }, 600);
+          animateCSS(animElement, 'flipX');
         })
         .then(callback);
         break;
       case "None":
         animElement.style.setProperty('--animate-duration', '0.5s');
         animateCSS(animElement, 'showoff').then(() => {
-          animElement.style.setProperty('--animate-duration', '1.6s');
-          setTimeout(() => {
+          animElement.style.setProperty('--animate-duration', '0.6s');
             this.setState({show: false});
-          }, 500);
-          animateCSS(animElement, 'fadeOut');
         })
         .then(callback);
         break;
@@ -175,7 +172,7 @@ class Tile extends Component {
           <motion.div
             initial={{ x: animVal }}
             animate={{ x: 0 }}
-            exit={{ x: this.state.xValue, y: this.state.xValue === 400?0:50, opacity: 0 }}
+            exit={{ x: this.state.animPreference !== "Leave"?0 : this.state.xValue, y: this.state.xValue === 400?0:50, opacity: 0 }}
             onAnimationComplete={() => this.props.checkForWords(this.props.myRef)}
             transition={{ type: "spring", stiffness: 250, damping: 18, duration: 0.4 }}
           >

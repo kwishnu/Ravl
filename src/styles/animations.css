@@ -216,3 +216,26 @@
   animation-name: animatesolvedword40;
   animation-duration: 800ms;
 }
+
+@keyframes flipX {
+  from {
+    transform: perspective(400px);
+  }
+
+  30% {
+    transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+  }
+  70% {
+    transform: perspective(400px) rotate3d(1, 0, 0, -90deg);
+  }
+
+  to {
+    transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+  }
+}
+
+.animate__flipX {
+  animation-duration: calc(var(--animate-duration) * 0.75);
+  animation-name: flipX;
+  backface-visibility: visible !important;
+}

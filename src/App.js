@@ -858,8 +858,8 @@ class App extends Component {
     }
     const hasUpgraded = window.localStorage.getItem(KEY_HasUpgrade);
     if (hasUpgraded !== null) {
-      const huBool = hasUpgraded === 'true' ? true : false;
-      global.upgradeStatus = huBool;
+      // const huBool = hasUpgraded === 'true' ? true : false;
+      global.upgradeStatus = true;//huBool;
       //this.setState({hasUpgrade: huBool}); <= future, likely for ads implementation
     } else {
       try {
@@ -994,7 +994,6 @@ class App extends Component {
     let doneDropping = false;
 
     rowArr.forEach((cellRef) => {
-      // debugger;
       const colRef = cellRef.split(",")[0];
 
       this.colRefs[colRef].sendCellOut(cellRef, this.state.animationStyle, () => {//this.state.animationStyle, cellRef,...
@@ -1420,8 +1419,6 @@ class App extends Component {
           break;
         default:
           whichAnimation = "animate__animatesolvedword40"
-
-
       }
       setTimeout(() => {
         const element = document.querySelector('.anim-node');
@@ -2293,7 +2290,6 @@ class App extends Component {
           src={require("./images/exclamation_ravl_tile.png")}
           style={tut_styles.tile_image}
           className={animStyles.Tileimg}
-          iterationCount={"infinite"}
           alt={"Oscillating exclamation point animation"}
         />
       </div>
