@@ -1604,28 +1604,140 @@ class App extends Component {
       if (tempWord.length === numColumns) {
         switch (numColumns) {
           case 3:
-            if (puzzleWords0.includes(tempWord) || (this.state.isDailyGame && (puzzleWords8.includes(tempWord) || puzzleWords9.includes(tempWord) || puzzleWords10.includes(tempWord)))) legitWord = true;
+            if(this.state.isDailyGame){
+              switch(this.state.currentGameIndex){
+                case 8:
+                  if (puzzleWords8.includes(tempWord)) legitWord = true;
+                  break;
+                case 9:
+                  if (puzzleWords9.includes(tempWord)) legitWord = true;
+                  break;
+                default:
+                  if (puzzleWords10.includes(tempWord)) legitWord = true;
+                  break;
+              }
+            }else{
+              if (puzzleWords0.includes(tempWord)) legitWord = true;
+            }
             break;
           case 4:
-            if (puzzleWords1.includes(tempWord) || (this.state.isDailyGame && (puzzleWords8.includes(tempWord) || puzzleWords9.includes(tempWord) || puzzleWords10.includes(tempWord)))) legitWord = true;
+            if(this.state.isDailyGame){
+              switch(this.state.currentGameIndex){
+                case 8:
+                  if (puzzleWords8.includes(tempWord)) legitWord = true;
+                  break;
+                case 9:
+                  if (puzzleWords9.includes(tempWord)) legitWord = true;
+                  break;
+                default:
+                  if (puzzleWords10.includes(tempWord)) legitWord = true;
+                  break;
+              }
+            }else{
+              if (puzzleWords1.includes(tempWord)) legitWord = true;
+            }
             break;
           case 5:
-            if (puzzleWords2.includes(tempWord) || (this.state.isDailyGame && (puzzleWords8.includes(tempWord) || puzzleWords9.includes(tempWord) || puzzleWords10.includes(tempWord)))) legitWord = true;
+            if(this.state.isDailyGame){
+              switch(this.state.currentGameIndex){
+                case 8:
+                  if (puzzleWords8.includes(tempWord)) legitWord = true;
+                  break;
+                case 9:
+                  if (puzzleWords9.includes(tempWord)) legitWord = true;
+                  break;
+                default:
+                  if (puzzleWords10.includes(tempWord)) legitWord = true;
+                  break;
+              }
+            }else{
+              if (puzzleWords2.includes(tempWord)) legitWord = true;
+            }
             break;
           case 6:
-            if (puzzleWords3.includes(tempWord) || (this.state.isDailyGame && (puzzleWords8.includes(tempWord) || puzzleWords9.includes(tempWord) || puzzleWords10.includes(tempWord)))) legitWord = true;
+            if(this.state.isDailyGame){
+              switch(this.state.currentGameIndex){
+                case 8:
+                  if (puzzleWords8.includes(tempWord)) legitWord = true;
+                  break;
+                case 9:
+                  if (puzzleWords9.includes(tempWord)) legitWord = true;
+                  break;
+                default:
+                  if (puzzleWords10.includes(tempWord)) legitWord = true;
+                  break;
+              }
+            }else{
+              if (puzzleWords3.includes(tempWord)) legitWord = true;
+            }
             break;
           case 7:
-            if (puzzleWords4.includes(tempWord) || (this.state.isDailyGame && (puzzleWords8.includes(tempWord) || puzzleWords9.includes(tempWord) || puzzleWords10.includes(tempWord)))) legitWord = true;
+            if(this.state.isDailyGame){
+              switch(this.state.currentGameIndex){
+                case 8:
+                  if (puzzleWords8.includes(tempWord)) legitWord = true;
+                  break;
+                case 9:
+                  if (puzzleWords9.includes(tempWord)) legitWord = true;
+                  break;
+                default:
+                  if (puzzleWords10.includes(tempWord)) legitWord = true;
+                  break;
+              }
+            }else{
+              if (puzzleWords4.includes(tempWord)) legitWord = true;
+            }
             break;
           case 8:
-            if (puzzleWords5.includes(tempWord) || (this.state.isDailyGame && (puzzleWords8.includes(tempWord) || puzzleWords9.includes(tempWord) || puzzleWords10.includes(tempWord)))) legitWord = true;
+            if(this.state.isDailyGame){
+              switch(this.state.currentGameIndex){
+                case 8:
+                  if (puzzleWords8.includes(tempWord)) legitWord = true;
+                  break;
+                case 9:
+                  if (puzzleWords9.includes(tempWord)) legitWord = true;
+                  break;
+                default:
+                  if (puzzleWords10.includes(tempWord)) legitWord = true;
+                  break;
+              }
+            }else{
+              if (puzzleWords5.includes(tempWord)) legitWord = true;
+            }
             break;
           case 9:
-            if (puzzleWords6.includes(tempWord) || (this.state.isDailyGame && (puzzleWords8.includes(tempWord) || puzzleWords9.includes(tempWord) || puzzleWords10.includes(tempWord))) || (this.state.megaPuzzle && this.state.megaWords.includes(tempWord))) legitWord = true;
+            if(this.state.isDailyGame){
+              switch(this.state.currentGameIndex){
+                case 8:
+                  if (puzzleWords8.includes(tempWord)) legitWord = true;
+                  break;
+                case 9:
+                  if (puzzleWords9.includes(tempWord)) legitWord = true;
+                  break;
+                default:
+                  if (puzzleWords10.includes(tempWord)) legitWord = true;
+                  break;
+              }
+            }else{
+              if (puzzleWords6.includes(tempWord)) legitWord = true;
+            }
             break;
           case 10:
-            if (puzzleWords7.includes(tempWord) || (this.state.isDailyGame && (puzzleWords8.includes(tempWord) || puzzleWords9.includes(tempWord) || puzzleWords10.includes(tempWord)))) legitWord = true;
+            if(this.state.isDailyGame){
+              switch(this.state.currentGameIndex){
+                case 8:
+                  if (puzzleWords8.includes(tempWord)) legitWord = true;
+                  break;
+                case 9:
+                  if (puzzleWords9.includes(tempWord)) legitWord = true;
+                  break;
+                default:
+                  if (puzzleWords10.includes(tempWord)) legitWord = true;
+                  break;
+              }
+            }else{
+              if (puzzleWords7.includes(tempWord)) legitWord = true;
+            }
             break;
           default:
             console.log("No default case...");
@@ -2157,7 +2269,6 @@ class App extends Component {
           this.setState({showSupportModal: true});
           break;
         case "Mega RavL":
-          if(this.state.currentGameIndex === -1){
             this.setState({lockScreenInput: false});
             this.hideAllGames();
             this.toggleDrawer();
@@ -2176,9 +2287,6 @@ class App extends Component {
             setTimeout(() => {
               this.transitionToGame(true);
             }, 200);
-          }else{
-            this.setState({showEndGameModal: true});
-          }
           break;
         default:
           console.log("No default case...");
@@ -2513,7 +2621,7 @@ class App extends Component {
       return (
         <PageVisibility onChange={isVisible => this.handleVisibilityChange(isVisible)}>
         <div>
-            <Menu showMenu={this.state.showMenu} closeMenu={() => this.toggleDrawer()} showModal={(which, open) => {this.showModal(which, open)}} themeColor={global.bgColor}/>
+            <Menu showMenu={this.state.showMenu} closeMenu={() => this.toggleDrawer()} showModal={(which, open) => {this.showModal(which, open)}} themeColor={global.bgColor} cgi={this.state.currentGameIndex}/>
           <div style={{...styles.container, backgroundColor: darkModeEnabled ? colors.gray_4:colors.off_white}} onClick={this.state.showMenu?() => this.toggleDrawer():null}>
             <Header 
               clickMenu={(which) => this.toggleDrawer(which)} 

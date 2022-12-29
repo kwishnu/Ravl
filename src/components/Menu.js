@@ -50,7 +50,9 @@ class Menu extends Component {
               <MenuItem text={"Settings"} imageUrl={settingsImage} altText={"Settings"} showModal={(which) => this.showModal(which, true)} bgC={themeColor}/>
               <MenuItem text={"Help"} imageUrl={helpImage} altText={"Help"} showModal={(which) => this.showModal(which, true)} bgC={themeColor}/>
               <MenuItem text={"Support"} imageUrl={supportImage} altText={"Support"} showModal={(which) => this.showModal(which, true)} bgC={themeColor}/>
-              <MenuItem text={"Mega RavL"} imageUrl={gameImage} altText={"Mega RavL"} showModal={(which) => this.showModal(which, true)} bgC={themeColor}/>
+              {this.props.cgi === -1 &&
+                <MenuItem text={"Mega RavL"} imageUrl={gameImage} altText={"Mega RavL"} showModal={(which) => this.showModal(which, true)} bgC={themeColor}/>
+              }
             </div>
             </motion.div>
         }
