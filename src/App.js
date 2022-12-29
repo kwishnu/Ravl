@@ -41,6 +41,7 @@ import Support from "./screens/support";
 import Words from "./modal/WordsModal";
 import EndGame from "./modal/EndGameModal";
 // import ThankYou from "./modal/ThankYouModal";
+
 const KEY_LastOpenedDate = 'lastOpenedKey';
 const KEY_ShowedTutorial = 'showedTutKey';
 const KEY_GameInProgress = 'gameInProgress';
@@ -74,6 +75,7 @@ const scrHeight = config.scrHeight;
 const tablet = config.isTablet;
 const isPC = config.isPC;
 const tileHeight = config.TILE_HEIGHT;
+
 let dateToday = formatDate(new Date(), "MM-dd-yyyy");
 let title = "";
 let description = "";
@@ -93,12 +95,14 @@ let puzzleWords10 = [];
 let solvedWords = [];
 let bonusWords = [];
 let allowIntoUpdateGameArray = true;
+
 global.upgradeStatus = false;
 global.bgColor = colors.dark_purple;
 
 class App extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       level0Saved: [],
       gameArray0: [],
@@ -128,7 +132,7 @@ class App extends Component {
       megaWords: [],
       currentHintsArray: [],
       animationTimerIDs: [],
-      starColorArray: ['#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333','#333333'],
+      starColorArray: new Array(20).fill('#333333'),
       currentStarColor: '#FFD700',
       counterPulseColor: colors.bright_green,
       bonusWords: this.props.bonusWords,
@@ -222,75 +226,86 @@ class App extends Component {
     this.lettersetContainer = React.createRef();
     this.scoreContainer = React.createRef();
   }
+
   openWordsModal = () => {
-    console.log("in openWordsModal" );
-  let showPuzzWords = (this.state.solvedWords[0].length || this.state.solvedWords[8].length) ? true : false;
-  let solvedArray = this.state.solvedWords;
-  let bonusArray = this.state.bonusWords;
-  let sBlankArray = [];
-  let bBlankArray = [];
-  solvedArray.forEach((innerArray) => {
-    let wordsOfOneLevel = "";
-    if(innerArray.length){
-      wordsOfOneLevel = innerArray.join("  ");
-      sBlankArray.push(wordsOfOneLevel);
-    }
-  });
-  bonusArray.forEach((innerArray) => {
-    let wordsOfOneLevel = "";
-    if(innerArray.length){
-      wordsOfOneLevel = innerArray.join("  ");
-      bBlankArray.push(wordsOfOneLevel);
-    }
-  });
-  const sWordModalMsg = sBlankArray.join("\n");
-  const bWordModalMsg = bBlankArray.join("\n");
-  const dividerStr = "_______";
-  this.setState({
-    showPuzzWordsModal: showPuzzWords,
-    solvedModalMessage: sWordModalMsg,
-    bonusModalMessage: bWordModalMsg,
-    dividerString: dividerStr,
-    showWordsModal: true,
-  });
-};
+    console.log("in openWordsModal");
+
+    let showPuzzWords = (this.state.solvedWords[0].length || this.state.solvedWords[8].length) ? true : false;
+    let solvedArray = this.state.solvedWords;
+    let bonusArray = this.state.bonusWords;
+    let sBlankArray = [];
+    let bBlankArray = [];
+
+    solvedArray.forEach((innerArray) => {
+      let wordsOfOneLevel = "";
+      if (innerArray.length) {
+        wordsOfOneLevel = innerArray.join("  ");
+        sBlankArray.push(wordsOfOneLevel);
+      }
+    });
+
+    bonusArray.forEach((innerArray) => {
+      let wordsOfOneLevel = "";
+      if (innerArray.length) {
+        wordsOfOneLevel = innerArray.join("  ");
+        bBlankArray.push(wordsOfOneLevel);
+      }
+    });
+
+    const sWordModalMsg = sBlankArray.join("\n");
+    const bWordModalMsg = bBlankArray.join("\n");
+    const dividerStr = "_______";
+
+    this.setState({
+      showPuzzWordsModal: showPuzzWords,
+      solvedModalMessage: sWordModalMsg,
+      bonusModalMessage: bWordModalMsg,
+      dividerString: dividerStr,
+      showWordsModal: true,
+    });
+  };
 
   componentDidMount() {
     dateToday = formatDate(new Date(), "MM-dd-yyyy");
     title = puzzTitle(dateToday);
     description = puzzDescription(dateToday);
     dailyPuzzlesArr = puzzles(dateToday);
+
     this.setState({
       lettersetContainerHeight: this.lettersetContainer.current.getBoundingClientRect().height,
       lettersetContainerWidth: this.lettersetContainer.current.getBoundingClientRect().width,
       scoreContainerHeight: this.scoreContainer.current.getBoundingClientRect().height,
     });
+
     let gameInProgressBool = false;
-    const gameInProgress = window.localStorage.getItem(KEY_GameInProgress);      
+    const gameInProgress = window.localStorage.getItem(KEY_GameInProgress);
+
     if (gameInProgress !== null) {
-      gameInProgressBool = (gameInProgress === 'true')?true:false;
-    }else{
+      gameInProgressBool = (gameInProgress === 'true') ? true : false;
+    } else {
       try {
         window.localStorage.setItem(KEY_GameInProgress, 'false');
       } catch (error) {
         window.alert('window.localStorage error: ' + error.message);
       }
     }
-    if(gameInProgressBool){
-      puzzleWords0 = JSON.parse(window.localStorage.getItem(KEY_PWords0));      
-      puzzleWords1 = JSON.parse(window.localStorage.getItem(KEY_PWords1));      
-      puzzleWords2 = JSON.parse(window.localStorage.getItem(KEY_PWords2));      
-      puzzleWords3 = JSON.parse(window.localStorage.getItem(KEY_PWords3));      
-      puzzleWords4 = JSON.parse(window.localStorage.getItem(KEY_PWords4));      
-      puzzleWords5 = JSON.parse(window.localStorage.getItem(KEY_PWords5));      
-      puzzleWords6 = JSON.parse(window.localStorage.getItem(KEY_PWords6));      
-      puzzleWords7 = JSON.parse(window.localStorage.getItem(KEY_PWords7));      
-      const solvedWs = JSON.parse(window.localStorage.getItem(KEY_SolvedWords));      
-      const bonusWs = JSON.parse(window.localStorage.getItem(KEY_BonusWords));      
-      const scoreInt = parseInt(window.localStorage.getItem(KEY_Score));      
-      const gIndex = parseInt(window.localStorage.getItem(KEY_GameIndex));      
-      const sEligBool = window.localStorage.getItem(KEY_StarEligibility) === 'true'?true:false;  
-      
+
+    if (gameInProgressBool) {
+      puzzleWords0 = JSON.parse(window.localStorage.getItem(KEY_PWords0));
+      puzzleWords1 = JSON.parse(window.localStorage.getItem(KEY_PWords1));
+      puzzleWords2 = JSON.parse(window.localStorage.getItem(KEY_PWords2));
+      puzzleWords3 = JSON.parse(window.localStorage.getItem(KEY_PWords3));
+      puzzleWords4 = JSON.parse(window.localStorage.getItem(KEY_PWords4));
+      puzzleWords5 = JSON.parse(window.localStorage.getItem(KEY_PWords5));
+      puzzleWords6 = JSON.parse(window.localStorage.getItem(KEY_PWords6));
+      puzzleWords7 = JSON.parse(window.localStorage.getItem(KEY_PWords7));
+
+      const solvedWs = JSON.parse(window.localStorage.getItem(KEY_SolvedWords));
+      const bonusWs = JSON.parse(window.localStorage.getItem(KEY_BonusWords));
+      const scoreInt = parseInt(window.localStorage.getItem(KEY_Score));
+      const gIndex = parseInt(window.localStorage.getItem(KEY_GameIndex));
+      const sEligBool = window.localStorage.getItem(KEY_StarEligibility) === 'true' ? true : false;
+
       this.init(
         puzzleWords0,
         puzzleWords1,
@@ -306,7 +321,7 @@ class App extends Component {
         gIndex,
         sEligBool
       )
-   }else{
+    } else {
       this.init(
         puzzleWords0,
         puzzleWords1,
@@ -316,31 +331,17 @@ class App extends Component {
         puzzleWords5,
         puzzleWords6,
         puzzleWords7,
-        [[],[],[],[],[],[],[],[],[],[],[]],// this.props.solvedWords,
-        [[],[],[],[],[],[],[],[],[],[],[]],// this.props.bonusWords,
-        15,// this.props.score,
-        -1,// this.props.currentGameIndex,
-        true//eligibility for star
+        [[], [], [], [], [], [], [], [], [], [], []], // this.props.solvedWords,
+        [[], [], [], [], [], [], [], [], [], [], []], // this.props.bonusWords,
+        15, // this.props.score,
+        -1, // this.props.currentGameIndex,
+        true, //eligibility for star
       )
     }
   }
-  init(
-    p0,
-    p1,
-    p2,
-    p3,
-    p4,
-    p5,
-    p6,
-    p7,
-    sw,
-    bw,
-    sc,
-    cgi,
-    eligibility
-  )
-  {
-    try{
+
+  init(p0, p1, p2, p3, p4, p5, p6, p7, sw, bw, sc, cgi, eligibility) {
+    try {
       window.localStorage.setItem(KEY_PWords0, JSON.stringify(p0));
       window.localStorage.setItem(KEY_PWords1, JSON.stringify(p1));
       window.localStorage.setItem(KEY_PWords2, JSON.stringify(p2));
@@ -353,14 +354,15 @@ class App extends Component {
       window.localStorage.setItem(KEY_BonusWords, JSON.stringify(bw));
       window.localStorage.setItem(KEY_Score, sc + '');
       window.localStorage.setItem(KEY_GameIndex, cgi + '');
-      window.localStorage.setItem(KEY_StarEligibility, eligibility.toString() );
+      window.localStorage.setItem(KEY_StarEligibility, eligibility.toString());
     } catch (error) {
       window.alert('window.localStorage error: ' + error.message);
     }
 
     const keyIDFrag = nanoid();
     const counterKeyID = nanoid();
-    puzzleWords0 = p0;//['FIG','BAD','SAP'];
+
+    puzzleWords0 = p0; //['FIG','BAD','SAP'];
     puzzleWords1 = p1;
     puzzleWords2 = p2;
     puzzleWords3 = p3;
@@ -370,9 +372,9 @@ class App extends Component {
     puzzleWords7 = p7;
     dateToday = formatDate(new Date(), "MM-dd-yyyy");
     const dateTodayNice = formatDate(new Date(), "EEEE, MMM d");
-    title = title === ""?puzzTitle(dateToday):title;
-    description = description === ""?puzzDescription(dateToday):description;
-    dailyPuzzlesArr = !dailyPuzzlesArr.length > 0?puzzles(dateToday):dailyPuzzlesArr;
+    title = title === "" ? puzzTitle(dateToday) : title;
+    description = description === "" ? puzzDescription(dateToday) : description;
+    dailyPuzzlesArr = !dailyPuzzlesArr.length > 0 ? puzzles(dateToday) : dailyPuzzlesArr;
     puzzleWords8 = dailyPuzzlesArr[0];
     puzzleWords9 = dailyPuzzlesArr[1];
     puzzleWords10 = dailyPuzzlesArr[2];
@@ -481,7 +483,7 @@ class App extends Component {
       }));
     });
     let gameArr8 = [];
-    if(puzzleWords10 && puzzleWords10.length){
+    if (puzzleWords10 && puzzleWords10.length) {
       let straightArray8 = this.buildDailyArray(puzzleWords10);
       gameArr8 = this.buildGameArray(straightArray8);
       colCount = gameArr8.length;
@@ -496,7 +498,7 @@ class App extends Component {
       });
     }
     let gameArr9 = [];
-    if(puzzleWords9 && puzzleWords9.length){
+    if (puzzleWords9 && puzzleWords9.length) {
       let straightArray9 = this.buildDailyArray(puzzleWords9);
       gameArr9 = this.buildGameArray(straightArray9);
       colCount = gameArr9.length;
@@ -522,11 +524,11 @@ class App extends Component {
         ref: "col" + i + ",row" + j,
       }));
     });
-    if(this.state.megaPuzzle){
+    if (this.state.megaPuzzle) {
       let straightArrayMega = this.buildStraightArray(this.state.megaWords);
       megaPuzzleArr = this.buildGameArray(straightArrayMega);
       const ravlRefMega = this.makeRavlTileRef(5, 9);
-      this.setState({megaRavlRef: ravlRefMega});
+      this.setState({ megaRavlRef: ravlRefMega });
       megaPuzzleArr = megaPuzzleArr.map((row, i) => {
         return row.map((letter, j) => ({
           letter,
@@ -538,30 +540,31 @@ class App extends Component {
       ravlArr.push(dailyRavlArr[i]);
     }
 
-    let showPR = (cgi === -1)?true:false;//show "Play RavL" animation
-    let showSW = (cgi === -1)?false:true;//show solved words
-    let showG0 = (cgi === 0)?true:false;
-    let showG1 = (cgi === 1)?true:false;
-    let showG2 = (cgi === 2)?true:false;
-    let showG3 = (cgi === 3)?true:false;
-    let showG4 = (cgi === 4)?true:false;
-    let showG5 = (cgi === 5)?true:false;
-    let showG6 = (cgi === 6)?true:false;
-    let showG7 = (cgi === 7)?true:false;
-    let showG8 = (cgi === 8 || cgi === 100)?true:false;
-    let showG9 = (cgi === 9)?true:false;
-    let showG10 = (cgi === 10)?true:false;
+    let showPR = cgi === -1; //show "Play RavL" animation
+    let showSW = cgi === -1; //show solved words
+    let showG0 = cgi === 0;
+    let showG1 = cgi === 1;
+    let showG2 = cgi === 2;
+    let showG3 = cgi === 3;
+    let showG4 = cgi === 4;
+    let showG5 = cgi === 5;
+    let showG6 = cgi === 6;
+    let showG7 = cgi === 7;
+    let showG8 = cgi === 8 || cgi === 100;
+    let showG9 = cgi === 9;
+    let showG10 = cgi === 10;
     let arrayToUse = [];
     let saveLevel = 0;
     let offset = 0
-    let baseScore = (cgi < 8)?10:15;
-    let scoreToUse = (cgi === 100)?20:(sc < baseScore)?baseScore:sc;
+    let baseScore = (cgi < 8) ? 10 : 15;
+    let scoreToUse = (cgi === 100) ? 20 : (sc < baseScore) ? baseScore : sc;
     let gameEndMsg = getRandom(gamePlatitudes, 1);
     let gameStartedBool = true;
-    const isDaily = cgi > 7?true:false;
-    const headerTxt = (cgi === 100)? "\u2605\u2605 Mega \u2605\u2605": cgi === -1? dateTodayNice + ` \u2022 ` + title : isDaily?description:"Level  " + (cgi + 1) + "  of  8";
 
-    switch(cgi){
+    const isDaily = cgi > 7 ? true : false;
+    const headerTxt = (cgi === 100) ? "\u2605\u2605 Mega \u2605\u2605" : cgi === -1 ? dateTodayNice + ` \u2022 ` + title : isDaily ? description : "Level  " + (cgi + 1) + "  of  8";
+
+    switch (cgi) {
       case 0:
         arrayToUse = gameArr7;
         saveLevel = 0;
@@ -630,10 +633,12 @@ class App extends Component {
         gameStartedBool = false;
         break;
     }
-    const rowsInPuzz = (arrayToUse[0].length + 2)/3;//rows in puzzle
-    const lastInd = !isDaily? 7 : !puzzleWords9[0] || cgi === 100 ? 8 : !puzzleWords10[0] ? 9 : 10;//last index in game
+
+    const rowsInPuzz = (arrayToUse[0].length + 2) / 3;//rows in puzzle
+    const lastInd = !isDaily ? 7 : !puzzleWords9[0] || cgi === 100 ? 8 : !puzzleWords10[0] ? 9 : 10;//last index in game
     const initAH = arrayToUse[0].length;
-    cgi = cgi === 100?8:cgi;
+
+    cgi = cgi === 100 ? 8 : cgi;
 
     this.setState({
       currentGameIndex: cgi,
@@ -685,126 +690,136 @@ class App extends Component {
       counterKey: counterKeyID
     });
 
-    const showed = window.localStorage.getItem(KEY_ShowedTutorial);      
+    const showed = window.localStorage.getItem(KEY_ShowedTutorial);
     if (showed !== null) {
-      const showedBool = (showed === 'true')?true:false;
-      this.setState({ showedTutScreen1: showedBool, showTutScreen1: !showedBool});
-    }else{
+      const showedBool = (showed === 'true') ? true : false;
+      this.setState({ showedTutScreen1: showedBool, showTutScreen1: !showedBool });
+    } else {
       try {
         window.localStorage.setItem(KEY_ShowedTutorial, 'false');
-        this.setState({ showedTutScreen1: false});
+        this.setState({ showedTutScreen1: false });
       } catch (error) {
         window.alert('window.localStorage error: ' + error.message);
       }
     }
+
     const played = window.localStorage.getItem(KEY_PlayedFirstGame);
     if (played !== null) {
-      const playedBool = (played === 'true')?true:false;
-      this.setState({ playedGameOnce: playedBool});
-    }else{
+      const playedBool = (played === 'true') ? true : false;
+      this.setState({ playedGameOnce: playedBool });
+    } else {
       try {
         window.localStorage.setItem(KEY_PlayedFirstGame, 'false');
-        this.setState({ playedGameOnce: false});
+        this.setState({ playedGameOnce: false });
       } catch (error) {
         window.alert('window.localStorage error: ' + error.message);
       }
     }
+
     const lastOpened = window.localStorage.getItem(KEY_LastOpenedDate);
     if (lastOpened !== null) {
       const loDateStr = lastOpened;
-      this.setState({lastOpenedDate: loDateStr});
+      this.setState({ lastOpenedDate: loDateStr });
       try {
         window.localStorage.setItem(KEY_LastOpenedDate, dateToday);
       } catch (error) {
         window.alert('window.localStorage error: ' + error.message);
       }
-      } else {
+    } else {
       try {
         window.localStorage.setItem(KEY_LastOpenedDate, dateToday);
       } catch (error) {
         window.alert('window.localStorage error: ' + error.message);
       }
     }
+
     const bgPref = window.localStorage.getItem(KEY_BGColorPref);
     if (bgPref !== null) {
       global.bgColor = bgPref;
       document.querySelector('meta[name="theme-color"]').setAttribute('content', bgPref);
-    }else{
+    } else {
       try {
         window.localStorage.setItem(KEY_BGColorPref, '#2E034B');
       } catch (error) {
         window.alert('window.localStorage error: ' + error.message);
       }
     }
+
     const modePref = window.localStorage.getItem(KEY_ModePref);
     if (modePref !== null) {
       const mp = modePref;
-      const mpBool = mp === "true" ? true:false;
-      this.setState({darkModeEnabled: mpBool});
-    }else{
+      const mpBool = mp === "true" ? true : false;
+      this.setState({ darkModeEnabled: mpBool });
+    } else {
       try {
         window.localStorage.setItem(KEY_ModePref, 'false');
       } catch (error) {
         window.alert('window.localStorage error: ' + error.message);
       }
     }
+
     const numStars = window.localStorage.getItem(KEY_NumStars);
     if (numStars !== null) {
       const ns = numStars;
       const nsInt = parseInt(ns);
-      this.setState({numberOfStars: nsInt});
-    }else{
+      this.setState({ numberOfStars: nsInt });
+    } else {
       try {
         window.localStorage.setItem(KEY_NumStars, '0');
       } catch (error) {
         window.alert('window.localStorage error: ' + error.message);
       }
     }
+
     const csColor = window.localStorage.getItem(KEY_CurrentStarColor);
     if (csColor !== null) {
       const csC = csColor;
-      this.setState({currentStarColor: csC});
-    }else{
+      this.setState({ currentStarColor: csC });
+    } else {
       try {
         window.localStorage.setItem(KEY_CurrentStarColor, '#FFD700');//colors.gold
       } catch (error) {
         window.alert('window.localStorage error: ' + error.message);
       }
     }
+
     const scString = window.localStorage.getItem(KEY_StarColorString);
     if (scString !== null) {
       const scS = scString;
       const scArray = scS.split(",");
-      this.setState({starColorArray: scArray});
-    }else{
+      this.setState({ starColorArray: scArray });
+    } else {
       try {
         window.localStorage.setItem(KEY_StarColorString, '#333333,#333333,#333333,#333333,#333333,#333333,#333333,#333333,#333333,#333333,#333333,#333333,#333333,#333333,#333333,#333333,#333333,#333333,#333333,#333333');
       } catch (error) {
         window.alert('window.localStorage error: ' + error.message);
       }
     }
+
     const animPref = window.localStorage.getItem(KEY_AnimationPref);
     if (animPref !== null) {
       const ap = animPref;
-      this.setState({animationStyle: ap});
-    }else{
+      this.setState({ animationStyle: ap });
+    } else {
       try {
         window.localStorage.setItem(KEY_AnimationPref, 'Leave');
       } catch (error) {
         window.alert('window.localStorage error: ' + error.message);
       }
     }
+
     const highScore = window.localStorage.getItem(KEY_HighScore);
     if (highScore !== null) {
       const hs = highScore;
-      this.setState({highScore: hs});
-    }else{
+      this.setState({ highScore: hs });
+    } else {
       try {
         window.localStorage.setItem(KEY_HighScore, '0');
       } catch (error) {
         window.alert('window.localStorage error: ' + error.message);
       }
     }
+
     const puzzStreak = window.localStorage.getItem(KEY_PuzzleStreakDays);
     if (puzzStreak !== null) {
       const ps = puzzStreak;
@@ -813,15 +828,16 @@ class App extends Component {
       const today = new Date();
       const dateFromLPD = parse(lastPuzzDay, 'MM-dd-yyyy', new Date());
       const diff = differenceInDays(today, dateFromLPD);
-      const numStr = (numPuzzStreakDays === '0' || diff > 1)?'0':numPuzzStreakDays;
-      this.setState({puzzleStreak: numStr, lastPuzzleDay: lastPuzzDay});
-    }else{
+      const numStr = (numPuzzStreakDays === '0' || diff > 1) ? '0' : numPuzzStreakDays;
+      this.setState({ puzzleStreak: numStr, lastPuzzleDay: lastPuzzDay });
+    } else {
       try {
         window.localStorage.setItem(KEY_PuzzleStreakDays, '0,01-01-2001');
       } catch (error) {
         window.alert('window.localStorage error: ' + error.message);
       }
     }
+
     const dailyStrk = window.localStorage.getItem(KEY_DailyStreakDays);
     if (dailyStrk !== null) {
       const ds = dailyStrk;
@@ -830,10 +846,10 @@ class App extends Component {
       const today = new Date();
       const dateFromLDD = parse(lastDDay, 'MM-dd-yyyy', new Date());
       const diff = differenceInDays(today, dateFromLDD);
-      const numStr = (numDailyStreakDays === '0' || diff > 1)?'0':numDailyStreakDays;
-      this.setState({dailyStreak: numStr, lastDailyDay: lastDDay});
-      if(lastDDay === dateToday)this.setState({dailyPuzzleCompleted: true});
-    }else{
+      const numStr = (numDailyStreakDays === '0' || diff > 1) ? '0' : numDailyStreakDays;
+      this.setState({ dailyStreak: numStr, lastDailyDay: lastDDay });
+      if (lastDDay === dateToday) this.setState({ dailyPuzzleCompleted: true });
+    } else {
       try {
         window.localStorage.setItem(KEY_DailyStreakDays, '0,01-01-2001');
       } catch (error) {
@@ -842,38 +858,40 @@ class App extends Component {
     }
     const hasUpgraded = window.localStorage.getItem(KEY_HasUpgrade);
     if (hasUpgraded !== null) {
-      const huBool = hasUpgraded === 'true'?true:false;
+      const huBool = hasUpgraded === 'true' ? true : false;
       global.upgradeStatus = huBool;
       //this.setState({hasUpgrade: huBool}); <= future, likely for ads implementation
-    }else{
+    } else {
       try {
         window.localStorage.setItem(KEY_HasUpgrade, 'false');
       } catch (error) {
         window.alert('window.localStorage error: ' + error.message);
       }
     }
-    const lowColPositions = [0,0,0,0,0,0,0,0,0,0];
-      try {
-        window.localStorage.setItem(KEY_LowColPositions, JSON.stringify(lowColPositions));
-      } catch (error) {
-        window.alert('window.localStorage error: ' + error.message);
-      }
-    if(cgi > -1){
-      this.setState({gameStarted: true, showStars: false});
+
+    const lowColPositions = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    try {
+      window.localStorage.setItem(KEY_LowColPositions, JSON.stringify(lowColPositions));
+    } catch (error) {
+      window.alert('window.localStorage error: ' + error.message);
+    }
+    if (cgi > -1) {
+      this.setState({ gameStarted: true, showStars: false });
       this.lockScreen(2000);
     }
-    this.setState({isLoading: false})
-    if(cgi === -1){
+    this.setState({ isLoading: false })
+    if (cgi === -1) {
       this.runPlayRavlAnimation();
-      this.setState({lockScreenInput: true});
+      this.setState({ lockScreenInput: true });
     }
+
     printWordsToConsole(puzzleWords0, puzzleWords1, puzzleWords2, puzzleWords3, puzzleWords4, puzzleWords5, puzzleWords6, puzzleWords7, puzzleWords8, puzzleWords9, puzzleWords10);
   }
 
   buildStraightArray(wordsSent) {
     const rows = wordsSent.length;
     let cols = 0;
-    cols = wordsSent[0]?wordsSent[0].length : 0;
+    cols = wordsSent[0] ? wordsSent[0].length : 0;
     var arr = [];
     for (var i = 0; i < rows; i++) {
       arr.push([]);
@@ -884,10 +902,11 @@ class App extends Component {
     }
     return arr;
   }
+
   buildDailyArray(wordsSnt) {
     const rows = wordsSnt.length;
     let cols = 0;
-    cols = wordsSnt[0]?wordsSnt[0].length : 0;
+    cols = wordsSnt[0] ? wordsSnt[0].length : 0;
     var arr = [];
     for (var i = 0; i < rows; i++) {
       arr.push([]);
@@ -898,9 +917,11 @@ class App extends Component {
     }
     return arr;
   }
+
   buildGameArray(sa) {
     let transposed = null;
     let containsUnscrambledWord = true;
+
     while (containsUnscrambledWord) {
       containsUnscrambledWord = false;
       transposed = transposeArray(sa);
@@ -942,6 +963,7 @@ class App extends Component {
         }
       }
     }
+
     const cols = transposed.length;
     const rows = transposed[0].length;
     for (var jj = 0; jj < cols; jj++) {
@@ -956,20 +978,25 @@ class App extends Component {
     }
     return transposed;
   }
+
   makeRavlTileRef(rows, columns) {
     const val1 = getRandomInt(0, columns);
     const val2 = getRandomInt((rows - 1), (2 * rows - 1));
+
     return "col" + val1 + ",row" + val2;
   }
+
   sendRowOut(rowArr, row) {
     this.lockScreen(1250);
-//    if(this.state.currentHintsArray.length === 0)this.setState({hintsGiven: 0});
-    const pts = this.state.gameArray0.length;//this.getPointsToAdd();
+    // if(this.state.currentHintsArray.length === 0)this.setState({hintsGiven: 0});
+    const pts = this.state.gameArray0.length; // this.getPointsToAdd();
     this.changeScore(pts);
     let doneDropping = false;
+
     rowArr.forEach((cellRef) => {
       // debugger;
       const colRef = cellRef.split(",")[0];
+
       this.colRefs[colRef].sendCellOut(cellRef, this.state.animationStyle, () => {//this.state.animationStyle, cellRef,...
         if (!doneDropping) {
           doneDropping = true;
@@ -979,13 +1006,14 @@ class App extends Component {
             this.updateGameArray([]);
           }, 800);
           setTimeout(() => {
-            this.resetSolvedWord();//resets padding and visibility for the "solved word" animation
+            this.resetSolvedWord(); // resets padding and visibility for the "solved word" animation
           }, 150);
-          this.resetTileColors(this.state.darkModeEnabled);//called in case a hint (green) tile isn't removed
+          this.resetTileColors(this.state.darkModeEnabled); // called in case a hint (green) tile isn't removed
         }
       });
     });
   }
+
   flashWord(rowArr) {
     this.lockScreen(1000);
     const pts = this.state.gameArray0.length;
@@ -997,38 +1025,40 @@ class App extends Component {
       this.colRefs[colRef].flashWord(cellRef, (refSent) => {
         if (!wordAdded) {
           wordAdded = true;
-            this.updateGameArray([]);
+          this.updateGameArray([]);
         }
       });
     });
-  }  
-  runPlayRavlAnimation(){
-    if(this.state.playRavlIntervalID === 0){
+  }
+
+  runPlayRavlAnimation() {
+    if (this.state.playRavlIntervalID === 0) {
       setTimeout(() => {
-        if(this.state.darkModeEnabled){
-            this.resetTileColors(false);
+        if (this.state.darkModeEnabled) {
+          this.resetTileColors(false);
         }
       }, 200);
       this.playRavlAnimation(true);
       this.hideAllGames();
       this.setState({ showPlayRavl: true, gameArray0: playRavlStr });
-      let intervalID = setInterval(() => {this.playRavlAnimation(true)}, 9000);
-      this.setState({playRavlIntervalID: intervalID});
+      let intervalID = setInterval(() => { this.playRavlAnimation(true) }, 9000);
+      this.setState({ playRavlIntervalID: intervalID });
     } else {
       clearInterval(this.state.playRavlIntervalID);
       this.playRavlAnimation(false);
-      this.setState({playRavlIntervalID: 0});
+      this.setState({ playRavlIntervalID: 0 });
     }
   }
+
   playRavlAnimation(starting) {
-    if(!this.colRefs)return;
-    const colArray = [0,1,2,3];
+    if (!this.colRefs) return;
+    const colArray = [0, 1, 2, 3];
     let timeoutIDArr = [];
-    if(starting){
+    if (starting) {
       const aniTimer1 = setTimeout(() => {
         colArray.forEach((colIndex) => {
           const colRef = "col" + colIndex;
-          if(this.colRefs[colRef]){
+          if (this.colRefs[colRef]) {
             this.colRefs[colRef].nudgeUpAndDown(colIndex, true);
           }
         });
@@ -1037,53 +1067,54 @@ class App extends Component {
       const aniTimer2 = setTimeout(() => {
         colArray.forEach((colIndex) => {
           const colRef = "col" + colIndex;
-          if(this.colRefs[colRef]){
-          this.colRefs[colRef].nudgeUpAndDown(colIndex, false);
+          if (this.colRefs[colRef]) {
+            this.colRefs[colRef].nudgeUpAndDown(colIndex, false);
           }
         });
       }, 600);
       timeoutIDArr.push(aniTimer2);
-    const aniTimer3 = setTimeout(() => {
-      colArray.forEach((colIndex) => {
-        const colRef = "col" + colIndex;
-        if(this.colRefs[colRef]){
-          this.colRefs[colRef].cycleColor(colRef + ",row3");
-          this.colRefs[colRef].cycleColor(colRef + ",row6");
+      const aniTimer3 = setTimeout(() => {
+        colArray.forEach((colIndex) => {
+          const colRef = "col" + colIndex;
+          if (this.colRefs[colRef]) {
+            this.colRefs[colRef].cycleColor(colRef + ",row3");
+            this.colRefs[colRef].cycleColor(colRef + ",row6");
           }
         });
-    }, 200);
+      }, 200);
       timeoutIDArr.push(aniTimer3);
-    const aniTimer4 = setTimeout(() => {
-      colArray.forEach((colIndex) => {
-        const colRef = "col" + colIndex;
-        if(this.colRefs[colRef]){
-          this.colRefs[colRef].moveColUpOrDown(colIndex);
+      const aniTimer4 = setTimeout(() => {
+        colArray.forEach((colIndex) => {
+          const colRef = "col" + colIndex;
+          if (this.colRefs[colRef]) {
+            this.colRefs[colRef].moveColUpOrDown(colIndex);
           }
         });
-    }, 3000);
+      }, 3000);
       timeoutIDArr.push(aniTimer4);
-    const aniTimer5 = setTimeout(() => {
-      colArray.forEach((colIndex) => {
-        const colRef = "col" + colIndex;
-        if(this.colRefs[colRef]){
-          this.colRefs[colRef].moveColUpOrDown(colIndex);
+      const aniTimer5 = setTimeout(() => {
+        colArray.forEach((colIndex) => {
+          const colRef = "col" + colIndex;
+          if (this.colRefs[colRef]) {
+            this.colRefs[colRef].moveColUpOrDown(colIndex);
           }
         });
-    }, 1800);
+      }, 1800);
       timeoutIDArr.push(aniTimer5);
-      this.setState({animationTimerIDs: timeoutIDArr});
+      this.setState({ animationTimerIDs: timeoutIDArr });
     } else {
       setTimeout(() => {
         colArray.forEach((colIndex) => {
           const colRef = "col" + colIndex;
-        if(this.colRefs[colRef]){
-          this.colRefs[colRef].stopColorCycle(colRef + ",row3");
-          this.colRefs[colRef].stopColorCycle(colRef + ",row6");
+          if (this.colRefs[colRef]) {
+            this.colRefs[colRef].stopColorCycle(colRef + ",row3");
+            this.colRefs[colRef].stopColorCycle(colRef + ",row6");
           }
         });
       }, 200);
     }
   }
+
   animateGameFail() {
     const remainingArr = this.getRemainingTiles();
     remainingArr.forEach((cellRef) => {
@@ -1091,25 +1122,26 @@ class App extends Component {
       this.colRefs[colRef].animateFail(cellRef);
     });
   }
+
   giveHint() {
     if (this.state.gameDone) return;
     const gArray = this.state.gameArray0;
-    const refStr = this.state.megaPuzzle? this.state.megaRavlRef : this.state.ravlTiles[this.state.currentGameIndex];
+    const refStr = this.state.megaPuzzle ? this.state.megaRavlRef : this.state.ravlTiles[this.state.currentGameIndex];
     const ravlTileCol = parseInt(refStr.substring(3, 4));
     let ravlLetter = "";
     for (let r = 0; r < gArray[0].length; r++) {
-      if (gArray[ravlTileCol][r].ref ===refStr) {
+      if (gArray[ravlTileCol][r].ref === refStr) {
         ravlLetter = gArray[ravlTileCol][r].letter;
         break;
       }
     }
     if (gArray.length - (this.state.hintsGiven + 1) <= 1) {
-      this.setState({showHintNagModal: true});
+      this.setState({ showHintNagModal: true });
       return;
     }
     if (this.state.score - this.state.hintPenalty <= 0) {
       const newKey = nanoid();
-      this.setState({counterPulseColor: colors.red});
+      this.setState({ counterPulseColor: colors.red });
       setTimeout(() => {
         this.setState({ counterKey: newKey });
       }, 200);
@@ -1145,7 +1177,7 @@ class App extends Component {
         puzzWordArray = puzzleWords7;
         break;
       case 8:
-        puzzWordArray = this.state.megaPuzzle? this.state.megaWords : puzzleWords8;
+        puzzWordArray = this.state.megaPuzzle ? this.state.megaWords : puzzleWords8;
         break;
       case 9:
         puzzWordArray = puzzleWords9;
@@ -1159,7 +1191,7 @@ class App extends Component {
     let wordIndex = 0;
     let initialLetter = ravlLetter;
     for (let c = 0; c < numRows; c++) {
-      if (gArray[ravlTileCol][c].letter ==="") continue;
+      if (gArray[ravlTileCol][c].letter === "") continue;
       if (gArray[ravlTileCol][c].letter !== ravlLetter) {
         initialLetter = gArray[ravlTileCol][c].letter;
         break;
@@ -1180,7 +1212,7 @@ class App extends Component {
         }
       }
     }
-    const ravlCRef = this.state.megaPuzzle? this.state.megaRavlRef:this.state.ravlTiles[this.state.currentGameIndex];
+    const ravlCRef = this.state.megaPuzzle ? this.state.megaRavlRef : this.state.ravlTiles[this.state.currentGameIndex];
     changeArr.forEach((cellRef) => {
       const colRef = cellRef.split(",")[0];
       const chgColor = (cellRef === ravlCRef) ? "yellow" : "green";
@@ -1196,16 +1228,17 @@ class App extends Component {
       });
     }
   }
+
   changeTileMode(refArray, mode, onOrOff) {
-    switch(mode){
+    switch (mode) {
       case "Dark Mode":
         refArray.forEach((cellRef) => {
           const colRef = cellRef.split(",")[0];
           this.colRefs[colRef].goDark(cellRef, onOrOff);
         });
-        if(this.state.currentGameIndex > -1){
-          const ravlColRef = this.state.megaPuzzle? this.state.megaRavlRef.split(",")[0]:this.state.ravlTiles[this.state.currentGameIndex].split(",")[0];
-          const ravlRef = this.state.megaPuzzle? this.state.megaRavlRef:this.state.ravlTiles[this.state.currentGameIndex]
+        if (this.state.currentGameIndex > -1) {
+          const ravlColRef = this.state.megaPuzzle ? this.state.megaRavlRef.split(",")[0] : this.state.ravlTiles[this.state.currentGameIndex].split(",")[0];
+          const ravlRef = this.state.megaPuzzle ? this.state.megaRavlRef : this.state.ravlTiles[this.state.currentGameIndex]
           this.colRefs[ravlColRef].ravlTileGoDark(ravlRef, onOrOff);
         }
         break;
@@ -1216,22 +1249,23 @@ class App extends Component {
         console.log("No default case...");
     }
   }
+
   changeScore(amt) {
     const scr = this.state.score + amt;
     const newKey = nanoid();
     if (amt > 0) {
-      this.setState({counterPulseColor: colors.bright_green});
+      this.setState({ counterPulseColor: colors.bright_green });
       setTimeout(() => {
         this.setState({ score: scr });
       }, 1000);
       setTimeout(() => {
-        this.setState({counterKey: newKey});
+        this.setState({ counterKey: newKey });
       }, 1500);
     } else if (amt === -1) {
       this.setState({ counterPulseColor: colors.red, score: scr });
       this.setState({});
       setTimeout(() => {
-        this.setState({ counterKey: newKey});
+        this.setState({ counterKey: newKey });
         if (scr <= 0) {
           this.setState({
             clearedLevel: false,
@@ -1247,18 +1281,19 @@ class App extends Component {
           this.resetLowColPositions();
         }
       }, 200);
-    } else if (amt === 0){
-      this.setState({counterPulseColor: colors.red, counterKey: newKey});
+    } else if (amt === 0) {
+      this.setState({ counterPulseColor: colors.red, counterKey: newKey });
     } else {
-      this.setState({counterPulseColor: colors.red});
+      this.setState({ counterPulseColor: colors.red });
       setTimeout(() => {
         this.setState({ score: scr });
       }, 1000);
       setTimeout(() => {
-        this.setState({counterKey: newKey});
+        this.setState({ counterKey: newKey });
       }, 1500);
     }
   }
+
   moveTileSetUp(colArray, gArray) {
     for (var i = 0; i < Math.abs(colArray[1]); i++) {
       gArray[colArray[0]].push(gArray[colArray[0]].shift());
@@ -1266,6 +1301,7 @@ class App extends Component {
     // printGameArrayToConsole(gArray);
     this.setState({ gameArray: gArray });
   }
+
   moveTileSetDown(colArray, gArray) {
     for (var i = 0; i < Math.abs(colArray[1]); i++) {
       gArray[colArray[0]].unshift(gArray[colArray[0]].pop());
@@ -1273,8 +1309,9 @@ class App extends Component {
     // printGameArrayToConsole(gArray);
     this.setState({ gameArray: gArray });
   }
+
   updateGameArray(colIndexArr) {
-    if(!allowIntoUpdateGameArray)return;
+    if (!allowIntoUpdateGameArray) return;
     if (this.state.rowsInPuzzle - this.state.onRow === 1) {
       let dropArray = this.getDropTileArray();
       if (dropArray.length < this.state.gameArray0.length) {
@@ -1284,9 +1321,9 @@ class App extends Component {
         });
       }
     }
-    if(this.state.currentGameIndex < 0)return;//avoids response to home screen animation
+    if (this.state.currentGameIndex < 0) return;//avoids response to home screen animation
     let gameIndex = this.state.currentGameIndex;
-    const ravlCellRef = this.state.megaPuzzle? this.state.megaRavlRef : this.state.ravlTiles[gameIndex];
+    const ravlCellRef = this.state.megaPuzzle ? this.state.megaRavlRef : this.state.ravlTiles[gameIndex];
     if (!this.state.puzzleDisplayed) {//turns the ravl tile red at start
       const colRef = ravlCellRef.split(",")[0];
       this.colRefs[colRef].ravlTileGoDark(ravlCellRef, this.state.darkModeEnabled);
@@ -1306,7 +1343,7 @@ class App extends Component {
     let hasPuzzleWordArr = this.evalForPuzzleWords(gArray); //[word, row, [refArray]]
     if (hasPuzzleWordArr[0]) {//Has a puzzle word...
       if (this.state.onRow < this.state.rowsInPuzzle - 1) {//not the last row, either animate out or fail
-        if (hasPuzzleWordArr[2].includes(ravlCellRef)){//hit the ravl letter...
+        if (hasPuzzleWordArr[2].includes(ravlCellRef)) {//hit the ravl letter...
           if (allColumnsFlush) {//is okay because columns are flush
             const colRef = ravlCellRef.split(",")[0];
             this.colRefs[colRef].changeColor(ravlCellRef, colors.green);
@@ -1322,16 +1359,16 @@ class App extends Component {
               eligibleForStar: false,
               endMessage: this.state.endMessageFail,
             });
-              setTimeout(() => {
-                this.animateGameFail();
-              }, 1500);
-              setTimeout(() => {
-                this.setState({
-                  gameDone: true,
-                  nextBtnText: "RETRY",
-                });
-              }, 3500);
-              this.resetLowColPositions();
+            setTimeout(() => {
+              this.animateGameFail();
+            }, 1500);
+            setTimeout(() => {
+              this.setState({
+                gameDone: true,
+                nextBtnText: "RETRY",
+              });
+            }, 3500);
+            this.resetLowColPositions();
             return;
           }
         }
@@ -1342,24 +1379,24 @@ class App extends Component {
       }
       noPuzzleWords = false;
       let swArray = this.state.solvedWords;
-      if (!swArray[this.state.currentGameIndex].includes(hasPuzzleWordArr[0])){
-        const indexToUse = this.state.megaPuzzle && this.state.onRow > 2?this.state.currentGameIndex + 1:this.state.currentGameIndex;
+      if (!swArray[this.state.currentGameIndex].includes(hasPuzzleWordArr[0])) {
+        const indexToUse = this.state.megaPuzzle && this.state.onRow > 2 ? this.state.currentGameIndex + 1 : this.state.currentGameIndex;
         setTimeout(() => {
           swArray[indexToUse].push(hasPuzzleWordArr[0]); //for display in solved word section
           swArray.forEach((arr) => {
             return arr.sort();
           })
-          this.setState({solvedWords: swArray});
-          try{
+          this.setState({ solvedWords: swArray });
+          try {
             window.localStorage.setItem(KEY_SolvedWords, JSON.stringify(swArray));
-          } catch (error){
+          } catch (error) {
             window.alert('window.localStorage error: ' + error.message);
           }
         }, 800);
       }
       const yValue = this.getSolvedAnimYValue(this.state.currentGameIndex - this.state.solvedWordsRowOffset);
-      const newHintsGiven = this.state.currentHintsArray[0] && hasPuzzleWordArr[2].includes(this.state.currentHintsArray[0])?0:this.state.hintsGiven;
-      const newHintArr = this.state.currentHintsArray[0] && hasPuzzleWordArr[2].includes(this.state.currentHintsArray[0])?[]:this.state.currentHintsArray;
+      const newHintsGiven = this.state.currentHintsArray[0] && hasPuzzleWordArr[2].includes(this.state.currentHintsArray[0]) ? 0 : this.state.hintsGiven;
+      const newHintArr = this.state.currentHintsArray[0] && hasPuzzleWordArr[2].includes(this.state.currentHintsArray[0]) ? [] : this.state.currentHintsArray;
       this.setState({
         onRow: this.state.onRow + 1,
         showSolvedWord: true,
@@ -1371,7 +1408,7 @@ class App extends Component {
         hintsGiven: newHintsGiven
       });
       let whichAnimation = "";
-      switch(yValue){
+      switch (yValue) {
         case -40:
           whichAnimation = "animate__animatesolvedword-40"
           break;
@@ -1381,19 +1418,19 @@ class App extends Component {
         case 13:
           whichAnimation = "animate__animatesolvedword13"
           break;
-          default:
+        default:
           whichAnimation = "animate__animatesolvedword40"
-            
+
 
       }
       setTimeout(() => {
-	      const element = document.querySelector('.anim-node');
-	      element.classList.add('animate__animated', whichAnimation);
+        const element = document.querySelector('.anim-node');
+        element.classList.add('animate__animated', whichAnimation);
       }, 100);
 
-      switch(this.state.solvedWords[this.state.currentGameIndex].length - this.state.swOffset){
+      switch (this.state.solvedWords[this.state.currentGameIndex].length - this.state.swOffset) {
         case 0:
-            this.sendRowOut(hasPuzzleWordArr[2], hasPuzzleWordArr[1]);
+          this.sendRowOut(hasPuzzleWordArr[2], hasPuzzleWordArr[1]);
           break;
         case 1:
           setTimeout(() => {
@@ -1409,16 +1446,16 @@ class App extends Component {
           console.log("hit puzzleword default");
           this.sendRowOut(hasPuzzleWordArr[2], hasPuzzleWordArr[1]);
       }
-      this.setState({swOffset: this.state.solvedWords[this.state.currentGameIndex].length});
+      this.setState({ swOffset: this.state.solvedWords[this.state.currentGameIndex].length });
 
       return;
     }
     let hasAnyWordArr = this.evalForAnyWords(gArray); //[word, [refArray]]
     if (noPuzzleWords && hasAnyWordArr[0]) {//has a bonus word
       notAnyWords = false;
-      switch(this.state.bonusWords[this.state.currentGameIndex].length - this.state.bwOffset){
+      switch (this.state.bonusWords[this.state.currentGameIndex].length - this.state.bwOffset) {
         case 1:
-            this.flashWord(hasAnyWordArr[1]);
+          this.flashWord(hasAnyWordArr[1]);
           break;
         case 2:
           setTimeout(() => {
@@ -1434,7 +1471,7 @@ class App extends Component {
           console.log("hit default");
           this.flashWord(hasAnyWordArr[1]);
       }
-      this.setState({bwOffset: this.state.bonusWords[this.state.currentGameIndex].length});
+      this.setState({ bwOffset: this.state.bonusWords[this.state.currentGameIndex].length });
       return;
     }
     if (noPuzzleWords && notAnyWords && colIndexArr[1]) {//inconsequential move, deduct a point
@@ -1445,12 +1482,12 @@ class App extends Component {
         this.nextPuzzle();
       } else {//completed game
         let newHighScoreBool = false;
-        if(this.state.score > this.state.highScore){
+        if (this.state.score > this.state.highScore) {
           newHighScoreBool = true;
           this.updateHighScore();
         }
         this.storeOnGameComplete(this.state.isDailyGame);
-        const nbText = this.state.isDailyGame || this.state.megaPuzzle?"CLOSE":"NEXT";
+        const nbText = this.state.isDailyGame || this.state.megaPuzzle ? "CLOSE" : "NEXT";
         this.setState({
           gameDone: true,
           clearedLevel: true,
@@ -1459,36 +1496,38 @@ class App extends Component {
           showGame8: false,
           megaPuzzle: false
         });
-        try{
+        try {
           window.localStorage.setItem(KEY_GameInProgress, 'false');
-        } catch (error){
+        } catch (error) {
           window.alert('window.localStorage error: ' + error.message);
         }
         this.resetLowColPositions();
-        if(!this.state.playedGameOnce){
+        if (!this.state.playedGameOnce) {
           console.log("Played game once...");
           try {
             window.localStorage.setItem(KEY_PlayedFirstGame, 'true');
           } catch (error) {
-              window.alert('window.localStorage error: ' + error.message);
+            window.alert('window.localStorage error: ' + error.message);
           }
         }
       }
     }
   }
-  resetLowColPositions(){
-    const lowColPositions = [null,null,null,null,null,null,null,null,null,null];
+
+  resetLowColPositions() {
+    const lowColPositions = [null, null, null, null, null, null, null, null, null, null];
     try {
       window.localStorage.setItem(KEY_LowColPositions, JSON.stringify(lowColPositions));
     } catch (error) {
       window.alert('window.localStorage error: ' + error.message);
     }
   }
-  storeOnGameComplete(daily){
+
+  storeOnGameComplete(daily) {
     const dateToday = formatDate(new Date(), "MM-dd-yyyy");
     const ps = this.state.puzzleStreak;
     let psInt = parseInt(ps);
-    if(dateToday !== this.state.lastPuzzleDay)psInt++;
+    if (dateToday !== this.state.lastPuzzleDay) psInt++;
     let incrPsStr = psInt + "";
     let streakDateStr = incrPsStr + "," + dateToday;
     let incrDsStr = "";
@@ -1498,7 +1537,7 @@ class App extends Component {
     } catch (error) {
       window.alert('window.localStorage error: ' + error.message);
     }
-    if(this.state.eligibleForStar && !(this.state.isDailyGame && !this.state.megaPuzzle && this.state.dailyPuzzleCompleted)){
+    if (this.state.eligibleForStar && !(this.state.isDailyGame && !this.state.megaPuzzle && this.state.dailyPuzzleCompleted)) {
       toast("\u2605 Nice! Have a star! \u2605", {
         position: "bottom-center",
         autoClose: 2400,
@@ -1510,7 +1549,7 @@ class App extends Component {
         theme: "light",
       });
       let numS = this.state.numberOfStars;
-      if(numS === 100){
+      if (numS === 100) {
         numS = 1;
         const newColor = getColor();
         let delim = ',';
@@ -1518,14 +1557,14 @@ class App extends Component {
         let colArr = this.state.starColorArray;
         colArr.unshift(this.state.currentStarColor);
         colArr.pop();
-        this.setState({starColorArray: colArr, currentStarColor: newColor});
+        this.setState({ starColorArray: colArr, currentStarColor: newColor });
         try {
           window.localStorage.setItem(KEY_CurrentStarColor, newColor);
         } catch (error) {
           window.alert('window.localStorage error: ' + error.message);
         }
         colArr.forEach((color) => {
-          newColorString = newColorString + delim + color ;
+          newColorString = newColorString + delim + color;
         });
         newColorString = newColorString.substring(1);
         try {
@@ -1536,7 +1575,7 @@ class App extends Component {
       } else {
         numS++;
       }
-      this.setState({numberOfStars: numS});
+      this.setState({ numberOfStars: numS });
       const numSStr = numS + "";
       try {
         window.localStorage.setItem(KEY_NumStars, numSStr);
@@ -1544,11 +1583,11 @@ class App extends Component {
         window.alert('window.localStorage error: ' + error.message);
       }
     }
-    if(daily && !this.state.megaPuzzle){
-      this.setState({dailyPuzzleCompleted: true});
+    if (daily && !this.state.megaPuzzle) {
+      this.setState({ dailyPuzzleCompleted: true });
       const ds = this.state.dailyStreak;
       let dsInt = parseInt(ds);
-      if(dateToday !== this.state.lastDailyDay)dsInt++;
+      if (dateToday !== this.state.lastDailyDay) dsInt++;
       incrDsStr = dsInt + "";
       streakDailyStr = incrDsStr + "," + dateToday;
       try {
@@ -1557,31 +1596,34 @@ class App extends Component {
         window.alert('window.localStorage error: ' + error.message);
       }
     }
-    this.setState({puzzleStreak: incrPsStr, dailyStreak: incrDsStr});
+    this.setState({ puzzleStreak: incrPsStr, dailyStreak: incrDsStr });
   }
-  updateHighScore(){
+
+  updateHighScore() {
     try {
       window.localStorage.setItem(KEY_HighScore, this.state.score + '');
     } catch (error) {
       window.alert('window.localStorage error: ' + error.message);
     }
   }
-  resetSolvedWord(){
+
+  resetSolvedWord() {
     this.setState({
       showSolvedWord: false,
       solvedPadding: 0
     });
     return;
   }
-  resetTileColors(dark){
+
+  resetTileColors(dark) {
     const mode = "Dark Mode";
     const remainingTilesArr = this.getRemainingTiles();
-    const ravlRef = this.state.megaPuzzle? this.state.megaRavlRef:this.state.ravlTiles[this.state.currentGameIndex]
+    const ravlRef = this.state.megaPuzzle ? this.state.megaRavlRef : this.state.ravlTiles[this.state.currentGameIndex]
     const ravlIndex = remainingTilesArr.indexOf(ravlRef);
     if (ravlIndex > -1) {
       remainingTilesArr.splice(ravlIndex, 1);
     }
-    if(this.state.currentHintsArray[0]){
+    if (this.state.currentHintsArray[0]) {
       this.state.currentHintsArray.forEach((ref) => {
         const htIndex = remainingTilesArr.indexOf(ref);
         remainingTilesArr.splice(htIndex, 1);
@@ -1589,6 +1631,7 @@ class App extends Component {
     }
     this.changeTileMode(remainingTilesArr, mode, dark);
   }
+
   evalForPuzzleWords(gArray) {
     const numRows = gArray[0].length;
     const numColumns = gArray.length;
@@ -1604,8 +1647,8 @@ class App extends Component {
       if (tempWord.length === numColumns) {
         switch (numColumns) {
           case 3:
-            if(this.state.isDailyGame){
-              switch(this.state.currentGameIndex){
+            if (this.state.isDailyGame) {
+              switch (this.state.currentGameIndex) {
                 case 8:
                   if (puzzleWords8.includes(tempWord)) legitWord = true;
                   break;
@@ -1616,13 +1659,13 @@ class App extends Component {
                   if (puzzleWords10.includes(tempWord)) legitWord = true;
                   break;
               }
-            }else{
+            } else {
               if (puzzleWords0.includes(tempWord)) legitWord = true;
             }
             break;
           case 4:
-            if(this.state.isDailyGame){
-              switch(this.state.currentGameIndex){
+            if (this.state.isDailyGame) {
+              switch (this.state.currentGameIndex) {
                 case 8:
                   if (puzzleWords8.includes(tempWord)) legitWord = true;
                   break;
@@ -1633,13 +1676,13 @@ class App extends Component {
                   if (puzzleWords10.includes(tempWord)) legitWord = true;
                   break;
               }
-            }else{
+            } else {
               if (puzzleWords1.includes(tempWord)) legitWord = true;
             }
             break;
           case 5:
-            if(this.state.isDailyGame){
-              switch(this.state.currentGameIndex){
+            if (this.state.isDailyGame) {
+              switch (this.state.currentGameIndex) {
                 case 8:
                   if (puzzleWords8.includes(tempWord)) legitWord = true;
                   break;
@@ -1650,13 +1693,13 @@ class App extends Component {
                   if (puzzleWords10.includes(tempWord)) legitWord = true;
                   break;
               }
-            }else{
+            } else {
               if (puzzleWords2.includes(tempWord)) legitWord = true;
             }
             break;
           case 6:
-            if(this.state.isDailyGame){
-              switch(this.state.currentGameIndex){
+            if (this.state.isDailyGame) {
+              switch (this.state.currentGameIndex) {
                 case 8:
                   if (puzzleWords8.includes(tempWord)) legitWord = true;
                   break;
@@ -1667,13 +1710,13 @@ class App extends Component {
                   if (puzzleWords10.includes(tempWord)) legitWord = true;
                   break;
               }
-            }else{
+            } else {
               if (puzzleWords3.includes(tempWord)) legitWord = true;
             }
             break;
           case 7:
-            if(this.state.isDailyGame){
-              switch(this.state.currentGameIndex){
+            if (this.state.isDailyGame) {
+              switch (this.state.currentGameIndex) {
                 case 8:
                   if (puzzleWords8.includes(tempWord)) legitWord = true;
                   break;
@@ -1684,13 +1727,13 @@ class App extends Component {
                   if (puzzleWords10.includes(tempWord)) legitWord = true;
                   break;
               }
-            }else{
+            } else {
               if (puzzleWords4.includes(tempWord)) legitWord = true;
             }
             break;
           case 8:
-            if(this.state.isDailyGame){
-              switch(this.state.currentGameIndex){
+            if (this.state.isDailyGame) {
+              switch (this.state.currentGameIndex) {
                 case 8:
                   if (puzzleWords8.includes(tempWord)) legitWord = true;
                   break;
@@ -1701,13 +1744,13 @@ class App extends Component {
                   if (puzzleWords10.includes(tempWord)) legitWord = true;
                   break;
               }
-            }else{
+            } else {
               if (puzzleWords5.includes(tempWord)) legitWord = true;
             }
             break;
           case 9:
-            if(this.state.isDailyGame){
-              switch(this.state.currentGameIndex){
+            if (this.state.isDailyGame) {
+              switch (this.state.currentGameIndex) {
                 case 8:
                   if (puzzleWords8.includes(tempWord)) legitWord = true;
                   break;
@@ -1718,13 +1761,13 @@ class App extends Component {
                   if (puzzleWords10.includes(tempWord)) legitWord = true;
                   break;
               }
-            }else{
+            } else {
               if (puzzleWords6.includes(tempWord)) legitWord = true;
             }
             break;
           case 10:
-            if(this.state.isDailyGame){
-              switch(this.state.currentGameIndex){
+            if (this.state.isDailyGame) {
+              switch (this.state.currentGameIndex) {
                 case 8:
                   if (puzzleWords8.includes(tempWord)) legitWord = true;
                   break;
@@ -1735,7 +1778,7 @@ class App extends Component {
                   if (puzzleWords10.includes(tempWord)) legitWord = true;
                   break;
               }
-            }else{
+            } else {
               if (puzzleWords7.includes(tempWord)) legitWord = true;
             }
             break;
@@ -1752,6 +1795,7 @@ class App extends Component {
     }
     return returnArr;
   }
+
   evalForAnyWords(gArray) {
     let numRows = gArray[0].length;
     let numColumns = gArray.length;
@@ -1773,28 +1817,28 @@ class App extends Component {
       ) {
         switch (numColumns) {
           case 3:
-            if (words3letter.includes(tempWord.toLowerCase()))inDictionary = true;
+            if (words3letter.includes(tempWord.toLowerCase())) inDictionary = true;
             break;
           case 4:
-            if (words4letter.includes(tempWord.toLowerCase()))inDictionary = true;
+            if (words4letter.includes(tempWord.toLowerCase())) inDictionary = true;
             break;
           case 5:
-            if (words5letter.includes(tempWord.toLowerCase()))inDictionary = true;
+            if (words5letter.includes(tempWord.toLowerCase())) inDictionary = true;
             break;
           case 6:
-            if (words6letter.includes(tempWord.toLowerCase()))inDictionary = true;
+            if (words6letter.includes(tempWord.toLowerCase())) inDictionary = true;
             break;
           case 7:
-            if (words7letter.includes(tempWord.toLowerCase()))inDictionary = true;
+            if (words7letter.includes(tempWord.toLowerCase())) inDictionary = true;
             break;
           case 8:
-            if (words8letter.includes(tempWord.toLowerCase()))inDictionary = true;
+            if (words8letter.includes(tempWord.toLowerCase())) inDictionary = true;
             break;
           case 9:
-            if (words9letter.includes(tempWord.toLowerCase()))inDictionary = true;
+            if (words9letter.includes(tempWord.toLowerCase())) inDictionary = true;
             break;
           case 10:
-            if (words10letter.includes(tempWord.toLowerCase()))inDictionary = true;
+            if (words10letter.includes(tempWord.toLowerCase())) inDictionary = true;
             break;
           default:
             console.log("Wrong length...");
@@ -1813,21 +1857,22 @@ class App extends Component {
             solvedWord: tempWord,
             solvedPadding: 5,
           });
-          try{
+          try {
             window.localStorage.setItem(KEY_BonusWords, JSON.stringify(bwArray));
-          } catch (error){
+          } catch (error) {
             window.alert('window.localStorage error: ' + error.message);
           }
           break;
         }
       }
     }
-      return returnArr;
+    return returnArr;
   }
+
   getRemainingTiles() {
-    if(this.state.currentGameIndex === -1){
-      return ["col0,row4","col1,row4","col2,row4","col3,row4","col0,row5","col1,row5","col2,row5","col3,row5"];
-    }else{
+    if (this.state.currentGameIndex === -1) {
+      return ["col0,row4", "col1,row4", "col2,row4", "col3,row4", "col0,row5", "col1,row5", "col2,row5", "col3,row5"];
+    } else {
       const gArray = this.state.gameArray0;
       const numRows = gArray[0].length;
       const numColumns = gArray.length;
@@ -1842,6 +1887,7 @@ class App extends Component {
       return remainingTileArray;
     }
   }
+
   getRemainingColsAreFlush() {
     const gArray = this.state.gameArray0;
     const numRows = gArray[0].length;
@@ -1858,6 +1904,7 @@ class App extends Component {
     const remainingFlush = allElementsEqual(firstColPosArr);
     return remainingFlush;
   }
+
   getDropTileArray() {
     const gArray = this.state.gameArray0;
     const numRows = gArray[0].length;
@@ -1882,8 +1929,9 @@ class App extends Component {
     }
     return dropTileArray;
   }
-  getSolvedAnimYValue(index){
-    switch(index){
+
+  getSolvedAnimYValue(index) {
+    switch (index) {
       case 0:
         return -40;
       case 1:
@@ -1896,6 +1944,7 @@ class App extends Component {
         return 40;
     }
   }
+
   spliceArray(arr, row) {
     for (var k = 0; k < arr.length; k++) {
       arr[k].splice(row, 1);
@@ -1903,31 +1952,32 @@ class App extends Component {
     this.setState({ gameArray: arr });
     // printGameArrayToConsole(arr);
   }
+
   transitionToGame(isDaily) {
-    if(this.state.nextBtnText === "CLOSE"){
+    if (this.state.nextBtnText === "CLOSE") {
       this.goToStartScreen();
       return;
     }
-    try{
+    try {
       window.localStorage.setItem(KEY_GameInProgress, 'true');
-    } catch (error){
+    } catch (error) {
       window.alert('window.localStorage error: ' + error.message);
     }
-    if(this.state.playRavlIntervalID !== 0 || (isDaily && this.state.clearedLevel)){//coming from start screen
-      for(let i=0;i<5;i++){
-        if(this.state.animationTimerIDs[i])clearTimeout(this.state.animationTimerIDs[i]);//clear animation setTimeouts
+    if (this.state.playRavlIntervalID !== 0 || (isDaily && this.state.clearedLevel)) {//coming from start screen
+      for (let i = 0; i < 5; i++) {
+        if (this.state.animationTimerIDs[i]) clearTimeout(this.state.animationTimerIDs[i]);//clear animation setTimeouts
       }
-      if(this.state.playRavlIntervalID !== 0)this.runPlayRavlAnimation();//running with IntervalID !== 0 stops animations
-      if(isDaily){
+      if (this.state.playRavlIntervalID !== 0) this.runPlayRavlAnimation();//running with IntervalID !== 0 stops animations
+      if (isDaily) {
         let lastIndex = !puzzleWords9[0] ? 8 : !puzzleWords10[0] ? 9 : 10;
-        lastIndex = this.state.megaPuzzle? 8 : lastIndex;
-        const scrToUse = this.state.megaPuzzle? 20 : 15;
-        const arrToUse = this.state.megaPuzzle? megaPuzzleArr : this.state.gameArray8;
-        const headerTextToUse = this.state.megaPuzzle? "\u2605\u2605 Mega \u2605\u2605" : this.state.dailyGameDescription;
+        lastIndex = this.state.megaPuzzle ? 8 : lastIndex;
+        const scrToUse = this.state.megaPuzzle ? 20 : 15;
+        const arrToUse = this.state.megaPuzzle ? megaPuzzleArr : this.state.gameArray8;
+        const headerTextToUse = this.state.megaPuzzle ? "\u2605\u2605 Mega \u2605\u2605" : this.state.dailyGameDescription;
         setTimeout(() => {
-          this.setState({ 
+          this.setState({
             showPlayRavl: false,
-            rowsInPuzzle: (arrToUse[0].length + 2)/3,
+            rowsInPuzzle: (arrToUse[0].length + 2) / 3,
             initialArrayHeight: arrToUse[0].length,
             onRow: 0,
             score: scrToUse,
@@ -1945,18 +1995,18 @@ class App extends Component {
             headerText: headerTextToUse,
             showSolvedWords: true,
             lockScreenInput: false,
-            solvedWords: [[],[],[],[],[],[],[],[],[],[],[]],
-            bonusWords: [[],[],[],[],[],[],[],[],[],[],[]]
+            solvedWords: [[], [], [], [], [], [], [], [], [], [], []],
+            bonusWords: [[], [], [], [], [], [], [], [], [], [], []]
           });
-          try{
+          try {
             window.localStorage.setItem(KEY_GameIndex, '8');
-          } catch (error){
+          } catch (error) {
             window.alert('window.localStorage error: ' + error.message);
           }
         }, 500);
-      }else{
+      } else {
         setTimeout(() => {
-          this.setState({ 
+          this.setState({
             showPlayRavl: false,
             rowsInPuzzle: 3,
             initialArrayHeight: this.state.level0Saved[0].length,
@@ -1976,28 +2026,29 @@ class App extends Component {
             headerText: "Level  1  of  8",
             showSolvedWords: true,
             lockScreenInput: false,
-            solvedWords: [[],[],[],[],[],[],[],[],[],[],[]],
-            bonusWords: [[],[],[],[],[],[],[],[],[],[],[]]
+            solvedWords: [[], [], [], [], [], [], [], [], [], [], []],
+            bonusWords: [[], [], [], [], [], [], [], [], [], [], []]
           });
-          try{
+          try {
             window.localStorage.setItem(KEY_GameIndex, '0');
-          } catch (error){
+          } catch (error) {
             window.alert('window.localStorage error: ' + error.message);
           }
         }, 500);
       }
-    }else{//coming from failed or completed game
+    } else {//coming from failed or completed game
       this.nextGame(false);
     }
   }
-  nextGame(goToStart) {//reloads current game if failed
+
+  nextGame(goToStart) { //reloads current game if failed
     allowIntoUpdateGameArray = true;
-    let swArray = [[],[],[],[],[],[],[],[],[],[],[]];
-    let bwArray = [[],[],[],[],[],[],[],[],[],[],[]];
+    let swArray = [[], [], [], [], [], [], [], [], [], [], []];
+    let bwArray = [[], [], [], [], [], [], [], [], [], [], []];
     let targetLevel = 0;
     let scoreVal = 10;
     let elig = true;
-    if (this.state.clearedLevel === true || goToStart) {//load new game
+    if (this.state.clearedLevel === true || goToStart) { //load new game
       puzzleWords0 = genWordArray(3);
       puzzleWords1 = genWordArray(4);
       puzzleWords2 = genWordArray(5);
@@ -2011,26 +2062,27 @@ class App extends Component {
       bwArray = this.state.bonusWords;
       targetLevel = this.state.progressSavedLevel;
       elig = false;//eligibility for star
-      scoreVal = (this.state.score - 5 < 10)?10:this.state.score - 5;
+      scoreVal = (this.state.score - 5 < 10) ? 10 : this.state.score - 5;
     }
-    targetLevel = goToStart?-1:this.state.megaPuzzle?100:targetLevel;
-    this.setState({puzzleDisplayed: false, showStars: goToStart, nextBtnText: "NEXT"});
+    targetLevel = goToStart ? -1 : this.state.megaPuzzle ? 100 : targetLevel;
+    this.setState({ puzzleDisplayed: false, showStars: goToStart, nextBtnText: "NEXT" });
 
-    this.init( puzzleWords0,
-               puzzleWords1,
-               puzzleWords2,
-               puzzleWords3,
-               puzzleWords4,
-               puzzleWords5,
-               puzzleWords6,
-               puzzleWords7,
-               swArray,
-               bwArray,
-               scoreVal,
-               targetLevel,
-               elig
+    this.init(puzzleWords0,
+      puzzleWords1,
+      puzzleWords2,
+      puzzleWords3,
+      puzzleWords4,
+      puzzleWords5,
+      puzzleWords6,
+      puzzleWords7,
+      swArray,
+      bwArray,
+      scoreVal,
+      targetLevel,
+      elig
     );
   }
+
   nextPuzzle() {
     this.lockScreen(2000);
     this.setState({
@@ -2038,9 +2090,9 @@ class App extends Component {
       onRow: 0,
       puzzleDisplayed: false,
     });
-    try{
+    try {
       window.localStorage.setItem(KEY_GameIndex, (this.state.currentGameIndex + 1) + "");
-    } catch (error){
+    } catch (error) {
       window.alert('window.localStorage error: ' + error.message);
     }
     if (this.state.currentGameIndex === 0) {
@@ -2143,7 +2195,7 @@ class App extends Component {
         showGame8: false,
         currentGameIndex: 9,
         progressSavedLevel: 8,
-        rowsInPuzzle: (this.state.gameArray9[0].length + 2)/3,
+        rowsInPuzzle: (this.state.gameArray9[0].length + 2) / 3,
         initialArrayHeight: this.state.gameArray9[0].length,
         solvedWordsRowOffset: 8,
       });
@@ -2155,7 +2207,7 @@ class App extends Component {
         showGame9: false,
         currentGameIndex: 10,
         progressSavedLevel: 8,
-        rowsInPuzzle: (this.state.gameArray10[0].length + 2)/3,
+        rowsInPuzzle: (this.state.gameArray10[0].length + 2) / 3,
         initialArrayHeight: this.state.gameArray10[0].length,
         solvedWordsRowOffset: 8,
       });
@@ -2171,7 +2223,8 @@ class App extends Component {
       });
     }
   }
-  hideAllGames(){
+
+  hideAllGames() {
     this.setState({
       showGame0: false,
       showGame1: false,
@@ -2186,112 +2239,119 @@ class App extends Component {
       showGame10: false
     });
   }
+
   showHeaderCommentAnimation(text) {
     this.setState({ showHeaderComment: true, headerComment: text });
     setTimeout(() => {
       this.setState({ showHeaderComment: false });
     }, 3000);
   }
-  displayLockScreen(){
+
+  displayLockScreen() {
     return (
       <div style={styles.screen_lock}>
       </div>
     )
   }
-  lockScreen(howLong){
-    this.setState({lockScreenInput: true});
+
+  lockScreen(howLong) {
+    this.setState({ lockScreenInput: true });
     setTimeout(() => {
-      this.setState({lockScreenInput: false});
+      this.setState({ lockScreenInput: false });
     }, howLong);
   }
-  displayTutScreen1(){
+
+  displayTutScreen1() {
     return (
-        <div style={tut_styles.tut_dialog1}>
-          <div style={{...tut_styles.tut_text, marginBottom: 20}}>Move the columns of letters up and down to form words going across...</div>
-          <div style={tut_styles.button} onClick={() => this.closeTutScreen1()} >
-            <div style={tut_styles.button_text}>OK</div>
-          </div>
-          <img
-            src={require("./images/red_arrow.png")}
-            style={tut_styles.arrow_image}
-            alt={"Red arrow"}
-          />
+      <div style={tut_styles.tut_dialog1}>
+        <div style={{ ...tut_styles.tut_text, marginBottom: 20 }}>Move the columns of letters up and down to form words going across...</div>
+        <div style={tut_styles.button} onClick={() => this.closeTutScreen1()} >
+          <div style={tut_styles.button_text}>OK</div>
         </div>
+        <img
+          src={require("./images/red_arrow.png")}
+          style={tut_styles.arrow_image}
+          alt={"Red arrow"}
+        />
+      </div>
     )
   }
-  closeTutScreen1(){
-    this.setState({showTutScreen1: false, showTutScreen2: true, showedTutScreen1: true, showedTutScreen2: false});
 
+  closeTutScreen1() {
+    this.setState({ showTutScreen1: false, showTutScreen2: true, showedTutScreen1: true, showedTutScreen2: false });
   }
-  displayTutScreen2(){
+
+  displayTutScreen2() {
     const tutText = "...but make sure the red RavL tile doesn't form a word until your last move!"
     return (
-        <div style={tut_styles.tut_dialog2}>
-          <div style={tut_styles.tut_text}>{tutText}</div>
-          <div style={tut_styles.button} onClick={() => this.closeTutScreen2()} >
-            <div style={tut_styles.button_text}>OK</div>
-          </div>
-          <img
-            src={require("./images/exclamation_ravl_tile.png")}
-            style={tut_styles.tile_image}
-            className={animStyles.Tileimg}
-            iterationCount={"infinite"}
-            alt={"Oscillating exclamation point animation"}
-          />
+      <div style={tut_styles.tut_dialog2}>
+        <div style={tut_styles.tut_text}>{tutText}</div>
+        <div style={tut_styles.button} onClick={() => this.closeTutScreen2()} >
+          <div style={tut_styles.button_text}>OK</div>
         </div>
+        <img
+          src={require("./images/exclamation_ravl_tile.png")}
+          style={tut_styles.tile_image}
+          className={animStyles.Tileimg}
+          iterationCount={"infinite"}
+          alt={"Oscillating exclamation point animation"}
+        />
+      </div>
     )
   }
-  closeTutScreen2(){
-    this.setState({showTutScreen2: false, showedTutScreen2: true, lockScreenInput: false});
+
+  closeTutScreen2() {
+    this.setState({ showTutScreen2: false, showedTutScreen2: true, lockScreenInput: false });
     try {
-        window.localStorage.setItem(KEY_ShowedTutorial, 'true');
+      window.localStorage.setItem(KEY_ShowedTutorial, 'true');
     } catch (error) {
-        window.alert('AsyncStorage error: ' + error.message);
+      window.alert('AsyncStorage error: ' + error.message);
     }
   }
-  toggleModal(which, open){
-    if(open){
-      switch(which){
+
+  toggleModal(which, open) {
+    if (open) {
+      switch (which) {
         case "RavL Start":
-          if(this.state.currentGameIndex === -1){
+          if (this.state.currentGameIndex === -1) {
             this.toggleDrawer();
-          }else{
-            this.setState({showEndGameModal: true});
+          } else {
+            this.setState({ showEndGameModal: true });
           }
           break;
         case "Settings":
-          this.setState({showSettingsModal: true});
+          this.setState({ showSettingsModal: true });
           break;
         case "Help":
-          this.setState({showHelpModal: true});
+          this.setState({ showHelpModal: true });
           break;
         case "Support":
-          this.setState({showSupportModal: true});
+          this.setState({ showSupportModal: true });
           break;
         case "Mega RavL":
-            this.setState({lockScreenInput: false});
-            this.hideAllGames();
-            this.toggleDrawer();
-            let megaWordsArr = genWordArray(0);
-            console.log("megaWordsArr: " + JSON.stringify(megaWordsArr));
-            let straightArrayMega = this.buildStraightArray(megaWordsArr);
-            megaPuzzleArr = this.buildGameArray(straightArrayMega);
-            const ravlRefMega = this.makeRavlTileRef(5, 9);
-            this.setState({megaPuzzle: true, megaWords: megaWordsArr, megaRavlRef: ravlRefMega, solvedWordsRowOffset: 8});
-            megaPuzzleArr = megaPuzzleArr.map((row, i) => {
-              return row.map((letter, j) => ({
-                letter,
-                ref: "col" + i + ",row" + j,
-              }));
-            });
-            setTimeout(() => {
-              this.transitionToGame(true);
-            }, 200);
+          this.setState({ lockScreenInput: false });
+          this.hideAllGames();
+          this.toggleDrawer();
+          let megaWordsArr = genWordArray(0);
+          console.log("megaWordsArr: " + JSON.stringify(megaWordsArr));
+          let straightArrayMega = this.buildStraightArray(megaWordsArr);
+          megaPuzzleArr = this.buildGameArray(straightArrayMega);
+          const ravlRefMega = this.makeRavlTileRef(5, 9);
+          this.setState({ megaPuzzle: true, megaWords: megaWordsArr, megaRavlRef: ravlRefMega, solvedWordsRowOffset: 8 });
+          megaPuzzleArr = megaPuzzleArr.map((row, i) => {
+            return row.map((letter, j) => ({
+              letter,
+              ref: "col" + i + ",row" + j,
+            }));
+          });
+          setTimeout(() => {
+            this.transitionToGame(true);
+          }, 200);
           break;
         default:
           console.log("No default case...");
       }
-    }else{
+    } else {
       this.setState({
         showSettingsModal: false,
         showHelpModal: false,
@@ -2301,36 +2361,38 @@ class App extends Component {
         // showThankYouModal: false,
         showHintNagModal: false,
       });
-      
+
     }
   }
-  goToStartScreen(){
-    this.setState({currentGameIndex: -1, megaPuzzle: false});
-    try{
+
+  goToStartScreen() {
+    this.setState({ currentGameIndex: -1, megaPuzzle: false });
+    try {
       window.localStorage.setItem(KEY_GameInProgress, 'false');
-    } catch (error){
+    } catch (error) {
       window.alert('window.localStorage error: ' + error.message);
     }
     setTimeout(() => {
       this.nextGame(true);
     }, 200)
     this.toggleModal(null, false);
-    if (this.state.showMenu)this.toggleDrawer();
+    if (this.state.showMenu) this.toggleDrawer();
   }
-  updateSettingsValue(changeArray){
+
+  updateSettingsValue(changeArray) {
     const mode = changeArray[0];
-    switch(mode){
+    switch (mode) {
       case "Dark Mode":
         const darkModeEnabledBool = changeArray[1]
-        this.setState({darkModeEnabled: darkModeEnabledBool});
-        if(this.state.currentGameIndex === -1)return;
+        this.setState({ darkModeEnabled: darkModeEnabledBool });
+        if (this.state.currentGameIndex === -1) return;
         const remainingTilesArr = this.getRemainingTiles();
-        const ravlRef = this.state.megaPuzzle? this.state.megaRavlRef:this.state.ravlTiles[this.state.currentGameIndex]
+        const ravlRef = this.state.megaPuzzle ? this.state.megaRavlRef : this.state.ravlTiles[this.state.currentGameIndex]
         const ravlIndex = remainingTilesArr.indexOf(ravlRef);
         if (ravlIndex > -1) {
           remainingTilesArr.splice(ravlIndex, 1);
         }
-        if(this.state.currentHintsArray[0]){
+        if (this.state.currentHintsArray[0]) {
           this.state.currentHintsArray.forEach((ref) => {
             const htIndex = remainingTilesArr.indexOf(ref);
             remainingTilesArr.splice(htIndex, 1);
@@ -2340,18 +2402,19 @@ class App extends Component {
         break;
       case "Animation Style":
         const styleStr = changeArray[1]
-        this.setState({animationStyle: styleStr});
+        this.setState({ animationStyle: styleStr });
         break;
       case "Open Support":
         setTimeout(() => {
-          this.setState({showSupportModal: true});
+          this.setState({ showSupportModal: true });
         }, 200);
-        this.setState({showSettingsModal: false});
+        this.setState({ showSettingsModal: false });
         break;
       default:
         console.log("No default case...");
+    }
   }
-  }
+
   renderStars() {
     let starString1 = "";
     let starString2 = "";
@@ -2359,8 +2422,8 @@ class App extends Component {
     let starString4 = "";
     let starString5 = "";
     let singleStar = "\u2605";
-    for(let i = 0; i < this.state.numberOfStars; i++){
-      switch(true){
+    for (let i = 0; i < this.state.numberOfStars; i++) {
+      switch (true) {
         case (i > 79):
           starString5 += singleStar;
           break;
@@ -2376,109 +2439,115 @@ class App extends Component {
         case (i > -1):
           starString1 += singleStar;
           break;
-          default:
-            console.log("No default case...");
-        }
+        default:
+          console.log("No default case...");
+      }
     }
-      return (
-        <div>
-          <div style={{...styles.star_row, height: this.state.scoreContainerHeight/5.5}}>
-            <div style={{...styles.star, color: this.state.currentStarColor}}>{starString1}</div>
-          </div>
-          <div style={{...styles.star_row, height: this.state.scoreContainerHeight/5.5}}>
-            <div style={{...styles.star, color: this.state.currentStarColor}}>{starString2}</div>
-          </div>
-          <div style={{...styles.star_row, height: this.state.scoreContainerHeight/5.5}}>
-            <div style={{...styles.star, color: this.state.currentStarColor}}>{starString3}</div>
-          </div>
-          <div style={{...styles.star_row, height: this.state.scoreContainerHeight/5.5}}>
-            <div style={{...styles.star, color: this.state.currentStarColor}}>{starString4}</div>
-          </div>
-          <div style={{...styles.star_row, height: this.state.scoreContainerHeight/5.5}}>
-            <div style={{...styles.star, color: this.state.currentStarColor}}>{starString5}</div>
-          </div>
-        </div>
-      );
-  }
-  renderStars100() {
-    let singleStar = "\u2605";
+
     return (
-      <div style={styles.star_row}>
-        <div style={{...styles.star100, marginLeft: tablet?scrWidth * 0.01:2, color: this.state.starColorArray[0]}}>{singleStar}</div>
-        <div style={{...styles.star100, color: this.state.starColorArray[1]}}>{singleStar}</div>
-        <div style={{...styles.star100, color: this.state.starColorArray[2]}}>{singleStar}</div>
-        <div style={{...styles.star100, color: this.state.starColorArray[3]}}>{singleStar}</div>
-        <div style={{...styles.star100, color: this.state.starColorArray[4]}}>{singleStar}</div>
-        <div style={{...styles.star100, color: this.state.starColorArray[5]}}>{singleStar}</div>
-        <div style={{...styles.star100, color: this.state.starColorArray[6]}}>{singleStar}</div>
-        <div style={{...styles.star100, color: this.state.starColorArray[7]}}>{singleStar}</div>
-        <div style={{...styles.star100, color: this.state.starColorArray[8]}}>{singleStar}</div>
-        <div style={{...styles.star100, color: this.state.starColorArray[9]}}>{singleStar}</div>
-        <div style={{...styles.star100, color: this.state.starColorArray[10]}}>{singleStar}</div>
-        <div style={{...styles.star100, color: this.state.starColorArray[11]}}>{singleStar}</div>
-        <div style={{...styles.star100, color: this.state.starColorArray[12]}}>{singleStar}</div>
-        <div style={{...styles.star100, color: this.state.starColorArray[13]}}>{singleStar}</div>
-        <div style={{...styles.star100, color: this.state.starColorArray[14]}}>{singleStar}</div>
-        <div style={{...styles.star100, color: this.state.starColorArray[15]}}>{singleStar}</div>
-        <div style={{...styles.star100, color: this.state.starColorArray[16]}}>{singleStar}</div>
-        <div style={{...styles.star100, color: this.state.starColorArray[17]}}>{singleStar}</div>
-        <div style={{...styles.star100, color: this.state.starColorArray[18]}}>{singleStar}</div>
-        <div style={{...styles.star100, color: this.state.starColorArray[19]}}>{singleStar}</div>
+      <div>
+        <div style={{ ...styles.star_row, height: this.state.scoreContainerHeight / 5.5 }}>
+          <div style={{ ...styles.star, color: this.state.currentStarColor }}>{starString1}</div>
+        </div>
+        <div style={{ ...styles.star_row, height: this.state.scoreContainerHeight / 5.5 }}>
+          <div style={{ ...styles.star, color: this.state.currentStarColor }}>{starString2}</div>
+        </div>
+        <div style={{ ...styles.star_row, height: this.state.scoreContainerHeight / 5.5 }}>
+          <div style={{ ...styles.star, color: this.state.currentStarColor }}>{starString3}</div>
+        </div>
+        <div style={{ ...styles.star_row, height: this.state.scoreContainerHeight / 5.5 }}>
+          <div style={{ ...styles.star, color: this.state.currentStarColor }}>{starString4}</div>
+        </div>
+        <div style={{ ...styles.star_row, height: this.state.scoreContainerHeight / 5.5 }}>
+          <div style={{ ...styles.star, color: this.state.currentStarColor }}>{starString5}</div>
+        </div>
       </div>
     );
   }
-  renderSolvedWords(word, i){
+
+  renderStars100() {
+    let singleStar = "\u2605";
+
+    return (
+      <div style={styles.star_row}>
+        <div style={{ ...styles.star100, marginLeft: tablet ? scrWidth * 0.01 : 2, color: this.state.starColorArray[0] }}>{singleStar}</div>
+        <div style={{ ...styles.star100, color: this.state.starColorArray[1] }}>{singleStar}</div>
+        <div style={{ ...styles.star100, color: this.state.starColorArray[2] }}>{singleStar}</div>
+        <div style={{ ...styles.star100, color: this.state.starColorArray[3] }}>{singleStar}</div>
+        <div style={{ ...styles.star100, color: this.state.starColorArray[4] }}>{singleStar}</div>
+        <div style={{ ...styles.star100, color: this.state.starColorArray[5] }}>{singleStar}</div>
+        <div style={{ ...styles.star100, color: this.state.starColorArray[6] }}>{singleStar}</div>
+        <div style={{ ...styles.star100, color: this.state.starColorArray[7] }}>{singleStar}</div>
+        <div style={{ ...styles.star100, color: this.state.starColorArray[8] }}>{singleStar}</div>
+        <div style={{ ...styles.star100, color: this.state.starColorArray[9] }}>{singleStar}</div>
+        <div style={{ ...styles.star100, color: this.state.starColorArray[10] }}>{singleStar}</div>
+        <div style={{ ...styles.star100, color: this.state.starColorArray[11] }}>{singleStar}</div>
+        <div style={{ ...styles.star100, color: this.state.starColorArray[12] }}>{singleStar}</div>
+        <div style={{ ...styles.star100, color: this.state.starColorArray[13] }}>{singleStar}</div>
+        <div style={{ ...styles.star100, color: this.state.starColorArray[14] }}>{singleStar}</div>
+        <div style={{ ...styles.star100, color: this.state.starColorArray[15] }}>{singleStar}</div>
+        <div style={{ ...styles.star100, color: this.state.starColorArray[16] }}>{singleStar}</div>
+        <div style={{ ...styles.star100, color: this.state.starColorArray[17] }}>{singleStar}</div>
+        <div style={{ ...styles.star100, color: this.state.starColorArray[18] }}>{singleStar}</div>
+        <div style={{ ...styles.star100, color: this.state.starColorArray[19] }}>{singleStar}</div>
+      </div>
+    );
+  }
+
+  renderSolvedWords(word, i) {
     return (
       <div key={i} style={styles.solved_words_slot}>
         <p style={styles.debug_text}>{word}</p>
       </div>
     );
   }
+
   renderDone(cleared) {
-    const img = cleared? require("./images/thumbs_up.png"):require("./images/thumbs_down.png");
-    const altText = cleared?"Thumbs up!":"Thumbs down";
-    const imageDim = config.isPC? this.state.lettersetContainerWidth/5.5 : this.state.lettersetContainerWidth/4.3;
-    let msg = cleared? this.state.endMessage:this.state.endMessageFail;
+    const img = cleared ? require("./images/thumbs_up.png") : require("./images/thumbs_down.png");
+    const altText = cleared ? "Thumbs up!" : "Thumbs down";
+    const imageDim = config.isPC ? this.state.lettersetContainerWidth / 5.5 : this.state.lettersetContainerWidth / 4.3;
+    let msg = cleared ? this.state.endMessage : this.state.endMessageFail;
     msg = cleared && this.state.newHighScore && this.state.playedGameOnce ? "Wow \u2014 that's a new\nhigh score!" : msg;
     return (
       <AnimatePresence>
         {this.state.gameDone &&
-        <div>
-          <motion.div style={styles.thumb_view}
-            animate={{ y: -scrHeight * 0.18 }}
-            transition={{ ease: "easeInOut", duration: 1, repeat: Infinity, repeatType: 'reverse', delay: 0.6 }}
-          >
-            <motion.div 
-              initial={{ x: 600 }}
+          <div>
+            <motion.div style={styles.thumb_view}
+              animate={{ y: -scrHeight * 0.18 }}
+              transition={{ ease: "easeInOut", duration: 1, repeat: Infinity, repeatType: 'reverse', delay: 0.6 }}
+            >
+              <motion.div
+                initial={{ x: 600 }}
+                animate={{ x: 0 }}
+                exit={{ x: 400 }}
+                transition={{ type: "spring", stiffness: 100, damping: 18, duration: 0.4 }}
+              >
+                <div >
+                  <img src={img} style={{ width: imageDim, height: imageDim }} alt={altText} />
+                </div>
+              </motion.div>
+            </motion.div>
+            <motion.div style={styles.done_container}
+              initial={{ x: 200 }}
               animate={{ x: 0 }}
               exit={{ x: 400 }}
-              transition={{ type: "spring", stiffness: 100, damping: 18, duration: 0.4 }}
+              transition={{ type: "spring", stiffness: 200, damping: 18, duration: 0.4 }}
+              onAnimationComplete={() => this.setState({ nextButtonEnabled: true })}
             >
-              <div >
-                <img src={img} style={{ width: imageDim, height: imageDim }} alt={altText} />  
-              </div>
+              <div style={{ ...styles.done_text, color: this.state.darkModeEnabled ? colors.off_white : colors.off_black }}>{msg}</div>
             </motion.div>
-          </motion.div>
-          <motion.div style={styles.done_container}
-            initial={{ x: 200 }}
-            animate={{ x: 0 }}
-            exit={{ x: 400 }}
-            transition={{ type: "spring", stiffness: 200, damping: 18, duration: 0.4 }}
-            onAnimationComplete={() => this.setState({nextButtonEnabled: true})}
-          >
-            <div style={{...styles.done_text, color: this.state.darkModeEnabled ? colors.off_white:colors.off_black}}>{msg}</div>  
-          </motion.div>
-        </div>
-      }
+          </div>
+        }
       </AnimatePresence>
     );
   }
+
   renderGameOverButton() {
     let img1 = null;
     let img1altText = "Forward";
     let img2 = require("./images/arrow_back.png");
-    const consideredDaily = this.state.isDailyGame || this.state.megaPuzzle?true:false;
-    switch(this.state.nextBtnText){
+    const consideredDaily = this.state.isDailyGame || this.state.megaPuzzle ? true : false;
+    switch (this.state.nextBtnText) {
       case "NEXT":
         img1 = require("./images/arrow_forward.png");
         break;
@@ -2492,28 +2561,31 @@ class App extends Component {
       default:
         console.log("No default case...");
     }
+
     return (
       <AnimatePresence>
         {this.state.nextButtonEnabled &&
-      <motion.div style={styles.game_over_button_view}
-        initial={{ opacity: 0, scale: 0.5 }}
-        animate={{ opacity: 1, scale: 1 }}
-        exit={{ opacity: 0, scale: 0 }}
-        transition={{ type: "spring", stiffness: 250, damping: 18, duration: 0.8 }}
-      >
-        {this.state.nextBtnText === "NEXT" &&
-          <img src={img2} style={styles.game_over_button} onClick={() => this.goToStartScreen()} alt={"Back"} />
+          <motion.div style={styles.game_over_button_view}
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0 }}
+            transition={{ type: "spring", stiffness: 250, damping: 18, duration: 0.8 }}
+          >
+            {this.state.nextBtnText === "NEXT" &&
+              <img src={img2} style={styles.game_over_button} onClick={() => this.goToStartScreen()} alt={"Back"} />
+            }
+            <img src={img1} style={styles.game_over_button} onClick={() => this.transitionToGame(consideredDaily)} alt={img1altText} />
+          </motion.div>
         }
-        <img src={img1} style={styles.game_over_button} onClick={() => this.transitionToGame(consideredDaily)} alt={img1altText} />
-      </motion.div>
-      }
       </AnimatePresence>
     );
   }
-  toggleDrawer(){
-    this.setState({showMenu: !this.state.showMenu});
+
+  toggleDrawer() {
+    this.setState({ showMenu: !this.state.showMenu });
   }
-  showModal(which, open){
+
+  showModal(which, open) {
     this.setState({
       showSettingsModal: false,
       showHelpModal: false,
@@ -2527,50 +2599,52 @@ class App extends Component {
     });
 
     this.toggleModal(which, open);
-
   }
-  renderCol(col, i, anim, idFrag){
+
+  renderCol(col, i, anim, idFrag) {
     const cRef = "col" + i
     const numC = this.state.gameArray0.length;
     const numR = 3 * this.state.rowsInPuzzle - 2;
     let cWidth = this.state.lettersetContainerWidth;
     let cHeight = this.state.lettersetContainerHeight;
     const th1 = tileHeight * (1.1 - (this.state.gameArray0.length - 3) * 0.1);
-    const th2 = tablet?650/this.state.initialArrayHeight:isPC?580/this.state.initialArrayHeight:500/this.state.initialArrayHeight;
-    const scrDividedWidth = cWidth/(numC + 1);
-    const scrDividedHeight = cHeight/(numR + 2);
+    const th2 = tablet ? 650 / this.state.initialArrayHeight : isPC ? 580 / this.state.initialArrayHeight : 500 / this.state.initialArrayHeight;
+    const scrDividedWidth = cWidth / (numC + 1);
+    const scrDividedHeight = cHeight / (numR + 2);
     let th = Math.min(th1, th2, scrDividedWidth, scrDividedHeight);//tile height
-    th = (isPC || tablet) && numC > 5?th + numC * 2 :
-          config.isPhone && (numC > 5 && numC < 10)? th + numC :
-          config.isPhone && (numC === 10)? th + 6 :
+    th = (isPC || tablet) && numC > 5 ? th + numC * 2 :
+      config.isPhone && (numC > 5 && numC < 10) ? th + numC :
+        config.isPhone && (numC === 10) ? th + 6 :
           th;
-    th = this.state.currentGameIndex === -1?th * 0.8:th;
-    const le = (cWidth - numC * (th + 2))/2;//left edge
-    if(this.state.lettersetContainerWidth > 0){
-      return (
-        <TileSet
-          key={idFrag + i}
-          letterArray={col}
-          ref={(ref) => this.colRefs[cRef] = ref}
-          colIndex={i}
-          numCols={numC}
-          tileHeight={th}
-          left={le}
-          animate={anim}
-          dark={this.state.darkModeEnabled}
-          numColumns={numC}
-          sendColToGame={(indexArr) => {this.updateGameArray(indexArr)}}
-          checkForWordsAtStart={() => {this.updateGameArray([])}}
-        />
-      );
-    }
+    th = this.state.currentGameIndex === -1 ? th * 0.8 : th;
+    const le = (cWidth - numC * (th + 2)) / 2;//left edge
+
+    if (this.state.lettersetContainerWidth <= 0) return null;
+
+    return (
+      <TileSet
+        key={idFrag + i}
+        letterArray={col}
+        ref={(ref) => this.colRefs[cRef] = ref}
+        colIndex={i}
+        numCols={numC}
+        tileHeight={th}
+        left={le}
+        animate={anim}
+        dark={this.state.darkModeEnabled}
+        numColumns={numC}
+        sendColToGame={(indexArr) => { this.updateGameArray(indexArr) }}
+        checkForWordsAtStart={() => { this.updateGameArray([]) }}
+      />
+    );
   }
-  handleVisibilityChange(visible){
-    if(visible){
+
+  handleVisibilityChange(visible) {
+    if (visible) {
       dateToday = formatDate(new Date(), "MM-dd-yyyy");
       const openedStr = window.localStorage.getItem(KEY_LastOpenedDate);
       if (openedStr !== null) {
-        if(dateToday !== openedStr){
+        if (dateToday !== openedStr) {
           title = puzzTitle(dateToday);
           description = puzzDescription(dateToday);
           dailyPuzzlesArr = puzzles(dateToday);
@@ -2579,16 +2653,16 @@ class App extends Component {
           } catch (error) {
             window.alert('window.localStorage error: ' + error.message);
           }
-          this.setState({clearedLevel: true, dailyPuzzleCompleted: false});
+          this.setState({ clearedLevel: true, dailyPuzzleCompleted: false });
           setTimeout(() => {
             this.nextGame(true);
           }, 200);
         }
-      }else{
+      } else {
         try {
-            window.localStorage.setItem(KEY_LastOpenedDate, dateToday);
+          window.localStorage.setItem(KEY_LastOpenedDate, dateToday);
         } catch (error) {
-            window.alert('window.localStorage error: ' + error.message);
+          window.alert('window.localStorage error: ' + error.message);
         }
       }
     }
@@ -2597,51 +2671,66 @@ class App extends Component {
   render() {
     if (this.state.lettersetContainerHeight === 0) {
       return (
-        <div style={{...styles.loading_container, backgroundColor: global.bgColor}}>
+        <div style={{ ...styles.loading_container, backgroundColor: global.bgColor }}>
           <CircularProgress colors={colors.off_white} />
         </div>
       );
-    } else {
-      let {
-        gameArray0,
-        gameArray1,
-        gameArray2,
-        gameArray3,
-        gameArray4,
-        gameArray5,
-        gameArray6,
-        gameArray7,
-        gameArray8,
-        gameArray9,
-        gameArray10,
-        solvedWords,
-        darkModeEnabled,
-        showPuzzWordsModal,
-        solvedModalMessage,
-        bonusModalMessage,
-        dividerString,
-        keyIDFragment
-      } = this.state;
+    }
 
-      return (
-        <PageVisibility onChange={isVisible => this.handleVisibilityChange(isVisible)}>
+    let {
+      gameArray0,
+      gameArray1,
+      gameArray2,
+      gameArray3,
+      gameArray4,
+      gameArray5,
+      gameArray6,
+      gameArray7,
+      gameArray8,
+      gameArray9,
+      gameArray10,
+      solvedWords,
+      darkModeEnabled,
+      showPuzzWordsModal,
+      solvedModalMessage,
+      bonusModalMessage,
+      dividerString,
+      keyIDFragment
+    } = this.state;
+
+    return (
+      <PageVisibility onChange={isVisible => this.handleVisibilityChange(isVisible)}>
         <div>
-            <Menu showMenu={this.state.showMenu} closeMenu={() => this.toggleDrawer()} showModal={(which, open) => {this.showModal(which, open)}} themeColor={global.bgColor} cgi={this.state.currentGameIndex}/>
-          <div style={{...styles.container, backgroundColor: darkModeEnabled ? colors.gray_4:colors.off_white}} onClick={this.state.showMenu?() => this.toggleDrawer():null}>
-            <Header 
-              clickMenu={(which) => this.toggleDrawer(which)} 
+          <Menu
+            showMenu={this.state.showMenu}
+            closeMenu={() => this.toggleDrawer()}
+            showModal={(which, open) => this.showModal(which, open)}
+            themeColor={global.bgColor}
+            cgi={this.state.currentGameIndex}
+          />
+
+          <div 
+            style={{ ...styles.container, backgroundColor: darkModeEnabled ? colors.gray_4 : colors.off_white }}
+            onClick={this.state.showMenu ? () => this.toggleDrawer() : null}
+          >
+            <Header
+              clickMenu={(which) => this.toggleDrawer(which)}
               showModal={(which, open) => this.showModal(which, open)}
             />
             <div style={styles.appContainer}>
-            <div id="appLeftBox" style={{...styles.adBox, backgroundColor: darkModeEnabled ? colors.gray_4:colors.off_white, borderRightColor: colors.off_black, left: 0}}>
+              <div 
+                id="appLeftBox"
+                style={{ ...styles.adBox, backgroundColor: darkModeEnabled ? colors.gray_4 : colors.off_white, borderRightColor: colors.off_black, left: 0 }}
+              />
 
-            </div>
-            <div style={{...styles.adBox, backgroundColor: darkModeEnabled ? colors.gray_4:colors.off_white, borderLeftColor: colors.off_black, right: 0}}>
+              <div style={{ ...styles.adBox, backgroundColor: darkModeEnabled ? colors.gray_4 : colors.off_white, borderLeftColor: colors.off_black, right: 0 }} />
 
-            </div>
-              <div style={{...styles.messageOuterContainer, borderColor: global.bgColor}}>
+              <div style={{ ...styles.messageOuterContainer, borderColor: global.bgColor }}>
                 <div style={styles.messageContainer}>
-                  <div style={{...styles.header_text, color: this.state.dailyPuzzleCompleted && this.state.currentGameIndex === -1 ? colors.gray_2 : colors.text_white}}>{this.state.headerText}</div>
+                  <div style={{ ...styles.header_text, color: this.state.dailyPuzzleCompleted && this.state.currentGameIndex === -1 ? colors.gray_2 : colors.text_white }}>
+                    {this.state.headerText}
+                  </div>
+
                   <AnimatePresence>
                     {this.state.showHeaderComment &&
                       <motion.div
@@ -2657,35 +2746,36 @@ class App extends Component {
                   </AnimatePresence>
                 </div>
               </div>
-              <div style={styles.scoreContainer}  ref={this.scoreContainer}>
-              {this.state.showStars &&
-                <div id="starsContainer" style={styles.stars_container}>
-                  {this.renderStars()}
-                </div>
-              }
+
+              <div style={styles.scoreContainer} ref={this.scoreContainer}>
+                {this.state.showStars &&
+                  <div id="starsContainer" style={styles.stars_container}>
+                    {this.renderStars()}
+                  </div>
+                }
                 <div style={styles.solved_words_inner_container}>
                   <AnimatePresence>
                     {this.state.showSolvedWord &&
-                      <div style={{...styles.animated_solved_word, top: tablet?50:isPC?30:20, left: getAnimatedWordLeft(this.state.solvedWord.length)}}>
-                        <div className={'anim-node'} style={{...styles.solved_text, padding: this.state.solvedPadding}}>{this.state.solvedWord}</div>
+                      <div style={{ ...styles.animated_solved_word, top: tablet ? 50 : isPC ? 30 : 20, left: getAnimatedWordLeft(this.state.solvedWord.length) }}>
+                        <div className={'anim-node'} style={{ ...styles.solved_text, padding: this.state.solvedPadding }}>{this.state.solvedWord}</div>
                       </div>
                     }
                   </AnimatePresence>
                   {this.state.showSolvedWords &&
                     <div style={styles.solved_words}>
                       <div style={styles.solved_words_row}>
-                          {solvedWords[0 + this.state.solvedWordsRowOffset].map((word, index) => this.renderSolvedWords(word, index))}
+                        {solvedWords[0 + this.state.solvedWordsRowOffset].map((word, index) => this.renderSolvedWords(word, index))}
                       </div>
                       <div style={styles.solved_words_row}>
-                          {solvedWords[1 + this.state.solvedWordsRowOffset].map((word, index) => this.renderSolvedWords(word, index))}
+                        {solvedWords[1 + this.state.solvedWordsRowOffset].map((word, index) => this.renderSolvedWords(word, index))}
                       </div>
                       <div style={styles.solved_words_row}>
-                          {solvedWords[2 + this.state.solvedWordsRowOffset].map((word, index) => this.renderSolvedWords(word, index))}
+                        {solvedWords[2 + this.state.solvedWordsRowOffset].map((word, index) => this.renderSolvedWords(word, index))}
                       </div>
                       {solvedWords[3 + this.state.solvedWordsRowOffset] &&
-                      <div style={styles.solved_words_row}>
+                        <div style={styles.solved_words_row}>
                           {solvedWords[3 + this.state.solvedWordsRowOffset].map((word, index) => this.renderSolvedWords(word, index))}
-                      </div>
+                        </div>
                       }
                     </div>
                   }
@@ -2705,8 +2795,8 @@ class App extends Component {
               <div id="gameContainer" style={styles.gameContainer} ref={this.lettersetContainer}>
                 {this.state.showTutScreen1 && !this.state.showedTutScreen1 && this.state.currentGameIndex !== -1 && this.displayTutScreen1()}
                 {this.state.showTutScreen2 && !this.state.showedTutScreen2 && this.state.currentGameIndex !== -1 && this.displayTutScreen2()}
-                {this.state.showStars && this.state.starColorArray[0] !== '#333333' && 
-                  <div style={{...styles.stars100_container, borderColor: this.state.darkModeEnabled ? colors.gray_4:colors.dark_green}}>
+                {this.state.showStars && this.state.starColorArray[0] !== '#333333' &&
+                  <div style={{ ...styles.stars100_container, borderColor: this.state.darkModeEnabled ? colors.gray_4 : colors.dark_green }}>
                     {this.renderStars100()}
                   </div>
                 }
@@ -2739,19 +2829,19 @@ class App extends Component {
                 {this.state.gameDone && this.renderDone(this.state.clearedLevel)}
                 {this.state.lockScreenInput && this.displayLockScreen()}
               </div>
-              <div  id="footerContainer" style={{...styles.footerContainer, backgroundColor: global.bgColor}}>
-                <motion.button style={styles.button}  whileTap={{ scale: 0.97 }} onClick={() => this.openWordsModal()} >
-                <div style={styles.button_text}>WORDS</div>
+              <div id="footerContainer" style={{ ...styles.footerContainer, backgroundColor: global.bgColor }}>
+                <motion.button style={styles.button} whileTap={{ scale: 0.97 }} onClick={() => this.openWordsModal()} >
+                  <div style={styles.button_text}>WORDS</div>
                 </motion.button>
                 <motion.button style={styles.button} whileTap={{ scale: 0.97 }} onClick={() => this.giveHint()} >
-                <div style={styles.button_text}>HINT</div>
+                  <div style={styles.button_text}>HINT</div>
                 </motion.button>
               </div>
             </div>
             {this.state.currentGameIndex === -1 &&
-              <Footer 
-                puzzleStreak={this.state.puzzleStreak} 
-                startGame={(daily) => this.transitionToGame(daily)} 
+              <Footer
+                puzzleStreak={this.state.puzzleStreak}
+                startGame={(daily) => this.transitionToGame(daily)}
                 gameIndex={this.state.currentGameIndex}
                 buttonColor={this.state.dailyPuzzleCompleted && this.state.currentGameIndex === -1 ? colors.gray_2 : colors.text_white}
               />
@@ -2762,7 +2852,7 @@ class App extends Component {
 
             <ToastContainer
               position="bottom-center"
-              style={{ width: isPC?scrHeight/4.5:scrWidth*0.7 }}
+              style={{ width: isPC ? scrHeight / 4.5 : scrWidth * 0.7 }}
               autoClose={2400}
               hideProgressBar
               newestOnTop={false}
@@ -2773,49 +2863,54 @@ class App extends Component {
               pauseOnHover
               theme="light"
             />
-          <Settings
-            isModalVisible={this.state.showSettingsModal}
-            requestModalClose={() => {this.toggleModal(null, false)}}
-            sendValueToGame={(val) => {this.updateSettingsValue(val)}}
-            navigation={this.props.navigation}
-          />
-          <Help
-            isModalVisible={this.state.showHelpModal}
-            requestModalClose={(which, open) => {this.toggleModal(which, open)}}
-            darkModeEnabled={this.state.darkModeEnabled}
-          />
-          <Support
-            isModalVisible={this.state.showSupportModal}
-            requestModalClose={(which, open) => {this.toggleModal(which, open)}}
-            darkModeEnabled={this.state.darkModeEnabled}
-            startPurchaseInGame={(val) => {this.initiatePurchase(val)}}
-          />
-          <Words
-            isModalVisible={this.state.showWordsModal}
-            isDarkModeEnabled={this.state.darkModeEnabled}
-            showPuzzWordsModal={showPuzzWordsModal}
-            solvedModalMessage={solvedModalMessage}
-            bonusModalMessage={bonusModalMessage}
-            dividerString={dividerString}
-            requestModalClose={()=>{this.toggleModal(null, false)}}
-          />
-          <EndGame
-            isModalVisible={this.state.showEndGameModal}
-            isDarkModeEnabled={this.state.darkModeEnabled}
-            requestModalClose={()=>{this.toggleModal(null, false)}}
-            requestGoToStart={()=>{this.goToStartScreen()}}
-          />
-          {/* <ThankYou
-            isModalVisible={this.state.showThankYouModal}
-            isDarkModeEnabled={this.state.darkModeEnabled}
-            requestModalClose={()=>{this.closeModal()}}
-          /> */}
-            <HintNag isModalVisible={this.state.showHintNagModal} isDarkModeEnabled={this.state.darkModeEnabled} requestModalClose={()=>{this.toggleModal(null, false)}}/>
+            <Settings
+              isModalVisible={this.state.showSettingsModal}
+              requestModalClose={() => { this.toggleModal(null, false) }}
+              sendValueToGame={(val) => { this.updateSettingsValue(val) }}
+              navigation={this.props.navigation}
+            />
+            <Help
+              isModalVisible={this.state.showHelpModal}
+              requestModalClose={(which, open) => { this.toggleModal(which, open) }}
+              darkModeEnabled={this.state.darkModeEnabled}
+            />
+            <Support
+              isModalVisible={this.state.showSupportModal}
+              requestModalClose={(which, open) => { this.toggleModal(which, open) }}
+              darkModeEnabled={this.state.darkModeEnabled}
+              startPurchaseInGame={(val) => { this.initiatePurchase(val) }}
+            />
+            <Words
+              isModalVisible={this.state.showWordsModal}
+              isDarkModeEnabled={this.state.darkModeEnabled}
+              showPuzzWordsModal={showPuzzWordsModal}
+              solvedModalMessage={solvedModalMessage}
+              bonusModalMessage={bonusModalMessage}
+              dividerString={dividerString}
+              requestModalClose={() => { this.toggleModal(null, false) }}
+            />
+            <EndGame
+              isModalVisible={this.state.showEndGameModal}
+              isDarkModeEnabled={this.state.darkModeEnabled}
+              requestModalClose={() => { this.toggleModal(null, false) }}
+              requestGoToStart={() => { this.goToStartScreen() }}
+            />
+            {/* 
+              <ThankYou
+                isModalVisible={this.state.showThankYouModal}
+                isDarkModeEnabled={this.state.darkModeEnabled}
+                requestModalClose={()=>{this.closeModal()}}
+              /> 
+            */}
+            <HintNag
+              isModalVisible={this.state.showHintNagModal}
+              isDarkModeEnabled={this.state.darkModeEnabled}
+              requestModalClose={() => { this.toggleModal(null, false) }}
+            />
           </div>
-          </div>
-        </PageVisibility>
-      );
-    }
+        </div>
+      </PageVisibility>
+    );
   }
 }
 
