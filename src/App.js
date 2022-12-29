@@ -2574,6 +2574,11 @@ class App extends Component {
           title = puzzTitle(dateToday);
           description = puzzDescription(dateToday);
           dailyPuzzlesArr = puzzles(dateToday);
+          try {
+            window.localStorage.setItem(KEY_GameInProgress, 'false');
+          } catch (error) {
+            window.alert('window.localStorage error: ' + error.message);
+          }
           this.setState({clearedLevel: true, dailyPuzzleCompleted: false});
           setTimeout(() => {
             this.nextGame(true);
