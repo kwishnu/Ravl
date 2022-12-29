@@ -59,39 +59,43 @@ class Tile extends Component {
     animElement.style.setProperty('--animate-duration', '0.6s');
     animateCSS(animElement, 'pulse').then(() => callback(ref));
   }
-  animateOut(ref, callback){//animPreference
+  animateOut(ref, animPreference, callback){
     const animElement = this.tileRefs[ref];
-    animElement.style.setProperty('--animate-duration', '0.5s');
-    animateCSS(animElement, 'showoff').then(() => {
-      animElement.style.setProperty('--animate-duration', '1.6s');
-      setTimeout(() => {
-        this.setState({show: false});
-      }, 500);
-      animateCSS(animElement, 'bounceOutRight');
-    })
-    .then(callback);
+    switch(animPreference){
+      case "Spin":
+        animElement.style.setProperty('--animate-duration', '0.5s');
+        animateCSS(animElement, 'showoff').then(() => {
+          animElement.style.setProperty('--animate-duration', '1.6s');
+          setTimeout(() => {
+            this.setState({show: false});
+          }, 500);
+          animateCSS(animElement, 'flipOutY');
+        })
+        .then(callback);
+        break;
+      case "None":
+        animElement.style.setProperty('--animate-duration', '0.5s');
+        animateCSS(animElement, 'showoff').then(() => {
+          animElement.style.setProperty('--animate-duration', '1.6s');
+          setTimeout(() => {
+            this.setState({show: false});
+          }, 500);
+          animateCSS(animElement, 'fadeOut');
+        })
+        .then(callback);
+        break;
+      default://"Leave":
+        animElement.style.setProperty('--animate-duration', '0.5s');
+        animateCSS(animElement, 'showoff').then(() => {
+          animElement.style.setProperty('--animate-duration', '1.6s');
+          setTimeout(() => {
+            this.setState({show: false});
+          }, 500);
+          animateCSS(animElement, 'bounceOutRight');
+        })
+        .then(callback);
+    }
   }
-    //   switch(animPreference){
-  //     case "Spin":
-  //       this.refs.outerTileView.animate(flare2, 400).then(() => {//*****this.outerTileView= React.createRef();<--put this just below super(props); above, then use by removing refs from this line
-  //         this.refs.outerTileView.animate(flip, 600).then(go =>
-  //           this.refs.outerTileView.animate(disappear, 500)
-  //         ).then(callback)
-  //       })
-  //       break;
-  //     case "None":
-  //       this.refs.outerTileView.animate(flare2, 700).then(() => {
-  //           this.refs.outerTileView.animate(disappear, 400).then(callback)
-  //       })
-  //       break;
-  //     default://"Leave":
-  //       this.refs.outerTileView.pulse(600).then(() => {
-  //         this.refs.outerTileView.animate(flare1, 300).then(zoom =>
-  //           this.refs.outerTileView.lightSpeedOut(350)
-  //         ).then(callback)
-  //       })
-  //     }
-  // }
   animateUpThenDown(ref){
     if(this.tileRefs[ref]){
       const animElement = this.tileRefs[ref];
@@ -135,9 +139,6 @@ class Tile extends Component {
     this.setState({bgColor: color, textColor: txtColor})
   }
   cycleBGColor(){
-    // debugger;
-	    // console.log("this.state.tileKey: " + this.state.tileKey + ", this.state.tileKeyStored: " + this.state.tileKeyStored);
-	
       if(this.state.tileKey !== this.state.tileKeyStored){
       let initialColor = this.state.toColor;
       let nextColor = getColor();

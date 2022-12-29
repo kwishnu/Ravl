@@ -970,7 +970,7 @@ class App extends Component {
     rowArr.forEach((cellRef) => {
       // debugger;
       const colRef = cellRef.split(",")[0];
-      this.colRefs[colRef].sendCellOut(cellRef, () => {//this.state.animationStyle, cellRef,...
+      this.colRefs[colRef].sendCellOut(cellRef, this.state.animationStyle, () => {//this.state.animationStyle, cellRef,...
         if (!doneDropping) {
           doneDropping = true;
           const gArray = this.state.gameArray0;
