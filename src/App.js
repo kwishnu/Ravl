@@ -264,7 +264,7 @@ class App extends Component {
   };
 
   componentDidMount() {
-    window.addEventListener('onorientationchange', this.updateHeightAndWidth());
+    window.addEventListener('orientationchange', this.updateHeightAndWidth());
     dateToday = formatDate(new Date(), "MM-dd-yyyy");
     title = puzzTitle(dateToday);
     description = puzzDescription(dateToday);
@@ -292,7 +292,9 @@ class App extends Component {
       true, //eligibility for star
     )
   }
-
+componentWillUnmount(){
+  window.removeEventListener('orientationchange');
+}
   updateHeightAndWidth(){
     alert("height is now " + window.innerHeight + ", width is now " + window.innerWidth)
     console.log("things changed");
