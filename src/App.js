@@ -264,7 +264,7 @@ class App extends Component {
   };
 
   componentDidMount() {
-    window.addEventListener('orientationchange', this.updateHeightAndWidth());
+    window.addEventListener('resize', this.updateHeightAndWidth());
     dateToday = formatDate(new Date(), "MM-dd-yyyy");
     title = puzzTitle(dateToday);
     description = puzzDescription(dateToday);
