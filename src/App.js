@@ -44,7 +44,7 @@ import EndGame from "./modal/EndGameModal";
 
 const KEY_LastOpenedDate = 'lastOpenedKey';
 const KEY_ShowedTutorial = 'showedTutKey';
-const KEY_GameInProgress = 'gameInProgress';
+// const KEY_GameInProgress = 'gameInProgress';
 const KEY_PlayedFirstGame = 'playedGameKey';
 const KEY_HighScore = 'highScoreKey';
 const KEY_BGColorPref = 'bgColorPrefKey';
@@ -228,8 +228,6 @@ class App extends Component {
   }
 
   openWordsModal = () => {
-    console.log("in openWordsModal");
-
     let showPuzzWords = (this.state.solvedWords[0].length || this.state.solvedWords[8].length) ? true : false;
     let solvedArray = this.state.solvedWords;
     let bonusArray = this.state.bonusWords;
@@ -277,67 +275,21 @@ class App extends Component {
       scoreContainerHeight: this.scoreContainer.current.getBoundingClientRect().height,
     });
 
-    let gameInProgressBool = false;
-    const gameInProgress = window.localStorage.getItem(KEY_GameInProgress);
-
-    if (gameInProgress !== null) {
-      gameInProgressBool = (gameInProgress === 'true') ? true : false;
-    } else {
-      try {
-        window.localStorage.setItem(KEY_GameInProgress, 'false');
-      } catch (error) {
-        window.alert('window.localStorage error: ' + error.message);
-      }
-    }
-
-    if (gameInProgressBool) {
-      puzzleWords0 = JSON.parse(window.localStorage.getItem(KEY_PWords0));
-      puzzleWords1 = JSON.parse(window.localStorage.getItem(KEY_PWords1));
-      puzzleWords2 = JSON.parse(window.localStorage.getItem(KEY_PWords2));
-      puzzleWords3 = JSON.parse(window.localStorage.getItem(KEY_PWords3));
-      puzzleWords4 = JSON.parse(window.localStorage.getItem(KEY_PWords4));
-      puzzleWords5 = JSON.parse(window.localStorage.getItem(KEY_PWords5));
-      puzzleWords6 = JSON.parse(window.localStorage.getItem(KEY_PWords6));
-      puzzleWords7 = JSON.parse(window.localStorage.getItem(KEY_PWords7));
-
-      const solvedWs = JSON.parse(window.localStorage.getItem(KEY_SolvedWords));
-      const bonusWs = JSON.parse(window.localStorage.getItem(KEY_BonusWords));
-      const scoreInt = parseInt(window.localStorage.getItem(KEY_Score));
-      const gIndex = parseInt(window.localStorage.getItem(KEY_GameIndex));
-      const sEligBool = window.localStorage.getItem(KEY_StarEligibility) === 'true' ? true : false;
-
-      this.init(
-        puzzleWords0,
-        puzzleWords1,
-        puzzleWords2,
-        puzzleWords3,
-        puzzleWords4,
-        puzzleWords5,
-        puzzleWords6,
-        puzzleWords7,
-        solvedWs,
-        bonusWs,
-        scoreInt,
-        gIndex,
-        sEligBool
-      )
-    } else {
-      this.init(
-        puzzleWords0,
-        puzzleWords1,
-        puzzleWords2,
-        puzzleWords3,
-        puzzleWords4,
-        puzzleWords5,
-        puzzleWords6,
-        puzzleWords7,
-        [[], [], [], [], [], [], [], [], [], [], []], // this.props.solvedWords,
-        [[], [], [], [], [], [], [], [], [], [], []], // this.props.bonusWords,
-        15, // this.props.score,
-        -1, // this.props.currentGameIndex,
-        true, //eligibility for star
-      )
-    }
+    this.init(
+      puzzleWords0,
+      puzzleWords1,
+      puzzleWords2,
+      puzzleWords3,
+      puzzleWords4,
+      puzzleWords5,
+      puzzleWords6,
+      puzzleWords7,
+      [[], [], [], [], [], [], [], [], [], [], []], // this.props.solvedWords,
+      [[], [], [], [], [], [], [], [], [], [], []], // this.props.bonusWords,
+      15, // this.props.score,
+      -1, // this.props.currentGameIndex,
+      true, //eligibility for star
+    )
   }
 
   init(p0, p1, p2, p3, p4, p5, p6, p7, sw, bw, sc, cgi, eligibility) {
@@ -2064,7 +2016,8 @@ class App extends Component {
     targetLevel = goToStart ? -1 : this.state.megaPuzzle ? 100 : targetLevel;
     this.setState({ puzzleDisplayed: false, showStars: goToStart, nextBtnText: "NEXT" });
 
-    this.init(puzzleWords0,
+    this.init(
+      puzzleWords0,
       puzzleWords1,
       puzzleWords2,
       puzzleWords3,
