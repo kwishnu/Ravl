@@ -264,7 +264,7 @@ class App extends Component {
   };
 
   componentDidMount() {
-    window.addEventListener('deviceorientation', this.updateHeightAndWidth());
+    window.addEventListener('resize', (event) => this.updateHeightAndWidth(event));
     dateToday = formatDate(new Date(), "MM-dd-yyyy");
     title = puzzTitle(dateToday);
     description = puzzDescription(dateToday);
@@ -293,9 +293,9 @@ class App extends Component {
     )
   }
 componentWillUnmount(){
-  window.removeEventListener('orientationchange', this.updateHeightAndWidth());
+  window.removeEventListener('resize', this.updateHeightAndWidth());
 }
-  updateHeightAndWidth(){
+  updateHeightAndWidth(e){
     toast(("height is now " + window.innerHeight + ", width is now " + window.innerWidth), {
       position: "bottom-center",
       autoClose: 2400,
@@ -307,7 +307,7 @@ componentWillUnmount(){
       theme: "light",
     });
 
-    console.log("things changed");
+    console.log(e);
   }
 
   init(p0, p1, p2, p3, p4, p5, p6, p7, sw, bw, sc, cgi, eligibility) {
