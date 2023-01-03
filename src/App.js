@@ -264,6 +264,7 @@ class App extends Component {
   };
 
   componentDidMount() {
+    window.addEventListener('onorientationchange', this.updateHeightAndWidth());
     dateToday = formatDate(new Date(), "MM-dd-yyyy");
     title = puzzTitle(dateToday);
     description = puzzDescription(dateToday);
@@ -290,6 +291,11 @@ class App extends Component {
       -1, // this.props.currentGameIndex,
       true, //eligibility for star
     )
+  }
+
+  updateHeightAndWidth(){
+    alert("height is now " + window.innerHeight + ", width is now " + window.innerWidth)
+    console.log("things changed");
   }
 
   init(p0, p1, p2, p3, p4, p5, p6, p7, sw, bw, sc, cgi, eligibility) {
