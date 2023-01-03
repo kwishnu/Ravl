@@ -33,7 +33,7 @@ import Header from './components/Header.js';
 import Footer from './components/Footer.js';
 import HintNag from "./modal/HintNagModal";
 import TileSet from './components/TileSet';
-import styles from './styles/appStyles.js';
+import stylesJS from './styles/appStyles.js';
 import genWordArray from "./config/genWordArray";
 import Settings from "./screens/settings";
 import Help from "./screens/help";
@@ -263,6 +263,11 @@ class App extends Component {
     });
   };
 
+  styles = () => {
+    const { scrWidth, scrHeight } = this.state;
+    return stylesJS({ scrWidth, scrHeight });
+  };
+
   componentDidMount() {
     window.addEventListener('resize', (event) => this.updateHeightAndWidth(event));
     dateToday = formatDate(new Date(), "MM-dd-yyyy");
@@ -292,9 +297,11 @@ class App extends Component {
       true, //eligibility for star
     )
   }
-componentWillUnmount(){
-  window.removeEventListener('resize', this.updateHeightAndWidth());
-}
+
+  componentWillUnmount(){
+    window.removeEventListener('resize', this.updateHeightAndWidth());
+  }
+
   updateHeightAndWidth(e){
     toast(("height is now " + window.innerHeight + ", width is now " + window.innerWidth), {
       position: "bottom-center",
@@ -308,6 +315,7 @@ componentWillUnmount(){
     });
 
     console.log(e);
+
   }
 
   init(p0, p1, p2, p3, p4, p5, p6, p7, sw, bw, sc, cgi, eligibility) {
@@ -2217,7 +2225,7 @@ componentWillUnmount(){
 
   displayLockScreen() {
     return (
-      <div style={styles.screen_lock}>
+      <div style={this.styles().screen_lock}>
       </div>
     )
   }
@@ -2413,20 +2421,20 @@ componentWillUnmount(){
 
     return (
       <div>
-        <div style={{ ...styles.star_row, height: this.state.scoreContainerHeight / 5.5 }}>
-          <div style={{ ...styles.star, color: this.state.currentStarColor }}>{starString1}</div>
+        <div style={{ ...this.styles().star_row, height: this.state.scoreContainerHeight / 5.5 }}>
+          <div style={{ ...this.styles().star, color: this.state.currentStarColor }}>{starString1}</div>
         </div>
-        <div style={{ ...styles.star_row, height: this.state.scoreContainerHeight / 5.5 }}>
-          <div style={{ ...styles.star, color: this.state.currentStarColor }}>{starString2}</div>
+        <div style={{ ...this.styles().star_row, height: this.state.scoreContainerHeight / 5.5 }}>
+          <div style={{ ...this.styles().star, color: this.state.currentStarColor }}>{starString2}</div>
         </div>
-        <div style={{ ...styles.star_row, height: this.state.scoreContainerHeight / 5.5 }}>
-          <div style={{ ...styles.star, color: this.state.currentStarColor }}>{starString3}</div>
+        <div style={{ ...this.styles().star_row, height: this.state.scoreContainerHeight / 5.5 }}>
+          <div style={{ ...this.styles().star, color: this.state.currentStarColor }}>{starString3}</div>
         </div>
-        <div style={{ ...styles.star_row, height: this.state.scoreContainerHeight / 5.5 }}>
-          <div style={{ ...styles.star, color: this.state.currentStarColor }}>{starString4}</div>
+        <div style={{ ...this.styles().star_row, height: this.state.scoreContainerHeight / 5.5 }}>
+          <div style={{ ...this.styles().star, color: this.state.currentStarColor }}>{starString4}</div>
         </div>
-        <div style={{ ...styles.star_row, height: this.state.scoreContainerHeight / 5.5 }}>
-          <div style={{ ...styles.star, color: this.state.currentStarColor }}>{starString5}</div>
+        <div style={{ ...this.styles().star_row, height: this.state.scoreContainerHeight / 5.5 }}>
+          <div style={{ ...this.styles().star, color: this.state.currentStarColor }}>{starString5}</div>
         </div>
       </div>
     );
@@ -2436,35 +2444,35 @@ componentWillUnmount(){
     let singleStar = "\u2605";
 
     return (
-      <div style={styles.star_row}>
-        <div style={{ ...styles.star100, marginLeft: tablet ? scrWidth * 0.01 : 2, color: this.state.starColorArray[0] }}>{singleStar}</div>
-        <div style={{ ...styles.star100, color: this.state.starColorArray[1] }}>{singleStar}</div>
-        <div style={{ ...styles.star100, color: this.state.starColorArray[2] }}>{singleStar}</div>
-        <div style={{ ...styles.star100, color: this.state.starColorArray[3] }}>{singleStar}</div>
-        <div style={{ ...styles.star100, color: this.state.starColorArray[4] }}>{singleStar}</div>
-        <div style={{ ...styles.star100, color: this.state.starColorArray[5] }}>{singleStar}</div>
-        <div style={{ ...styles.star100, color: this.state.starColorArray[6] }}>{singleStar}</div>
-        <div style={{ ...styles.star100, color: this.state.starColorArray[7] }}>{singleStar}</div>
-        <div style={{ ...styles.star100, color: this.state.starColorArray[8] }}>{singleStar}</div>
-        <div style={{ ...styles.star100, color: this.state.starColorArray[9] }}>{singleStar}</div>
-        <div style={{ ...styles.star100, color: this.state.starColorArray[10] }}>{singleStar}</div>
-        <div style={{ ...styles.star100, color: this.state.starColorArray[11] }}>{singleStar}</div>
-        <div style={{ ...styles.star100, color: this.state.starColorArray[12] }}>{singleStar}</div>
-        <div style={{ ...styles.star100, color: this.state.starColorArray[13] }}>{singleStar}</div>
-        <div style={{ ...styles.star100, color: this.state.starColorArray[14] }}>{singleStar}</div>
-        <div style={{ ...styles.star100, color: this.state.starColorArray[15] }}>{singleStar}</div>
-        <div style={{ ...styles.star100, color: this.state.starColorArray[16] }}>{singleStar}</div>
-        <div style={{ ...styles.star100, color: this.state.starColorArray[17] }}>{singleStar}</div>
-        <div style={{ ...styles.star100, color: this.state.starColorArray[18] }}>{singleStar}</div>
-        <div style={{ ...styles.star100, color: this.state.starColorArray[19] }}>{singleStar}</div>
+      <div style={this.styles().star_row}>
+        <div style={{ ...this.styles().star100, marginLeft: tablet ? scrWidth * 0.01 : 2, color: this.state.starColorArray[0] }}>{singleStar}</div>
+        <div style={{ ...this.styles().star100, color: this.state.starColorArray[1] }}>{singleStar}</div>
+        <div style={{ ...this.styles().star100, color: this.state.starColorArray[2] }}>{singleStar}</div>
+        <div style={{ ...this.styles().star100, color: this.state.starColorArray[3] }}>{singleStar}</div>
+        <div style={{ ...this.styles().star100, color: this.state.starColorArray[4] }}>{singleStar}</div>
+        <div style={{ ...this.styles().star100, color: this.state.starColorArray[5] }}>{singleStar}</div>
+        <div style={{ ...this.styles().star100, color: this.state.starColorArray[6] }}>{singleStar}</div>
+        <div style={{ ...this.styles().star100, color: this.state.starColorArray[7] }}>{singleStar}</div>
+        <div style={{ ...this.styles().star100, color: this.state.starColorArray[8] }}>{singleStar}</div>
+        <div style={{ ...this.styles().star100, color: this.state.starColorArray[9] }}>{singleStar}</div>
+        <div style={{ ...this.styles().star100, color: this.state.starColorArray[10] }}>{singleStar}</div>
+        <div style={{ ...this.styles().star100, color: this.state.starColorArray[11] }}>{singleStar}</div>
+        <div style={{ ...this.styles().star100, color: this.state.starColorArray[12] }}>{singleStar}</div>
+        <div style={{ ...this.styles().star100, color: this.state.starColorArray[13] }}>{singleStar}</div>
+        <div style={{ ...this.styles().star100, color: this.state.starColorArray[14] }}>{singleStar}</div>
+        <div style={{ ...this.styles().star100, color: this.state.starColorArray[15] }}>{singleStar}</div>
+        <div style={{ ...this.styles().star100, color: this.state.starColorArray[16] }}>{singleStar}</div>
+        <div style={{ ...this.styles().star100, color: this.state.starColorArray[17] }}>{singleStar}</div>
+        <div style={{ ...this.styles().star100, color: this.state.starColorArray[18] }}>{singleStar}</div>
+        <div style={{ ...this.styles().star100, color: this.state.starColorArray[19] }}>{singleStar}</div>
       </div>
     );
   }
 
   renderSolvedWords(word, i) {
     return (
-      <div key={i} style={styles.solved_words_slot}>
-        <p style={styles.debug_text}>{word}</p>
+      <div key={i} style={this.styles().solved_words_slot}>
+        <p style={this.styles().debug_text}>{word}</p>
       </div>
     );
   }
@@ -2479,7 +2487,7 @@ componentWillUnmount(){
       <AnimatePresence>
         {this.state.gameDone &&
           <div>
-            <motion.div style={styles.thumb_view}
+            <motion.div style={this.styles().thumb_view}
               animate={{ y: -scrHeight * 0.18 }}
               transition={{ ease: "easeInOut", duration: 1, repeat: Infinity, repeatType: 'reverse', delay: 0.6 }}
             >
@@ -2494,14 +2502,14 @@ componentWillUnmount(){
                 </div>
               </motion.div>
             </motion.div>
-            <motion.div style={styles.done_container}
+            <motion.div style={this.styles().done_container}
               initial={{ x: 200 }}
               animate={{ x: 0 }}
               exit={{ x: 400 }}
               transition={{ type: "spring", stiffness: 200, damping: 18, duration: 0.4 }}
               onAnimationComplete={() => this.setState({ nextButtonEnabled: true })}
             >
-              <div style={{ ...styles.done_text, color: this.state.darkModeEnabled ? colors.off_white : colors.off_black }}>{msg}</div>
+              <div style={{ ...this.styles().done_text, color: this.state.darkModeEnabled ? colors.off_white : colors.off_black }}>{msg}</div>
             </motion.div>
           </div>
         }
@@ -2532,16 +2540,16 @@ componentWillUnmount(){
     return (
       <AnimatePresence>
         {this.state.nextButtonEnabled &&
-          <motion.div style={styles.game_over_button_view}
+          <motion.div style={this.styles().game_over_button_view}
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0 }}
             transition={{ type: "spring", stiffness: 250, damping: 18, duration: 0.8 }}
           >
             {this.state.nextBtnText === "NEXT" &&
-              <img src={img2} style={styles.game_over_button} onClick={() => this.goToStartScreen()} alt={"Back"} />
+              <img src={img2} style={this.styles().game_over_button} onClick={() => this.goToStartScreen()} alt={"Back"} />
             }
-            <img src={img1} style={styles.game_over_button} onClick={() => this.transitionToGame(consideredDaily)} alt={img1altText} />
+            <img src={img1} style={this.styles().game_over_button} onClick={() => this.transitionToGame(consideredDaily)} alt={img1altText} />
           </motion.div>
         }
       </AnimatePresence>
@@ -2638,7 +2646,7 @@ componentWillUnmount(){
   render() {
     if (this.state.lettersetContainerHeight === 0) {
       return (
-        <div style={{ ...styles.loading_container, backgroundColor: global.bgColor }}>
+        <div style={{ ...this.styles().loading_container, backgroundColor: global.bgColor }}>
           <CircularProgress colors={colors.off_white} />
         </div>
       );
@@ -2677,24 +2685,24 @@ componentWillUnmount(){
           />
 
           <div 
-            style={{ ...styles.container, backgroundColor: darkModeEnabled ? colors.gray_4 : colors.off_white }}
+            style={{ ...this.styles().container, backgroundColor: darkModeEnabled ? colors.gray_4 : colors.off_white }}
             onClick={this.state.showMenu ? () => this.toggleDrawer() : null}
           >
             <Header
               clickMenu={(which) => this.toggleDrawer(which)}
               showModal={(which, open) => this.showModal(which, open)}
             />
-            <div style={styles.appContainer}>
+            <div style={this.styles().appContainer}>
               <div 
                 id="appLeftBox"
-                style={{ ...styles.adBox, backgroundColor: darkModeEnabled ? colors.gray_4 : colors.off_white, borderRightColor: colors.off_black, left: 0 }}
+                style={{ ...this.styles().adBox, backgroundColor: darkModeEnabled ? colors.gray_4 : colors.off_white, borderRightColor: colors.off_black, left: 0 }}
               />
 
-              <div style={{ ...styles.adBox, backgroundColor: darkModeEnabled ? colors.gray_4 : colors.off_white, borderLeftColor: colors.off_black, right: 0 }} />
+              <div style={{ ...this.styles().adBox, backgroundColor: darkModeEnabled ? colors.gray_4 : colors.off_white, borderLeftColor: colors.off_black, right: 0 }} />
 
-              <div style={{ ...styles.messageOuterContainer, borderColor: global.bgColor }}>
-                <div style={styles.messageContainer}>
-                  <div style={{ ...styles.header_text, color: this.state.dailyPuzzleCompleted && this.state.currentGameIndex === -1 ? colors.gray_2 : colors.text_white }}>
+              <div style={{ ...this.styles().messageOuterContainer, borderColor: global.bgColor }}>
+                <div style={this.styles().messageContainer}>
+                  <div style={{ ...this.styles().header_text, color: this.state.dailyPuzzleCompleted && this.state.currentGameIndex === -1 ? colors.gray_2 : colors.text_white }}>
                     {this.state.headerText}
                   </div>
 
@@ -2704,52 +2712,52 @@ componentWillUnmount(){
                         initial={{ y: 40 }}
                         animate={{ y: 0 }}
                         exit={{ y: 40 }}
-                        style={styles.header_text_white}
+                        style={this.styles().header_text_white}
                         transition={{ duration: 0.8 }}
                       >
-                        <div style={styles.header_text}>{this.state.headerComment}</div>
+                        <div style={this.styles().header_text}>{this.state.headerComment}</div>
                       </motion.div>
                     }
                   </AnimatePresence>
                 </div>
               </div>
 
-              <div style={styles.scoreContainer} ref={this.scoreContainer}>
+              <div style={this.styles().scoreContainer} ref={this.scoreContainer}>
                 {this.state.showStars &&
-                  <div id="starsContainer" style={styles.stars_container}>
+                  <div id="starsContainer" style={this.styles().stars_container}>
                     {this.renderStars()}
                   </div>
                 }
-                <div style={styles.solved_words_inner_container}>
+                <div style={this.styles().solved_words_inner_container}>
                   <AnimatePresence>
                     {this.state.showSolvedWord &&
-                      <div style={{ ...styles.animated_solved_word, top: tablet ? 50 : isPC ? 30 : 20, left: getAnimatedWordLeft(this.state.solvedWord.length) }}>
-                        <div className={'anim-node'} style={{ ...styles.solved_text, padding: this.state.solvedPadding }}>{this.state.solvedWord}</div>
+                      <div style={{ ...this.styles().animated_solved_word, top: tablet ? 50 : isPC ? 30 : 20, left: getAnimatedWordLeft(this.state.solvedWord.length) }}>
+                        <div className={'anim-node'} style={{ ...this.styles().solved_text, padding: this.state.solvedPadding }}>{this.state.solvedWord}</div>
                       </div>
                     }
                   </AnimatePresence>
                   {this.state.showSolvedWords &&
-                    <div style={styles.solved_words}>
-                      <div style={styles.solved_words_row}>
+                    <div style={this.styles().solved_words}>
+                      <div style={this.styles().solved_words_row}>
                         {solvedWords[0 + this.state.solvedWordsRowOffset].map((word, index) => this.renderSolvedWords(word, index))}
                       </div>
-                      <div style={styles.solved_words_row}>
+                      <div style={this.styles().solved_words_row}>
                         {solvedWords[1 + this.state.solvedWordsRowOffset].map((word, index) => this.renderSolvedWords(word, index))}
                       </div>
-                      <div style={styles.solved_words_row}>
+                      <div style={this.styles().solved_words_row}>
                         {solvedWords[2 + this.state.solvedWordsRowOffset].map((word, index) => this.renderSolvedWords(word, index))}
                       </div>
                       {solvedWords[3 + this.state.solvedWordsRowOffset] &&
-                        <div style={styles.solved_words_row}>
+                        <div style={this.styles().solved_words_row}>
                           {solvedWords[3 + this.state.solvedWordsRowOffset].map((word, index) => this.renderSolvedWords(word, index))}
                         </div>
                       }
                     </div>
                   }
                 </div>
-                <div style={styles.counter_inner_container}>
+                <div style={this.styles().counter_inner_container}>
                   <motion.div
-                    style={styles.counter_text}
+                    style={this.styles().counter_text}
                     key={this.state.counterKey}
                     initial={{ scale: 1, color: colors.text_white }}
                     animate={{ scale: 1.2, color: this.state.counterPulseColor }}
@@ -2759,11 +2767,11 @@ componentWillUnmount(){
                   </motion.div>
                 </div>
               </div>
-              <div id="gameContainer" style={styles.gameContainer} ref={this.lettersetContainer}>
+              <div id="gameContainer" style={this.styles().gameContainer} ref={this.lettersetContainer}>
                 {this.state.showTutScreen1 && !this.state.showedTutScreen1 && this.state.currentGameIndex !== -1 && this.displayTutScreen1()}
                 {this.state.showTutScreen2 && !this.state.showedTutScreen2 && this.state.currentGameIndex !== -1 && this.displayTutScreen2()}
                 {this.state.showStars && this.state.starColorArray[0] !== '#333333' &&
-                  <div style={{ ...styles.stars100_container, borderColor: this.state.darkModeEnabled ? colors.gray_4 : colors.dark_green }}>
+                  <div style={{ ...this.styles().stars100_container, borderColor: this.state.darkModeEnabled ? colors.gray_4 : colors.dark_green }}>
                     {this.renderStars100()}
                   </div>
                 }
@@ -2796,12 +2804,12 @@ componentWillUnmount(){
                 {this.state.gameDone && this.renderDone(this.state.clearedLevel)}
                 {this.state.lockScreenInput && this.displayLockScreen()}
               </div>
-              <div id="footerContainer" style={{ ...styles.footerContainer, backgroundColor: global.bgColor }}>
-                <motion.button style={styles.button} whileTap={{ scale: 0.97 }} onClick={() => this.openWordsModal()} >
-                  <div style={styles.button_text}>WORDS</div>
+              <div id="footerContainer" style={{ ...this.styles().footerContainer, backgroundColor: global.bgColor }}>
+                <motion.button style={this.styles().button} whileTap={{ scale: 0.97 }} onClick={() => this.openWordsModal()} >
+                  <div style={this.styles().button_text}>WORDS</div>
                 </motion.button>
-                <motion.button style={styles.button} whileTap={{ scale: 0.97 }} onClick={() => this.giveHint()} >
-                  <div style={styles.button_text}>HINT</div>
+                <motion.button style={this.styles().button} whileTap={{ scale: 0.97 }} onClick={() => this.giveHint()} >
+                  <div style={this.styles().button_text}>HINT</div>
                 </motion.button>
               </div>
             </div>
