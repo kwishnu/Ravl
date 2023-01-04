@@ -305,17 +305,17 @@ class App extends Component {
   }
 
   updateHeightAndWidth(e){
-    toast(("height is now " + window.innerHeight + ", width is now " + window.innerWidth), {
-      position: "bottom-center",
-      autoClose: 2400,
-      hideProgressBar: true,
-      closeOnClick: false,
-      pauseOnHover: false,
-      draggable: false,
-      progress: undefined,
-      theme: "light",
-    });
-    
+    // toast(("height is now " + window.innerHeight + ", width is now " + window.innerWidth), {
+    //   position: "bottom-center",
+    //   autoClose: 2400,
+    //   hideProgressBar: true,
+    //   closeOnClick: false,
+    //   pauseOnHover: false,
+    //   draggable: false,
+    //   progress: undefined,
+    //   theme: "light",
+    // });
+
     this.setState({scrHeight: window.innerHeight, scrWidth: window.innerWidth});
   }
 
@@ -2654,6 +2654,8 @@ class App extends Component {
     }
 
     let deviceType = this.state.scrWidth > 800?"pc":this.state.scrHeight/this.state.scrWidth > 1.77?"phone":"tablet";
+    let widthLeftOrRight = (this.state.scrWidth - this.state.scrHeight * 9/16)/2;
+
     let {
       gameArray0,
       gameArray1,
@@ -2701,10 +2703,10 @@ class App extends Component {
             <div style={this.styles().appContainer}>
               <div 
                 id="appLeftBox"
-                style={{ ...this.styles().adBox, backgroundColor: darkModeEnabled ? colors.gray_4 : colors.off_white, borderRightColor: colors.off_black, left: 0 }}
+                style={{ ...this.styles().adBox, width: deviceType === "pc" ? widthLeftOrRight - 20 : 0, backgroundColor: darkModeEnabled ? colors.gray_4 : colors.off_white, borderRightColor: colors.off_black, left: 0 }}
               />
 
-              <div style={{ ...this.styles().adBox, backgroundColor: darkModeEnabled ? colors.gray_4 : colors.off_white, borderLeftColor: colors.off_black, right: 0 }} />
+              <div style={{ ...this.styles().adBox, width: deviceType === "pc" ? widthLeftOrRight - 20 : 0, backgroundColor: darkModeEnabled ? colors.gray_4 : colors.off_white, borderLeftColor: colors.off_black, right: 0 }} />
 
               <div style={{ ...this.styles().messageOuterContainer, borderColor: global.bgColor }}>
                 <div style={this.styles().messageContainer}>
@@ -2811,10 +2813,26 @@ class App extends Component {
                 {this.state.lockScreenInput && this.displayLockScreen()}
               </div>
               <div id="footerContainer" style={{ ...this.styles().footerContainer, backgroundColor: global.bgColor }}>
-                <motion.button style={this.styles().button} whileTap={{ scale: 0.97 }} onClick={() => this.openWordsModal()} >
+                <motion.button 
+                  style={{
+                    ...this.styles().button, 
+                    height: deviceType === "tablet" ? scrHeight * 0.06 : deviceType === "pc" ? scrHeight * 0.04 : scrWidth * 0.1,
+                    width: deviceType === "tablet" ? scrHeight * 0.12 : deviceType === "pc" ? scrHeight * 0.1 : scrWidth / 4
+                  }} 
+                  whileTap={{ scale: 0.97 }} 
+                  onClick={() => this.openWordsModal()} 
+                >
                   <div style={this.styles().button_text}>WORDS</div>
                 </motion.button>
-                <motion.button style={this.styles().button} whileTap={{ scale: 0.97 }} onClick={() => this.giveHint()} >
+                <motion.button 
+                  style={{
+                    ...this.styles().button, 
+                    height: deviceType === "tablet" ? scrHeight * 0.06 : deviceType === "pc" ? scrHeight * 0.04 : scrWidth * 0.1,
+                    width: deviceType === "tablet" ? scrHeight * 0.12 : deviceType === "pc" ? scrHeight * 0.1 : scrWidth / 4
+                  }} 
+                  whileTap={{ scale: 0.97 }} 
+                  onClick={() => this.giveHint()} 
+                >
                   <div style={this.styles().button_text}>HINT</div>
                 </motion.button>
               </div>

@@ -263,8 +263,6 @@ const appStyles = ({ scrWidth, scrHeight }) => {
 
     },
     button: {
-      height: tablet ? scrHeight * 0.06 : pc ? scrHeight * 0.04 : scrWidth * 0.1,
-      width: tablet ? scrHeight * 0.12 : pc ? scrHeight * 0.1 : scrWidth / 4,
       borderRadius: config.button_radius,
       borderWidth: 1,
       borderStyle: 'solid',
