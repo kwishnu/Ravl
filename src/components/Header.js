@@ -1,18 +1,30 @@
 import React from 'react';
 import colors from '../config/colors';
-import config from '../config/config';
+// import config from '../config/config';
 import MenuImage from '../images/menu.png';
 import SupportImage from '../images/heart.png';
 import HelpImage from '../images/question.png';
-const scrWidth = config.scrWidth;
-const scrHeight = config.scrHeight;
-const marLeftOrRight = (scrWidth - scrHeight * 9/16)/2;
+// const scrWidth = config.scrWidth;
+// const scrHeight = config.scrHeight;
+// const marLeftOrRight = (scrWidth - scrHeight * 9/16)/2;
 
 function Header(props) {
+  let isPC = props.deviceType === "pc"?true:false;
+  let isTablet = props.deviceType === "tablet"?true:false;
+console.log("isPC: " + isPC);
   return(
-    <div style={{...headerStyles.container, backgroundColor: global.bgColor}}>
+    <div style={{...headerStyles.container, width: props.scrWidth, backgroundColor: global.bgColor}}>
       <div style={headerStyles.left_div}>
-      <img src={MenuImage} alt={"Menu"} style={headerStyles.menuImageStyle} onClick={() => props.clickMenu("Menu")} />          
+      <img 
+        src={MenuImage} 
+        alt={"Menu"} 
+        onClick={() => props.clickMenu("Menu")} 
+        style={{
+          height: isPC || isTablet?props.scrHeight * 0.03:props.scrWidth * 0.08,
+          width: isPC || isTablet?props.scrHeight * 0.03:props.scrWidth * 0.08, 
+          marginLeft: isPC || isTablet?props.marLeftOrRight:10
+        }} 
+      />          
       </div>
       <div style={headerStyles.center_div}>
         <div style={headerStyles.titleText}>
@@ -20,8 +32,25 @@ function Header(props) {
         </div>
       </div>
       <div style={headerStyles.right_div}>
-        <img src={SupportImage} alt={"Support"} style={headerStyles.supportImageStyle} onClick={() => props.showModal("Support", true)} />          
-        <img src={HelpImage} alt={"Help"} style={headerStyles.helpImageStyle} onClick={() => props.showModal("Help", true)} />          
+        <img 
+          src={SupportImage} 
+          alt={"Support"} 
+          onClick={() => props.showModal("Support", true)} 
+          style={{
+            height: isPC || isTablet?props.scrHeight * 0.03:props.scrWidth * 0.08,
+            width: isPC || isTablet?props.scrHeight * 0.03:props.scrWidth * 0.08
+          }} 
+        />          
+        <img 
+          src={HelpImage} 
+          alt={"Help"} 
+          onClick={() => props.showModal("Help", true)} 
+          style={{
+            height: isPC || isTablet?props.scrHeight * 0.03:props.scrWidth * 0.08,
+            width: isPC || isTablet?props.scrHeight * 0.03:props.scrWidth * 0.08,
+            marginRight: isPC || isTablet?props.marLeftOrRight:10
+          }} 
+        />          
       </div>
     </div>
   )
@@ -34,7 +63,6 @@ const headerStyles = {
     position: "absolute",
     top: 0,
     left: 0,
-    width: config.scrWidth,
     height: 60,
   },
   left_div: {
@@ -42,14 +70,12 @@ const headerStyles = {
     flex: 1,
     justifyContent: "flex-start",
     alignItems: "center",
-
   },
   center_div: {
     display: "flex",
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-
   },
   right_div: {
     display: "flex",
@@ -57,20 +83,6 @@ const headerStyles = {
     justifyContent: "flex-end",
     alignItems: "center"
 
-  },
-  menuImageStyle: {
-    width: config.isPC || config.isTablet?scrHeight * 0.03:scrWidth * 0.08,
-    height: config.isPC || config.isTablet?scrHeight * 0.03:scrWidth * 0.08,
-    marginLeft: config.isPC || config.isTablet?marLeftOrRight:10,
-  },
-  supportImageStyle: {
-    width: config.isPC || config.isTablet?scrHeight * 0.03:scrWidth * 0.08,
-    height: config.isPC || config.isTablet?scrHeight * 0.03:scrWidth * 0.08,
-  },
-  helpImageStyle: {
-    width: config.isPC || config.isTablet?scrHeight * 0.03:scrWidth * 0.08,
-    height: config.isPC || config.isTablet?scrHeight * 0.03:scrWidth * 0.08,
-    marginRight: config.isPC || config.isTablet?marLeftOrRight:10,
   },
   titleText: {
     fontFamily: "Acme",

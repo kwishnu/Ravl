@@ -185,6 +185,8 @@ class App extends Component {
       points: 0,
       solvedPadding: 0,
       playRavlIntervalID: 0,
+      scrHeight: window.innerHeight,
+      scrWidth: window.innerWidth,
       lettersetContainerWidth: null,
       lettersetContainerHeight: null,
       scoreContainerHeight: null,
@@ -313,9 +315,8 @@ class App extends Component {
       progress: undefined,
       theme: "light",
     });
-
-    console.log(e);
-
+    
+    this.setState({scrHeight: window.innerHeight, scrWidth: window.innerWidth});
   }
 
   init(p0, p1, p2, p3, p4, p5, p6, p7, sw, bw, sc, cgi, eligibility) {
@@ -2652,6 +2653,7 @@ class App extends Component {
       );
     }
 
+    let deviceType = this.state.scrWidth > 800?"pc":this.state.scrHeight/this.state.scrWidth > 1.77?"phone":"tablet";
     let {
       gameArray0,
       gameArray1,
@@ -2691,6 +2693,10 @@ class App extends Component {
             <Header
               clickMenu={(which) => this.toggleDrawer(which)}
               showModal={(which, open) => this.showModal(which, open)}
+              scrHeight={this.state.scrHeight}
+              scrWidth={this.state.scrWidth}
+              marLeftOrRight={(this.state.scrWidth - this.state.scrHeight * 9/16)/2}
+              deviceType={deviceType}
             />
             <div style={this.styles().appContainer}>
               <div 
@@ -2819,6 +2825,10 @@ class App extends Component {
                 startGame={(daily) => this.transitionToGame(daily)}
                 gameIndex={this.state.currentGameIndex}
                 buttonColor={this.state.dailyPuzzleCompleted && this.state.currentGameIndex === -1 ? colors.gray_2 : colors.text_white}
+                scrHeight={this.state.scrHeight}
+                scrWidth={this.state.scrWidth}
+                marLeftOrRight={(this.state.scrWidth - this.state.scrHeight * 9/16)/2}
+                deviceType={deviceType}
               />
             }
           </div>
