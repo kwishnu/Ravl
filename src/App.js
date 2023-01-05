@@ -317,7 +317,9 @@ class App extends Component {
     //   progress: undefined,
     //   theme: "light",
     // });
+    const wlor = window.innerWidth > 800?(window.innerWidth - window.innerHeight * 9/16)/2:window.innerHeight/window.innerWidth > 1.77?0:(window.innerWidth - window.innerHeight * 9/16)/2
             this.setState({
+              widthLeftOrRight: wlor,
               lettersetContainerHeight: document.getElementById("gameContainer").getBoundingClientRect().height,
               lettersetContainerWidth: document.getElementById("gameContainer").getBoundingClientRect().width,
               scoreContainerHeight: this.scoreContainer.current.getBoundingClientRect().height,
@@ -328,7 +330,6 @@ class App extends Component {
               scrWidth: window.innerWidth,
               tileHeight: parseInt((window.innerHeight/17).toPrecision(2)),
               deviceType: window.innerWidth > 800?"pc":window.innerHeight/window.innerWidth > 1.77?"phone":"tablet",
-              widthLeftOrRight: window.innerWidth > 800?(window.innerWidth - window.innerHeight * 9/16)/2:window.innerHeight/window.innerWidth > 1.77?0:(window.innerWidth - window.innerHeight * 9/16)/2
             });
 
 console.log("deviceType is now " + this.state.deviceType + ", width is now " + window.innerWidth);
