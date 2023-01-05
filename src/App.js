@@ -2697,7 +2697,7 @@ console.log("cWidth = " + cWidth);
               <div 
                 id="appLeftBox"
                 style={{ ...this.styles().adBox, width: deviceType === "pc" ? widthLeftOrRight - 20 : 0, backgroundColor: darkModeEnabled ? colors.gray_4 : colors.off_white, borderRightColor: colors.off_black, left: 0 }}
-              />
+              >{deviceType}</div>
 
               <div style={{ ...this.styles().adBox, width: deviceType === "pc" ? widthLeftOrRight - 20 : 0, backgroundColor: darkModeEnabled ? colors.gray_4 : colors.off_white, borderLeftColor: colors.off_black, right: 0 }} />
 
