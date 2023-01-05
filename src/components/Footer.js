@@ -24,7 +24,7 @@ function Footer(props) {
           <motion.button 
             style={{
               ...footer_styles.start_button, 
-              flex: isTablet?1:2, 
+              flex: 1, 
               padding: 8,
               // height: isTablet? props.scrHeight * 0.06:props.scrWidth * 0.13,
               borderLeftWidth: isTablet?10:8,
@@ -33,12 +33,12 @@ function Footer(props) {
             whileTap={{ scale: 0.97 }} 
             onClick={props.gameIndex === -1?() => props.startGame(true):() => props.showWords()}
           >
-            <div style={{...footer_styles.button_text, fontSize: convertFont(22), color: props.buttonColor}}>{props.gameIndex === -1?"PLAY DAILY":"WORDS"}</div>
+            <div style={{...footer_styles.button_text, fontSize: convertFont(18), color: props.buttonColor}}>{props.gameIndex === -1?"PLAY DAILY":"WORDS"}</div>
           </motion.button>
           <motion.button 
             style={{
               ...footer_styles.start_button, 
-              flex: isTablet?1:2,
+              flex: 1,
               padding: 8,
               // height: isTablet? props.scrHeight * 0.06:props.scrWidth * 0.13,
               borderLeftWidth: isTablet?10:8,
@@ -47,7 +47,7 @@ function Footer(props) {
             whileTap={{ scale: 0.97 }} 
             onClick={props.gameIndex === -1?() => props.startGame(false):() => props.callForHint()}
           >
-            <div style={{...footer_styles.button_text_white, fontSize: convertFont(22)}}>{props.gameIndex === -1?"PLAY":"HINT"}</div>
+            <div style={{...footer_styles.button_text_white, fontSize: convertFont(18)}}>{props.gameIndex === -1?"PLAY":"HINT"}</div>
           </motion.button>
           <div style={footer_styles.footer_spacer}>
           </div>
@@ -113,7 +113,7 @@ const footer_styles = {
     alignItems: 'flex-end',
     alignSelf: 'stretch',
     justifyContent: 'center',
-borderColor: 'red', borderWidth: 2, borderStyle: 'solid'
+// borderColor: 'red', borderWidth: 2, borderStyle: 'solid'
   },
   streak_row: {
     display: "flex",
@@ -123,7 +123,7 @@ borderColor: 'red', borderWidth: 2, borderStyle: 'solid'
     justifyContent: 'center',
     alignSelf: 'stretch',
     padding: 6,
-borderColor: 'yellow', borderWidth: 2, borderStyle: 'solid'
+// borderColor: 'yellow', borderWidth: 2, borderStyle: 'solid'
 
   },
   start_button: {

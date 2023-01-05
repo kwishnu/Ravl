@@ -10,8 +10,6 @@ import helpImage from '../images/question.png';
 import supportImage from '../images/heart.png';
 import gameImage from '../images/ravl_menu_icon.png';
 const pc = config.isPC;
-const scrHeight = config.scrHeight;
-const scrWidth = config.scrWidth;
 
 
 class Menu extends Component {
@@ -29,10 +27,10 @@ class Menu extends Component {
   }
       
   render() {
-    const { showMenu, themeColor } = this.props;
+    const { showMenu, themeColor, scrHeight, scrWidth } = this.props;
     const xInitial = pc?(scrWidth - scrHeight * 9/16)/2 - scrHeight * 0.26 : -scrHeight * 0.2;
     const xAnimate = pc?(scrWidth - scrHeight * 9/16)/2 -20 : -2;
-
+    
     return (
       <AnimatePresence>
         {showMenu && 
@@ -40,13 +38,13 @@ class Menu extends Component {
             initial={{ x: xInitial }}
             animate={{ x: xAnimate }}
             exit={{ x: xInitial }}
-            style={{...menu_styles.menu}}
+            style={{...menu_styles.menu, height: scrHeight, width: scrHeight * 0.26}}
             transition={{ type: "spring", bounce: 0, duration: 0.4 }}
           >
             <div style={{...menu_styles.text, fontSize: 16, color: 'black'}}>
               <MenuHeader text={"RavL"} imageUrl={closeImage} altText={"RavL - Close Menu"} closeMenu={() => this.closeMenu()} bgC={themeColor}/>
               <MenuItem text={"RavL Start"} imageUrl={gameImage} altText={"RavL Start"} showModal={(which) => this.showModal(which, true)} bgC={themeColor}/>
-              <div style={{...menu_styles.divider, borderColor: themeColor}}></div>
+              <div style={{...menu_styles.divider, width: scrHeight * 0.1, marginLeft: scrHeight * 0.08, borderColor: themeColor}}></div>
               <MenuItem text={"Settings"} imageUrl={settingsImage} altText={"Settings"} showModal={(which) => this.showModal(which, true)} bgC={themeColor}/>
               <MenuItem text={"Help"} imageUrl={helpImage} altText={"Help"} showModal={(which) => this.showModal(which, true)} bgC={themeColor}/>
               <MenuItem text={"Support"} imageUrl={supportImage} altText={"Support"} showModal={(which) => this.showModal(which, true)} bgC={themeColor}/>
@@ -66,8 +64,6 @@ const menu_styles = {
     display: "flex",
     position: 'absolute',
     margin: 1,
-    height: scrHeight,
-    width: scrHeight * 0.26,
     borderRadius: 7,
     justifyContent: 'center',
     alignItems: 'flex-start',
@@ -82,8 +78,6 @@ const menu_styles = {
     display: "flex",
     alignSelf: 'center',
     height: '6px',
-    width: scrHeight * 0.1,
-    marginLeft: scrHeight * 0.08,
     marginTop: 6,
     marginBottom: 6,
     backgroundColor: colors.off_black,

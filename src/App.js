@@ -44,7 +44,6 @@ import EndGame from "./modal/EndGameModal";
 
 const KEY_LastOpenedDate = 'lastOpenedKey';
 const KEY_ShowedTutorial = 'showedTutKey';
-// const KEY_GameInProgress = 'gameInProgress';
 const KEY_PlayedFirstGame = 'playedGameKey';
 const KEY_HighScore = 'highScoreKey';
 const KEY_BGColorPref = 'bgColorPrefKey';
@@ -74,7 +73,7 @@ const scrWidth = config.scrWidth;
 const scrHeight = config.scrHeight;
 const tablet = config.isTablet;
 const isPC = config.isPC;
-const tileHeight = config.TILE_HEIGHT;
+// const tileHeight = config.TILE_HEIGHT;
 
 let dateToday = formatDate(new Date(), "MM-dd-yyyy");
 let title = "";
@@ -187,6 +186,7 @@ class App extends Component {
       playRavlIntervalID: 0,
       scrHeight: window.innerHeight,
       scrWidth: window.innerWidth,
+      tileHeight: parseInt((window.innerHeight/17).toPrecision(2)),
       lettersetContainerWidth: null,
       lettersetContainerHeight: null,
       scoreContainerHeight: null,
@@ -301,7 +301,7 @@ class App extends Component {
   }
 
   componentWillUnmount(){
-    window.removeEventListener('resize', this.updateHeightAndWidth());
+    window.removeEventListener("resize", this.updateHeightAndWidth());
   }
 
   updateHeightAndWidth(e){
@@ -315,8 +315,18 @@ class App extends Component {
     //   progress: undefined,
     //   theme: "light",
     // });
+            this.setState({
+              lettersetContainerHeight: this.lettersetContainer.current.getBoundingClientRect().height,
+              lettersetContainerWidth: this.lettersetContainer.current.getBoundingClientRect().width,
+              scoreContainerHeight: this.scoreContainer.current.getBoundingClientRect().height,
+              scrHeight: window.innerHeight,
+              scrWidth: window.innerWidth,
+              tileHeight: parseInt((window.innerHeight/17).toPrecision(2))
+            });
 
-    this.setState({scrHeight: window.innerHeight, scrWidth: window.innerWidth});
+
+console.log("lettersetContainerWidth is now " + this.lettersetContainer.current.getBoundingClientRect().width + ", width is now " + window.innerWidth);
+    // this.setState({scrHeight: window.innerHeight, scrWidth: window.innerWidth});
   }
 
   init(p0, p1, p2, p3, p4, p5, p6, p7, sw, bw, sc, cgi, eligibility) {
@@ -1472,11 +1482,6 @@ class App extends Component {
           showGame8: false,
           megaPuzzle: false
         });
-        try {
-          window.localStorage.setItem(KEY_GameInProgress, 'false');
-        } catch (error) {
-          window.alert('window.localStorage error: ' + error.message);
-        }
         this.resetLowColPositions();
         if (!this.state.playedGameOnce) {
           console.log("Played game once...");
@@ -1934,11 +1939,6 @@ class App extends Component {
       this.goToStartScreen();
       return;
     }
-    try {
-      window.localStorage.setItem(KEY_GameInProgress, 'true');
-    } catch (error) {
-      window.alert('window.localStorage error: ' + error.message);
-    }
     if (this.state.playRavlIntervalID !== 0 || (isDaily && this.state.clearedLevel)) {//coming from start screen
       for (let i = 0; i < 5; i++) {
         if (this.state.animationTimerIDs[i]) clearTimeout(this.state.animationTimerIDs[i]);//clear animation setTimeouts
@@ -2343,11 +2343,6 @@ class App extends Component {
 
   goToStartScreen() {
     this.setState({ currentGameIndex: -1, megaPuzzle: false });
-    try {
-      window.localStorage.setItem(KEY_GameInProgress, 'false');
-    } catch (error) {
-      window.alert('window.localStorage error: ' + error.message);
-    }
     setTimeout(() => {
       this.nextGame(true);
     }, 200)
@@ -2583,7 +2578,7 @@ class App extends Component {
     const numR = 3 * this.state.rowsInPuzzle - 2;
     let cWidth = this.state.lettersetContainerWidth;
     let cHeight = this.state.lettersetContainerHeight;
-    const th1 = tileHeight * (1.1 - (this.state.gameArray0.length - 3) * 0.1);
+    const th1 = this.state.tileHeight * (1.1 - (this.state.gameArray0.length - 3) * 0.1);
     const th2 = tablet ? 650 / this.state.initialArrayHeight : isPC ? 580 / this.state.initialArrayHeight : 500 / this.state.initialArrayHeight;
     const scrDividedWidth = cWidth / (numC + 1);
     const scrDividedHeight = cHeight / (numR + 2);
@@ -2594,7 +2589,7 @@ class App extends Component {
           th;
     th = this.state.currentGameIndex === -1 ? th * 0.8 : th;
     const le = (cWidth - numC * (th + 2)) / 2;//left edge
-
+console.log("cWidth = " + cWidth);
     if (this.state.lettersetContainerWidth <= 0) return null;
 
     return (
@@ -2624,11 +2619,6 @@ class App extends Component {
           title = puzzTitle(dateToday);
           description = puzzDescription(dateToday);
           dailyPuzzlesArr = puzzles(dateToday);
-          try {
-            window.localStorage.setItem(KEY_GameInProgress, 'false');
-          } catch (error) {
-            window.alert('window.localStorage error: ' + error.message);
-          }
           this.setState({ clearedLevel: true, dailyPuzzleCompleted: false });
           setTimeout(() => {
             this.nextGame(true);
@@ -2655,6 +2645,7 @@ class App extends Component {
 
     let deviceType = this.state.scrWidth > 800?"pc":this.state.scrHeight/this.state.scrWidth > 1.77?"phone":"tablet";
     let widthLeftOrRight = (this.state.scrWidth - this.state.scrHeight * 9/16)/2;
+    // const convertFont = (inputFontSize) => isTablet || isPC?inputFontSize * props.scrHeight/1200:inputFontSize * props.scrWidth/460;
 
     let {
       gameArray0,
@@ -2686,6 +2677,8 @@ class App extends Component {
             showModal={(which, open) => this.showModal(which, open)}
             themeColor={global.bgColor}
             cgi={this.state.currentGameIndex}
+            scrHeight={this.state.scrHeight}
+            scrWidth={this.state.scrWidth}
           />
 
           <div 

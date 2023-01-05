@@ -11,7 +11,6 @@ import HelpImage from '../images/question.png';
 function Header(props) {
   let isPC = props.deviceType === "pc"?true:false;
   let isTablet = props.deviceType === "tablet"?true:false;
-console.log("isPC: " + isPC);
   return(
     <div style={{...headerStyles.container, width: props.scrWidth, backgroundColor: global.bgColor}}>
       <div style={headerStyles.left_div}>
