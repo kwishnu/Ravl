@@ -187,6 +187,7 @@ class App extends Component {
       scrHeight: window.innerHeight,
       scrWidth: window.innerWidth,
       tileHeight: parseInt((window.innerHeight/17).toPrecision(2)),
+      deviceType: window.innerWidth > 800?"pc":window.innerHeight/window.innerWidth > 1.77?"phone":"tablet",
       lettersetContainerWidth: null,
       lettersetContainerHeight: null,
       scoreContainerHeight: null,
@@ -321,7 +322,9 @@ class App extends Component {
               scoreContainerHeight: this.scoreContainer.current.getBoundingClientRect().height,
               scrHeight: window.innerHeight,
               scrWidth: window.innerWidth,
-              tileHeight: parseInt((window.innerHeight/17).toPrecision(2))
+              tileHeight: parseInt((window.innerHeight/17).toPrecision(2)),
+              deviceType: window.innerWidth > 800?"pc":window.innerHeight/window.innerWidth > 1.77?"phone":"tablet",
+
             });
 
 
@@ -2643,10 +2646,7 @@ console.log("cWidth = " + cWidth);
       );
     }
 
-    let deviceType = this.state.scrWidth > 800?"pc":this.state.scrHeight/this.state.scrWidth > 1.77?"phone":"tablet";
     let widthLeftOrRight = (this.state.scrWidth - this.state.scrHeight * 9/16)/2;
-    // const convertFont = (inputFontSize) => isTablet || isPC?inputFontSize * props.scrHeight/1200:inputFontSize * props.scrWidth/460;
-
     let {
       gameArray0,
       gameArray1,
@@ -2691,15 +2691,15 @@ console.log("cWidth = " + cWidth);
               scrHeight={this.state.scrHeight}
               scrWidth={this.state.scrWidth}
               marLeftOrRight={(this.state.scrWidth - this.state.scrHeight * 9/16)/2}
-              deviceType={deviceType}
+              deviceType={ this.state.deviceType}
             />
             <div style={this.styles().appContainer}>
               <div 
                 id="appLeftBox"
-                style={{ ...this.styles().adBox, width: deviceType === "pc" ? widthLeftOrRight - 20 : 0, backgroundColor: darkModeEnabled ? colors.gray_4 : colors.off_white, borderRightColor: colors.off_black, left: 0 }}
-              >{deviceType}</div>
+                style={{ ...this.styles().adBox, width: this.state.deviceType === "pc" ? widthLeftOrRight - 20 : 0, backgroundColor: darkModeEnabled ? colors.gray_4 : colors.off_white, borderRightColor: colors.off_black, left: 0 }}
+              />
 
-              <div style={{ ...this.styles().adBox, width: deviceType === "pc" ? widthLeftOrRight - 20 : 0, backgroundColor: darkModeEnabled ? colors.gray_4 : colors.off_white, borderLeftColor: colors.off_black, right: 0 }} />
+              <div style={{ ...this.styles().adBox, width:  this.state.deviceType === "pc" ? widthLeftOrRight - 20 : 0, backgroundColor: darkModeEnabled ? colors.gray_4 : colors.off_white, borderLeftColor: colors.off_black, right: 0 }} />
 
               <div style={{ ...this.styles().messageOuterContainer, borderColor: global.bgColor }}>
                 <div style={this.styles().messageContainer}>
@@ -2809,8 +2809,8 @@ console.log("cWidth = " + cWidth);
                 <motion.button 
                   style={{
                     ...this.styles().button, 
-                    height: deviceType === "tablet" ? scrHeight * 0.06 : deviceType === "pc" ? scrHeight * 0.04 : scrWidth * 0.1,
-                    width: deviceType === "tablet" ? scrHeight * 0.12 : deviceType === "pc" ? scrHeight * 0.1 : scrWidth / 4
+                    height:  this.state.deviceType === "tablet" ? scrHeight * 0.06 :  this.state.deviceType === "pc" ? scrHeight * 0.04 : scrWidth * 0.1,
+                    width:  this.state.deviceType === "tablet" ? scrHeight * 0.12 :  this.state.deviceType === "pc" ? scrHeight * 0.1 : scrWidth / 4
                   }} 
                   whileTap={{ scale: 0.97 }} 
                   onClick={() => this.openWordsModal()} 
@@ -2820,8 +2820,8 @@ console.log("cWidth = " + cWidth);
                 <motion.button 
                   style={{
                     ...this.styles().button, 
-                    height: deviceType === "tablet" ? scrHeight * 0.06 : deviceType === "pc" ? scrHeight * 0.04 : scrWidth * 0.1,
-                    width: deviceType === "tablet" ? scrHeight * 0.12 : deviceType === "pc" ? scrHeight * 0.1 : scrWidth / 4
+                    height:  this.state.deviceType === "tablet" ? scrHeight * 0.06 :  this.state.deviceType === "pc" ? scrHeight * 0.04 : scrWidth * 0.1,
+                    width:  this.state.deviceType === "tablet" ? scrHeight * 0.12 :  this.state.deviceType === "pc" ? scrHeight * 0.1 : scrWidth / 4
                   }} 
                   whileTap={{ scale: 0.97 }} 
                   onClick={() => this.giveHint()} 
@@ -2839,7 +2839,7 @@ console.log("cWidth = " + cWidth);
                 scrHeight={this.state.scrHeight}
                 scrWidth={this.state.scrWidth}
                 marLeftOrRight={(this.state.scrWidth - this.state.scrHeight * 9/16)/2}
-                deviceType={deviceType}
+                deviceType={ this.state.deviceType}
               />
             }
           </div>
