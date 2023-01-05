@@ -190,6 +190,7 @@ class App extends Component {
       deviceType: window.innerWidth > 800?"pc":window.innerHeight/window.innerWidth > 1.77?"phone":"tablet",
       lettersetContainerWidth: null,
       lettersetContainerHeight: null,
+      savedLCW: 0,
       scoreContainerHeight: null,
       numberOfStars: 0,
       bwOffset: 0,
@@ -281,6 +282,7 @@ class App extends Component {
     this.setState({
       lettersetContainerHeight: this.lettersetContainer.current.getBoundingClientRect().height,
       lettersetContainerWidth: this.lettersetContainer.current.getBoundingClientRect().width,
+      savedLCW: this.lettersetContainer.current.getBoundingClientRect().width,
       scoreContainerHeight: this.scoreContainer.current.getBoundingClientRect().height,
     });
 
@@ -317,9 +319,12 @@ class App extends Component {
     //   theme: "light",
     // });
             this.setState({
-              lettersetContainerHeight: this.lettersetContainer.current.getBoundingClientRect().height,
-              lettersetContainerWidth: this.lettersetContainer.current.getBoundingClientRect().width,
+              lettersetContainerHeight: document.getElementById("gameContainer").getBoundingClientRect().height,
+              lettersetContainerWidth: document.getElementById("gameContainer").getBoundingClientRect().width,
               scoreContainerHeight: this.scoreContainer.current.getBoundingClientRect().height,
+              // lettersetContainerHeight: this.lettersetContainer.current.getBoundingClientRect().height,
+              // lettersetContainerWidth: this.lettersetContainer.current.getBoundingClientRect().width,
+              // scoreContainerHeight: this.scoreContainer.current.getBoundingClientRect().height,
               scrHeight: window.innerHeight,
               scrWidth: window.innerWidth,
               tileHeight: parseInt((window.innerHeight/17).toPrecision(2)),
@@ -327,8 +332,7 @@ class App extends Component {
 
             });
 
-
-console.log("lettersetContainerWidth is now " + this.lettersetContainer.current.getBoundingClientRect().width + ", width is now " + window.innerWidth);
+console.log("deviceType is now " + this.state.deviceType + ", width is now " + window.innerWidth);
     // this.setState({scrHeight: window.innerHeight, scrWidth: window.innerWidth});
   }
 
@@ -2579,21 +2583,24 @@ console.log("lettersetContainerWidth is now " + this.lettersetContainer.current.
     const cRef = "col" + i
     const numC = this.state.gameArray0.length;
     const numR = 3 * this.state.rowsInPuzzle - 2;
-    let cWidth = this.state.lettersetContainerWidth;
-    let cHeight = this.state.lettersetContainerHeight;
+    // let cWidth = this.state.lettersetContainerWidth;
+    // let cHeight = this.state.lettersetContainerHeight;
+    let cHeight = document.getElementById("gameContainer").getBoundingClientRect().height;
+    let cWidth = document.getElementById("gameContainer").getBoundingClientRect().width;
+
     const th1 = this.state.tileHeight * (1.1 - (this.state.gameArray0.length - 3) * 0.1);
-    const th2 = tablet ? 650 / this.state.initialArrayHeight : isPC ? 580 / this.state.initialArrayHeight : 500 / this.state.initialArrayHeight;
+    const th2 = this.state.deviceType === "tablet" ? 650 / this.state.initialArrayHeight : this.state.deviceType === "pc" ? 580 / this.state.initialArrayHeight : 500 / this.state.initialArrayHeight;
     const scrDividedWidth = cWidth / (numC + 1);
     const scrDividedHeight = cHeight / (numR + 2);
     let th = Math.min(th1, th2, scrDividedWidth, scrDividedHeight);//tile height
-    th = (isPC || tablet) && numC > 5 ? th + numC * 2 :
-      config.isPhone && (numC > 5 && numC < 10) ? th + numC :
-        config.isPhone && (numC === 10) ? th + 6 :
+    th = (this.state.deviceType === "pc" || this.state.deviceType === "tablet") && numC > 5 ? th + numC * 2 :
+      this.state.deviceType === "phone" && (numC > 5 && numC < 10) ? th + numC :
+        this.state.deviceType === "phone" && (numC === 10) ? th + 6 :
           th;
     th = this.state.currentGameIndex === -1 ? th * 0.8 : th;
     const le = (cWidth - numC * (th + 2)) / 2;//left edge
-console.log("cWidth = " + cWidth);
-    if (this.state.lettersetContainerWidth <= 0) return null;
+console.log("deviceType = " + this.state.deviceType + ", cWidth = " + cWidth);
+    if (this.state.lettersetContainerWidth === 0) return null;//this.state.savedLCW
 
     return (
       <TileSet
@@ -2696,10 +2703,10 @@ console.log("cWidth = " + cWidth);
             <div style={this.styles().appContainer}>
               <div 
                 id="appLeftBox"
-                style={{ ...this.styles().adBox, width: this.state.deviceType === "pc" ? widthLeftOrRight - 20 : 0, backgroundColor: darkModeEnabled ? colors.gray_4 : colors.off_white, borderRightColor: colors.off_black, left: 0 }}
+                style={{ ...this.styles().adBox, width: window.innerWidth > 800 ? widthLeftOrRight - 20 : 0, backgroundColor: darkModeEnabled ? colors.gray_4 : colors.off_white, borderRightColor: colors.off_black, left: 0 }}
               />
 
-              <div style={{ ...this.styles().adBox, width:  this.state.deviceType === "pc" ? widthLeftOrRight - 20 : 0, backgroundColor: darkModeEnabled ? colors.gray_4 : colors.off_white, borderLeftColor: colors.off_black, right: 0 }} />
+              <div style={{ ...this.styles().adBox, width:  window.innerWidth > 800 ? widthLeftOrRight - 20 : 0, backgroundColor: darkModeEnabled ? colors.gray_4 : colors.off_white, borderLeftColor: colors.off_black, right: 0 }} />
 
               <div style={{ ...this.styles().messageOuterContainer, borderColor: global.bgColor }}>
                 <div style={this.styles().messageContainer}>
