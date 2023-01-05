@@ -190,7 +190,7 @@ class App extends Component {
       deviceType: window.innerWidth > 800?"pc":window.innerHeight/window.innerWidth > 1.77?"phone":"tablet",
       lettersetContainerWidth: null,
       lettersetContainerHeight: null,
-      savedLCW: 0,
+      widthLeftOrRight: window.innerWidth > 800?(window.innerWidth - window.innerHeight * 9/16)/2:window.innerHeight/window.innerWidth > 1.77?0:(window.innerWidth - window.innerHeight * 9/16)/2,
       scoreContainerHeight: null,
       numberOfStars: 0,
       bwOffset: 0,
@@ -282,7 +282,6 @@ class App extends Component {
     this.setState({
       lettersetContainerHeight: this.lettersetContainer.current.getBoundingClientRect().height,
       lettersetContainerWidth: this.lettersetContainer.current.getBoundingClientRect().width,
-      savedLCW: this.lettersetContainer.current.getBoundingClientRect().width,
       scoreContainerHeight: this.scoreContainer.current.getBoundingClientRect().height,
     });
 
@@ -329,7 +328,7 @@ class App extends Component {
               scrWidth: window.innerWidth,
               tileHeight: parseInt((window.innerHeight/17).toPrecision(2)),
               deviceType: window.innerWidth > 800?"pc":window.innerHeight/window.innerWidth > 1.77?"phone":"tablet",
-
+              widthLeftOrRight: window.innerWidth > 800?(window.innerWidth - window.innerHeight * 9/16)/2:window.innerHeight/window.innerWidth > 1.77?0:(window.innerWidth - window.innerHeight * 9/16)/2
             });
 
 console.log("deviceType is now " + this.state.deviceType + ", width is now " + window.innerWidth);
@@ -2600,7 +2599,7 @@ console.log("deviceType is now " + this.state.deviceType + ", width is now " + w
     th = this.state.currentGameIndex === -1 ? th * 0.8 : th;
     const le = (cWidth - numC * (th + 2)) / 2;//left edge
 console.log("deviceType = " + this.state.deviceType + ", cWidth = " + cWidth);
-    if (this.state.lettersetContainerWidth === 0) return null;//this.state.savedLCW
+    if (this.state.lettersetContainerWidth === 0) return null;
 
     return (
       <TileSet
@@ -2653,7 +2652,6 @@ console.log("deviceType = " + this.state.deviceType + ", cWidth = " + cWidth);
       );
     }
 
-    let widthLeftOrRight = (this.state.scrWidth - this.state.scrHeight * 9/16)/2;
     let {
       gameArray0,
       gameArray1,
@@ -2703,10 +2701,10 @@ console.log("deviceType = " + this.state.deviceType + ", cWidth = " + cWidth);
             <div style={this.styles().appContainer}>
               <div 
                 id="appLeftBox"
-                style={{ ...this.styles().adBox, width: window.innerWidth > 800 ? widthLeftOrRight - 20 : 0, backgroundColor: darkModeEnabled ? colors.gray_4 : colors.off_white, borderRightColor: colors.off_black, left: 0 }}
+                style={{ ...this.styles().adBox, width: this.state.widthLeftOrRight, backgroundColor: darkModeEnabled ? colors.gray_4 : colors.off_white, borderRightColor: colors.off_black, left: 0 }}
               />
 
-              <div style={{ ...this.styles().adBox, width:  window.innerWidth > 800 ? widthLeftOrRight - 20 : 0, backgroundColor: darkModeEnabled ? colors.gray_4 : colors.off_white, borderLeftColor: colors.off_black, right: 0 }} />
+              <div style={{ ...this.styles().adBox, width:  this.state.widthLeftOrRight, backgroundColor: darkModeEnabled ? colors.gray_4 : colors.off_white, borderLeftColor: colors.off_black, right: 0 }} />
 
               <div style={{ ...this.styles().messageOuterContainer, borderColor: global.bgColor }}>
                 <div style={this.styles().messageContainer}>
