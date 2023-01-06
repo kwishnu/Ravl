@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { CircularProgress } from '@mui/material';
 import PageVisibility from 'react-page-visibility';
+import ResizeNotifier from "./config/resize-notifier";
 import formatDate from 'date-fns/format';
 import parse from 'date-fns/parse';
 import { nanoid } from 'nanoid';
@@ -273,12 +274,22 @@ class App extends Component {
   };
 
   componentDidMount() {
-    window.addEventListener("orientationchange", (event) => this.updateHeightAndWidth(event));
+    // window.addEventListener("orientationchange", (event) => this.updateHeightAndWidth(event));
     dateToday = formatDate(new Date(), "MM-dd-yyyy");
     title = puzzTitle(dateToday);
     description = puzzDescription(dateToday);
     dailyPuzzlesArr = puzzles(dateToday);
 
+    const resizeNotifier = new ResizeNotifier({
+      immediate: true,
+      onResize: () => this.updateHeightAndWidth()
+
+      // onResize: function (width, height) {
+      //   this.updateHeightAndWidth();
+      //   console.log("RESIZE", width, height);
+      // }
+    });
+console.log("test " + JSON.stringify(resizeNotifier));
     this.setState({
       lettersetContainerHeight: this.lettersetContainer.current.getBoundingClientRect().height,
       lettersetContainerWidth: this.lettersetContainer.current.getBoundingClientRect().width,
@@ -303,7 +314,7 @@ class App extends Component {
   }
 
   componentWillUnmount(){
-    window.removeEventListener("resize", this.updateHeightAndWidth());
+    // window.removeEventListener("resize", this.updateHeightAndWidth());
   }
 
   updateHeightAndWidth(e){
