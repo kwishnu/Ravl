@@ -307,17 +307,17 @@ class App extends Component {
   }
 
   updateHeightAndWidth(e){
-    // toast(("height is now " + window.innerHeight + ", width is now " + window.innerWidth), {
-    //   position: "bottom-center",
-    //   autoClose: 2400,
-    //   hideProgressBar: true,
-    //   closeOnClick: false,
-    //   pauseOnHover: false,
-    //   draggable: false,
-    //   progress: undefined,
-    //   theme: "light",
-    // });
     const wlor = window.innerWidth > 800?(window.innerWidth - window.innerHeight * 9/16)/2:window.innerHeight/window.innerWidth > 1.77?0:(window.innerWidth - window.innerHeight * 9/16)/2
+    toast(("widthLeftOrRight should now be " + wlor + ", width is now " + window.innerWidth), {
+      position: "bottom-center",
+      autoClose: 2400,
+      hideProgressBar: true,
+      closeOnClick: false,
+      pauseOnHover: false,
+      draggable: false,
+      progress: undefined,
+      theme: "light",
+    });
             this.setState({
               widthLeftOrRight: wlor,
               lettersetContainerHeight: document.getElementById("gameContainer").getBoundingClientRect().height,
