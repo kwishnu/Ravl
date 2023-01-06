@@ -277,18 +277,9 @@ class App extends Component {
     // detectListener = window.addEventListener("resize", this.updateHeightAndWidth)
     
     var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
-    var list = document.querySelector('div');
+    var [list] = document.getElementsByClassName('.mutTest');
     
-    var observer = new MutationObserver(function(mutations) {  
-      var tag = document.createElement("p");
-      var text = document.createTextNode("Foo");
-      tag.appendChild(text);
-      var element = document.getElementById("mutTest");
-      element.appendChild(tag);
-
-      this.updateHeightAndWidth();
-      console.log("Something changed, " + mutations);
-    });
+    var observer = new MutationObserver((m) => this.updateHeightAndWidth(m))
     
     observer.observe(list, {
       attributes: true, 
@@ -330,9 +321,9 @@ class App extends Component {
     // window.removeEventListener("resize", this.updateHeightAndWidth());
   }
 
-  updateHeightAndWidth = () => {
+  updateHeightAndWidth = (m) => {
     const wlor = window.innerWidth > 800?(window.innerWidth - window.innerHeight * 9/16)/2:window.innerHeight/window.innerWidth > 1.77?0:(window.innerWidth - window.innerHeight * 9/16)/2
-    toast(("widthLeftOrRight should now be " + wlor + ", width is now " + window.innerWidth), {
+    toast(("widthLeftOrRight should now be " + wlor + ", width is now " + window.innerWidth + ", " + JSON.stringify(m)), {
       position: "bottom-center",
       autoClose: 2400,
       hideProgressBar: true,
