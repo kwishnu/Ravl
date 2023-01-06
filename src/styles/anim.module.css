@@ -11,3 +11,7 @@
       transform: rotate(-10deg);
   }
 }
+
+.mutTest {
+  border-color: 'yellow'; border-width: 2; border-style: 'solid';
+}

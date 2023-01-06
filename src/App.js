@@ -280,6 +280,12 @@ class App extends Component {
     var list = document.querySelector('div');
     
     var observer = new MutationObserver(function(mutations) {  
+      var tag = document.createElement("p");
+      var text = document.createTextNode("Foo");
+      tag.appendChild(text);
+      var element = document.getElementById("mutTest");
+      element.appendChild(tag);
+
       this.updateHeightAndWidth();
       console.log("Something changed, " + mutations);
     });
@@ -2704,7 +2710,7 @@ console.log("deviceType = " + this.state.deviceType + ", cWidth = " + cWidth);
             scrHeight={this.state.scrHeight}
             scrWidth={this.state.scrWidth}
           />
-<div id="mutTest"></div>
+<div id="mutTest" className=".mutTest"></div>
           <div 
             style={{ ...this.styles().container, backgroundColor: darkModeEnabled ? colors.gray_4 : colors.off_white }}
             onClick={this.state.showMenu ? () => this.toggleDrawer() : null}
