@@ -274,8 +274,24 @@ class App extends Component {
   };
 
   componentDidMount() {
-    this.detectListener = window.addEventListener("resize", this.updateHeightAndWidth)
+    // detectListener = window.addEventListener("resize", this.updateHeightAndWidth)
     
+    var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
+    var list = document.querySelector('div');
+    
+    var observer = new MutationObserver(function(mutations) {  
+      this.updateHeightAndWidth();
+      console.log("Something changed, " + mutations);
+    });
+    
+    observer.observe(list, {
+      attributes: true, 
+      childList: true, 
+      characterData: true
+    });
+
+
+
     dateToday = formatDate(new Date(), "MM-dd-yyyy");
     title = puzzTitle(dateToday);
     description = puzzDescription(dateToday);
@@ -2688,7 +2704,7 @@ console.log("deviceType = " + this.state.deviceType + ", cWidth = " + cWidth);
             scrHeight={this.state.scrHeight}
             scrWidth={this.state.scrWidth}
           />
-
+<div id="mutTest"></div>
           <div 
             style={{ ...this.styles().container, backgroundColor: darkModeEnabled ? colors.gray_4 : colors.off_white }}
             onClick={this.state.showMenu ? () => this.toggleDrawer() : null}
