@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { CircularProgress } from '@mui/material';
 import PageVisibility from 'react-page-visibility';
-import ResizeNotifier from "./config/resize-notifier";
+// import ResizeNotifier from "./config/resize-notifier";
 import formatDate from 'date-fns/format';
 import parse from 'date-fns/parse';
 import { nanoid } from 'nanoid';
@@ -274,22 +274,13 @@ class App extends Component {
   };
 
   componentDidMount() {
-    // window.addEventListener("orientationchange", (event) => this.updateHeightAndWidth(event));
+    this.detectListener = window.addEventListener("resize", this.updateHeightAndWidth)
+    
     dateToday = formatDate(new Date(), "MM-dd-yyyy");
     title = puzzTitle(dateToday);
     description = puzzDescription(dateToday);
     dailyPuzzlesArr = puzzles(dateToday);
 
-    const resizeNotifier = new ResizeNotifier({
-      immediate: true,
-      onResize: () => this.updateHeightAndWidth()
-
-      // onResize: function (width, height) {
-      //   this.updateHeightAndWidth();
-      //   console.log("RESIZE", width, height);
-      // }
-    });
-console.log("test " + JSON.stringify(resizeNotifier));
     this.setState({
       lettersetContainerHeight: this.lettersetContainer.current.getBoundingClientRect().height,
       lettersetContainerWidth: this.lettersetContainer.current.getBoundingClientRect().width,
@@ -317,7 +308,7 @@ console.log("test " + JSON.stringify(resizeNotifier));
     // window.removeEventListener("resize", this.updateHeightAndWidth());
   }
 
-  updateHeightAndWidth(e){
+  updateHeightAndWidth = () => {
     const wlor = window.innerWidth > 800?(window.innerWidth - window.innerHeight * 9/16)/2:window.innerHeight/window.innerWidth > 1.77?0:(window.innerWidth - window.innerHeight * 9/16)/2
     toast(("widthLeftOrRight should now be " + wlor + ", width is now " + window.innerWidth), {
       position: "bottom-center",
