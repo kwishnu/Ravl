@@ -1,6 +1,6 @@
 import colors from '../config/colors';
 import config from '../config/config';
-import {convertFont} from '../config/config';
+// import {convertFont} from '../config/config';
 // const scrWidth = config.scrWidth;
 // const scrHeight = config.scrHeight;
 const tablet = config.isTablet;
@@ -10,6 +10,7 @@ const phone = config.isPhone;
 // const phone = config.isPhone;
 const appStyles = ({ scrWidth, scrHeight }) => {
   const widthLeftOrRight = (scrWidth - scrHeight * 9/16)/2;
+  const convertFont = (inputFontSize) => tablet || pc?inputFontSize * scrHeight/1200:inputFontSize * scrWidth/460;
 
   return {
     loading_container: {
@@ -70,10 +71,10 @@ const appStyles = ({ scrWidth, scrHeight }) => {
     messageContainer: {
       display: "flex",
       flex: 1,
-      width: pc || config.isTablet ? scrHeight * 9 / 16 : scrWidth,
+      width: pc || tablet ? scrHeight * 9 / 16 : scrWidth,
       alignItems: 'center',
       justifyContent: 'flex-start',
-      marginLeft: 14,
+      marginLeft: pc || tablet ?30:14,
       backgroundColor: colors.transparent,
     },
     scoreContainer: {
@@ -81,7 +82,7 @@ const appStyles = ({ scrWidth, scrHeight }) => {
       flexDirection: "row",
       flex: 3,
       position: "relative",
-      width: pc || config.isTablet ? scrHeight * 9 / 16 : scrWidth,
+      width: pc || tablet ? scrHeight * 9 / 16 : scrWidth,
       alignItems: 'center',
       justifyContent: 'center',
       backgroundColor: colors.off_black,
@@ -202,7 +203,7 @@ const appStyles = ({ scrWidth, scrHeight }) => {
       flexDirection: "row",
       position: "relative",
       flex: pc ? 24 : 18,
-      width: pc || config.isTablet ? scrHeight * 9 / 16 : scrWidth,
+      width: pc || tablet ? scrHeight * 9 / 16 : scrWidth,
       alignItems: 'center',
       justifyContent: 'center',
       backgroundColor: colors.transparent,
@@ -211,7 +212,7 @@ const appStyles = ({ scrWidth, scrHeight }) => {
       display: "flex",
       flexDirection: "row",
       flex: 2,
-      width: pc || config.isTablet ? scrHeight * 9 / 16 : scrWidth,
+      width: pc || tablet ? scrHeight * 9 / 16 : scrWidth,
       alignItems: 'center',
       justifyContent: 'center',
       borderColor: colors.black,
@@ -260,7 +261,6 @@ const appStyles = ({ scrWidth, scrHeight }) => {
       marginTop: phone ? 100 : 0,
       backgroundColor: colors.button_blue,
       boxShadow: `10px 10px 28px ${colors.off_black}`,
-
     },
     button: {
       borderRadius: config.button_radius,

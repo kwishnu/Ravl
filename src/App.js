@@ -277,18 +277,16 @@ class App extends Component {
   componentDidMount() {
     // detectListener = window.addEventListener("resize", this.updateHeightAndWidth)
     
-    var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
-    var [list] = document.getElementsByClassName('.mutTest');
+    // var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
+    // var [list] = document.getElementsByClassName('.mutTest');
     
-    var observer = new MutationObserver((m) => this.updateHeightAndWidth(m))
+    // var observer = new MutationObserver((m) => this.updateHeightAndWidth(m))
     
-    observer.observe(list, {
-      attributes: true, 
-      childList: true, 
-      characterData: true
-    });
-
-
+    // observer.observe(list, {
+    //   attributes: true, 
+    //   childList: true, 
+    //   characterData: true
+    // });
 
     dateToday = formatDate(new Date(), "MM-dd-yyyy");
     title = puzzTitle(dateToday);
@@ -322,35 +320,35 @@ class App extends Component {
     // window.removeEventListener("resize", this.updateHeightAndWidth());
   }
 
-  updateHeightAndWidth = (m) => {
-    const wlor = window.innerWidth > 800?(window.innerWidth - window.innerHeight * 9/16)/2:window.innerHeight/window.innerWidth > 1.77?0:(window.innerWidth - window.innerHeight * 9/16)/2
-    toast(("widthLeftOrRight should now be " + wlor + ", width is now " + window.innerWidth + ", height is " + window.innerHeight), {
-      position: "bottom-center",
-      autoClose: 2400,
-      hideProgressBar: true,
-      closeOnClick: false,
-      pauseOnHover: false,
-      draggable: false,
-      progress: undefined,
-      theme: "light",
-    });
-            this.setState({
-              widthLeftOrRight: wlor,
-              lettersetContainerHeight: document.getElementById("gameContainer").getBoundingClientRect().height,
-              lettersetContainerWidth: document.getElementById("gameContainer").getBoundingClientRect().width,
-              scoreContainerHeight: this.scoreContainer.current.getBoundingClientRect().height,
-              // lettersetContainerHeight: this.lettersetContainer.current.getBoundingClientRect().height,
-              // lettersetContainerWidth: this.lettersetContainer.current.getBoundingClientRect().width,
-              // scoreContainerHeight: this.scoreContainer.current.getBoundingClientRect().height,
-              scrHeight: window.innerHeight,
-              scrWidth: window.innerWidth,
-              tileHeight: parseInt((window.innerHeight/17).toPrecision(2)),
-              deviceType: window.innerWidth > 800?"pc":window.innerHeight/window.innerWidth > 1.77?"phone":"tablet",
-            });
+//   updateHeightAndWidth = (m) => {
+//     const wlor = window.innerWidth > 800?(window.innerWidth - window.innerHeight * 9/16)/2:window.innerHeight/window.innerWidth > 1.77?0:(window.innerWidth - window.innerHeight * 9/16)/2
+//     toast(("widthLeftOrRight should now be " + wlor + ", width is now " + window.innerWidth + ", height is " + window.innerHeight), {
+//       position: "bottom-center",
+//       autoClose: 2400,
+//       hideProgressBar: true,
+//       closeOnClick: false,
+//       pauseOnHover: false,
+//       draggable: false,
+//       progress: undefined,
+//       theme: "light",
+//     });
+//             this.setState({
+//               widthLeftOrRight: wlor,
+//               lettersetContainerHeight: document.getElementById("gameContainer").getBoundingClientRect().height,
+//               lettersetContainerWidth: document.getElementById("gameContainer").getBoundingClientRect().width,
+//               scoreContainerHeight: this.scoreContainer.current.getBoundingClientRect().height,
+//               // lettersetContainerHeight: this.lettersetContainer.current.getBoundingClientRect().height,
+//               // lettersetContainerWidth: this.lettersetContainer.current.getBoundingClientRect().width,
+//               // scoreContainerHeight: this.scoreContainer.current.getBoundingClientRect().height,
+//               scrHeight: window.innerHeight,
+//               scrWidth: window.innerWidth,
+//               tileHeight: parseInt((window.innerHeight/17).toPrecision(2)),
+//               deviceType: window.innerWidth > 800?"pc":window.innerHeight/window.innerWidth > 1.77?"phone":"tablet",
+//             });
 
-console.log("deviceType is now " + this.state.deviceType + ", width is now " + window.innerWidth);
-    // this.setState({scrHeight: window.innerHeight, scrWidth: window.innerWidth});
-  }
+// console.log("deviceType is now " + this.state.deviceType + ", width is now " + window.innerWidth);
+//     // this.setState({scrHeight: window.innerHeight, scrWidth: window.innerWidth});
+//   }
 
   init(p0, p1, p2, p3, p4, p5, p6, p7, sw, bw, sc, cgi, eligibility) {
     try {
@@ -2672,7 +2670,7 @@ console.log("deviceType = " + this.state.deviceType + ", cWidth = " + cWidth);
       color: colors.text_white,
       bgColor: colors.dark_purple,
       animation: false,
-      fontSize: 5,
+      fontSize: 3,
       message: "Please play RavL in portrait mode"
     }
     let {
@@ -2730,9 +2728,7 @@ console.log("deviceType = " + this.state.deviceType + ", cWidth = " + cWidth);
                 style={{ ...this.styles().adBox, width: this.state.widthLeftOrRight, backgroundColor: darkModeEnabled ? colors.gray_4 : colors.off_white, borderRightColor: colors.off_black, left: 0 }}
               />
 
-              <div style={{ ...this.styles().adBox, width:  this.state.widthLeftOrRight, backgroundColor: darkModeEnabled ? colors.gray_4 : colors.off_white, borderLeftColor: colors.off_black, right: 0 }} >
-              {this.state.deviceType}
-              </div>
+              <div style={{ ...this.styles().adBox, width:  this.state.widthLeftOrRight, backgroundColor: darkModeEnabled ? colors.gray_4 : colors.off_white, borderLeftColor: colors.off_black, right: 0 }} />
               <div style={{ ...this.styles().messageOuterContainer, borderColor: global.bgColor }}>
                 <div style={this.styles().messageContainer}>
                   <div style={{ ...this.styles().header_text, color: this.state.dailyPuzzleCompleted && this.state.currentGameIndex === -1 ? colors.gray_2 : colors.text_white }}>
