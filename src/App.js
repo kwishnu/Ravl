@@ -323,7 +323,7 @@ class App extends Component {
 
   updateHeightAndWidth = (m) => {
     const wlor = window.innerWidth > 800?(window.innerWidth - window.innerHeight * 9/16)/2:window.innerHeight/window.innerWidth > 1.77?0:(window.innerWidth - window.innerHeight * 9/16)/2
-    toast(("widthLeftOrRight should now be " + wlor + ", width is now " + window.innerWidth + ", " + JSON.stringify(m)), {
+    toast(("widthLeftOrRight should now be " + wlor + ", width is now " + window.innerWidth + ", height is " + window.innerHeight), {
       position: "bottom-center",
       autoClose: 2400,
       hideProgressBar: true,
@@ -2720,8 +2720,9 @@ console.log("deviceType = " + this.state.deviceType + ", cWidth = " + cWidth);
                 style={{ ...this.styles().adBox, width: this.state.widthLeftOrRight, backgroundColor: darkModeEnabled ? colors.gray_4 : colors.off_white, borderRightColor: colors.off_black, left: 0 }}
               />
 
-              <div style={{ ...this.styles().adBox, width:  this.state.widthLeftOrRight, backgroundColor: darkModeEnabled ? colors.gray_4 : colors.off_white, borderLeftColor: colors.off_black, right: 0 }} />
-
+              <div style={{ ...this.styles().adBox, width:  this.state.widthLeftOrRight, backgroundColor: darkModeEnabled ? colors.gray_4 : colors.off_white, borderLeftColor: colors.off_black, right: 0 }} >
+              {this.state.deviceType}
+              </div>
               <div style={{ ...this.styles().messageOuterContainer, borderColor: global.bgColor }}>
                 <div style={this.styles().messageContainer}>
                   <div style={{ ...this.styles().header_text, color: this.state.dailyPuzzleCompleted && this.state.currentGameIndex === -1 ? colors.gray_2 : colors.text_white }}>
