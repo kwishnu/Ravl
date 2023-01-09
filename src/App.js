@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { CircularProgress } from '@mui/material';
 import PageVisibility from 'react-page-visibility';
+import ScreenOrientationReact from 'screen-orientation-react';
 // import ResizeNotifier from "./config/resize-notifier";
 import formatDate from 'date-fns/format';
 import parse from 'date-fns/parse';
@@ -2667,7 +2668,13 @@ console.log("deviceType = " + this.state.deviceType + ", cWidth = " + cWidth);
         </div>
       );
     }
-
+    const options = {
+      color: colors.text_white,
+      bgColor: colors.dark_purple,
+      animation: false,
+      fontSize: 5,
+      message: "Please play RavL in portrait mode"
+    }
     let {
       gameArray0,
       gameArray1,
@@ -2702,6 +2709,9 @@ console.log("deviceType = " + this.state.deviceType + ", cWidth = " + cWidth);
             scrWidth={this.state.scrWidth}
           />
 <div id="mutTest" className=".mutTest"></div>
+          <div>
+            <ScreenOrientationReact options={options}/>
+          </div>
           <div 
             style={{ ...this.styles().container, backgroundColor: darkModeEnabled ? colors.gray_4 : colors.off_white }}
             onClick={this.state.showMenu ? () => this.toggleDrawer() : null}
