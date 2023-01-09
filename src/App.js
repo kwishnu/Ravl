@@ -2666,9 +2666,9 @@ console.log("deviceType = " + this.state.deviceType + ", cWidth = " + cWidth);
         </div>
       );
     }
-    const options = {
+    const orientationMessageOptions = {
       color: colors.text_white,
-      bgColor: colors.dark_purple,
+      bgColor: global.bgColor,
       animation: false,
       fontSize: 3,
       message: "Please play RavL in portrait mode"
@@ -2708,7 +2708,7 @@ console.log("deviceType = " + this.state.deviceType + ", cWidth = " + cWidth);
           />
 <div id="mutTest" className=".mutTest"></div>
           <div>
-            <ScreenOrientationReact options={options}/>
+            <ScreenOrientationReact options={orientationMessageOptions}/>
           </div>
           <div 
             style={{ ...this.styles().container, backgroundColor: darkModeEnabled ? colors.gray_4 : colors.off_white }}
