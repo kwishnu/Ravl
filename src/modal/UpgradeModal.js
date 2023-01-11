@@ -39,7 +39,7 @@ class UpgradeModal extends Component {
     if(validMail(this.state.email)){
       this.setState({showSpinner: true});
       try {
-        window.localStorage.setItem(KEY_HasUpgrade, 'false');
+        window.localStorage.setItem(KEY_HasUpgrade, 'true');
       } catch (error) {
         window.alert('window.localStorage error: ' + error.message);
       }
