@@ -4,6 +4,9 @@ import formatDate from 'date-fns/format';
 import support_styles from "../styles/support_styles";
 import colors from '../config/colors';
 import config from '../config/config';
+import Upgrade from "../modal/UpgradeModal";
+import ThankYou from "../modal/ThankYouModal";
+// const KEY_ClickedBMC = 'clickedBMCKey';
 const scrHeight = config.scrHeight;
 const thisYear = formatDate(new Date(), "yyyy");
 
@@ -14,28 +17,31 @@ class Support extends Component {
     super(props);
     this.state = {
       darkModeEnabled: false,
+      showUpgradeModal: false,
+      showThankYouModal: false,
     };
   }
   componentDidMount() {
-    // AsyncStorage.getItem(KEY_ModePref).then((modePref) => {
-    //   if (modePref !== null) {
-    //     const modePrefBool = (modePref == 'true')?true:false;
-    //     this.setState({ darkModeEnabled: modePrefBool});
-    //   }else{
-    //     try {
-    //         AsyncStorage.setItem(KEY_ModePref, 'false');
-    //     } catch (error) {
-    //         window.alert('AsyncStorage error: ' + error.message);
-    //     }
+    // const clickedBMC = window.localStorage.getItem(KEY_ClickedBMC);
+    // if (clickedBMC !== null) {
+    //   const clickedBMCBool = (clickedBMC === 'true')?true:false;
+    //   this.setState({ clickedBuyMeACoffee: clickedBMCBool });
+    // }else{
+    //   try {
+    //       window.localStorage.setItem(KEY_ClickedBMC, 'false');
+    //   } catch (error) {
+    //       window.alert('window.localStorage error: ' + error.message);
     //   }
-    // }).done();
+    // }
   }
   closeSelf(){
     this.props.requestModalClose("Support", false);
   }
-  startPurchaseFlow(){
-console.log("Upgrading...");
-
+  toggleUpgradeModal(open){
+    this.setState({showUpgradeModal: open});
+  }
+  toggleTYModal(open){
+    this.setState({showThankYouModal: open});
   }
    render() {
     const closeImage = this.props.darkModeEnabled? require("../images/close.png"):require("../images/close_black.png");
@@ -74,7 +80,7 @@ console.log("Upgrading...");
             <div style={{...support_styles.modalBody, backgroundColor: darkModeEnabled ? colors.gray_3:colors.off_white2}}>
               <div style={support_styles.section}>
                 <div style={{...support_styles.text, whiteSpace: 'pre-line', color: darkModeEnabled ? colors.off_white:colors.off_black}}>
-                {"Thank you for playing RavL!\n\nIf you would like to support my little game, please upgrade for the cost of a coffee \u2014 special benefits include:" +
+                {"Thank you for playing RavL! If you would like to support my little game, please upgrade for the cost of a coffee \u2014 special benefits include:" +
                 "\n\n\u2022 COOL SETTINGS \u2014 change the app color theme and animations\n\u2022 NO ADs ever \u2014 no unsightly interruptions to your RavL play (future)" +
                 "\n\u2022 MEGA RAVL \u2014 a special menu button that will dial up a monster RavL puzzle any time you feel masochistically inclined!" +
                 "\n\nSo please, poke away at the coffee button below and make the jump!"
@@ -82,8 +88,12 @@ console.log("Upgrading...");
                 </div>
               </div>
               <div style={support_styles.button_container}>
-                  {/* <div style={support_styles.button_text_white}>{"UPGRADE \u2022 RAVL"}</div> */}
-                  <a href="https://www.buymeacoffee.com/kwish1777N" target="_blank" rel="noreferrer"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style={support_styles.button} /></a>
+                <div>
+                  <a href="https://www.buymeacoffee.com/kwish1777N" target="_blank" rel="noreferrer"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style={support_styles.bmc_button} /></a>
+                </div>
+                <div style={support_styles.button}>
+                  <div style={support_styles.button_text_white} onClick={() => this.toggleUpgradeModal(true)}>{"Apply\nUpgrade"}</div>
+                </div>
               </div>
 
               <div style={{...support_styles.underlinedAcme, color: darkModeEnabled ? colors.off_white:colors.off_black}}>...oh, and the fine print:</div>
@@ -117,6 +127,18 @@ console.log("Upgrading...");
                   </div>
                 </div>
             </div>
+            <Upgrade
+              isModalVisible={this.state.showUpgradeModal}
+              isDarkModeEnabled={darkModeEnabled}
+              requestModalClose={() => { this.toggleUpgradeModal(false) }}
+              requestTYOpen={() => { this.toggleTYModal(true) }}
+            />
+            <ThankYou
+              isModalVisible={this.state.showThankYouModal}
+              isDarkModeEnabled={darkModeEnabled}
+              requestModalClose={() => { this.toggleTYModal(false) }}
+            />
+
           </div>
         </motion.div>
         }

@@ -75,9 +75,12 @@ class Tile extends Component {
         break;
       case "None":
         animElement.style.setProperty('--animate-duration', '0.5s');
-        animateCSS(animElement, 'showoff').then(() => {
+        animateCSS(animElement, 'pulse').then(() => {
           animElement.style.setProperty('--animate-duration', '0.6s');
+          setTimeout(() => {
             this.setState({show: false});
+          }, 600);
+          
         })
         .then(callback);
         break;

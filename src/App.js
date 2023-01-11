@@ -42,8 +42,6 @@ import Help from "./screens/help";
 import Support from "./screens/support";
 import Words from "./modal/WordsModal";
 import EndGame from "./modal/EndGameModal";
-// import ThankYou from "./modal/ThankYouModal";
-
 const KEY_LastOpenedDate = 'lastOpenedKey';
 const KEY_ShowedTutorial = 'showedTutKey';
 const KEY_PlayedFirstGame = 'playedGameKey';
@@ -275,23 +273,12 @@ class App extends Component {
   };
 
   componentDidMount() {
-    // detectListener = window.addEventListener("resize", this.updateHeightAndWidth)
-    
-    // var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
-    // var [list] = document.getElementsByClassName('.mutTest');
-    
-    // var observer = new MutationObserver((m) => this.updateHeightAndWidth(m))
-    
-    // observer.observe(list, {
-    //   attributes: true, 
-    //   childList: true, 
-    //   characterData: true
-    // });
-
     dateToday = formatDate(new Date(), "MM-dd-yyyy");
     title = puzzTitle(dateToday);
     description = puzzDescription(dateToday);
     dailyPuzzlesArr = puzzles(dateToday);
+
+    window.addEventListener("resize", this.updateHeightAndWidth);
 
     this.setState({
       lettersetContainerHeight: this.lettersetContainer.current.getBoundingClientRect().height,
@@ -317,11 +304,11 @@ class App extends Component {
   }
 
   componentWillUnmount(){
-    // window.removeEventListener("resize", this.updateHeightAndWidth());
+    window.removeEventListener("resize", this.updateHeightAndWidth);
   }
 
-//   updateHeightAndWidth = (m) => {
-//     const wlor = window.innerWidth > 800?(window.innerWidth - window.innerHeight * 9/16)/2:window.innerHeight/window.innerWidth > 1.77?0:(window.innerWidth - window.innerHeight * 9/16)/2
+  updateHeightAndWidth = (m) => {
+    const wlor = window.innerWidth > 800?(window.innerWidth - window.innerHeight * 9/16)/2:window.innerHeight/window.innerWidth > 1.77?0:(window.innerWidth - window.innerHeight * 9/16)/2
 //     toast(("widthLeftOrRight should now be " + wlor + ", width is now " + window.innerWidth + ", height is " + window.innerHeight), {
 //       position: "bottom-center",
 //       autoClose: 2400,
@@ -332,23 +319,23 @@ class App extends Component {
 //       progress: undefined,
 //       theme: "light",
 //     });
-//             this.setState({
-//               widthLeftOrRight: wlor,
-//               lettersetContainerHeight: document.getElementById("gameContainer").getBoundingClientRect().height,
-//               lettersetContainerWidth: document.getElementById("gameContainer").getBoundingClientRect().width,
-//               scoreContainerHeight: this.scoreContainer.current.getBoundingClientRect().height,
-//               // lettersetContainerHeight: this.lettersetContainer.current.getBoundingClientRect().height,
-//               // lettersetContainerWidth: this.lettersetContainer.current.getBoundingClientRect().width,
-//               // scoreContainerHeight: this.scoreContainer.current.getBoundingClientRect().height,
-//               scrHeight: window.innerHeight,
-//               scrWidth: window.innerWidth,
-//               tileHeight: parseInt((window.innerHeight/17).toPrecision(2)),
-//               deviceType: window.innerWidth > 800?"pc":window.innerHeight/window.innerWidth > 1.77?"phone":"tablet",
-//             });
+            this.setState({
+              widthLeftOrRight: wlor,
+              lettersetContainerHeight: document.getElementById("gameContainer").getBoundingClientRect().height,
+              lettersetContainerWidth: document.getElementById("gameContainer").getBoundingClientRect().width,
+              scoreContainerHeight: this.scoreContainer.current.getBoundingClientRect().height,
+              // lettersetContainerHeight: this.lettersetContainer.current.getBoundingClientRect().height,
+              // lettersetContainerWidth: this.lettersetContainer.current.getBoundingClientRect().width,
+              // scoreContainerHeight: this.scoreContainer.current.getBoundingClientRect().height,
+              scrHeight: window.innerHeight,
+              scrWidth: window.innerWidth,
+              tileHeight: parseInt((window.innerHeight/17).toPrecision(2)),
+              deviceType: window.innerWidth > 800?"pc":window.innerHeight/window.innerWidth > 1.77?"phone":"tablet",
+            });
 
 // console.log("deviceType is now " + this.state.deviceType + ", width is now " + window.innerWidth);
 //     // this.setState({scrHeight: window.innerHeight, scrWidth: window.innerWidth});
-//   }
+  }
 
   init(p0, p1, p2, p3, p4, p5, p6, p7, sw, bw, sc, cgi, eligibility) {
     try {
@@ -866,10 +853,11 @@ class App extends Component {
         window.alert('window.localStorage error: ' + error.message);
       }
     }
+    
     const hasUpgraded = window.localStorage.getItem(KEY_HasUpgrade);
     if (hasUpgraded !== null) {
-      // const huBool = hasUpgraded === 'true' ? true : false;
-      global.upgradeStatus = true;//huBool;
+      const huBool = hasUpgraded === 'true' ? true : false;
+      global.upgradeStatus = huBool;
       //this.setState({hasUpgrade: huBool}); <= future, likely for ads implementation
     } else {
       try {
@@ -2613,7 +2601,6 @@ class App extends Component {
           th;
     th = this.state.currentGameIndex === -1 ? th * 0.8 : th;
     const le = (cWidth - numC * (th + 2)) / 2;//left edge
-console.log("deviceType = " + this.state.deviceType + ", cWidth = " + cWidth);
     if (this.state.lettersetContainerWidth === 0) return null;
 
     return (
@@ -2706,7 +2693,6 @@ console.log("deviceType = " + this.state.deviceType + ", cWidth = " + cWidth);
             scrHeight={this.state.scrHeight}
             scrWidth={this.state.scrWidth}
           />
-<div id="mutTest" className=".mutTest"></div>
           <div>
             <ScreenOrientationReact options={orientationMessageOptions}/>
           </div>
@@ -2719,7 +2705,7 @@ console.log("deviceType = " + this.state.deviceType + ", cWidth = " + cWidth);
               showModal={(which, open) => this.showModal(which, open)}
               scrHeight={this.state.scrHeight}
               scrWidth={this.state.scrWidth}
-              marLeftOrRight={(this.state.scrWidth - this.state.scrHeight * 9/16)/2}
+              marLeftOrRight={(this.state.scrWidth - this.state.scrHeight * 9/16)/2 + 20}
               deviceType={ this.state.deviceType}
             />
             <div style={this.styles().appContainer}>
@@ -2919,13 +2905,6 @@ console.log("deviceType = " + this.state.deviceType + ", cWidth = " + cWidth);
               requestModalClose={() => { this.toggleModal(null, false) }}
               requestGoToStart={() => { this.goToStartScreen() }}
             />
-            {/* 
-              <ThankYou
-                isModalVisible={this.state.showThankYouModal}
-                isDarkModeEnabled={this.state.darkModeEnabled}
-                requestModalClose={()=>{this.closeModal()}}
-              /> 
-            */}
             <HintNag
               isModalVisible={this.state.showHintNagModal}
               isDarkModeEnabled={this.state.darkModeEnabled}

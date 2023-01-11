@@ -47,8 +47,8 @@ class WordsModal extends Component {
           <div style={{...words_modal_styles.modaldiv, backgroundColor: isDarkModeEnabled ? colors.off_black:colors.off_white}}>
           {showPuzzWordsModal && (
               <div style={words_modal_styles.text_container}>
-                <div style={{...words_modal_styles.modal_title, color: this.props.isDarkModeEnabled ? colors.gray_1:colors.off_black}}>Puzzle Words:</div>
-                <div style={{...words_modal_styles.modal_text, whiteSpace: 'pre-line', color: this.props.isDarkModeEnabled ? colors.gray_2:colors.off_black}}>
+                <div style={{...words_modal_styles.modal_title, color: isDarkModeEnabled ? colors.gray_1:colors.off_black}}>Puzzle Words:</div>
+                <div style={{...words_modal_styles.modal_text, whiteSpace: 'pre-line', color: isDarkModeEnabled ? colors.gray_2:colors.off_black}}>
                   {solvedModalMessage}
                 </div>
               </div>
@@ -59,7 +59,7 @@ class WordsModal extends Component {
                       textAlign: "center",
                       fontWeight: "bold",
                       marginBottom: 15,
-                      color: this.props.isDarkModeEnabled ? colors.off_white:colors.off_black
+                      color: isDarkModeEnabled ? colors.off_white:colors.off_black
                     }}
                 >
                   {dividerString}
@@ -69,11 +69,11 @@ class WordsModal extends Component {
             <div style={words_modal_styles.text_container}>
               <div
                 style={{...words_modal_styles.modal_title, 
-                color: this.props.isDarkModeEnabled ? colors.gray_1:colors.off_black}}
+                color: isDarkModeEnabled ? colors.gray_1:colors.off_black}}
               >
               {!this.props.solvedModalMessage && !this.props.bonusModalMessage? "Words:":"Bonus Words:"}
               </div>
-              <div style={{...words_modal_styles.modal_text, whiteSpace: 'pre-line', color: this.props.isDarkModeEnabled ? colors.gray_2:colors.off_black}}>
+              <div style={{...words_modal_styles.modal_text, whiteSpace: 'pre-line', color: isDarkModeEnabled ? colors.gray_2:colors.off_black}}>
                 {bonusModalMessage || "None yet!"}
               </div>
             </div>

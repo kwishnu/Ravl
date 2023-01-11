@@ -88,15 +88,28 @@ section: {
 button_container: {
   display: 'flex',
   flex: 0,
+  flexDirection: 'row',
   justifyContent: "center",
   alignItems: "center",
   alignSelf: "stretch",
   height: line * 6,
   margin: 30
 },
-button: {
+bmc_button: {
+  display: 'flex',
+  justifyContent: "center",
+  alignItems: "center",
   height: 60, 
-  width: 217,
+  boxShadow: `4px 8px 12px ${colors.gray_4}`,
+},
+button: {
+  display: 'flex',
+  justifyContent: "center",
+  alignItems: "center",
+  padding: 8,
+  marginLeft: 8,
+  borderRadius: 5,
+  backgroundColor: colors.dark_green,
   boxShadow: `4px 8px 12px ${colors.gray_4}`,
 },
 copyrightContainer: {
@@ -109,11 +122,13 @@ copyrightContainer: {
   margin: 20,
 },
 button_text_white: {
-  fontFamily: "Acme",
-  fontSize: convertFont(22),
+  fontFamily: "system-ui",
+  fontWeight: "bold",
+  fontSize: convertFont(14),
   color: colors.off_white,
   textAlign: "center",
-  userSelect: 'none'
+  userSelect: 'none',
+  whiteSpace: 'pre-line'
 },
 close_image: {
   height: 35,

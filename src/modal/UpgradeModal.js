@@ -1,19 +1,29 @@
 import React, { Component } from 'react';
 import { motion, AnimatePresence } from "framer-motion"
+import { CircularProgress } from '@mui/material';
 import config from '../config/config';
 import {convertFont} from '../config/config';
 import colors from '../config/colors';
 import EmailInput from '../components/EmailInput';
+const KEY_HasUpgrade = 'hasUpgradeKey';
 const scrWidth = config.scrWidth;
 const scrHeight = config.scrHeight;
 const pc = config.isPC;
 const tablet = config.isTablet;
 
-class ThankYouModal extends Component {
+
+function validMail(email)
+{
+    return /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()\.,;\s@\"]+\.{0,1})+([^<>()\.,;:\s@\"]{2,}|[\d\.]+))$/.test(email);
+}
+
+class UpgradeModal extends Component {
   constructor(props) {
     super(props);
     this.state = {
       darkModeEnabled: this.props.isDarkModeEnabled,
+      email: "",
+      showSpinner: false
     };
   }
   componentDidMount() {
@@ -21,32 +31,72 @@ class ThankYouModal extends Component {
   closeSelf(){
     this.props.requestModalClose();
   }
+  updateEmail(address){
+    this.setState({email: address});
+  }
   
+  checkForEmail(){
+    if(validMail(this.state.email)){
+      this.setState({showSpinner: true});
+      try {
+        window.localStorage.setItem(KEY_HasUpgrade, 'false');
+      } catch (error) {
+        window.alert('window.localStorage error: ' + error.message);
+      }
+      global.upgradeStatus = true;
+      setTimeout(() => {
+        this.setState({showSpinner: false});
+        this.closeSelf();
+
+        setTimeout(() => {
+          this.props.requestTYOpen();
+        }, 200);
+
+      }, 2000);
+    }else{
+      window.alert("Sorry, " + this.state.email + " doesn't appear to be a valid email address")
+    }
+  }
+
   render() {
     const { isDarkModeEnabled, isModalVisible } = this.props;
     return(
       <AnimatePresence>
       {isModalVisible && 
         <motion.div
-          style={ty_modal_styles.centereddiv}
+          style={eg_modal_styles.centereddiv}
           initial={{ y: scrHeight }}
           animate={{ y: 0 }}
           exit={{ y: scrHeight }}
           transition={{ type: "spring", bounce: 0, duration: 0.4 }}
         >
-          <div style={{...ty_modal_styles.modaldiv, backgroundColor: isDarkModeEnabled ? colors.off_black:colors.off_white}}>
-          <div style={ty_modal_styles.text_container}>
-              <div style={{...ty_modal_styles.modal_title, color: this.props.isDarkModeEnabled ? colors.gray_1:colors.off_black}}>Thank You!</div>
-              <div style={{...ty_modal_styles.modal_text, whiteSpace: 'pre-line', color: this.props.isDarkModeEnabled ? colors.gray_2:colors.off_black}}>
-                {'Your premium features are now available via the upper left\u2002\u2630\u2002menu'}
+          <div style={{...eg_modal_styles.modaldiv, backgroundColor: isDarkModeEnabled ? colors.off_black:colors.off_white}}>
+          {this.state.showSpinner &&
+            <div style={eg_modal_styles.spinner_container}>
+              <CircularProgress colors={colors.off_white} />
+            </div>
+          }
+          <div style={eg_modal_styles.text_container}>
+              <div style={{...eg_modal_styles.modal_title, color: this.props.isDarkModeEnabled ? colors.gray_1:colors.off_black}}>Apply/Restore Upgrade</div>
+              <div style={{...eg_modal_styles.modal_text, color: this.props.isDarkModeEnabled ? colors.gray_2:colors.off_black}}>
+                {'To apply (or restore) your upgrade, please enter your email address and click "Submit" so that we can check with BuyMeACoffee.com for your donation:'}
               </div>
             </div>
-            <div style={ty_modal_styles.button_container}>
+            <div style={eg_modal_styles.EmailInputContainer}>
+              <EmailInput updateEmailAdress={(addr) => { this.updateEmail(addr) }}/>
+            </div>
+            <div style={eg_modal_styles.button_container}>
               <div
-                style={ty_modal_styles.button}
+                style={eg_modal_styles.button}
                 onClick={() => this.closeSelf()}
               >
-                <div style={ty_modal_styles.button_text}>OK</div>
+                <div style={eg_modal_styles.button_text}>Cancel</div>
+              </div>
+              <div
+                style={eg_modal_styles.button}
+                onClick={() => this.checkForEmail()}
+              >
+                <div style={eg_modal_styles.button_text}>Submit</div>
               </div>
             </div>
           </div>
@@ -57,7 +107,7 @@ class ThankYouModal extends Component {
   }
 }
 
-const ty_modal_styles = {
+const eg_modal_styles = {
   centereddiv: {
     display: 'flex',
     position: 'absolute',
@@ -85,7 +135,7 @@ const ty_modal_styles = {
     display: 'flex',
     position: 'relative',
     flexDirection: 'column',
-    width: config.isPC?scrHeight * 0.3:scrWidth * 0.65,
+    width: config.isPC?scrHeight * 0.4:scrWidth * 0.8,
     padding: 25,
     borderRadius: 5,
     alignItems: "center",
@@ -104,7 +154,7 @@ const ty_modal_styles = {
     flexDirection: 'row',
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 6,
+    marginTop: 10,
   },
   text_container: {
     alignSelf: 'stretch',
@@ -143,4 +193,4 @@ const ty_modal_styles = {
   },
 }
 
-export default ThankYouModal;
+export default UpgradeModal;

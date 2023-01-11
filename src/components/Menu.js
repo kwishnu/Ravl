@@ -38,7 +38,7 @@ class Menu extends Component {
             initial={{ x: xInitial }}
             animate={{ x: xAnimate }}
             exit={{ x: xInitial }}
-            style={{...menu_styles.menu, height: scrHeight, width: scrHeight * 0.26}}
+            style={{...menu_styles.menu, height: scrHeight, width: pc?scrHeight * 0.28:scrHeight * 0.26}}
             transition={{ type: "spring", bounce: 0, duration: 0.4 }}
           >
             <div style={{...menu_styles.text, fontSize: 16, color: 'black'}}>
@@ -48,7 +48,7 @@ class Menu extends Component {
               <MenuItem text={"Settings"} imageUrl={settingsImage} altText={"Settings"} showModal={(which) => this.showModal(which, true)} bgC={themeColor}/>
               <MenuItem text={"Help"} imageUrl={helpImage} altText={"Help"} showModal={(which) => this.showModal(which, true)} bgC={themeColor}/>
               <MenuItem text={"Support"} imageUrl={supportImage} altText={"Support"} showModal={(which) => this.showModal(which, true)} bgC={themeColor}/>
-              {this.props.cgi === -1 &&
+              {this.props.cgi === -1 && global.upgradeStatus &&
                 <MenuItem text={"Mega RavL"} imageUrl={gameImage} altText={"Mega RavL"} showModal={(which) => this.showModal(which, true)} bgC={themeColor}/>
               }
             </div>
@@ -65,7 +65,7 @@ const menu_styles = {
     position: 'absolute',
     margin: 1,
     borderRadius: 7,
-    justifyContent: 'center',
+    justifyContent: 'flex-end',
     alignItems: 'flex-start',
     backgroundColor: colors.gray_3,
     borderWidth: 1,

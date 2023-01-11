@@ -9,7 +9,7 @@ const phone = config.isPhone;
 
 // const phone = config.isPhone;
 const appStyles = ({ scrWidth, scrHeight }) => {
-  const widthLeftOrRight = (scrWidth - scrHeight * 9/16)/2;
+  const widthLeftOrRight = (scrWidth - scrHeight * 9/16)/2 + 20;
   const convertFont = (inputFontSize) => tablet || pc?inputFontSize * scrHeight/1200:inputFontSize * scrWidth/460;
 
   return {
@@ -26,7 +26,6 @@ const appStyles = ({ scrWidth, scrHeight }) => {
       width: "100%",
     },
     appContainer: {
-      // position: "relative",
       display: "flex",
       flex: 1,
       flexDirection: "column",
@@ -44,7 +43,7 @@ const appStyles = ({ scrWidth, scrHeight }) => {
       position: "absolute",
       top: 0,
       bottom: 0,
-      width: pc ? widthLeftOrRight - 20 : 0,
+      width: pc ? widthLeftOrRight - 40 : 0,
       borderStyle: "solid",
       borderWidth: 2,
       zIndex: 1000,
