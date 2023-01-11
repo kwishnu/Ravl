@@ -2638,12 +2638,11 @@ class App extends Component {
             this.nextGame(true);
           }, 200);
         }
-      } else {
-        try {
-          window.localStorage.setItem(KEY_LastOpenedDate, dateToday);
-        } catch (error) {
-          window.alert('window.localStorage error: ' + error.message);
-        }
+      }
+      try {
+        window.localStorage.setItem(KEY_LastOpenedDate, dateToday);
+      } catch (error) {
+        window.alert('window.localStorage error: ' + error.message);
       }
     }
   }

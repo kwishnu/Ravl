@@ -1,6 +1,6 @@
 export const colors = {
     ravl_purple: '#3E0465',
-    dark_purple: '#2E034B',//'hsl(276, 96%, 29%)',
+    dark_purple: '#2E034B',//'hsl(276, 96%, 15%)',
     accent_purple: '#FF007F',
     button_blue: '#4242FF',
     dark_blue: '#3737C9',

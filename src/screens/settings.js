@@ -28,7 +28,7 @@ class Settings extends Component {
       spinAnimationChecked: false,
       noneAnimationChecked: false,
       colorSliderValue: 276,
-      valSliderValue: 29,
+      valSliderValue: 15,
       swatchBG: global.bgColor,
       blockPremiumFeatures: true,
       colorSliderKey: "",
@@ -87,16 +87,16 @@ class Settings extends Component {
       const bgVInt = parseInt(bgV);
       this.setState({valSliderValue: bgVInt});
     }else{
-      this.setState({valSliderValue: 29});
+      this.setState({valSliderValue: 15});
       try {
-        window.localStorage.setItem(KEY_BGValSliderValue, '29');
+        window.localStorage.setItem(KEY_BGValSliderValue, '15');
       } catch (error) {
           window.alert('localStorage error: ' + error.message);
       }
     }
   }   
   showAlert(){
-    toast("Sorry, these features come with the premium upgrade!", {
+    toast("Sorry, these features come with the premium upgrade! \u000D Please visit \u2764 Support", {
       position: "bottom-center",
       autoClose: 2400,
       hideProgressBar: true,
@@ -187,6 +187,7 @@ class Settings extends Component {
     this.setState({swatchBG: colResult.toHexString()});
   }
   handleColorValChangeComplete(sliderSetting){
+    console.log("sliderSetting: " + sliderSetting.value);
     const colResult = tinycolor({ h: this.state.colorSliderValue, s: 96, l: sliderSetting.value }).toHexString();
     document.querySelector('meta[name="theme-color"]').setAttribute('content', colResult);
     global.bgColor = colResult;
@@ -205,7 +206,7 @@ class Settings extends Component {
   restoreDefaults(){
     this.setState({
       colorSliderValue: 276,
-      valSliderValue: 29,
+      valSliderValue: 15,
       swatchBG: colors.dark_purple,
       darkModeSwitchEnabled: false,
       darkModeEnabled: false,
@@ -230,7 +231,7 @@ if(this.state.darkModeEnabled)this.toggleDarkMode();
         window.alert('window.localStorage error: ' + error.message);
     }
     try {
-        window.localStorage.setItem(KEY_BGValSliderValue, '29');
+        window.localStorage.setItem(KEY_BGValSliderValue, '15');
     } catch (error) {
         window.alert('window.localStorage error: ' + error.message);
     }
