@@ -277,8 +277,9 @@ class App extends Component {
     title = puzzTitle(dateToday);
     description = puzzDescription(dateToday);
     dailyPuzzlesArr = puzzles(dateToday);
-
-    window.addEventListener("resize", this.updateHeightAndWidth);
+    if(isPC){
+      window.addEventListener("resize", this.updateHeightAndWidth);
+    }
 
     this.setState({
       lettersetContainerHeight: this.lettersetContainer.current.getBoundingClientRect().height,
@@ -304,7 +305,9 @@ class App extends Component {
   }
 
   componentWillUnmount(){
-    window.removeEventListener("resize", this.updateHeightAndWidth);
+    if(isPC){
+      window.removeEventListener("resize", this.updateHeightAndWidth);
+    }
   }
 
   updateHeightAndWidth = (m) => {
@@ -853,7 +856,7 @@ class App extends Component {
         window.alert('window.localStorage error: ' + error.message);
       }
     }
-    
+
     const hasUpgraded = window.localStorage.getItem(KEY_HasUpgrade);
     if (hasUpgraded !== null) {
       const huBool = hasUpgraded === 'true' ? true : false;
