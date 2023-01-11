@@ -187,10 +187,10 @@ class App extends Component {
       scrHeight: window.innerHeight,
       scrWidth: window.innerWidth,
       tileHeight: parseInt((window.innerHeight/17).toPrecision(2)),
-      deviceType: window.innerWidth > 800?"pc":window.innerHeight/window.innerWidth > 1.77?"phone":"tablet",
+      deviceType: window.innerWidth > 1000?"pc":window.innerHeight/window.innerWidth > 1.77?"phone":"tablet",
       lettersetContainerWidth: null,
       lettersetContainerHeight: null,
-      widthLeftOrRight: window.innerWidth > 800?(window.innerWidth - window.innerHeight * 9/16)/2:window.innerHeight/window.innerWidth > 1.77?0:(window.innerWidth - window.innerHeight * 9/16)/2,
+      widthLeftOrRight: window.innerWidth > 1000?(window.innerWidth - window.innerHeight * 9/16)/2:window.innerHeight/window.innerWidth > 1.77?0:(window.innerWidth - window.innerHeight * 9/16)/2,
       scoreContainerHeight: null,
       numberOfStars: 0,
       bwOffset: 0,
@@ -311,7 +311,7 @@ class App extends Component {
   }
 
   updateHeightAndWidth = (m) => {
-    const wlor = window.innerWidth > 800?(window.innerWidth - window.innerHeight * 9/16)/2:window.innerHeight/window.innerWidth > 1.77?0:(window.innerWidth - window.innerHeight * 9/16)/2
+    const wlor = window.innerWidth > 1000?(window.innerWidth - window.innerHeight * 9/16)/2:window.innerHeight/window.innerWidth > 1.77?0:(window.innerWidth - window.innerHeight * 9/16)/2
 //     toast(("widthLeftOrRight should now be " + wlor + ", width is now " + window.innerWidth + ", height is " + window.innerHeight), {
 //       position: "bottom-center",
 //       autoClose: 2400,
@@ -333,7 +333,7 @@ class App extends Component {
               scrHeight: window.innerHeight,
               scrWidth: window.innerWidth,
               tileHeight: parseInt((window.innerHeight/17).toPrecision(2)),
-              deviceType: window.innerWidth > 800?"pc":window.innerHeight/window.innerWidth > 1.77?"phone":"tablet",
+              deviceType: window.innerWidth > 1000?"pc":window.innerHeight/window.innerWidth > 1.77?"phone":"tablet",
             });
 
 // console.log("deviceType is now " + this.state.deviceType + ", width is now " + window.innerWidth);
