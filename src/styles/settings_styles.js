@@ -81,7 +81,7 @@ premium_block: {
   justifyContent: "flex-start",
   alignItems: "flex-start",
   marginTop: config.isPC?10:20,
-  zIndex: 1000
+  zIndex: 1000,
 },
 sectionHead: {
   display: 'flex',
@@ -174,6 +174,12 @@ valuePickerImage: {
   top: 12,
   left: 0,
   width: config.isPC?scrHeight * 0.36 - 30:scrWidth * 0.85 -30,
+},
+custom_thumb: {
+  width: "24px",
+  height: "24px",
+  borderRadius: "50%",
+  backgroundColor: colors.text_white,
 },
 swatchContainer: {
   display: 'flex',

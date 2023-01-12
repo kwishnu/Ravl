@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from "framer-motion"
 import config from '../config/config';
-// import {convertFont} from '../config/config';
+import {convertFont} from '../config/config';
 import colors from '../config/colors';
 // const scrWidth = config.scrWidth;
 // const scrHeight = config.scrHeight;
@@ -54,7 +54,7 @@ function Footer(props) {
         </div>
         <div style={footer_styles.streak_row}>
           <div style={footer_styles.streak_cell1}>
-            <div style={{...footer_styles.streak_text, fontSize: convertFont(18)}}>{(props.puzzleStreak === '0' || props.puzzleStreak === '0,01-01-2001')?'':"Streak:"}</div>
+            <div style={footer_styles.streak_text}>{(props.puzzleStreak === '0' || props.puzzleStreak === '0,01-01-2001')?'':"Streak:"}</div>
           </div>
           <div style={footer_styles.streak_cell2}>
             {(props.puzzleStreak !== '0' && props.puzzleStreak !== '0,01-01-2001') &&
@@ -175,6 +175,7 @@ const footer_styles = {
   },
   streak_text: {
     fontFamily: "system-ui",
+    fontSize: convertFont(18),
     color: colors.off_white,
     marginBottom: 12,
   },

@@ -229,7 +229,7 @@ const appStyles = ({ scrWidth, scrHeight }) => {
       alignItems: 'center',
       justifyContent: 'center',
       backgroundColor: colors.transparent,
-      zIndex: 1000
+      zIndex: 98
     },
     game_over_button_view: {
       display: "flex",

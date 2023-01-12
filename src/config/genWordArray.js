@@ -20,7 +20,8 @@ function getRandom(arr, n) {
     return result;
 }
 
-export function genWordArray(which){
+export function genWordArray(which, easy){
+  const wordsNum = easy? 3:4;
   switch (which){
     case 0://mega
       return getRandom(words9letter, 5).map(element => element.toUpperCase());
@@ -29,9 +30,9 @@ export function genWordArray(which){
     case 4:
       return getRandom(words4letter, 3).map(element => element.toUpperCase());
     case 5:
-      return getRandom(words5letter, 4).map(element => element.toUpperCase());//['BUILD','STRIP','FLOOD','BRINE'];
+      return getRandom(words5letter, wordsNum).map(element => element.toUpperCase());//['BUILD','STRIP','FLOOD','BRINE'];
     case 6:
-      return getRandom(words6letter, 4).map(element => element.toUpperCase());//['BECOME', 'SLIGHT', 'RESCUE', 'CHERRY'];
+      return getRandom(words6letter, wordsNum).map(element => element.toUpperCase());//['BECOME', 'SLIGHT', 'RESCUE', 'CHERRY'];
     case 7:
       return getRandom(words7letter, 3).map(element => element.toUpperCase());
     case 8:

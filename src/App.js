@@ -48,6 +48,7 @@ const KEY_PlayedFirstGame = 'playedGameKey';
 const KEY_HighScore = 'highScoreKey';
 const KEY_BGColorPref = 'bgColorPrefKey';
 const KEY_ModePref = 'modePrefKey';
+const KEY_EasyModePref = 'easyModePrefKey';
 const KEY_AnimationPref = 'animationPrefKey';
 const KEY_PuzzleStreakDays = 'puzzleStreakKey';
 const KEY_DailyStreakDays = 'dailyStreakKey';
@@ -56,19 +57,19 @@ const KEY_CurrentStarColor = 'curStarColorKey';
 const KEY_StarColorString = 'starColorKey';
 const KEY_HasUpgrade = 'hasUpgradeKey';
 const KEY_LowColPositions = 'lowColPositions';
-const KEY_PWords0 = 'pWordsKey0';
-const KEY_PWords1 = 'pWordsKey1';
-const KEY_PWords2 = 'pWordsKey2';
-const KEY_PWords3 = 'pWordsKey3';
-const KEY_PWords4 = 'pWordsKey4';
-const KEY_PWords5 = 'pWordsKey5';
-const KEY_PWords6 = 'pWordsKey6';
-const KEY_PWords7 = 'pWordsKey7';
-const KEY_SolvedWords = 'solvedWordsKey';
-const KEY_BonusWords = 'bonusWordsKey';
-const KEY_GameIndex = 'gameIndexKey';
-const KEY_Score = 'scoreKey';
-const KEY_StarEligibility = 'starEligibilityKey';
+// const KEY_PWords0 = 'pWordsKey0';
+// const KEY_PWords1 = 'pWordsKey1';
+// const KEY_PWords2 = 'pWordsKey2';
+// const KEY_PWords3 = 'pWordsKey3';
+// const KEY_PWords4 = 'pWordsKey4';
+// const KEY_PWords5 = 'pWordsKey5';
+// const KEY_PWords6 = 'pWordsKey6';
+// const KEY_PWords7 = 'pWordsKey7';
+// const KEY_SolvedWords = 'solvedWordsKey';
+// const KEY_BonusWords = 'bonusWordsKey';
+// const KEY_GameIndex = 'gameIndexKey';
+// const KEY_Score = 'scoreKey';
+// const KEY_StarEligibility = 'starEligibilityKey';
 const scrWidth = config.scrWidth;
 const scrHeight = config.scrHeight;
 const tablet = config.isTablet;
@@ -79,14 +80,14 @@ let dateToday = formatDate(new Date(), "MM-dd-yyyy");
 let title = "";
 let description = "";
 let dailyPuzzlesArr = [];
-let puzzleWords0 = genWordArray(3);
-let puzzleWords1 = genWordArray(4);
-let puzzleWords2 = genWordArray(5);
-let puzzleWords3 = genWordArray(6);
-let puzzleWords4 = genWordArray(7);
-let puzzleWords5 = genWordArray(8);
-let puzzleWords6 = genWordArray(9);
-let puzzleWords7 = genWordArray(10);
+let puzzleWords0 = [];//genWordArray(3);
+let puzzleWords1 = [];//genWordArray(4);
+let puzzleWords2 = [];//genWordArray(5);
+let puzzleWords3 = [];//genWordArray(6);
+let puzzleWords4 = [];//genWordArray(7);
+let puzzleWords5 = [];//genWordArray(8);
+let puzzleWords6 = [];//genWordArray(9);
+let puzzleWords7 = [];//genWordArray(10);
 let megaPuzzleArr = [];
 let puzzleWords8 = [];
 let puzzleWords9 = [];
@@ -165,6 +166,7 @@ class App extends Component {
       showSolvedWords: false,
       puzzleDisplayed: false,
       darkModeEnabled: false,
+      easyModeEnabled: false,
       newHighScore: false,
       eligibleForStar: true,
       animationStyle: "Leave",
@@ -217,7 +219,6 @@ class App extends Component {
       showWordsModal: false,
       showSettingsModal: false,
       showEndGameModal: false,
-      showThankYouModal: false,
       showHintNagModal: false,
       dividerString: "",
       playedGameOnce: false,
@@ -287,21 +288,36 @@ class App extends Component {
       scoreContainerHeight: this.scoreContainer.current.getBoundingClientRect().height,
     });
 
-    this.init(
-      puzzleWords0,
-      puzzleWords1,
-      puzzleWords2,
-      puzzleWords3,
-      puzzleWords4,
-      puzzleWords5,
-      puzzleWords6,
-      puzzleWords7,
-      [[], [], [], [], [], [], [], [], [], [], []], // this.props.solvedWords,
-      [[], [], [], [], [], [], [], [], [], [], []], // this.props.bonusWords,
-      15, // this.props.score,
-      -1, // this.props.currentGameIndex,
-      true, //eligibility for star
-    )
+    const emp = window.localStorage.getItem(KEY_EasyModePref);
+    if (emp !== null) {
+      const empBool = (emp === 'true')?true:false;
+      this.setState({easyModeEnabled: empBool});
+    }else{
+      try {
+          window.localStorage.setItem(KEY_EasyModePref, 'false');
+      } catch (error) {
+          window.alert('window.localStorage error: ' + error.message);
+      }
+    }
+
+    setTimeout(() => {
+      this.nextGame(true);
+    }, 200);
+    // this.init(
+    //   puzzleWords0,
+    //   puzzleWords1,
+    //   puzzleWords2,
+    //   puzzleWords3,
+    //   puzzleWords4,
+    //   puzzleWords5,
+    //   puzzleWords6,
+    //   puzzleWords7,
+    //   [[], [], [], [], [], [], [], [], [], [], []], // this.props.solvedWords,
+    //   [[], [], [], [], [], [], [], [], [], [], []], // this.props.bonusWords,
+    //   15, // this.props.score,
+    //   -1, // this.props.currentGameIndex,
+    //   true, //eligibility for star
+    // )
   }
 
   componentWillUnmount(){
@@ -312,53 +328,22 @@ class App extends Component {
 
   updateHeightAndWidth = (m) => {
     const wlor = window.innerWidth > 1000?(window.innerWidth - window.innerHeight * 9/16)/2:window.innerHeight/window.innerWidth > 1.77?0:(window.innerWidth - window.innerHeight * 9/16)/2
-//     toast(("widthLeftOrRight should now be " + wlor + ", width is now " + window.innerWidth + ", height is " + window.innerHeight), {
-//       position: "bottom-center",
-//       autoClose: 2400,
-//       hideProgressBar: true,
-//       closeOnClick: false,
-//       pauseOnHover: false,
-//       draggable: false,
-//       progress: undefined,
-//       theme: "light",
-//     });
-            this.setState({
-              widthLeftOrRight: wlor,
-              lettersetContainerHeight: document.getElementById("gameContainer").getBoundingClientRect().height,
-              lettersetContainerWidth: document.getElementById("gameContainer").getBoundingClientRect().width,
-              scoreContainerHeight: this.scoreContainer.current.getBoundingClientRect().height,
-              // lettersetContainerHeight: this.lettersetContainer.current.getBoundingClientRect().height,
-              // lettersetContainerWidth: this.lettersetContainer.current.getBoundingClientRect().width,
-              // scoreContainerHeight: this.scoreContainer.current.getBoundingClientRect().height,
-              scrHeight: window.innerHeight,
-              scrWidth: window.innerWidth,
-              tileHeight: parseInt((window.innerHeight/17).toPrecision(2)),
-              deviceType: window.innerWidth > 1000?"pc":window.innerHeight/window.innerWidth > 1.77?"phone":"tablet",
-            });
-
-// console.log("deviceType is now " + this.state.deviceType + ", width is now " + window.innerWidth);
-//     // this.setState({scrHeight: window.innerHeight, scrWidth: window.innerWidth});
+    this.setState({
+      widthLeftOrRight: wlor,
+      lettersetContainerHeight: document.getElementById("gameContainer").getBoundingClientRect().height,
+      lettersetContainerWidth: document.getElementById("gameContainer").getBoundingClientRect().width,
+      scoreContainerHeight: this.scoreContainer.current.getBoundingClientRect().height,
+      // lettersetContainerHeight: this.lettersetContainer.current.getBoundingClientRect().height,
+      // lettersetContainerWidth: this.lettersetContainer.current.getBoundingClientRect().width,
+      // scoreContainerHeight: this.scoreContainer.current.getBoundingClientRect().height,
+      scrHeight: window.innerHeight,
+      scrWidth: window.innerWidth,
+      tileHeight: parseInt((window.innerHeight/17).toPrecision(2)),
+      deviceType: window.innerWidth > 1000?"pc":window.innerHeight/window.innerWidth > 1.77?"phone":"tablet",
+    });
   }
 
   init(p0, p1, p2, p3, p4, p5, p6, p7, sw, bw, sc, cgi, eligibility) {
-    try {
-      window.localStorage.setItem(KEY_PWords0, JSON.stringify(p0));
-      window.localStorage.setItem(KEY_PWords1, JSON.stringify(p1));
-      window.localStorage.setItem(KEY_PWords2, JSON.stringify(p2));
-      window.localStorage.setItem(KEY_PWords3, JSON.stringify(p3));
-      window.localStorage.setItem(KEY_PWords4, JSON.stringify(p4));
-      window.localStorage.setItem(KEY_PWords5, JSON.stringify(p5));
-      window.localStorage.setItem(KEY_PWords6, JSON.stringify(p6));
-      window.localStorage.setItem(KEY_PWords7, JSON.stringify(p7));
-      window.localStorage.setItem(KEY_SolvedWords, JSON.stringify(sw));
-      window.localStorage.setItem(KEY_BonusWords, JSON.stringify(bw));
-      window.localStorage.setItem(KEY_Score, sc + '');
-      window.localStorage.setItem(KEY_GameIndex, cgi + '');
-      window.localStorage.setItem(KEY_StarEligibility, eligibility.toString());
-    } catch (error) {
-      window.alert('window.localStorage error: ' + error.message);
-    }
-
     const keyIDFrag = nanoid();
     const counterKeyID = nanoid();
 
@@ -755,6 +740,18 @@ class App extends Component {
         window.localStorage.setItem(KEY_ModePref, 'false');
       } catch (error) {
         window.alert('window.localStorage error: ' + error.message);
+      }
+    }
+
+    const eModePref = window.localStorage.getItem(KEY_EasyModePref);
+    if (eModePref !== null) {
+      const eModePrefBool = (eModePref === 'true')?true:false;
+      this.setState({easyModeEnabled: eModePrefBool});
+    }else{
+      try {
+          window.localStorage.setItem(KEY_EasyModePref, 'false');
+      } catch (error) {
+          window.alert('window.localStorage error: ' + error.message);
       }
     }
 
@@ -1387,11 +1384,11 @@ class App extends Component {
             return arr.sort();
           })
           this.setState({ solvedWords: swArray });
-          try {
-            window.localStorage.setItem(KEY_SolvedWords, JSON.stringify(swArray));
-          } catch (error) {
-            window.alert('window.localStorage error: ' + error.message);
-          }
+          // try {
+          //   window.localStorage.setItem(KEY_SolvedWords, JSON.stringify(swArray));
+          // } catch (error) {
+          //   window.alert('window.localStorage error: ' + error.message);
+          // }
         }, 800);
       }
       const yValue = this.getSolvedAnimYValue(this.state.currentGameIndex - this.state.solvedWordsRowOffset);
@@ -1476,7 +1473,8 @@ class App extends Component {
       this.changeScore(-1);
     }
     if (this.state.onRow === this.state.rowsInPuzzle) {//last row in puzzle
-      if (this.state.currentGameIndex < this.state.lastIndexInGame) {
+      const lastIndex = this.state.easyModeEnabled? 5 : this.state.lastIndexInGame;
+      if (this.state.currentGameIndex < lastIndex) {
         this.nextPuzzle();
       } else {//completed game
         let newHighScoreBool = false;
@@ -1496,7 +1494,6 @@ class App extends Component {
         });
         this.resetLowColPositions();
         if (!this.state.playedGameOnce) {
-          console.log("Played game once...");
           try {
             window.localStorage.setItem(KEY_PlayedFirstGame, 'true');
           } catch (error) {
@@ -1850,11 +1847,11 @@ class App extends Component {
             solvedWord: tempWord,
             solvedPadding: 5,
           });
-          try {
-            window.localStorage.setItem(KEY_BonusWords, JSON.stringify(bwArray));
-          } catch (error) {
-            window.alert('window.localStorage error: ' + error.message);
-          }
+          // try {
+          //   window.localStorage.setItem(KEY_BonusWords, JSON.stringify(bwArray));
+          // } catch (error) {
+          //   window.alert('window.localStorage error: ' + error.message);
+          // }
           break;
         }
       }
@@ -1986,11 +1983,11 @@ class App extends Component {
             solvedWords: [[], [], [], [], [], [], [], [], [], [], []],
             bonusWords: [[], [], [], [], [], [], [], [], [], [], []]
           });
-          try {
-            window.localStorage.setItem(KEY_GameIndex, '8');
-          } catch (error) {
-            window.alert('window.localStorage error: ' + error.message);
-          }
+          // try {
+          //   window.localStorage.setItem(KEY_GameIndex, '8');
+          // } catch (error) {
+          //   window.alert('window.localStorage error: ' + error.message);
+          // }
         }, 500);
       } else {
         setTimeout(() => {
@@ -2017,11 +2014,11 @@ class App extends Component {
             solvedWords: [[], [], [], [], [], [], [], [], [], [], []],
             bonusWords: [[], [], [], [], [], [], [], [], [], [], []]
           });
-          try {
-            window.localStorage.setItem(KEY_GameIndex, '0');
-          } catch (error) {
-            window.alert('window.localStorage error: ' + error.message);
-          }
+          // try {
+          //   window.localStorage.setItem(KEY_GameIndex, '0');
+          // } catch (error) {
+          //   window.alert('window.localStorage error: ' + error.message);
+          // }
         }, 500);
       }
     } else {//coming from failed or completed game
@@ -2037,14 +2034,14 @@ class App extends Component {
     let scoreVal = 10;
     let elig = true;
     if (this.state.clearedLevel === true || goToStart) { //load new game
-      puzzleWords0 = genWordArray(3);
-      puzzleWords1 = genWordArray(4);
-      puzzleWords2 = genWordArray(5);
-      puzzleWords3 = genWordArray(6);
-      puzzleWords4 = genWordArray(7);
-      puzzleWords5 = genWordArray(8);
-      puzzleWords6 = genWordArray(9);
-      puzzleWords7 = genWordArray(10);
+      puzzleWords0 = genWordArray(3, this.state.easyModeEnabled);
+      puzzleWords1 = genWordArray(4, this.state.easyModeEnabled);
+      puzzleWords2 = genWordArray(5, this.state.easyModeEnabled);
+      puzzleWords3 = genWordArray(6, this.state.easyModeEnabled);
+      puzzleWords4 = genWordArray(7, this.state.easyModeEnabled);
+      puzzleWords5 = genWordArray(8, this.state.easyModeEnabled);
+      puzzleWords6 = genWordArray(9, this.state.easyModeEnabled);
+      puzzleWords7 = genWordArray(10, this.state.easyModeEnabled);
     } else {
       swArray = this.state.solvedWords;
       bwArray = this.state.bonusWords;
@@ -2079,11 +2076,11 @@ class App extends Component {
       onRow: 0,
       puzzleDisplayed: false,
     });
-    try {
-      window.localStorage.setItem(KEY_GameIndex, (this.state.currentGameIndex + 1) + "");
-    } catch (error) {
-      window.alert('window.localStorage error: ' + error.message);
-    }
+    // try {
+    //   window.localStorage.setItem(KEY_GameIndex, (this.state.currentGameIndex + 1) + "");
+    // } catch (error) {
+    //   window.alert('window.localStorage error: ' + error.message);
+    // }
     if (this.state.currentGameIndex === 0) {
       this.setState({
         gameArray0: this.state.gameArray1,
@@ -2104,7 +2101,7 @@ class App extends Component {
         showGame2: true,
         showGame1: false,
         currentGameIndex: 2,
-        rowsInPuzzle: 4,
+        rowsInPuzzle: this.state.easyModeEnabled?3:4,
         initialArrayHeight: this.state.gameArray2[0].length,
         progressSavedLevel: 2,
         solvedWordsRowOffset: 0,
@@ -2117,7 +2114,10 @@ class App extends Component {
         showGame3: true,
         showGame2: false,
         currentGameIndex: 3,
-        rowsInPuzzle: 4,
+        rowsInPuzzle: this.state.easyModeEnabled?3:4,
+        initialArrayHeight: this.state.gameArray2[0].length,
+        progressSavedLevel: 2,
+        solvedWordsRowOffset: 0,
         initialArrayHeight: this.state.gameArray3[0].length,
         solvedWordsRowOffset: 0,
         headerText: "Level  " + (this.state.currentGameIndex + 2) + "  of  8"
@@ -2320,7 +2320,7 @@ class App extends Component {
           this.setState({ lockScreenInput: false });
           this.hideAllGames();
           this.toggleDrawer();
-          let megaWordsArr = genWordArray(0);
+          let megaWordsArr = genWordArray(0, this.state.easyModeEnabled);
           console.log("megaWordsArr: " + JSON.stringify(megaWordsArr));
           let straightArrayMega = this.buildStraightArray(megaWordsArr);
           megaPuzzleArr = this.buildGameArray(straightArrayMega);
@@ -2346,7 +2346,6 @@ class App extends Component {
         showSupportModal: false,
         showWordsModal: false,
         showEndGameModal: false,
-        // showThankYouModal: false,
         showHintNagModal: false,
       });
 
@@ -2384,8 +2383,13 @@ class App extends Component {
         this.changeTileMode(remainingTilesArr, mode, darkModeEnabledBool);
         break;
       case "Animation Style":
-        const styleStr = changeArray[1]
-        this.setState({ animationStyle: styleStr });
+        this.setState({ animationStyle: changeArray[1] });
+        break;
+      case "Easy Mode":
+        this.setState({ easyModeEnabled: changeArray[1], currentGameIndex: -1, megaPuzzle: false });
+        setTimeout(() => {
+          this.nextGame(true);
+        }, 200)
         break;
       case "Open Support":
         setTimeout(() => {
@@ -2486,9 +2490,15 @@ class App extends Component {
   }
 
   renderDone(cleared) {
-    const img = cleared ? require("./images/thumbs_up.png") : require("./images/thumbs_down.png");
+    const img = cleared ? require("./images/thumbs_up.png") 
+                : 
+                this.state.darkModeEnabled?
+                require("./images/shrug_white.png")
+                :
+                require("./images/shrug_black.png");//thumbs_down
     const altText = cleared ? "Thumbs up!" : "Thumbs down";
     const imageDim = config.isPC ? this.state.lettersetContainerWidth / 5.5 : this.state.lettersetContainerWidth / 4.3;
+    const imageDimWidth = cleared? imageDim: 3 * imageDim;
     let msg = cleared ? this.state.endMessage : this.state.endMessageFail;
     msg = cleared && this.state.newHighScore && this.state.playedGameOnce ? "Wow \u2014 that's a new\nhigh score!" : msg;
     return (
@@ -2506,7 +2516,7 @@ class App extends Component {
                 transition={{ type: "spring", stiffness: 100, damping: 18, duration: 0.4 }}
               >
                 <div >
-                  <img src={img} style={{ width: imageDim, height: imageDim }} alt={altText} />
+                  <img src={img} style={{ width: imageDimWidth, height: imageDim }} alt={altText} />
                 </div>
               </motion.div>
             </motion.div>
@@ -2575,7 +2585,6 @@ class App extends Component {
       showSupportModal: false,
       showWordsModal: false,
       showEndGameModal: false,
-      // showThankYouModal: false,
       showHintNagModal: false,
       showTutScreen1: false,
       showTutScreen2: false,

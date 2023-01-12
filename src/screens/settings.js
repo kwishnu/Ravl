@@ -13,6 +13,7 @@ const scrWidth = config.scrWidth;
 const isPC = config.isPC;
 const KEY_BGColorPref = 'bgColorPrefKey';
 const KEY_ModePref = 'modePrefKey';
+const KEY_EasyModePref = 'easyModePrefKey';
 const KEY_AnimationPref = 'animationPrefKey';
 const KEY_BGColorSliderValue = 'bgColorValueSliderKey';
 const KEY_BGValSliderValue = 'bgValValueSliderKey';
@@ -22,6 +23,7 @@ class Settings extends Component {
     super(props);
     this.state = {
       darkModeSwitchEnabled: false,
+      easyModeSwitchEnabled: false,
       darkModeEnabled: false,
       animationPreference: 'Leave',
       leaveAnimationChecked: false,
@@ -49,6 +51,17 @@ class Settings extends Component {
     }else{
       try {
           window.localStorage.setItem(KEY_ModePref, 'false');
+      } catch (error) {
+          window.alert('window.localStorage error: ' + error.message);
+      }
+    }
+    const eModePref = window.localStorage.getItem(KEY_EasyModePref);
+    if (eModePref !== null) {
+      const eModePrefBool = (eModePref === 'true')?true:false;
+      this.setState({easyModeSwitchEnabled: eModePrefBool});
+    }else{
+      try {
+          window.localStorage.setItem(KEY_EasyModePref, 'false');
       } catch (error) {
           window.alert('window.localStorage error: ' + error.message);
       }
@@ -106,17 +119,6 @@ class Settings extends Component {
       progress: undefined,
       theme: "light",
     });
-
-    // window.alert("Premium Feature", "Sorry, these features come with the upgrade!",
-    //   [
-    //     {text: "Go", onClick: () => this.goToSupport(), style: "OK"},
-    //     {text: "Cancel", style: "cancel"},
-    //   ],
-    //   {cancelable: true}
-    // )
-  }
-  goToSupport(){
-    this.props.sendValueToGame(["Open Support", null]);
   }
   closeSelf(){
     this.props.requestModalClose("Settings", false);
@@ -128,6 +130,18 @@ class Settings extends Component {
     this.setState({darkModeEnabled: newBool, darkModeSwitchEnabled: newBool});
     try {
         window.localStorage.setItem(KEY_ModePref, newBoolStr);
+    } catch (error) {
+        window.alert('window.localStorage error: ' + error.message);
+    }
+  }
+  toggleEasyMode(){
+    if(!global.upgradeStatus)return;
+    const newBool = !this.state.easyModeSwitchEnabled;
+    const newBoolStr = newBool ? "true":"false";
+    this.props.sendValueToGame(["Easy Mode", newBool]);
+    this.setState({easyModeSwitchEnabled: newBool});
+    try {
+        window.localStorage.setItem(KEY_EasyModePref, newBoolStr);
     } catch (error) {
         window.alert('window.localStorage error: ' + error.message);
     }
@@ -209,6 +223,7 @@ class Settings extends Component {
       valSliderValue: 15,
       swatchBG: colors.dark_purple,
       darkModeSwitchEnabled: false,
+      easyModeSwitchEnabled: false,
       darkModeEnabled: false,
       animationPreference: 'Leave',
       leaveAnimationChecked: true,
@@ -220,7 +235,7 @@ class Settings extends Component {
     setTimeout(() => {
 	    this.setState({colorSliderKey: csk2, valueSliderKey: vsk2});
     }, 200);    
-if(this.state.darkModeEnabled)this.toggleDarkMode();
+    if(this.state.darkModeEnabled)this.toggleDarkMode();
     global.bgColor = colors.dark_purple;
     this.props.sendValueToGame(["Dark Mode", false]);
     this.props.sendValueToGame(["Animation Style", "Leave"]);
@@ -259,6 +274,7 @@ if(this.state.darkModeEnabled)this.toggleDarkMode();
 render() {
   let { 
     darkModeSwitchEnabled, 
+    easyModeSwitchEnabled, 
     darkModeEnabled, 
     leaveAnimationChecked,
     spinAnimationChecked,
@@ -280,6 +296,8 @@ render() {
                         require("../images/checkbox_unchecked_white.png");
   const hueSliderImage = require("../images/rainbow_slider.png");
   const valueSliderImage = require("../images/value_gradient.png");
+  const onOrOffStr = this.state.darkModeEnabled ? "On" : "Off";
+  const easyOnOrOffStr = this.state.easyModeSwitchEnabled ? "On" : "Off";
 
   return(
     <AnimatePresence>
@@ -328,9 +346,34 @@ render() {
               </div>
               <div style={settings_styles.switchTextContainer}>
                 <div style={{...settings_styles.text, color: this.state.darkModeEnabled ? colors.off_white:colors.off_black}}>DARK MODE</div>
+                <div style={{...settings_styles.text_small, color: this.state.darkModeEnabled ? colors.off_white:colors.off_black}}>{`\u2002\u2022\u2002` + onOrOffStr}</div>
               </div>
             </div>
           <div style={{...settings_styles.premium_block, backgroundColor: !global.upgradeStatus?colors.translucent:colors.transparent}} onClick={!global.upgradeStatus?() => this.showAlert():null}>
+            <div style={settings_styles.sectionHead}>
+              <div style={{...settings_styles.text, color: this.state.darkModeEnabled ? colors.off_white:colors.off_black}}>Difficulty</div>
+            </div>
+            <div style={settings_styles.switchRow}>
+              <div style={settings_styles.switchContainer}>
+                <Switch
+                  height={20}
+                  width={50}
+                  handleDiameter={28}
+                  onColor={ "#81b0ff" }
+                  offColor={ "#767577" }
+                  onHandleColor={colors.button_blue}
+                  offHandleColor={colors.button_blue}
+                  onChange={() => {this.toggleEasyMode()}}
+                  checked={easyModeSwitchEnabled}
+                  checkedIcon={false}
+                  uncheckedIcon={false}
+                />
+              </div>
+              <div style={settings_styles.switchTextContainer}>
+                <div style={{...settings_styles.text, color: this.state.darkModeEnabled ? colors.off_white:colors.off_black}}>EASIER</div>
+                <div style={{...settings_styles.text_small, color: this.state.darkModeEnabled ? colors.off_white:colors.off_black}}>{`\u2002(3 words per level, 6 levels)\u2002\u2022\u2002` + easyOnOrOffStr}</div>
+              </div>
+            </div>
             <div style={settings_styles.sectionHead}>
               <div style={{...settings_styles.text, color: this.state.darkModeEnabled ? colors.off_white:colors.off_black}}>Animation Style</div>
             </div>
@@ -345,7 +388,7 @@ render() {
               </div>
               <div style={settings_styles.switchTextContainer}>
                 <div style={{...settings_styles.text, color: this.state.darkModeEnabled ? colors.off_white:colors.off_black}}>LEAVE</div>
-                <div style={{...settings_styles.text_small, color: this.state.darkModeEnabled ? colors.off_white:colors.off_black}}>  {`\u2022  Zooms away`}</div>
+                <div style={{...settings_styles.text_small, color: this.state.darkModeEnabled ? colors.off_white:colors.off_black}}>  {`\u2002\u2022\u2002Zooms away`}</div>
               </div>
             </div>
             <div style={settings_styles.radiobuttonRow}>
@@ -359,7 +402,7 @@ render() {
               </div>
               <div style={settings_styles.switchTextContainer}>
                 <div style={{...settings_styles.text, color: this.state.darkModeEnabled ? colors.off_white:colors.off_black}}>SPIN</div>
-                <div style={{...settings_styles.text_small, color: this.state.darkModeEnabled ? colors.off_white:colors.off_black}}>  {`\u2022  Flips and fades`}</div>
+                <div style={{...settings_styles.text_small, color: this.state.darkModeEnabled ? colors.off_white:colors.off_black}}>  {`\u2002\u2022\u2002Flips and fades`}</div>
               </div>
             </div>
             <div style={settings_styles.radiobuttonRow}>
@@ -373,7 +416,7 @@ render() {
               </div>
               <div style={settings_styles.switchTextContainer}>
                 <div style={{...settings_styles.text, color: this.state.darkModeEnabled ? colors.off_white:colors.off_black}}>FADE</div>
-                <div style={{...settings_styles.text_small, color: this.state.darkModeEnabled ? colors.off_white:colors.off_black}}>  {`\u2022  No-nonsense fade`}</div>
+                <div style={{...settings_styles.text_small, color: this.state.darkModeEnabled ? colors.off_white:colors.off_black}}>  {`\u2002\u2022\u2002No-nonsense fade`}</div>
               </div>
             </div>
             <div style={settings_styles.sectionHead}>
@@ -391,16 +434,7 @@ render() {
                     min={1}
                     trackColor={!global.upgradeStatus ? colors.transparent: darkModeEnabled ? colors.gray_3:colors.off_white2}
                     sliderColor={!global.upgradeStatus ? colors.transparent: darkModeEnabled ? colors.gray_3:colors.off_white2}
-                    customThumb={
-                      <div
-                        style={{
-                          width: "24px",
-                          height: "24px",
-                          borderRadius: "50%",
-                          backgroundColor: colors.text_white,
-                        }}
-                      ></div>
-                    }                    
+                    customThumb={<div style={settings_styles.custom_thumb}></div>}                    
                   />
                 </div>
                 <div style={settings_styles.slider2View}>
@@ -414,16 +448,7 @@ render() {
                     min={0}
                     trackColor={!global.upgradeStatus ? colors.transparent: darkModeEnabled ? colors.gray_3:colors.off_white2}
                     sliderColor={!global.upgradeStatus ? colors.transparent: darkModeEnabled ? colors.gray_3:colors.off_white2}
-                    customThumb={
-                      <div
-                        style={{
-                          width: "24px",
-                          height: "24px",
-                          borderRadius: "50%",
-                          backgroundColor: colors.text_white,
-                        }}
-                      ></div>
-                    }                    
+                    customThumb={<div style={settings_styles.custom_thumb}></div>}                    
                   />
                 </div>
               </div>
