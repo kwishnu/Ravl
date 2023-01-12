@@ -371,9 +371,12 @@ render() {
               </div>
               <div style={settings_styles.switchTextContainer}>
                 <div style={{...settings_styles.text, color: this.state.darkModeEnabled ? colors.off_white:colors.off_black}}>EASIER</div>
-                <div style={{...settings_styles.text_small, color: this.state.darkModeEnabled ? colors.off_white:colors.off_black}}>{`\u2002(3 words per level, 6 levels)\u2002\u2022\u2002` + easyOnOrOffStr}</div>
+                <div style={{...settings_styles.text_small, color: this.state.darkModeEnabled ? colors.off_white:colors.off_black}}>{`\u2002\u2022\u2002` + easyOnOrOffStr}</div>
               </div>
             </div>
+              <div style={{...settings_styles.switchTextContainer, marginTop: 3}}>
+                <div style={{...settings_styles.text_small, color: this.state.darkModeEnabled ? colors.off_white:colors.off_black}}>{`\u2002("Easier" = 3 words max per level, 6 levels rather than 8 - Daily games excluded)`}</div>
+              </div>
             <div style={settings_styles.sectionHead}>
               <div style={{...settings_styles.text, color: this.state.darkModeEnabled ? colors.off_white:colors.off_black}}>Animation Style</div>
             </div>
