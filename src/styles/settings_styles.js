@@ -89,7 +89,7 @@ sectionHead: {
   flexDirection: 'row',
   justifyContent: "flex-start",
   alignItems: "flex-start",
-  marginTop: 10,
+  marginTop: 2,
   marginBottom: 6
 },
 close_image: {
@@ -103,7 +103,7 @@ switchRow: {
   justifyContent: "center",
   alignItems: "center",
   height: "auto",
-  marginTop: 10
+  marginTop: 4
 },
 switchContainer: {
   display: 'flex',
@@ -186,13 +186,13 @@ swatchContainer: {
   justifyContent: "center",
   alignItems: "center",
   alignSelf: "stretch",
-  marginTop: line,
+  marginTop: 12,
   marginBottom: config.isPC?10:0,
-  height: config.isPC?line * 6:line * 4,
+  // height: config.isPC?line * 6:line * 4,
 },
 swatch: {
-  width: config.isPC?line * 6:line * 4,
-  height: config.isPC?line * 6:line * 4,
+  width: config.isPC?line * 6:line * 3,
+  height: config.isPC?line * 6:line * 3,
   borderRadius: 5,
   borderColor: colors.black, 
   borderWidth: 1, 
@@ -204,7 +204,8 @@ defaultsButtonContainer: {
   justifyContent: "center",
   alignItems: "center",
   alignSelf: "stretch",
-  height: line * 6,
+  marginTop: 12,
+  // height: line * 6,
 },
 button: {
   display: 'flex',
@@ -222,7 +223,7 @@ button: {
 },
 button_text_white: {
   fontFamily: "Acme",
-  fontSize: convertFont(20),
+  fontSize: convertFont(18),
   color: colors.off_white,
   textAlign: "center",
   userSelect: 'none'

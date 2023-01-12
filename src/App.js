@@ -287,7 +287,18 @@ class App extends Component {
       lettersetContainerWidth: this.lettersetContainer.current.getBoundingClientRect().width,
       scoreContainerHeight: this.scoreContainer.current.getBoundingClientRect().height,
     });
-
+    const showed = window.localStorage.getItem(KEY_ShowedTutorial);
+    if (showed !== null) {
+      const showedBool = (showed === 'true') ? true : false;
+      this.setState({ showedTutScreen1: showedBool, showTutScreen1: !showedBool });
+    } else {
+      try {
+        window.localStorage.setItem(KEY_ShowedTutorial, 'false');
+        this.setState({ showedTutScreen1: false });
+      } catch (error) {
+        window.alert('window.localStorage error: ' + error.message);
+      }
+    }
     const emp = window.localStorage.getItem(KEY_EasyModePref);
     if (emp !== null) {
       const empBool = (emp === 'true')?true:false;
