@@ -1271,13 +1271,13 @@ class App extends Component {
       }, 1500);
     } else if (amt === -1) {
       this.setState({ counterPulseColor: colors.red, score: scr });
-      this.setState({});
       setTimeout(() => {
         this.setState({ counterKey: newKey });
         if (scr <= 0) {
           this.setState({
             clearedLevel: false,
-            endMessage: this.state.endMessageFail,
+            endMessage: "Uh oh, you ran out of points!",
+            endMessageFail: "Uh oh, you ran out of points!"
           });
           this.animateGameFail();
           setTimeout(() => {
