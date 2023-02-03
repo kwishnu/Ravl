@@ -59,7 +59,7 @@ const appStyles = ({ scrWidth, scrHeight }) => {
     messageOuterContainer: {
       display: "flex",
       flex: 1,
-      width: pc ? scrWidth - (widthLeftOrRight - 20) * 2 : scrWidth,
+      width: pc ? scrWidth - (widthLeftOrRight - 20) * 2 :tablet?scrHeight * 9/16: scrWidth,
       marginTop: 60,
       alignItems: 'center',
       justifyContent: 'center',
@@ -73,7 +73,7 @@ const appStyles = ({ scrWidth, scrHeight }) => {
       width: pc || tablet ? scrHeight * 9 / 16 : scrWidth,
       alignItems: 'center',
       justifyContent: 'flex-start',
-      marginLeft: pc || tablet ?30:14,
+      marginLeft: pc || tablet ?20:14,
       backgroundColor: colors.transparent,
     },
     scoreContainer: {

@@ -1,7 +1,7 @@
 const height = window.innerHeight;
 const width = window.innerWidth;
 const TILE_HEIGHT = parseInt((height/17).toPrecision(2));
-const deviceType = width > 1000?"PC":height/width > 1.77?"phone":"tablet";
+const deviceType = width > 1000?"PC":height/width > 1.65?"phone":"tablet";
 const isPC = deviceType === "PC"?true:false;
 const isTablet = deviceType === "tablet"?true:false;
 const isPhone = deviceType === "phone"?true:false;
