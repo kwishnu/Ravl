@@ -1,1614 +1,4 @@
 {
-  "11-04-2022":  {
-    "title" : "Fearsome Four-by Friday!",
-    "description" : "A formidable foursome for your Friday",
-    "words" :
-    [
-      ["TAMENESS" , "QUINTETS" , "DECORATE" , "READABLE" ],
-      [],
-      []
-    ]
-  },
-  "11-05-2022":  {
-    "title" : "A smattering Saturday!",
-    "description" : "A sampler for your Saturday sleuthing",
-    "words" :
-    [
-      ["JOTS", "CAVE", "PAIR", "PROP", "WARE"],
-      ["EMBRYONIC" , "INSULATED" ],
-      ["POUNCES", "HABITAT", "CLOSEST"]
-    ]
-  },
-  "11-06-2022":  {
-    "title" : "Short-stack Sunday!",
-    "description" : "Shorties stacked for your Sunday brunch",
-    "words" :
-    [
-      ["LAZY", "LARK", "PULL", "COMA", "EBBS"],
-      ["LATE", "VOLE", "ARMS", "CAPE", "ACES"],
-      ["ADD", "CUT", "TIE", "BOW", "PUS", "DUO"]
-    ]
-  },
-  "11-07-2022":  {
-    "title" : "Easy-does-it Monday!",
-    "description" : "Start your week with some gimmes",
-    "words" :
-    [
-      ["MEN", "BIB", "YIP"],
-      ["DEAL", "TOWS", "WINE"],
-      ["BEATS", "HONKS", "AUDIO"]
-    ]
-  },
-  "11-08-2022":  {
-    "title" : "Two-fer Tuesday!",
-    "description" : "Two 2-bys for your Tuesday",
-    "words" :
-    [
-      ["MARGINALLY" , "DISCOLORED" ],
-      ["DEPARTURES" , "DISTRESSES" ],
-      []
-    ]
-  },
-  "11-09-2022":  {
-    "title" : "Mid-way Wednesday!",
-    "description" : "Three mid-length mazes for your midweek",
-    "words" :
-    [
-      ["BURNED", "HELPED", "CAMERA"],
-      ["DOORMAN", "GIGGLES", "EXITING"],
-      ["UNHEEDED" , "THOROUGH" , "INVENTED" ]
-    ]
-  },
-  "11-10-2022":  {
-    "title" : "Three-by Thursday!",
-    "description" : "Three 3-by-9s for your Thursday",
-    "words" :
-    [
-      ["EMBEZZLER" , "SPROUTING" , "OVERHANGS" ],
-      ["SURCHARGE" , "NONVERBAL" , "DEPRESSED" ],
-      ["REACHABLE" , "DISTRUSTS" , "DISAVOWED" ]
-    ]
-  },
-  "11-11-2022":  {
-    "title" : "Fearsome Four-by Friday!",
-    "description" : "A formidable foursome for your Friday",
-    "words" :
-    [
-      ["MAJORITY" , "UPLIFTED" , "REGULATE" , "RESEARCH" ],
-      [],
-      []
-    ]
-  },
-  "11-12-2022":  {
-    "title" : "A smattering Saturday!",
-    "description" : "A sampler for your Saturday sleuthing",
-    "words" :
-    [
-      ["GOOF", "PUBS", "DOES", "ERRS", "LONE"],
-      ["HYGIENIST" , "DOLLHOUSE" ],
-      ["BRUSQUE", "REJECTS", "DECADES"]
-    ]
-  },
-  "11-13-2022":  {
-    "title" : "Short-stack Sunday!",
-    "description" : "Shorties stacked for your Sunday brunch",
-    "words" :
-    [
-      ["QUIP", "SAGS", "AHOY", "ODDS", "TIER"],
-      ["VANS", "LIED", "SMOG", "SILT", "BOLT"],
-      ["BIB", "SET", "COP", "NIX", "AMP", "HOT"]
-    ]
-  },
-  "11-14-2022":  {
-    "title" : "Easy-does-it Monday!",
-    "description" : "Start your week with some gimmes",
-    "words" :
-    [
-      ["SOW", "PUT", "RUT"],
-      ["ETCH", "RUTS", "FEND"],
-      ["NASAL", "HANDS", "AWASH"]
-    ]
-  },
-  "11-15-2022":  {
-    "title" : "Two-fer Tuesday!",
-    "description" : "Two 2-bys for your Tuesday",
-    "words" :
-    [
-      ["INFURIATES" , "ANGLICIZED" ],
-      ["BRONCHITIS" , "SCROUNGING" ],
-      []
-    ]
-  },
-  "11-16-2022":  {
-    "title" : "Mid-way Wednesday!",
-    "description" : "Three mid-length mazes for your midweek",
-    "words" :
-    [
-      ["METRIC", "PRAISE", "GENTRY"],
-      ["MATRONS", "NOXIOUS", "SUTURED"],
-      ["BROWSING" , "MOMENTUM" , "PERILOUS" ]
-    ]
-  },
-  "11-17-2022":  {
-    "title" : "Three-by Thursday!",
-    "description" : "Three 3-by-9s for your Thursday",
-    "words" :
-    [
-      ["SNOWBOARD" , "FLASHBACK" , "SANDSTONE" ],
-      ["REIGNITED" , "CONFUSING" , "GUIDEBOOK" ],
-      ["PLAUSIBLE" , "NOSTALGIC" , "MICROBIAL" ]
-    ]
-  },
-  "11-18-2022":  {
-    "title" : "Fearsome Four-by Friday!",
-    "description" : "A formidable foursome for your Friday",
-    "words" :
-    [
-      ["PASSPORT" , "DEATHBED" , "BLUFFING" , "NOVELIST" ],
-      [],
-      []
-    ]
-  },
-  "11-19-2022":  {
-    "title" : "A smattering Saturday!",
-    "description" : "A sampler for your Saturday sleuthing",
-    "words" :
-    [
-      ["MATE", "GEAR", "KNOT", "LAGS", "HONE"],
-      ["CONTORTED" , "PEPPERING" ],
-      ["MEASURE", "HERMITS", "STINGER"]
-    ]
-  },
-  "11-20-2022":  {
-    "title" : "Short-stack Sunday!",
-    "description" : "Shorties stacked for your Sunday brunch",
-    "words" :
-    [
-      ["HALO", "ACHE", "EASE", "PULL", "ROLL"],
-      ["DUNE", "MINT", "REAR", "TURF", "DUDE"],
-      ["DOE", "USE", "ICY", "LAX", "ANY", "BOP"]
-    ]
-  },
-  "11-21-2022":  {
-    "title" : "Easy-does-it Monday!",
-    "description" : "Start your week with some gimmes",
-    "words" :
-    [
-      ["CUP", "ROD", "JUT"],
-      ["VARY", "INFO", "TOAD"],
-      ["RESIN", "VOWEL", "BOOST"]
-    ]
-  },
-  "11-22-2022":  {
-    "title" : "Two-fer Tuesday!",
-    "description" : "Two 2-bys for your Tuesday",
-    "words" :
-    [
-      ["ADULTEROUS" , "BALUSTRADE" ],
-      ["CARDIOLOGY" , "LANDSCAPER" ],
-      []
-    ]
-  },
-  "11-23-2022":  {
-    "title" : "Mid-way Wednesday!",
-    "description" : "Three mid-length mazes for your midweek",
-    "words" :
-    [
-      ["UNPAID", "UNABLE", "BASKET"],
-      ["GABBING", "INFANCY", "GARLAND"],
-      ["REGATTAS" , "TRANQUIL" , "RECEIVED" ]
-    ]
-  },
-  "11-24-2022":  {
-    "title" : "Three-by Thursday!",
-    "description" : "Three 3-by-9s for your Thursday",
-    "words" :
-    [
-      ["TIMELINES" , "EXCAVATOR" , "VIBRATION" ],
-      ["TINCTURES" , "EXPLOSIVE" , "DESCALING" ],
-      ["FRESHENER" , "PERSUADED" , "TORMENTOR" ]
-    ]
-  },
-  "11-25-2022":  {
-    "title" : "Fearsome Four-by Friday!",
-    "description" : "A formidable foursome for your Friday",
-    "words" :
-    [
-      ["VANGUARD" , "HUDDLING" , "DRILLING" , "ABORTING" ],
-      [],
-      []
-    ]
-  },
-  "11-26-2022":  {
-    "title" : "A smattering Saturday!",
-    "description" : "A sampler for your Saturday sleuthing",
-    "words" :
-    [
-      ["TARS", "BIAS", "LOOK", "JAMS", "LENS"],
-      ["ENROLLING" , "EMPIRICAL" ],
-      ["MUSKETS", "RAFTERS", "CLATTER"]
-    ]
-  },
-  "11-27-2022":  {
-    "title" : "Short-stack Sunday!",
-    "description" : "Shorties stacked for your Sunday brunch",
-    "words" :
-    [
-      ["HUSK", "DOOM", "WINS", "VOWS", "CLOY"],
-      ["MEAT", "WHEN", "CAVE", "FUSS", "BARK"],
-      ["JOT", "TAD", "COY", "WET", "LIP", "MAT"]
-    ]
-  },
-  "11-28-2022":  {
-    "title" : "Easy-does-it Monday!",
-    "description" : "Start your week with some gimmes",
-    "words" :
-    [
-      ["JAW", "NAY", "JIB"],
-      ["BUST", "CALM", "PUSH"],
-      ["CREST", "UNITS", "BELOW"]
-    ]
-  },
-  "11-29-2022":  {
-    "title" : "Two-fer Tuesday!",
-    "description" : "Two 2-bys for your Tuesday",
-    "words" :
-    [
-      ["WONDERMENT" , "STEELWORKS" ],
-      ["AFFILIATES" , "SUPERSTARS" ],
-      []
-    ]
-  },
-  "11-30-2022":  {
-    "title" : "Mid-way Wednesday!",
-    "description" : "Three mid-length mazes for your midweek",
-    "words" :
-    [
-      ["HEREBY", "PLURAL", "BROKER"],
-      ["COVETED", "CLEANER", "LOWERED"],
-      ["PURIFIED" , "FAMILIAR" , "DREAMING" ]
-    ]
-  },
-  "12-01-2022":  {
-    "title" : "Three-by Thursday!",
-    "description" : "Three 3-by-9s for your Thursday",
-    "words" :
-    [
-      ["DECADENCE" , "BASICALLY" , "UNROLLING" ],
-      ["SPRAWLING" , "BULLDOZED" , "BRIGHTEST" ],
-      ["MERRIMENT" , "ZEITGEIST" , "THROWAWAY" ]
-    ]
-  },
-  "12-02-2022":  {
-    "title" : "Fearsome Four-by Friday!",
-    "description" : "A formidable foursome for your Friday",
-    "words" :
-    [
-      ["MULBERRY" , "THUDDING" , "TRUCKERS" , "SPELLING" ],
-      [],
-      []
-    ]
-  },
-  "12-03-2022":  {
-    "title" : "A smattering Saturday!",
-    "description" : "A sampler for your Saturday sleuthing",
-    "words" :
-    [
-      ["RAIL", "BURN", "NIPS", "AVOW", "ROLL"],
-      ["AMPLIFIES" , "ANOMALOUS" ],
-      ["STAINED", "CLAIMED", "PRODDED"]
-    ]
-  },
-  "12-04-2022":  {
-    "title" : "Short-stack Sunday!",
-    "description" : "Shorties stacked for your Sunday brunch",
-    "words" :
-    [
-      ["VOID", "EARS", "VASE", "MITT", "HAGS"],
-      ["PLUM", "ALMS", "HUGE", "TALL", "BAWL"],
-      ["CRY", "HAM", "HEX", "CRY", "FEZ", "MOP"]
-    ]
-  },
-  "12-05-2022":  {
-    "title" : "Easy-does-it Monday!",
-    "description" : "Start your week with some gimmes",
-    "words" :
-    [
-      ["BED", "HOP", "BAG"],
-      ["BORE", "FLAT", "BURS"],
-      ["VISIT", "NESTS", "TWIRL"]
-    ]
-  },
-  "12-06-2022":  {
-    "title" : "Two-fer Tuesday!",
-    "description" : "Two 2-bys for your Tuesday",
-    "words" :
-    [
-      ["WOODPECKER" , "OPPRESSION" ],
-      ["CAFETERIAS" , "SEPARATELY" ],
-      []
-    ]
-  },
-  "12-07-2022":  {
-    "title" : "Mid-way Wednesday!",
-    "description" : "Three mid-length mazes for your midweek",
-    "words" :
-    [
-      ["PRIMES", "FILMED", "IMMUNE"],
-      ["BANDAGE", "GLIDERS", "ADMIRAL"],
-      ["NUTSHELL" , "CONFIDED" , "MONETIZE" ]
-    ]
-  },
-  "12-08-2022":  {
-    "title" : "Three-by Thursday!",
-    "description" : "Three 3-by-9s for your Thursday",
-    "words" :
-    [
-      ["CLASSROOM" , "FACTORING" , "TECHNICAL" ],
-      ["CHRISTENS" , "ATHEISTIC" , "REQUIRING" ],
-      ["PROCURING" , "EXCLUSION" , "RELIGIOUS" ]
-    ]
-  },
-  "12-09-2022":  {
-    "title" : "Fearsome Four-by Friday!",
-    "description" : "A formidable foursome for your Friday",
-    "words" :
-    [
-      ["HAPPENED" , "REVALUED" , "CHECKOUT" , "UNSEEMLY" ],
-      [],
-      []
-    ]
-  },
-  "12-10-2022":  {
-    "title" : "A smattering Saturday!",
-    "description" : "A sampler for your Saturday sleuthing",
-    "words" :
-    [
-      ["OWED", "SKIS", "BEAT", "HEAT", "SOUL"],
-      ["ENDANGERS" , "FOOTHILLS" ],
-      ["PANDERS", "GEARING", "BEETLES"]
-    ]
-  },
-  "12-11-2022":  {
-    "title" : "Short-stack Sunday!",
-    "description" : "Shorties stacked for your Sunday brunch",
-    "words" :
-    [
-      ["TOMB", "OMEN", "DILL", "TORE", "RUNG"],
-      ["FURL", "AIDS", "CORE", "RIDE", "BRIM"],
-      ["LOB", "EVE", "RAW", "DIP", "COG", "ASP"]
-    ]
-  },
-  "12-12-2022":  {
-    "title" : "Easy-does-it Monday!",
-    "description" : "Start your week with some gimmes",
-    "words" :
-    [
-      ["DUB", "TUX", "NOB"],
-      ["FARM", "CURS", "HEAR"],
-      ["POWER", "REEDS", "RAZOR"]
-    ]
-  },
-  "12-13-2022":  {
-    "title" : "Two-fer Tuesday!",
-    "description" : "Two 2-bys for your Tuesday",
-    "words" :
-    [
-      ["PERMISSIVE" , "WORTHWHILE" ],
-      ["YARDSTICKS" , "CONQUERING" ],
-      []
-    ]
-  },
-  "12-14-2022":  {
-    "title" : "Mid-way Wednesday!",
-    "description" : "Three mid-length mazes for your midweek",
-    "words" :
-    [
-      ["ENZYME", "STEEPS", "TROUGH"],
-      ["ROMAINE", "DOLLARS", "WREATHS"],
-      ["MELODIES" , "SQUISHED" , "SPEAKING" ]
-    ]
-  },
-  "12-15-2022":  {
-    "title" : "Three-by Thursday!",
-    "description" : "Three 3-by-9s for your Thursday",
-    "words" :
-    [
-      ["TRUCKLOAD" , "WORRISOME" , "REFRESHED" ],
-      ["DISCOVERS" , "ADULTHOOD" , "SCRIBBLED" ],
-      ["IGNORANCE" , "FOOTSTOOL" , "ARMAMENTS" ]
-    ]
-  },
-  "12-16-2022":  {
-    "title" : "Fearsome Four-by Friday!",
-    "description" : "A formidable foursome for your Friday",
-    "words" :
-    [
-      ["STAIRWAY" , "DATABANK" , "SCALDING" , "BANKRUPT" ],
-      [],
-      []
-    ]
-  },
-  "12-17-2022":  {
-    "title" : "A smattering Saturday!",
-    "description" : "A sampler for your Saturday sleuthing",
-    "words" :
-    [
-      ["JARS", "ANTE", "BRAG", "TOLL", "LIKE"],
-      ["VAPORIZER" , "MENTIONED" ],
-      ["CUISINE", "BRAVING", "FEARFUL"]
-    ]
-  },
-  "12-18-2022":  {
-    "title" : "Short-stack Sunday!",
-    "description" : "Shorties stacked for your Sunday brunch",
-    "words" :
-    [
-      ["AIRS", "WIRE", "JACK", "MEME", "OPAL"],
-      ["LIST", "LANE", "DISK", "PAID", "BEAD"],
-      ["HEN", "YET", "NOW", "MID", "VEX", "GUT"]
-    ]
-  },
-  "12-19-2022":  {
-    "title" : "Easy-does-it Monday!",
-    "description" : "Start your week with some gimmes",
-    "words" :
-    [
-      ["TOE", "FAB", "GAD"],
-      ["NIBS", "CLOD", "SEER"],
-      ["HYPES", "DANDY", "HATER"]
-    ]
-  },
-  "12-20-2022":  {
-    "title" : "Two-fer Tuesday!",
-    "description" : "Two 2-bys for your Tuesday",
-    "words" :
-    [
-      ["TANGENTIAL" , "POLLINATED" ],
-      ["GRASSROOTS" , "LETTERHEAD" ],
-      []
-    ]
-  },
-  "12-21-2022":  {
-    "title" : "Mid-way Wednesday!",
-    "description" : "Three mid-length mazes for your midweek",
-    "words" :
-    [
-      ["NOZZLE", "FOLDED", "PLENTY"],
-      ["SHOUTED", "PLEATED", "PROVING"],
-      ["DISTRACT" , "NUISANCE" , "CROAKING" ]
-    ]
-  },
-  "12-22-2022":  {
-    "title" : "Three-by Thursday!",
-    "description" : "Three 3-by-9s for your Thursday",
-    "words" :
-    [
-      ["SKEPTICAL" , "STOREROOM" , "OCCUPANCY" ],
-      ["PLATEAUED" , "PANTOMIME" , "NEEDINESS" ],
-      ["QUICKNESS" , "INTERFACE" , "HEXAGONAL" ]
-    ]
-  },
-  "12-23-2022":  {
-    "title" : "Fearsome Four-by Friday!",
-    "description" : "A formidable foursome for your Friday",
-    "words" :
-    [
-      ["MEMORIES" , "VASTNESS" , "BUSYBODY" , "BAGUETTE" ],
-      [],
-      []
-    ]
-  },
-  "12-24-2022":  {
-    "title" : "A smattering Saturday!",
-    "description" : "A sampler for your Saturday sleuthing",
-    "words" :
-    [
-      ["DULY", "THAN", "LONG", "CUSP", "DUPE"],
-      ["MUTTERING" , "DESIGNING" ],
-      ["CHILLED", "RAUNCHY", "SOLOIST"]
-    ]
-  },
-  "12-25-2022":  {
-    "title" : "Short-stack Sunday!",
-    "description" : "Shorties stacked for your Sunday brunch",
-    "words" :
-    [
-      ["BRIG", "RILE", "BEAM", "TINE", "SEEM"],
-      ["CURD", "WEAN", "TIDY", "PEEL", "DIVE"],
-      ["PAT", "JIG", "JUT", "AIL", "LEA", "COT"]
-    ]
-  },
-  "12-26-2022":  {
-    "title" : "Easy-does-it Monday!",
-    "description" : "Start your week with some gimmes",
-    "words" :
-    [
-      ["TIC", "LET", "WAS"],
-      ["LICK", "CAST", "HOOP"],
-      ["GOWNS", "LOOSE", "BLOOD"]
-    ]
-  },
-  "12-27-2022":  {
-    "title" : "Two-fer Tuesday!",
-    "description" : "Two 2-bys for your Tuesday",
-    "words" :
-    [
-      ["REPERTOIRE" , "ENCOURAGED" ],
-      ["LABORATORY" , "INSIGHTFUL" ],
-      []
-    ]
-  },
-  "12-28-2022":  {
-    "title" : "Mid-way Wednesday!",
-    "description" : "Three mid-length mazes for your midweek",
-    "words" :
-    [
-      ["SACKED", "FRIZZY", "BATTER"],
-      ["BLANDLY", "ABREAST", "IMPLIED"],
-      ["THRIVING" , "MISTRIAL" , "PROMISED" ]
-    ]
-  },
-  "12-29-2022":  {
-    "title" : "Three-by Thursday!",
-    "description" : "Three 3-by-9s for your Thursday",
-    "words" :
-    [
-      ["TRICKIEST" , "DOWNRIGHT" , "INTEGRITY" ],
-      ["PRESENTED" , "EXCELLING" , "EYELASHES" ],
-      ["HEARTACHE" , "SCREAMING" , "GREATNESS" ]
-    ]
-  },
-  "12-30-2022":  {
-    "title" : "Fearsome Four-by Friday!",
-    "description" : "A formidable foursome for your Friday",
-    "words" :
-    [
-      ["LAUNCHED" , "PROFITED" , "BEARINGS" , "PRODIGAL" ],
-      [],
-      []
-    ]
-  },
-  "12-31-2022":  {
-    "title" : "A smattering Saturday!",
-    "description" : "A sampler for your Saturday sleuthing",
-    "words" :
-    [
-      ["READ", "DEWY", "DOLL", "REDO", "QUAY"],
-      ["FORELIMBS" , "NONVERBAL" ],
-      ["SEARING", "ADJUNCT", "STRIPES"]
-    ]
-  },
-  "01-01-2023":  {
-    "title" : "Short-stack Sunday!",
-    "description" : "Shorties stacked for your Sunday brunch",
-    "words" :
-    [
-      ["KNEW", "ICED", "TWIN", "JUNK", "ODDS"],
-      ["HENS", "LEAF", "MIND", "OATS", "CRAB"],
-      ["DOC", "NOB", "PAT", "ARK", "JOB", "BIG"]
-    ]
-  },
-  "01-02-2023":  {
-    "title" : "Easy-does-it Monday!",
-    "description" : "Start your week with some gimmes",
-    "words" :
-    [
-      ["APE", "BOA", "FRO"],
-      ["HALE", "SMOG", "SOPS"],
-      ["GRASS", "BEGAN", "PITCH"]
-    ]
-  },
-  "01-03-2023":  {
-    "title" : "Two-fer Tuesday!",
-    "description" : "Two 2-bys for your Tuesday",
-    "words" :
-    [
-      ["STEREOTYPE" , "STINGINESS" ],
-      ["ELECTORATE" , "RESURFACED" ],
-      []
-    ]
-  },
-  "01-04-2023":  {
-    "title" : "Mid-way Wednesday!",
-    "description" : "Three mid-length mazes for your midweek",
-    "words" :
-    [
-      ["MUZZLE", "WISDOM", "TANGOS"],
-      ["TARIFFS", "GNOCCHI", "WEAVERS"],
-      ["CUSHIONS" , "GRASPING" , "SUITABLY" ]
-    ]
-  },
-  "01-05-2023":  {
-    "title" : "Three-by Thursday!",
-    "description" : "Three 3-by-9s for your Thursday",
-    "words" :
-    [
-      ["SICKENING" , "GENEALOGY" , "THEORETIC" ],
-      ["UNLOCKING" , "AUDACIOUS" , "INTRIGUES" ],
-      ["INTERLINK" , "BOMBASTIC" , "MOLECULES" ]
-    ]
-  },
-  "01-06-2023":  {
-    "title" : "Fearsome Four-by Friday!",
-    "description" : "A formidable foursome for your Friday",
-    "words" :
-    [
-      ["CLUTTERS" , "DAWDLING" , "OVERHEAD" , "EMULATED" ],
-      [],
-      []
-    ]
-  },
-  "01-07-2023":  {
-    "title" : "A smattering Saturday!",
-    "description" : "A sampler for your Saturday sleuthing",
-    "words" :
-    [
-      ["JOWL", "KIWI", "PALL", "BLED", "PEWS"],
-      ["ASSURANCE" , "STICKIEST" ],
-      ["SITTERS", "RESIDES", "LOCKING"]
-    ]
-  },
-  "01-08-2023":  {
-    "title" : "Short-stack Sunday!",
-    "description" : "Shorties stacked for your Sunday brunch",
-    "words" :
-    [
-      ["DEAR", "SIPS", "BANE", "PARE", "GAZE"],
-      ["RANG", "FAWN", "BERG", "EDDY", "DAMS"],
-      ["CON", "FLU", "WEE", "JOT", "TAP", "RIP"]
-    ]
-  },
-  "01-09-2023":  {
-    "title" : "Easy-does-it Monday!",
-    "description" : "Start your week with some gimmes",
-    "words" :
-    [
-      ["UPS", "NOW", "LIT"],
-      ["FURL", "PULL", "BEAD"],
-      ["COBRA", "DRESS", "MIDGE"]
-    ]
-  },
-  "01-10-2023":  {
-    "title" : "Two-fer Tuesday!",
-    "description" : "Two 2-bys for your Tuesday",
-    "words" :
-    [
-      ["HYSTERICAL" , "DISTANCING" ],
-      ["EVERYTHING" , "EXTROVERTS" ],
-      []
-    ]
-  },
-  "01-11-2023":  {
-    "title" : "Mid-way Wednesday!",
-    "description" : "Three mid-length mazes for your midweek",
-    "words" :
-    [
-      ["COLDER", "NESTED", "BACKED"],
-      ["ATTACKS", "SNACKED", "PROWLED"],
-      ["CHERUBIC" , "ADHERENT" , "SNOBBISH" ]
-    ]
-  },
-  "01-12-2023":  {
-    "title" : "Three-by Thursday!",
-    "description" : "Three 3-by-9s for your Thursday",
-    "words" :
-    [
-      ["BUTTERFAT" , "HEADPHONE" , "DISCOVERY" ],
-      ["BREATHERS" , "WEEKNIGHT" , "TRANSFORM" ],
-      ["COMBINING" , "CHRISTENS" , "MEDICATED" ]
-    ]
-  },
-  "01-13-2023":  {
-    "title" : "Fearsome Four-by Friday!",
-    "description" : "A formidable foursome for your Friday",
-    "words" :
-    [
-      ["CHARADES" , "CREVICES" , "TASTIEST" , "CARRYING" ],
-      [],
-      []
-    ]
-  },
-  "01-14-2023":  {
-    "title" : "A smattering Saturday!",
-    "description" : "A sampler for your Saturday sleuthing",
-    "words" :
-    [
-      ["DOOM", "FIGS", "HUNG", "SWIG", "CHIP"],
-      ["PATTERING" , "SNAKELIKE" ],
-      ["BOXCARS", "TORQUED", "HAUGHTY"]
-    ]
-  },
-  "01-15-2023":  {
-    "title" : "Short-stack Sunday!",
-    "description" : "Shorties stacked for your Sunday brunch",
-    "words" :
-    [
-      ["WIDE", "RUDE", "BOAR", "CANS", "BUDS"],
-      ["EVES", "BUTS", "SKEW", "RAYS", "DEFY"],
-      ["BIG", "LAB", "BUT", "BAD", "MOW", "BAT"]
-    ]
-  },
-  "01-16-2023":  {
-    "title" : "Easy-does-it Monday!",
-    "description" : "Start your week with some gimmes",
-    "words" :
-    [
-      ["END", "BED", "HER"],
-      ["TOPS", "CAME", "BOUT"],
-      ["HYPES", "ANNUL", "GAFFE"]
-    ]
-  },
-  "01-17-2023":  {
-    "title" : "Two-fer Tuesday!",
-    "description" : "Two 2-bys for your Tuesday",
-    "words" :
-    [
-      ["RESIDENCES" , "PARAPHRASE" ],
-      ["WIDESCREEN" , "MOONSTRUCK" ],
-      []
-    ]
-  },
-  "01-18-2023":  {
-    "title" : "Mid-way Wednesday!",
-    "description" : "Three mid-length mazes for your midweek",
-    "words" :
-    [
-      ["MODELS", "DANDER", "RIVALS"],
-      ["CORRALS", "VIOLENT", "ELEVATE"],
-      ["FILLINGS" , "TAILWIND" , "SERRATED" ]
-    ]
-  },
-  "01-19-2023":  {
-    "title" : "Three-by Thursday!",
-    "description" : "Three 3-by-9s for your Thursday",
-    "words" :
-    [
-      ["ARDUOUSLY" , "SUSPICION" , "HAYSTACKS" ],
-      ["FREQUENCY" , "MARTYRDOM" , "COMMANDED" ],
-      ["APPOINTED" , "REPENTING" , "COINCIDED" ]
-    ]
-  },
-  "01-20-2023":  {
-    "title" : "Fearsome Four-by Friday!",
-    "description" : "A formidable foursome for your Friday",
-    "words" :
-    [
-      ["FAIRWAYS" , "DIGITIZE" , "AUDACITY" , "FAIRNESS" ],
-      [],
-      []
-    ]
-  },
-  "01-21-2023":  {
-    "title" : "A smattering Saturday!",
-    "description" : "A sampler for your Saturday sleuthing",
-    "words" :
-    [
-      ["RIPE", "RAYS", "AXED", "FLIP", "TEST"],
-      ["ESTIMATES" , "ASSERTION" ],
-      ["SCOPING", "FIZZLES", "PEERING"]
-    ]
-  },
-  "01-22-2023":  {
-    "title" : "Short-stack Sunday!",
-    "description" : "Shorties stacked for your Sunday brunch",
-    "words" :
-    [
-      ["CARE", "DROP", "CORN", "MAIN", "HALF"],
-      ["FORT", "COZY", "SINK", "DISC", "BARE"],
-      ["JOB", "ANY", "LEG", "KIT", "ROT", "NAG"]
-    ]
-  },
-  "01-23-2023":  {
-    "title" : "Easy-does-it Monday!",
-    "description" : "Start your week with some gimmes",
-    "words" :
-    [
-      ["EVE", "YAP", "NOW"],
-      ["ONCE", "FACT", "RINK"],
-      ["LLAMA", "CRICK", "LEEKS"]
-    ]
-  },
-  "01-24-2023":  {
-    "title" : "Two-fer Tuesday!",
-    "description" : "Two 2-bys for your Tuesday",
-    "words" :
-    [
-      ["ACCIDENTAL" , "CHESSBOARD" ],
-      ["POLYMERIZE" , "IMPOUNDING" ],
-      []
-    ]
-  },
-  "01-25-2023":  {
-    "title" : "Mid-way Wednesday!",
-    "description" : "Three mid-length mazes for your midweek",
-    "words" :
-    [
-      ["BADGER", "STENCH", "YEARLY"],
-      ["QUICKER", "DEFORMS", "DOUBLED"],
-      ["BUTCHERY" , "EXPELLED" , "PERIODIC" ]
-    ]
-  },
-  "01-26-2023":  {
-    "title" : "Three-by Thursday!",
-    "description" : "Three 3-by-9s for your Thursday",
-    "words" :
-    [
-      ["PROSPERED" , "HOMEOWNER" , "WICKEDEST" ],
-      ["OBSESSIVE" , "ARTHRITIC" , "SWIFTNESS" ],
-      ["SURPRISES" , "REALIZING" , "COPYRIGHT" ]
-    ]
-  },
-  "01-27-2023":  {
-    "title" : "Fearsome Four-by Friday!",
-    "description" : "A formidable foursome for your Friday",
-    "words" :
-    [
-      ["MINGLING" , "MISHMASH" , "DISSECTS" , "ANSWERED" ],
-      [],
-      []
-    ]
-  },
-  "01-28-2023":  {
-    "title" : "A smattering Saturday!",
-    "description" : "A sampler for your Saturday sleuthing",
-    "words" :
-    [
-      ["BETS", "CRAG", "RODE", "GUST", "HOES"],
-      ["RETRIEVER" , "WATERBIRD" ],
-      ["AWNINGS", "FRINGED", "COFFERS"]
-    ]
-  },
-  "01-29-2023":  {
-    "title" : "Short-stack Sunday!",
-    "description" : "Shorties stacked for your Sunday brunch",
-    "words" :
-    [
-      ["LION", "GRIN", "COOP", "GLAD", "LAVA"],
-      ["GALA", "FILM", "DROP", "PANT", "BERG"],
-      ["ORB", "FOB", "DIP", "OAR", "POD", "PAT"]
-    ]
-  },
-  "01-30-2023":  {
-    "title" : "Easy-does-it Monday!",
-    "description" : "Start your week with some gimmes",
-    "words" :
-    [
-      ["NUB", "FOG", "SAY"],
-      ["SPAN", "OMEN", "CALL"],
-      ["CHAFE", "AIDES", "SHUNS"]
-    ]
-  },
-  "01-31-2023":  {
-    "title" : "Two-fer Tuesday!",
-    "description" : "Two 2-bys for your Tuesday",
-    "words" :
-    [
-      ["SLEEVELESS" , "VIEWPOINTS" ],
-      ["STEELWORKS" , "STIMULATES" ],
-      []
-    ]
-  },
-  "02-01-2023":  {
-    "title" : "Mid-way Wednesday!",
-    "description" : "Three mid-length mazes for your midweek",
-    "words" :
-    [
-      ["GUZZLE", "GLITCH", "NUMBLY"],
-      ["ENVIOUS", "DERAILS", "INSTANT"],
-      ["COOKOUTS" , "SWOOPING" , "MEMBRANE" ]
-    ]
-  },
-  "02-02-2023":  {
-    "title" : "Three-by Thursday!",
-    "description" : "Three 3-by-9s for your Thursday",
-    "words" :
-    [
-      ["HAIRSPRAY" , "FRAGMENTS" , "THRILLERS" ],
-      ["ENUMERATE" , "TOOTHLESS" , "ALLOWANCE" ],
-      ["HARASSING" , "SANDPIPER" , "VARNISHED" ]
-    ]
-  },
-  "02-03-2023":  {
-    "title" : "Fearsome Four-by Friday!",
-    "description" : "A formidable foursome for your Friday",
-    "words" :
-    [
-      ["BOATYARD" , "PROHIBIT" , "RESUMING" , "BROWBEAT" ],
-      [],
-      []
-    ]
-  },
-  "02-04-2023":  {
-    "title" : "A smattering Saturday!",
-    "description" : "A sampler for your Saturday sleuthing",
-    "words" :
-    [
-      ["PIES", "EKES", "MEAN", "MINK", "HARM"],
-      ["DEMARCATE" , "CLINICIAN" ],
-      ["MISSING", "PITIFUL", "FORBIDS"]
-    ]
-  },
-  "02-05-2023":  {
-    "title" : "Short-stack Sunday!",
-    "description" : "Shorties stacked for your Sunday brunch",
-    "words" :
-    [
-      ["INKS", "GUTS", "DUTY", "TINT", "BILL"],
-      ["ALMS", "WINK", "COAL", "LIME", "DIPS"],
-      ["BET", "VIM", "ICY", "VET", "FIR", "DON"]
-    ]
-  },
-  "02-06-2023":  {
-    "title" : "Easy-does-it Monday!",
-    "description" : "Start your week with some gimmes",
-    "words" :
-    [
-      ["BOP", "NUT", "AID"],
-      ["TENS", "THEY", "DARN"],
-      ["CAMEO", "EVADE", "ROBED"]
-    ]
-  },
-  "02-07-2023":  {
-    "title" : "Two-fer Tuesday!",
-    "description" : "Two 2-bys for your Tuesday",
-    "words" :
-    [
-      ["EXCAVATING" , "REPEATEDLY" ],
-      ["PREVIOUSLY" , "BENCHMARKS" ],
-      []
-    ]
-  },
-  "02-08-2023":  {
-    "title" : "Mid-way Wednesday!",
-    "description" : "Three mid-length mazes for your midweek",
-    "words" :
-    [
-      ["WETTER", "SAUCES", "VERSES"],
-      ["REDOING", "ACADEMY", "IMPERIL"],
-      ["TROTTING" , "PRESSING" , "CENSORED" ]
-    ]
-  },
-  "02-09-2023":  {
-    "title" : "Three-by Thursday!",
-    "description" : "Three 3-by-9s for your Thursday",
-    "words" :
-    [
-      ["EXCEEDING" , "REVERENCE" , "WINTERIZE" ],
-      ["UPLIFTING" , "COMPOSERS" , "UNWELCOME" ],
-      ["ALLOTTING" , "REPENTANT" , "SPLINTERS" ]
-    ]
-  },
-  "02-10-2023":  {
-    "title" : "Fearsome Four-by Friday!",
-    "description" : "A formidable foursome for your Friday",
-    "words" :
-    [
-      ["PENGUINS" , "DEMOTING" , "CIVILITY" , "BREADBOX" ],
-      [],
-      []
-    ]
-  },
-  "02-11-2023":  {
-    "title" : "A smattering Saturday!",
-    "description" : "A sampler for your Saturday sleuthing",
-    "words" :
-    [
-      ["LOUD", "MIST", "SKIT", "LATE", "DUNG"],
-      ["DIAPHRAGM" , "WATERFOWL" ],
-      ["COMICAL", "RIVALED", "DISTANT"]
-    ]
-  },
-  "02-12-2023":  {
-    "title" : "Short-stack Sunday!",
-    "description" : "Shorties stacked for your Sunday brunch",
-    "words" :
-    [
-      ["FILM", "BASS", "LOWS", "BABY", "CHAP"],
-      ["DELL", "IDEA", "KELP", "HACK", "COBS"],
-      ["WIN", "FIT", "EYE", "TIC", "VAT", "ALE"]
-    ]
-  },
-  "02-13-2023":  {
-    "title" : "Easy-does-it Monday!",
-    "description" : "Start your week with some gimmes",
-    "words" :
-    [
-      ["CUE", "EBB", "YET"],
-      ["LEAP", "CELL", "INCH"],
-      ["UNION", "SWUNG", "DICEY"]
-    ]
-  },
-  "02-14-2023":  {
-    "title" : "Two-fer Tuesday!",
-    "description" : "Two 2-bys for your Tuesday",
-    "words" :
-    [
-      ["HIGHLIGHTS" , "UNCHANGING" ],
-      ["MATTRESSES" , "CULTURALLY" ],
-      []
-    ]
-  },
-  "02-15-2023":  {
-    "title" : "Mid-way Wednesday!",
-    "description" : "Three mid-length mazes for your midweek",
-    "words" :
-    [
-      ["REGGAE", "REDACT", "WEBBED"],
-      ["MASTERY", "INVERTS", "PROXIES"],
-      ["TANGIBLY" , "PLUGGING" , "THICKETS" ]
-    ]
-  },
-  "02-16-2023":  {
-    "title" : "Three-by Thursday!",
-    "description" : "Three 3-by-9s for your Thursday",
-    "words" :
-    [
-      ["THANKLESS" , "MESSAGING" , "HEADLINES" ],
-      ["COMPANIES" , "SWORDFISH" , "PARADIGMS" ],
-      ["CLIPPINGS" , "DECLINING" , "ECOLOGIST" ]
-    ]
-  },
-  "02-17-2023":  {
-    "title" : "Fearsome Four-by Friday!",
-    "description" : "A formidable foursome for your Friday",
-    "words" :
-    [
-      ["THRIVING" , "MUTILATE" , "CROCKERY" , "AVERAGES" ],
-      [],
-      []
-    ]
-  },
-  "02-18-2023":  {
-    "title" : "A smattering Saturday!",
-    "description" : "A sampler for your Saturday sleuthing",
-    "words" :
-    [
-      ["ROLL", "CURS", "FACE", "CAKE", "TASK"],
-      ["CAPTIONED" , "PRIMARIES" ],
-      ["SINGING", "REMOVES", "DOORMAN"]
-    ]
-  },
-  "02-19-2023":  {
-    "title" : "Short-stack Sunday!",
-    "description" : "Shorties stacked for your Sunday brunch",
-    "words" :
-    [
-      ["TUGS", "DUES", "PUCE", "TICS", "YARN"],
-      ["SALE", "SLAP", "DABS", "ARKS", "BRIE"],
-      ["EWE", "GEL", "JAY", "BIB", "WON", "MAP"]
-    ]
-  },
-  "02-20-2023":  {
-    "title" : "Easy-does-it Monday!",
-    "description" : "Start your week with some gimmes",
-    "words" :
-    [
-      ["FUN", "PUB", "ADD"],
-      ["BUNS", "ARTS", "WERE"],
-      ["ACHED", "PHOTO", "VISIT"]
-    ]
-  },
-  "02-21-2023":  {
-    "title" : "Two-fer Tuesday!",
-    "description" : "Two 2-bys for your Tuesday",
-    "words" :
-    [
-      ["SCIENTISTS" , "DRUGSTORES" ],
-      ["FULFILMENT" , "SORORITIES" ],
-      []
-    ]
-  },
-  "02-22-2023":  {
-    "title" : "Mid-way Wednesday!",
-    "description" : "Three mid-length mazes for your midweek",
-    "words" :
-    [
-      ["SHIRTS", "WILTED", "BLOCKS"],
-      ["CHIMNEY", "DISCERN", "JANITOR"],
-      ["TRAINING" , "CONDUITS" , "RESIDUAL" ]
-    ]
-  },
-  "02-23-2023":  {
-    "title" : "Three-by Thursday!",
-    "description" : "Three 3-by-9s for your Thursday",
-    "words" :
-    [
-      ["COMFORTER" , "IRRITATED" , "LIMITLESS" ],
-      ["REPUTABLE" , "MOONBEAMS" , "SQUIRTING" ],
-      ["SHRUGGING" , "GROVELING" , "REGRESSED" ]
-    ]
-  },
-  "02-24-2023":  {
-    "title" : "Fearsome Four-by Friday!",
-    "description" : "A formidable foursome for your Friday",
-    "words" :
-    [
-      ["COLONIZE" , "CHANTING" , "DWINDLES" , "SHIPYARD" ],
-      [],
-      []
-    ]
-  },
-  "02-25-2023":  {
-    "title" : "A smattering Saturday!",
-    "description" : "A sampler for your Saturday sleuthing",
-    "words" :
-    [
-      ["WADS", "SONG", "PACT", "DUDS", "WASH"],
-      ["DESIGNING" , "ATTENDEES" ],
-      ["TIPTOES", "CRASHED", "INDENTS"]
-    ]
-  },
-  "02-26-2023":  {
-    "title" : "Short-stack Sunday!",
-    "description" : "Shorties stacked for your Sunday brunch",
-    "words" :
-    [
-      ["INKY", "GLUE", "EAST", "HIND", "DABS"],
-      ["DEBT", "DIVA", "OATS", "BARE", "BOXY"],
-      ["NIL", "MAX", "LOT", "NUT", "FIG", "HUE"]
-    ]
-  },
-  "02-27-2023":  {
-    "title" : "Easy-does-it Monday!",
-    "description" : "Start your week with some gimmes",
-    "words" :
-    [
-      ["COY", "SOT", "MET"],
-      ["BODY", "BRIE", "DIME"],
-      ["METRO", "WISER", "AVOID"]
-    ]
-  },
-  "02-28-2023":  {
-    "title" : "Two-fer Tuesday!",
-    "description" : "Two 2-bys for your Tuesday",
-    "words" :
-    [
-      ["DISSECTION" , "MEDICAMENT" ],
-      ["ACTUALIZED" , "MINDEDNESS" ],
-      []
-    ]
-  },
-  "03-01-2023":  {
-    "title" : "Mid-way Wednesday!",
-    "description" : "Three mid-length mazes for your midweek",
-    "words" :
-    [
-      ["REGENT", "CARBON", "SMOKED"],
-      ["VENDING", "WRAPPER", "BALDING"],
-      ["FLOSSING" , "DOMICILE" , "HOISTING" ]
-    ]
-  },
-  "03-02-2023":  {
-    "title" : "Three-by Thursday!",
-    "description" : "Three 3-by-9s for your Thursday",
-    "words" :
-    [
-      ["PARASITES" , "CONTRASTS" , "LOBBYISTS" ],
-      ["OMNIVORES" , "BLUNTNESS" , "UNLEARNED" ],
-      ["CORNBREAD" , "GLORIFIED" , "DOWNLOADS" ]
-    ]
-  },
-  "03-03-2023":  {
-    "title" : "Fearsome Four-by Friday!",
-    "description" : "A formidable foursome for your Friday",
-    "words" :
-    [
-      ["ABSOLUTE" , "TURNPIKE" , "MEDIATED" , "AVAILING" ],
-      [],
-      []
-    ]
-  },
-  "03-04-2023":  {
-    "title" : "A smattering Saturday!",
-    "description" : "A sampler for your Saturday sleuthing",
-    "words" :
-    [
-      ["DOPE", "GONG", "BUDS", "GREY", "DOME"],
-      ["SOMETIMES" , "DIVERSION" ],
-      ["FORBEAR", "TENSELY", "PORTRAY"]
-    ]
-  },
-  "03-05-2023":  {
-    "title" : "Short-stack Sunday!",
-    "description" : "Shorties stacked for your Sunday brunch",
-    "words" :
-    [
-      ["DEEP", "BEGS", "GRAY", "DRUM", "SLOT"],
-      ["NULL", "MELT", "MOPS", "VEIL", "AXIS"],
-      ["RAW", "DUE", "HAS", "NET", "LIP", "BOT"]
-    ]
-  },
-  "03-06-2023":  {
-    "title" : "Easy-does-it Monday!",
-    "description" : "Start your week with some gimmes",
-    "words" :
-    [
-      ["NET", "SAY", "PAR"],
-      ["ABLE", "LOSE", "BLOC"],
-      ["AGREE", "PICKS", "TOTED"]
-    ]
-  },
-  "03-07-2023":  {
-    "title" : "Two-fer Tuesday!",
-    "description" : "Two 2-bys for your Tuesday",
-    "words" :
-    [
-      ["INITIATIVE" , "STATUESQUE" ],
-      ["PENSIONERS" , "SOCIOPATHS" ],
-      []
-    ]
-  },
-  "03-08-2023":  {
-    "title" : "Mid-way Wednesday!",
-    "description" : "Three mid-length mazes for your midweek",
-    "words" :
-    [
-      ["NEATLY", "AIMING", "BESTED"],
-      ["PROUDER", "LARGEST", "EMPEROR"],
-      ["LUKEWARM" , "REUNITED" , "REDEFINE" ]
-    ]
-  },
-  "03-09-2023":  {
-    "title" : "Three-by Thursday!",
-    "description" : "Three 3-by-9s for your Thursday",
-    "words" :
-    [
-      ["HAMSTRING" , "SENSITIZE" , "REPUGNANT" ],
-      ["INELEGANT" , "ADDICTION" , "HALLMARKS" ],
-      ["EXPANSIVE" , "WRISTBAND" , "WALLOPING" ]
-    ]
-  },
-  "03-10-2023":  {
-    "title" : "Fearsome Four-by Friday!",
-    "description" : "A formidable foursome for your Friday",
-    "words" :
-    [
-      ["MACKEREL" , "SPECIFIC" , "BRACKETS" , "CRUNCHED" ],
-      [],
-      []
-    ]
-  },
-  "03-11-2023":  {
-    "title" : "A smattering Saturday!",
-    "description" : "A sampler for your Saturday sleuthing",
-    "words" :
-    [
-      ["LACK", "PUCK", "TWIN", "CODE", "BYTE"],
-      ["ARTICHOKE" , "RETARDANT" ],
-      ["FAUCETS", "FOOTAGE", "REPLIES"]
-    ]
-  },
-  "03-12-2023":  {
-    "title" : "Short-stack Sunday!",
-    "description" : "Shorties stacked for your Sunday brunch",
-    "words" :
-    [
-      ["URGE", "ROSE", "GREW", "BUYS", "PLEA"],
-      ["MALL", "THUD", "FLIP", "APED", "BRAY"],
-      ["TOO", "HIS", "TOP", "EYE", "BEE", "AYE"]
-    ]
-  },
-  "03-13-2023":  {
-    "title" : "Easy-does-it Monday!",
-    "description" : "Start your week with some gimmes",
-    "words" :
-    [
-      ["OAF", "FIN", "TWO"],
-      ["LADY", "GILT", "SLIT"],
-      ["RUDDY", "GALLS", "MODES"]
-    ]
-  },
-  "03-14-2023":  {
-    "title" : "Two-fer Tuesday!",
-    "description" : "Two 2-bys for your Tuesday",
-    "words" :
-    [
-      ["HEARTBREAK" , "ROLLICKING" ],
-      ["FREELANCER" , "COMPETENCY" ],
-      []
-    ]
-  },
-  "03-15-2023":  {
-    "title" : "Mid-way Wednesday!",
-    "description" : "Three mid-length mazes for your midweek",
-    "words" :
-    [
-      ["JUMPER", "ZIGZAG", "GRAPES"],
-      ["APROPOS", "ANXIOUS", "SHIELDS"],
-      ["RECENTLY" , "POROSITY" , "DIRTIEST" ]
-    ]
-  },
-  "03-16-2023":  {
-    "title" : "Three-by Thursday!",
-    "description" : "Three 3-by-9s for your Thursday",
-    "words" :
-    [
-      ["PRINTINGS" , "INVOLVING" , "BLUEGRASS" ],
-      ["DAFFODILS" , "SOCIETIES" , "RESOURCES" ],
-      ["EXTORTION" , "AWKWARDLY" , "SHUTTLING" ]
-    ]
-  },
-  "03-17-2023":  {
-    "title" : "Fearsome Four-by Friday!",
-    "description" : "A formidable foursome for your Friday",
-    "words" :
-    [
-      ["PLASTICS" , "BADGERED" , "ARSONIST" , "HEEDLESS" ],
-      [],
-      []
-    ]
-  },
-  "03-18-2023":  {
-    "title" : "A smattering Saturday!",
-    "description" : "A sampler for your Saturday sleuthing",
-    "words" :
-    [
-      ["INFO", "HUGS", "TILL", "HINT", "BUST"],
-      ["ADJECTIVE" , "AFTERMATH" ],
-      ["MISERLY", "DROPOUT", "REVERED"]
-    ]
-  },
-  "03-19-2023":  {
-    "title" : "Short-stack Sunday!",
-    "description" : "Shorties stacked for your Sunday brunch",
-    "words" :
-    [
-      ["LOPE", "CASK", "MODE", "HAMS", "LONG"],
-      ["GUSH", "TEAR", "KINK", "HAZE", "BURN"],
-      ["GIN", "ONE", "INS", "GYM", "BUS", "YAP"]
-    ]
-  },
-  "03-20-2023":  {
-    "title" : "Easy-does-it Monday!",
-    "description" : "Start your week with some gimmes",
-    "words" :
-    [
-      ["YET", "AGE", "JOB"],
-      ["NUDE", "CLAY", "FIBS"],
-      ["BURLY", "APPLY", "NASTY"]
-    ]
-  },
-  "03-21-2023":  {
-    "title" : "Two-fer Tuesday!",
-    "description" : "Two 2-bys for your Tuesday",
-    "words" :
-    [
-      ["UNPOLISHED" , "CLOCKWORKS" ],
-      ["PENINSULAR" , "PROMENADES" ],
-      []
-    ]
-  },
-  "03-22-2023":  {
-    "title" : "Mid-way Wednesday!",
-    "description" : "Three mid-length mazes for your midweek",
-    "words" :
-    [
-      ["REFERS", "PLUCKS", "REMOTE"],
-      ["GIZZARD", "RADIANT", "MOLLUSC"],
-      ["BARRACKS" , "DEMOTION" , "FANATICS" ]
-    ]
-  },
-  "03-23-2023":  {
-    "title" : "Three-by Thursday!",
-    "description" : "Three 3-by-9s for your Thursday",
-    "words" :
-    [
-      ["SOFTENING" , "RECOMBINE" , "UNDERSIDE" ],
-      ["CONDUCIVE" , "QUIZZICAL" , "PISTACHIO" ],
-      ["BACKFIRED" , "SHORTSTOP" , "VOLCANISM" ]
-    ]
-  },
-  "03-24-2023":  {
-    "title" : "Fearsome Four-by Friday!",
-    "description" : "A formidable foursome for your Friday",
-    "words" :
-    [
-      ["LIKEWISE" , "DILUTING" , "CALORIES" , "AFFLUENT" ],
-      [],
-      []
-    ]
-  },
-  "03-25-2023":  {
-    "title" : "A smattering Saturday!",
-    "description" : "A sampler for your Saturday sleuthing",
-    "words" :
-    [
-      ["AFAR", "BORN", "PONY", "ODES", "DRAB"],
-      ["ADDITIVES" , "MISGUIDED" ],
-      ["SHOTGUN", "MAXIMAL", "DAMAGED"]
-    ]
-  },
-  "03-26-2023":  {
-    "title" : "Short-stack Sunday!",
-    "description" : "Shorties stacked for your Sunday brunch",
-    "words" :
-    [
-      ["DREW", "SHOE", "RAKE", "SLAM", "PITY"],
-      ["ELMS", "RUBS", "SLIP", "BEAM", "DEEP"],
-      ["OFF", "DID", "SAD", "PAR", "WOO", "NIT"]
-    ]
-  },
-  "03-27-2023":  {
-    "title" : "Easy-does-it Monday!",
-    "description" : "Start your week with some gimmes",
-    "words" :
-    [
-      ["KEG", "WIN", "RYE"],
-      ["YANK", "PETS", "GRIM"],
-      ["MUMPS", "PUFFS", "PELTS"]
-    ]
-  },
-  "03-28-2023":  {
-    "title" : "Two-fer Tuesday!",
-    "description" : "Two 2-bys for your Tuesday",
-    "words" :
-    [
-      ["OPPRESSORS" , "QUARANTINE" ],
-      ["BIPOLARITY" , "FORESHADOW" ],
-      []
-    ]
-  },
-  "03-29-2023":  {
-    "title" : "Mid-way Wednesday!",
-    "description" : "Three mid-length mazes for your midweek",
-    "words" :
-    [
-      ["BASINS", "RODENT", "MIXING"],
-      ["DISLIKE", "INTONED", "PULPITS"],
-      ["GIGGLING" , "WEDDINGS" , "SPLENDID" ]
-    ]
-  },
-  "03-30-2023":  {
-    "title" : "Three-by Thursday!",
-    "description" : "Three 3-by-9s for your Thursday",
-    "words" :
-    [
-      ["HOMEOWNER" , "MISGIVING" , "DEPRIVING" ],
-      ["REFINANCE" , "CUSTOMIZE" , "HEADLINES" ],
-      ["GUESSWORK" , "SMUGGLERS" , "EVILDOERS" ]
-    ]
-  },
-  "03-31-2023":  {
-    "title" : "Fearsome Four-by Friday!",
-    "description" : "A formidable foursome for your Friday",
-    "words" :
-    [
-      ["ABSOLUTE" , "PINCHING" , "PERISHED" , "MATURELY" ],
-      [],
-      []
-    ]
-  },
-  "04-01-2023":  {
-    "title" : "A smattering Saturday!",
-    "description" : "A sampler for your Saturday sleuthing",
-    "words" :
-    [
-      ["MOLE", "AWAY", "MOSS", "MOLE", "TENT"],
-      ["DECISIONS" , "ANIMOSITY" ],
-      ["COMPETE", "BEACHES", "MALLARD"]
-    ]
-  },
-  "04-02-2023":  {
-    "title" : "Short-stack Sunday!",
-    "description" : "Shorties stacked for your Sunday brunch",
-    "words" :
-    [
-      ["PART", "JINX", "YOUR", "ALMS", "BOTH"],
-      ["WARE", "FLAY", "WING", "NABS", "CRAM"],
-      ["OUR", "MAT", "EGO", "ROB", "WAX", "COD"]
-    ]
-  },
-  "04-03-2023":  {
-    "title" : "Easy-does-it Monday!",
-    "description" : "Start your week with some gimmes",
-    "words" :
-    [
-      ["COP", "FAD", "SIS"],
-      ["FELL", "RAYS", "KNOT"],
-      ["RULES", "MITTS", "CIVIL"]
-    ]
-  },
-  "04-04-2023":  {
-    "title" : "Two-fer Tuesday!",
-    "description" : "Two 2-bys for your Tuesday",
-    "words" :
-    [
-      ["LUMBERJACK" , "PROCLAIMED" ],
-      ["TOUCHDOWNS" , "SNOWBLOWER" ],
-      []
-    ]
-  },
-  "04-05-2023":  {
-    "title" : "Mid-way Wednesday!",
-    "description" : "Three mid-length mazes for your midweek",
-    "words" :
-    [
-      ["COUPES", "UPKEEP", "RADIUS"],
-      ["FIZZLED", "WEIGHTS", "NARRATE"],
-      ["DESIRING" , "CREAMIER" , "FORGIVES" ]
-    ]
-  },
-  "04-06-2023":  {
-    "title" : "Three-by Thursday!",
-    "description" : "Three 3-by-9s for your Thursday",
-    "words" :
-    [
-      ["ELECTORAL" , "SUGARCANE" , "ADJUSTING" ],
-      ["AMBUSHING" , "ASCENDANT" , "YESTERDAY" ],
-      ["SUPREMACY" , "ABSOLVING" , "SHEPHERDS" ]
-    ]
-  },
-  "04-07-2023":  {
-    "title" : "Fearsome Four-by Friday!",
-    "description" : "A formidable foursome for your Friday",
-    "words" :
-    [
-      ["SLIPPERY" , "PAVILION" , "REINSERT" , "ARTICLES" ],
-      [],
-      []
-    ]
-  },
-  "04-08-2023":  {
-    "title" : "A smattering Saturday!",
-    "description" : "A sampler for your Saturday sleuthing",
-    "words" :
-    [
-      ["SAYS", "GOWN", "SIDE", "SUES", "COTS"],
-      ["REPRIMAND" , "INTERLACE" ],
-      ["SPIRITS", "MUTATED", "DITCHES"]
-    ]
-  },
-  "04-09-2023":  {
-    "title" : "Short-stack Sunday!",
-    "description" : "Shorties stacked for your Sunday brunch",
-    "words" :
-    [
-      ["HASH", "CHUM", "HIDE", "PROP", "YANK"],
-      ["DISK", "EWES", "CORK", "PUPS", "EGOS"],
-      ["SAD", "YET", "WEB", "EVE", "PAY", "HOW"]
-    ]
-  },
-  "04-10-2023":  {
-    "title" : "Easy-does-it Monday!",
-    "description" : "Start your week with some gimmes",
-    "words" :
-    [
-      ["PUS", "PAT", "COB"],
-      ["RINK", "THUD", "FLEA"],
-      ["BUNKS", "CANES", "COYLY"]
-    ]
-  },
-  "04-11-2023":  {
-    "title" : "Two-fer Tuesday!",
-    "description" : "Two 2-bys for your Tuesday",
-    "words" :
-    [
-      ["ENTRENCHED" , "MUSKETEERS" ],
-      ["CHANGELESS" , "INCITEMENT" ],
-      []
-    ]
-  },
-  "04-12-2023":  {
-    "title" : "Mid-way Wednesday!",
-    "description" : "Three mid-length mazes for your midweek",
-    "words" :
-    [
-      ["MIDAIR", "SEGUES", "MELONS"],
-      ["PUDDLES", "NOSTRIL", "PANICKY"],
-      ["SYLLABLE" , "PRANCING" , "EMPHASIS" ]
-    ]
-  },
-  "04-13-2023":  {
-    "title" : "Three-by Thursday!",
-    "description" : "Three 3-by-9s for your Thursday",
-    "words" :
-    [
-      ["TARDINESS" , "SHORTSTOP" , "MELODRAMA" ],
-      ["POTHOLDER" , "UNCOUNTED" , "SEAPLANES" ],
-      ["DOMINATED" , "SCULPTING" , "HOSPITALS" ]
-    ]
-  },
   "04-14-2023":  {
     "title" : "Fearsome Four-by Friday!",
     "description" : "A formidable foursome for your Friday",
@@ -1628,5 +18,3665 @@
       ["AGITATING" , "DIVISIBLE" ],
       ["KEENEST", "PREQUEL", "PIANIST"]
     ]
-  }
+  },
+  "04-16-2023":  {
+    "title" : "Short-stack Sunday!",
+    "description" : "Shorties stacked for your Sunday brunch",
+    "words" :
+    [
+      ["CAMP", "RUBS", "COME", "CUTE", "EDGE"],
+      ["FISH", "GLEE", "PATS", "SITS", "DIES"],
+      ["HOE", "SAX", "GOT", "DIN", "DUD", "GYM"]
+    ]
+  },
+  "04-17-2023":  {
+    "title" : "Easy-does-it Monday!",
+    "description" : "Start your week with some gimmes",
+    "words" :
+    [
+      ["GEM", "TAG", "HOT"],
+      ["TOSS", "BAYS", "WOOS"],
+      ["RADAR", "MILES", "WIPED"]
+    ]
+  },
+  "04-18-2023":  {
+    "title" : "Two-fer Tuesday!",
+    "description" : "Two 2-bys for your Tuesday",
+    "words" :
+    [
+      ["SLANDERING" , "SNOWBLOWER" ],
+      ["CROSSWORDS" , "MOBILIZING" ],
+      []
+    ]
+  },
+  "04-19-2023":  {
+    "title" : "Mid-way Wednesday!",
+    "description" : "Three mid-length mazes for your midweek",
+    "words" :
+    [
+      ["SWERVE", "GRUNTS", "SPARES"],
+      ["CRIMPED", "CASHIER", "GLOWING"],
+      ["THICKENS" , "SCORCHED" , "OPERATES" ]
+    ]
+  },
+  "04-20-2023":  {
+    "title" : "Three-by Thursday!",
+    "description" : "Three 3-by-9s for your Thursday",
+    "words" :
+    [
+      ["ADRENALIN" , "KILOHERTZ" , "AUTOCROSS" ],
+      ["SUPERSEDE" , "GLEEFULLY" , "WHOLENESS" ],
+      ["OUTWITTED" , "WITHERING" , "FAVORITES" ]
+    ]
+  },
+  "04-21-2023":  {
+    "title" : "Fearsome Four-by Friday!",
+    "description" : "A formidable foursome for your Friday",
+    "words" :
+    [
+      ["PRESSING" , "CHIPMUNK" , "REFLEXES" , "PROSPERS" ],
+      [],
+      []
+    ]
+  },
+  "04-22-2023":  {
+    "title" : "A smattering Saturday!",
+    "description" : "A sampler for your Saturday sleuthing",
+    "words" :
+    [
+      ["HONE", "BLOW", "SIZE", "NOON", "CLAD"],
+      ["ATTORNEYS" , "PESTERING" ],
+      ["CROSSES", "HEADING", "IMPINGE"]
+    ]
+  },
+  "04-23-2023":  {
+    "title" : "Short-stack Sunday!",
+    "description" : "Shorties stacked for your Sunday brunch",
+    "words" :
+    [
+      ["CANS", "BOOM", "VALE", "HAND", "NONE"],
+      ["NONE", "DRAB", "SOPS", "FRET", "COST"],
+      ["ROW", "SPY", "WAS", "SON", "DAD", "NIX"]
+    ]
+  },
+  "04-24-2023":  {
+    "title" : "Easy-does-it Monday!",
+    "description" : "Start your week with some gimmes",
+    "words" :
+    [
+      ["PIN", "WAX", "YOU"],
+      ["LEAK", "CRIB", "BEEN"],
+      ["STING", "CRUDE", "WIDEN"]
+    ]
+  },
+  "04-25-2023":  {
+    "title" : "Two-fer Tuesday!",
+    "description" : "Two 2-bys for your Tuesday",
+    "words" :
+    [
+      ["REDRESSING" , "IMAGININGS" ],
+      ["MINIMIZING" , "DESPICABLE" ],
+      []
+    ]
+  },
+  "04-26-2023":  {
+    "title" : "Mid-way Wednesday!",
+    "description" : "Three mid-length mazes for your midweek",
+    "words" :
+    [
+      ["STOWED", "CHANCE", "GRUDGE"],
+      ["MUFFINS", "ADHERES", "TREASON"],
+      ["SECRETED" , "INCISION" , "PACIFIED" ]
+    ]
+  },
+  "04-27-2023":  {
+    "title" : "Three-by Thursday!",
+    "description" : "Three 3-by-9s for your Thursday",
+    "words" :
+    [
+      ["WORSHIPED" , "HARNESSED" , "BREAKDOWN" ],
+      ["STICKIEST" , "STARLIGHT" , "BLUNDERED" ],
+      ["TORTURING" , "OBLIGATES" , "CHERISHES" ]
+    ]
+  },
+  "04-28-2023":  {
+    "title" : "Fearsome Four-by Friday!",
+    "description" : "A formidable foursome for your Friday",
+    "words" :
+    [
+      ["UPPERCUT" , "GRAPPLES" , "MILEPOST" , "FILLINGS" ],
+      [],
+      []
+    ]
+  },
+  "04-29-2023":  {
+    "title" : "A smattering Saturday!",
+    "description" : "A sampler for your Saturday sleuthing",
+    "words" :
+    [
+      ["POSE", "DEWY", "WAND", "FIRE", "BEER"],
+      ["DISAGREES" , "REPORTERS" ],
+      ["GRAYISH", "SPOUTED", "COOKING"]
+    ]
+  },
+  "04-30-2023":  {
+    "title" : "Short-stack Sunday!",
+    "description" : "Shorties stacked for your Sunday brunch",
+    "words" :
+    [
+      ["PUNS", "MOST", "LADY", "KISS", "HANG"],
+      ["EKES", "VOLT", "TORN", "HOST", "BADE"],
+      ["BID", "WEE", "NIB", "HAM", "FUN", "DUD"]
+    ]
+  },
+  "05-01-2023":  {
+    "title" : "Easy-does-it Monday!",
+    "description" : "Start your week with some gimmes",
+    "words" :
+    [
+      ["RAY", "FEE", "HOG"],
+      ["NOSE", "JUMP", "CHAP"],
+      ["ROADS", "LEAST", "KNOWN"]
+    ]
+  },
+  "05-02-2023":  {
+    "title" : "Two-fer Tuesday!",
+    "description" : "Two 2-bys for your Tuesday",
+    "words" :
+    [
+      ["CONCOCTING" , "PERSUASION" ],
+      ["RADICALISM" , "SUBMISSIVE" ],
+      []
+    ]
+  },
+  "05-03-2023":  {
+    "title" : "Mid-way Wednesday!",
+    "description" : "Three mid-length mazes for your midweek",
+    "words" :
+    [
+      ["MEDIUM", "RULING", "CURLER"],
+      ["CARTING", "CURVING", "GYRATED"],
+      ["DISCOLOR" , "FIDDLERS" , "PILLAGED" ]
+    ]
+  },
+  "05-04-2023":  {
+    "title" : "Three-by Thursday!",
+    "description" : "Three 3-by-9s for your Thursday",
+    "words" :
+    [
+      ["MINIMALLY" , "EPICUREAN" , "CROSSOVER" ],
+      ["ATTORNEYS" , "WONDERING" , "GUESSABLE" ],
+      ["DOWNDRAFT" , "REPLICATE" , "PARBOILED" ]
+    ]
+  },
+  "05-05-2023":  {
+    "title" : "Fearsome Four-by Friday!",
+    "description" : "A formidable foursome for your Friday",
+    "words" :
+    [
+      ["MUSCULAR" , "VARIETAL" , "SPLENDOR" , "LOLLYPOP" ],
+      [],
+      []
+    ]
+  },
+  "05-06-2023":  {
+    "title" : "A smattering Saturday!",
+    "description" : "A sampler for your Saturday sleuthing",
+    "words" :
+    [
+      ["INKS", "YARD", "EONS", "ROAR", "MILE"],
+      ["SUBSIDIZE" , "WORSENING" ],
+      ["ABORTED", "CROWING", "OMELETS"]
+    ]
+  },
+  "05-07-2023":  {
+    "title" : "Short-stack Sunday!",
+    "description" : "Shorties stacked for your Sunday brunch",
+    "words" :
+    [
+      ["DOGS", "APES", "TOME", "HUMP", "TOOL"],
+      ["SOUL", "HEAT", "WICK", "BEAN", "DUCK"],
+      ["BOT", "ROW", "BOB", "HER", "HER", "CAN"]
+    ]
+  },
+  "05-08-2023":  {
+    "title" : "Easy-does-it Monday!",
+    "description" : "Start your week with some gimmes",
+    "words" :
+    [
+      ["FRY", "DIN", "RAY"],
+      ["MOWS", "BLUR", "SAME"],
+      ["ARGUE", "ALIEN", "FILMY"]
+    ]
+  },
+  "05-09-2023":  {
+    "title" : "Two-fer Tuesday!",
+    "description" : "Two 2-bys for your Tuesday",
+    "words" :
+    [
+      ["COTTONTAIL" , "SUBLIMINAL" ],
+      ["KINDNESSES" , "STORYBOARD" ],
+      []
+    ]
+  },
+  "05-10-2023":  {
+    "title" : "Mid-way Wednesday!",
+    "description" : "Three mid-length mazes for your midweek",
+    "words" :
+    [
+      ["HOGGED", "GLUING", "POETIC"],
+      ["FANFARE", "PROMISE", "WEIRDER"],
+      ["ANTENNAS" , "BLUSHING" , "VENDETTA" ]
+    ]
+  },
+  "05-11-2023":  {
+    "title" : "Three-by Thursday!",
+    "description" : "Three 3-by-9s for your Thursday",
+    "words" :
+    [
+      ["GRAVELLED" , "TOMBSTONE" , "DEDICATED" ],
+      ["OVERSLEPT" , "TOLERATED" , "WASTELAND" ],
+      ["HARNESSED" , "PROSPECTS" , "TAUTOLOGY" ]
+    ]
+  },
+  "05-12-2023":  {
+    "title" : "Fearsome Four-by Friday!",
+    "description" : "A formidable foursome for your Friday",
+    "words" :
+    [
+      ["STUBBORN" , "EVOLVING" , "GREENISH" , "MERMAIDS" ],
+      [],
+      []
+    ]
+  },
+  "05-13-2023":  {
+    "title" : "A smattering Saturday!",
+    "description" : "A sampler for your Saturday sleuthing",
+    "words" :
+    [
+      ["SIPS", "ELKS", "PAGE", "MAID", "KITE"],
+      ["WINDSWEPT" , "SURPRISES" ],
+      ["BUREAUS", "PRECISE", "TURKEYS"]
+    ]
+  },
+  "05-14-2023":  {
+    "title" : "Short-stack Sunday!",
+    "description" : "Shorties stacked for your Sunday brunch",
+    "words" :
+    [
+      ["TUFT", "BRAT", "PEEL", "LEWD", "LATE"],
+      ["JABS", "HOWL", "HOPE", "GODS", "AIRY"],
+      ["GOO", "SOB", "SOW", "GIG", "JUT", "SUE"]
+    ]
+  },
+  "05-15-2023":  {
+    "title" : "Easy-does-it Monday!",
+    "description" : "Start your week with some gimmes",
+    "words" :
+    [
+      ["AUK", "NUT", "OAR"],
+      ["GALA", "ACID", "CLOD"],
+      ["KEEPS", "TENOR", "OBESE"]
+    ]
+  },
+  "05-16-2023":  {
+    "title" : "Two-fer Tuesday!",
+    "description" : "Two 2-bys for your Tuesday",
+    "words" :
+    [
+      ["GRACEFULLY" , "PROPONENTS" ],
+      ["COHESIVELY" , "MANIFESTED" ],
+      []
+    ]
+  },
+  "05-17-2023":  {
+    "title" : "Mid-way Wednesday!",
+    "description" : "Three mid-length mazes for your midweek",
+    "words" :
+    [
+      ["BAGGED", "DETECT", "STINKS"],
+      ["PUNTING", "USELESS", "EVENING"],
+      ["LABORING" , "DESPISED" , "JACKPOTS" ]
+    ]
+  },
+  "05-18-2023":  {
+    "title" : "Three-by Thursday!",
+    "description" : "Three 3-by-9s for your Thursday",
+    "words" :
+    [
+      ["TRANSPOSE" , "DEPLOYING" , "JELLYFISH" ],
+      ["INTRIGUED" , "WHISPERED" , "FREELANCE" ],
+      ["CONCLUDES" , "VALUATION" , "IMPARTIAL" ]
+    ]
+  },
+  "05-19-2023":  {
+    "title" : "Fearsome Four-by Friday!",
+    "description" : "A formidable foursome for your Friday",
+    "words" :
+    [
+      ["DISGRACE" , "APPALLED" , "PEACOCKS" , "TRAMPLES" ],
+      [],
+      []
+    ]
+  },
+  "05-20-2023":  {
+    "title" : "A smattering Saturday!",
+    "description" : "A sampler for your Saturday sleuthing",
+    "words" :
+    [
+      ["DYED", "LEGS", "GNAW", "WAND", "SCAN"],
+      ["POSTURING" , "SCRIPTING" ],
+      ["TEMPTED", "BROODED", "REPLICA"]
+    ]
+  },
+  "05-21-2023":  {
+    "title" : "Short-stack Sunday!",
+    "description" : "Shorties stacked for your Sunday brunch",
+    "words" :
+    [
+      ["EGGS", "TOUT", "FLAP", "SOOT", "LOSS"],
+      ["CARE", "TIME", "BAND", "ZIPS", "COOP"],
+      ["MUD", "PRO", "HIM", "TAP", "LUG", "COT"]
+    ]
+  },
+  "05-22-2023":  {
+    "title" : "Easy-does-it Monday!",
+    "description" : "Start your week with some gimmes",
+    "words" :
+    [
+      ["BIG", "POX", "OAK"],
+      ["WAVY", "HURL", "BUSH"],
+      ["TINTS", "CAPER", "WIPES"]
+    ]
+  },
+  "05-23-2023":  {
+    "title" : "Two-fer Tuesday!",
+    "description" : "Two 2-bys for your Tuesday",
+    "words" :
+    [
+      ["FORMIDABLE" , "FORESHADOW" ],
+      ["ACROPHOBIA" , "MODERATION" ],
+      []
+    ]
+  },
+  "05-24-2023":  {
+    "title" : "Mid-way Wednesday!",
+    "description" : "Three mid-length mazes for your midweek",
+    "words" :
+    [
+      ["STORKS", "LINENS", "NONFAT"],
+      ["SEIZING", "ISOTOPE", "CURTAIN"],
+      ["MULBERRY" , "QUINTETS" , "MOBILIZE" ]
+    ]
+  },
+  "05-25-2023":  {
+    "title" : "Three-by Thursday!",
+    "description" : "Three 3-by-9s for your Thursday",
+    "words" :
+    [
+      ["PRACTICAL" , "SPRINGING" , "MOTORCADE" ],
+      ["DENTISTRY" , "APPEARING" , "ALCHEMIST" ],
+      ["FILAMENTS" , "MODERNIZE" , "BLACKBIRD" ]
+    ]
+  },
+  "05-26-2023":  {
+    "title" : "Fearsome Four-by Friday!",
+    "description" : "A formidable foursome for your Friday",
+    "words" :
+    [
+      ["KINDLING" , "GENERALS" , "OUTGROWS" , "MONORAIL" ],
+      [],
+      []
+    ]
+  },
+  "05-27-2023":  {
+    "title" : "A smattering Saturday!",
+    "description" : "A sampler for your Saturday sleuthing",
+    "words" :
+    [
+      ["BASK", "FEEL", "COOP", "FRET", "CHIN"],
+      ["ABDICATED" , "COMPUTING" ],
+      ["SMASHED", "COMMEND", "SARCASM"]
+    ]
+  },
+  "05-28-2023":  {
+    "title" : "Short-stack Sunday!",
+    "description" : "Shorties stacked for your Sunday brunch",
+    "words" :
+    [
+      ["TEMP", "LIEN", "CODA", "BRAG", "ALOE"],
+      ["UPON", "URNS", "PEWS", "YARN", "CASH"],
+      ["MAD", "AWL", "SET", "HOE", "DEN", "BAG"]
+    ]
+  },
+  "05-29-2023":  {
+    "title" : "Easy-does-it Monday!",
+    "description" : "Start your week with some gimmes",
+    "words" :
+    [
+      ["TEE", "SAX", "ION"],
+      ["EMUS", "TEAL", "OUST"],
+      ["VOTES", "FIEND", "INGOT"]
+    ]
+  },
+  "05-30-2023":  {
+    "title" : "Two-fer Tuesday!",
+    "description" : "Two 2-bys for your Tuesday",
+    "words" :
+    [
+      ["EARTHBOUND" , "PERISHABLE" ],
+      ["COMMANDEER" , "ASTRONAUTS" ],
+      []
+    ]
+  },
+  "05-31-2023":  {
+    "title" : "Mid-way Wednesday!",
+    "description" : "Three mid-length mazes for your midweek",
+    "words" :
+    [
+      ["MYTHIC", "MARKET", "REWORK"],
+      ["INSIDER", "AURORAS", "PORTRAY"],
+      ["RESOLVED" , "SYMPHONY" , "TRANSFER" ]
+    ]
+  },
+  "06-01-2023":  {
+    "title" : "Three-by Thursday!",
+    "description" : "Three 3-by-9s for your Thursday",
+    "words" :
+    [
+      ["EXPLOSIVE" , "PEPPERING" , "CONFUSING" ],
+      ["STAMPEDED" , "HITCHHIKE" , "BUBBLEGUM" ],
+      ["YELLOWING" , "WOEBEGONE" , "LEISURELY" ]
+    ]
+  },
+  "06-02-2023":  {
+    "title" : "Fearsome Four-by Friday!",
+    "description" : "A formidable foursome for your Friday",
+    "words" :
+    [
+      ["ROUGHEST" , "BULLHORN" , "BACKDROP" , "BUTTRESS" ],
+      [],
+      []
+    ]
+  },
+  "06-03-2023":  {
+    "title" : "A smattering Saturday!",
+    "description" : "A sampler for your Saturday sleuthing",
+    "words" :
+    [
+      ["HAIL", "HATS", "TURN", "VAIN", "DUPE"],
+      ["MURKINESS" , "SUBMITTED" ],
+      ["PLEATED", "REDHEAD", "DWINDLE"]
+    ]
+  },
+  "06-04-2023":  {
+    "title" : "Short-stack Sunday!",
+    "description" : "Shorties stacked for your Sunday brunch",
+    "words" :
+    [
+      ["SALE", "NAPS", "INCH", "WHOM", "SUNS"],
+      ["NEWT", "SALT", "ROSY", "KNEE", "BARB"],
+      ["WAY", "JAR", "SOP", "BEG", "ALE", "DOG"]
+    ]
+  },
+  "06-05-2023":  {
+    "title" : "Easy-does-it Monday!",
+    "description" : "Start your week with some gimmes",
+    "words" :
+    [
+      ["SPY", "FEZ", "INS"],
+      ["SMOG", "TOGA", "BACK"],
+      ["ACHED", "HYPED", "CHAIR"]
+    ]
+  },
+  "06-06-2023":  {
+    "title" : "Two-fer Tuesday!",
+    "description" : "Two 2-bys for your Tuesday",
+    "words" :
+    [
+      ["EXTINCTION" , "MYSTIFYING" ],
+      ["CANTILEVER" , "INDECISION" ],
+      []
+    ]
+  },
+  "06-07-2023":  {
+    "title" : "Mid-way Wednesday!",
+    "description" : "Three mid-length mazes for your midweek",
+    "words" :
+    [
+      ["CRACKS", "ANVILS", "DYNAMO"],
+      ["NEGATED", "FINANCE", "HANDGUN"],
+      ["DEPOSITS" , "VOLATILE" , "CELLULAR" ]
+    ]
+  },
+  "06-08-2023":  {
+    "title" : "Three-by Thursday!",
+    "description" : "Three 3-by-9s for your Thursday",
+    "words" :
+    [
+      ["COMEDIANS" , "HERBICIDE" , "RESILIENT" ],
+      ["ADHESIVES" , "PRESSURES" , "TEARFULLY" ],
+      ["CONSULTED" , "TRANSFORM" , "NEUROLOGY" ]
+    ]
+  },
+  "06-09-2023":  {
+    "title" : "Fearsome Four-by Friday!",
+    "description" : "A formidable foursome for your Friday",
+    "words" :
+    [
+      ["SOCIALLY" , "TACTICAL" , "ALLERGEN" , "RECESSED" ],
+      [],
+      []
+    ]
+  },
+  "06-10-2023":  {
+    "title" : "A smattering Saturday!",
+    "description" : "A sampler for your Saturday sleuthing",
+    "words" :
+    [
+      ["MOAT", "DISK", "VERB", "HEFT", "REAR"],
+      ["OPTIMALLY" , "ABRASIVES" ],
+      ["SKATING", "LEARNED", "AMENITY"]
+    ]
+  },
+  "06-11-2023":  {
+    "title" : "Short-stack Sunday!",
+    "description" : "Shorties stacked for your Sunday brunch",
+    "words" :
+    [
+      ["OWED", "FOAM", "FEES", "CLUB", "PUNK"],
+      ["TEXT", "LEWD", "PLOW", "SHIN", "BELT"],
+      ["PIP", "BYE", "ARK", "BAG", "TEN", "HAT"]
+    ]
+  },
+  "06-12-2023":  {
+    "title" : "Easy-does-it Monday!",
+    "description" : "Start your week with some gimmes",
+    "words" :
+    [
+      ["BOY", "EGO", "DUN"],
+      ["SHOE", "RUNG", "DUCK"],
+      ["HEALS", "LIENS", "LAPSE"]
+    ]
+  },
+  "06-13-2023":  {
+    "title" : "Two-fer Tuesday!",
+    "description" : "Two 2-bys for your Tuesday",
+    "words" :
+    [
+      ["AMPLIFYING" , "POTHOLDERS" ],
+      ["UNENVIABLE" , "QUADRUPLED" ],
+      []
+    ]
+  },
+  "06-14-2023":  {
+    "title" : "Mid-way Wednesday!",
+    "description" : "Three mid-length mazes for your midweek",
+    "words" :
+    [
+      ["RAVENS", "WARBLE", "FLAWED"],
+      ["PAUSING", "GASPING", "BREEZED"],
+      ["REFERRED" , "FLAGPOLE" , "RETORTED" ]
+    ]
+  },
+  "06-15-2023":  {
+    "title" : "Three-by Thursday!",
+    "description" : "Three 3-by-9s for your Thursday",
+    "words" :
+    [
+      ["LIVESTOCK" , "ANONYMOUS" , "ASTROLOGY" ],
+      ["COMFORTER" , "CANDIDACY" , "SHIPWRECK" ],
+      ["ABDUCTING" , "IMPATIENT" , "CONDENSER" ]
+    ]
+  },
+  "06-16-2023":  {
+    "title" : "Fearsome Four-by Friday!",
+    "description" : "A formidable foursome for your Friday",
+    "words" :
+    [
+      ["STASHING" , "MARATHON" , "ENROLLED" , "INCREASE" ],
+      [],
+      []
+    ]
+  },
+  "06-17-2023":  {
+    "title" : "A smattering Saturday!",
+    "description" : "A sampler for your Saturday sleuthing",
+    "words" :
+    [
+      ["SANE", "NINE", "RUGS", "FAST", "HEAL"],
+      ["TOUGHNESS" , "SINCEREST" ],
+      ["POWDERY", "PERCENT", "CRISPLY"]
+    ]
+  },
+  "06-18-2023":  {
+    "title" : "Short-stack Sunday!",
+    "description" : "Shorties stacked for your Sunday brunch",
+    "words" :
+    [
+      ["MEME", "WEEK", "BOTH", "FAIR", "HALF"],
+      ["LIKE", "POEM", "WIDE", "COWS", "ACID"],
+      ["HAY", "ROB", "DAM", "PRY", "NAB", "BOW"]
+    ]
+  },
+  "06-19-2023":  {
+    "title" : "Easy-does-it Monday!",
+    "description" : "Start your week with some gimmes",
+    "words" :
+    [
+      ["NOT", "JOY", "ART"],
+      ["THIN", "SOOT", "IDLE"],
+      ["GULCH", "DESKS", "DELAY"]
+    ]
+  },
+  "06-20-2023":  {
+    "title" : "Two-fer Tuesday!",
+    "description" : "Two 2-bys for your Tuesday",
+    "words" :
+    [
+      ["RECORDINGS" , "TAILLIGHTS" ],
+      ["BIMETALLIC" , "RATCHETING" ],
+      []
+    ]
+  },
+  "06-21-2023":  {
+    "title" : "Mid-way Wednesday!",
+    "description" : "Three mid-length mazes for your midweek",
+    "words" :
+    [
+      ["SLOWLY", "NURSED", "BAILED"],
+      ["SOLOIST", "SNUFFED", "LANGUID"],
+      ["CONVERTS" , "AGENCIES" , "LUNATICS" ]
+    ]
+  },
+  "06-22-2023":  {
+    "title" : "Three-by Thursday!",
+    "description" : "Three 3-by-9s for your Thursday",
+    "words" :
+    [
+      ["PESTICIDE" , "TWENTIETH" , "MAGAZINES" ],
+      ["TEMPERATE" , "FLUMMOXED" , "ESCALATOR" ],
+      ["BALLOONED" , "YAMMERING" , "HEARTLAND" ]
+    ]
+  },
+  "06-23-2023":  {
+    "title" : "Fearsome Four-by Friday!",
+    "description" : "A formidable foursome for your Friday",
+    "words" :
+    [
+      ["AIRFARES" , "REACTING" , "DISCRETE" , "DOWNPOUR" ],
+      [],
+      []
+    ]
+  },
+  "06-24-2023":  {
+    "title" : "A smattering Saturday!",
+    "description" : "A sampler for your Saturday sleuthing",
+    "words" :
+    [
+      ["FOOL", "PACK", "SHIP", "HARP", "BUTS"],
+      ["OCCUPANTS" , "SYNTHESIS" ],
+      ["BASHING", "PERCENT", "NODDING"]
+    ]
+  },
+  "06-25-2023":  {
+    "title" : "Short-stack Sunday!",
+    "description" : "Shorties stacked for your Sunday brunch",
+    "words" :
+    [
+      ["MORE", "EARL", "GUMS", "JAMS", "GANG"],
+      ["TYPO", "GOAD", "DIES", "HAVE", "ARKS"],
+      ["BOB", "TAG", "BUN", "GUT", "VIA", "BAT"]
+    ]
+  },
+  "06-26-2023":  {
+    "title" : "Easy-does-it Monday!",
+    "description" : "Start your week with some gimmes",
+    "words" :
+    [
+      ["BAN", "CAR", "DOG"],
+      ["GALL", "THIN", "HONE"],
+      ["JELLY", "LUMEN", "ELFIN"]
+    ]
+  },
+  "06-27-2023":  {
+    "title" : "Two-fer Tuesday!",
+    "description" : "Two 2-bys for your Tuesday",
+    "words" :
+    [
+      ["INCUBATION" , "ASTRONAUTS" ],
+      ["INTERCEDES" , "HEALTHCARE" ],
+      []
+    ]
+  },
+  "06-28-2023":  {
+    "title" : "Mid-way Wednesday!",
+    "description" : "Three mid-length mazes for your midweek",
+    "words" :
+    [
+      ["POKING", "CHASMS", "JEERED"],
+      ["WAVERED", "EYEBALL", "TOTALLY"],
+      ["PLAYLIST" , "WEAKNESS" , "STROLLED" ]
+    ]
+  },
+  "06-29-2023":  {
+    "title" : "Three-by Thursday!",
+    "description" : "Three 3-by-9s for your Thursday",
+    "words" :
+    [
+      ["RETOUCHED" , "BETROTHED" , "AQUARIUMS" ],
+      ["SONGBOOKS" , "EPIDEMICS" , "CONSTABLE" ],
+      ["CONVERGED" , "INTERLINK" , "LOWERMOST" ]
+    ]
+  },
+  "06-30-2023":  {
+    "title" : "Fearsome Four-by Friday!",
+    "description" : "A formidable foursome for your Friday",
+    "words" :
+    [
+      ["GOVERNOR" , "IMPROVES" , "ANNOYING" , "LATITUDE" ],
+      [],
+      []
+    ]
+  },
+  "07-01-2023":  {
+    "title" : "A smattering Saturday!",
+    "description" : "A sampler for your Saturday sleuthing",
+    "words" :
+    [
+      ["ROBE", "SUNS", "FORK", "ROAR", "COOL"],
+      ["SLATHERED" , "SUCCULENT" ],
+      ["CONVOYS", "TAKEOUT", "SOCKING"]
+    ]
+  },
+  "07-02-2023":  {
+    "title" : "Short-stack Sunday!",
+    "description" : "Shorties stacked for your Sunday brunch",
+    "words" :
+    [
+      ["TORE", "SOUL", "SANE", "WASP", "PIES"],
+      ["TINT", "SOIL", "JAIL", "FILM", "ARTS"],
+      ["DIN", "HOG", "BUS", "FAR", "ASP", "BIT"]
+    ]
+  },
+  "07-03-2023":  {
+    "title" : "Easy-does-it Monday!",
+    "description" : "Start your week with some gimmes",
+    "words" :
+    [
+      ["ERA", "FOX", "SIN"],
+      ["VIES", "POET", "ACME"],
+      ["GHOST", "CATCH", "HOMEY"]
+    ]
+  },
+  "07-04-2023":  {
+    "title" : "Two-fer Tuesday!",
+    "description" : "Two 2-bys for your Tuesday",
+    "words" :
+    [
+      ["OUTSMARTED" , "POLITICIZE" ],
+      ["OBLIGATORY" , "RESUMPTION" ],
+      []
+    ]
+  },
+  "07-05-2023":  {
+    "title" : "Mid-way Wednesday!",
+    "description" : "Three mid-length mazes for your midweek",
+    "words" :
+    [
+      ["STARRY", "BURNER", "REDEEM"],
+      ["SMARTER", "DESTROY", "CHOPPED"],
+      ["WRINKLES" , "MORBIDLY" , "DANGLING" ]
+    ]
+  },
+  "07-06-2023":  {
+    "title" : "Three-by Thursday!",
+    "description" : "Three 3-by-9s for your Thursday",
+    "words" :
+    [
+      ["MOCCASINS" , "OCCUPANTS" , "RADICALLY" ],
+      ["VEGETABLE" , "COMPETING" , "UNLIGHTED" ],
+      ["EGGBEATER" , "EXCHANGES" , "REGRESSED" ]
+    ]
+  },
+  "07-07-2023":  {
+    "title" : "Fearsome Four-by Friday!",
+    "description" : "A formidable foursome for your Friday",
+    "words" :
+    [
+      ["ALTRUISM" , "PROSPECT" , "ATTENDED" , "MIGRAINE" ],
+      [],
+      []
+    ]
+  },
+  "07-08-2023":  {
+    "title" : "A smattering Saturday!",
+    "description" : "A sampler for your Saturday sleuthing",
+    "words" :
+    [
+      ["MARS", "HAIR", "WING", "CROW", "TOMB"],
+      ["JOURNEYED" , "PERCEIVES" ],
+      ["LOCKING", "ATTAINS", "DEALERS"]
+    ]
+  },
+  "07-09-2023":  {
+    "title" : "Short-stack Sunday!",
+    "description" : "Shorties stacked for your Sunday brunch",
+    "words" :
+    [
+      ["DOLT", "POLL", "JUNK", "WORD", "LUCK"],
+      ["MUST", "TONG", "CASE", "BEAT", "CLUB"],
+      ["APE", "SAX", "DYE", "EGG", "POT", "SPA"]
+    ]
+  },
+  "07-10-2023":  {
+    "title" : "Easy-does-it Monday!",
+    "description" : "Start your week with some gimmes",
+    "words" :
+    [
+      ["HOG", "SUM", "BIN"],
+      ["TRAP", "PAIN", "VAIN"],
+      ["ROADS", "FINER", "NOTCH"]
+    ]
+  },
+  "07-11-2023":  {
+    "title" : "Two-fer Tuesday!",
+    "description" : "Two 2-bys for your Tuesday",
+    "words" :
+    [
+      ["ESCALATORS" , "STOCKPILES" ],
+      ["ASTHMATICS" , "DISCUSSING" ],
+      []
+    ]
+  },
+  "07-12-2023":  {
+    "title" : "Mid-way Wednesday!",
+    "description" : "Three mid-length mazes for your midweek",
+    "words" :
+    [
+      ["MERGER", "UNLESS", "RENOWN"],
+      ["ITCHING", "FLUIDLY", "IMMENSE"],
+      ["DOORWAYS" , "REFRAINS" , "UPSTAIRS" ]
+    ]
+  },
+  "07-13-2023":  {
+    "title" : "Three-by Thursday!",
+    "description" : "Three 3-by-9s for your Thursday",
+    "words" :
+    [
+      ["SCHOOLBOY" , "REUNITING" , "SOUTHEAST" ],
+      ["TIGHTNESS" , "PATENTING" , "MATRIARCH" ],
+      ["LUNCHROOM" , "ROUGHENED" , "CHERISHES" ]
+    ]
+  },
+  "07-14-2023":  {
+    "title" : "Fearsome Four-by Friday!",
+    "description" : "A formidable foursome for your Friday",
+    "words" :
+    [
+      ["REPULSES" , "INFRINGE" , "ARCHIVED" , "ASSISTED" ],
+      [],
+      []
+    ]
+  },
+  "07-15-2023":  {
+    "title" : "A smattering Saturday!",
+    "description" : "A sampler for your Saturday sleuthing",
+    "words" :
+    [
+      ["SEEN", "IONS", "CLAP", "NIBS", "FLEX"],
+      ["VENEERING" , "COLONIZED" ],
+      ["GREASES", "DAMAGED", "RAPTURE"]
+    ]
+  },
+  "07-16-2023":  {
+    "title" : "Short-stack Sunday!",
+    "description" : "Shorties stacked for your Sunday brunch",
+    "words" :
+    [
+      ["SPAN", "TERM", "MADE", "ONUS", "GIFT"],
+      ["FLUE", "TOIL", "SIRS", "HUNG", "AXED"],
+      ["ITS", "BIB", "GIN", "BAY", "RAG", "FIT"]
+    ]
+  },
+  "07-17-2023":  {
+    "title" : "Easy-does-it Monday!",
+    "description" : "Start your week with some gimmes",
+    "words" :
+    [
+      ["DID", "SHE", "SON"],
+      ["CRAM", "CHEF", "ODES"],
+      ["DEMOS", "LASTS", "CLUCK"]
+    ]
+  },
+  "07-18-2023":  {
+    "title" : "Two-fer Tuesday!",
+    "description" : "Two 2-bys for your Tuesday",
+    "words" :
+    [
+      ["DISCOLORED" , "FLASHCARDS" ],
+      ["REPRINTING" , "COHABITANT" ],
+      []
+    ]
+  },
+  "07-19-2023":  {
+    "title" : "Mid-way Wednesday!",
+    "description" : "Three mid-length mazes for your midweek",
+    "words" :
+    [
+      ["FLUKES", "MUFFLE", "MUSCLE"],
+      ["MAGPIES", "AMOUNTS", "WRITTEN"],
+      ["AMBIENCE" , "BECKONED" , "TAKEOVER" ]
+    ]
+  },
+  "07-20-2023":  {
+    "title" : "Three-by Thursday!",
+    "description" : "Three 3-by-9s for your Thursday",
+    "words" :
+    [
+      ["COMFORTER" , "INJUSTICE" , "DISAPPEAR" ],
+      ["UNLIGHTED" , "ANTHOLOGY" , "TREADMILL" ],
+      ["PALPATION" , "PUNCHLINE" , "BASICALLY" ]
+    ]
+  },
+  "07-21-2023":  {
+    "title" : "Fearsome Four-by Friday!",
+    "description" : "A formidable foursome for your Friday",
+    "words" :
+    [
+      ["AUTONOMY" , "STINGRAY" , "WRATHFUL" , "SAUCEPAN" ],
+      [],
+      []
+    ]
+  },
+  "07-22-2023":  {
+    "title" : "A smattering Saturday!",
+    "description" : "A sampler for your Saturday sleuthing",
+    "words" :
+    [
+      ["GOAD", "MOST", "BALE", "MUTE", "DISC"],
+      ["PREGNANCY" , "ASTRONAUT" ],
+      ["HOLSTER", "BIRCHES", "VIBRATE"]
+    ]
+  },
+  "07-23-2023":  {
+    "title" : "Short-stack Sunday!",
+    "description" : "Shorties stacked for your Sunday brunch",
+    "words" :
+    [
+      ["CAPS", "PACK", "BOOS", "NAPS", "TRIM"],
+      ["MEAT", "GATE", "BODE", "RAFT", "BEEN"],
+      ["FIT", "OPT", "HEN", "VAN", "DEW", "MAY"]
+    ]
+  },
+  "07-24-2023":  {
+    "title" : "Easy-does-it Monday!",
+    "description" : "Start your week with some gimmes",
+    "words" :
+    [
+      ["FIN", "TEN", "KEY"],
+      ["CZAR", "FAST", "TRAY"],
+      ["CLIFF", "NERDS", "CURLS"]
+    ]
+  },
+  "07-25-2023":  {
+    "title" : "Two-fer Tuesday!",
+    "description" : "Two 2-bys for your Tuesday",
+    "words" :
+    [
+      ["WATERCRESS" , "LIMITATION" ],
+      ["INIQUITIES" , "RIVERFRONT" ],
+      []
+    ]
+  },
+  "07-26-2023":  {
+    "title" : "Mid-way Wednesday!",
+    "description" : "Three mid-length mazes for your midweek",
+    "words" :
+    [
+      ["GROGGY", "ALLOWS", "JAGUAR"],
+      ["BIKINIS", "INSEAMS", "BUSLOAD"],
+      ["ELEVATED" , "UNIQUELY" , "ESCORTED" ]
+    ]
+  },
+  "07-27-2023":  {
+    "title" : "Three-by Thursday!",
+    "description" : "Three 3-by-9s for your Thursday",
+    "words" :
+    [
+      ["RECONCILE" , "CEASELESS" , "REVIEWING" ],
+      ["WATERSHED" , "COMPARING" , "SCULPTING" ],
+      ["INTERJECT" , "REFRESHED" , "CONSTABLE" ]
+    ]
+  },
+  "07-28-2023":  {
+    "title" : "Fearsome Four-by Friday!",
+    "description" : "A formidable foursome for your Friday",
+    "words" :
+    [
+      ["BURDENED" , "FOGGIEST" , "PORTHOLE" , "EYEBALLS" ],
+      [],
+      []
+    ]
+  },
+  "07-29-2023":  {
+    "title" : "A smattering Saturday!",
+    "description" : "A sampler for your Saturday sleuthing",
+    "words" :
+    [
+      ["CUTE", "WAYS", "TOSS", "PULL", "DOSE"],
+      ["ISOLATING" , "MINCEMEAT" ],
+      ["GENETIC", "THREATS", "AUCTION"]
+    ]
+  },
+  "07-30-2023":  {
+    "title" : "Short-stack Sunday!",
+    "description" : "Shorties stacked for your Sunday brunch",
+    "words" :
+    [
+      ["TONE", "FLOW", "FORM", "DENT", "TARP"],
+      ["MOPS", "UPON", "SLEW", "TOIL", "COWS"],
+      ["WON", "CUD", "GOO", "IMP", "FIN", "RAT"]
+    ]
+  },
+  "07-31-2023":  {
+    "title" : "Easy-does-it Monday!",
+    "description" : "Start your week with some gimmes",
+    "words" :
+    [
+      ["HEW", "BOW", "KID"],
+      ["SNIP", "HAGS", "BELL"],
+      ["CAPED", "ARCED", "STILL"]
+    ]
+  },
+  "08-01-2023":  {
+    "title" : "Two-fer Tuesday!",
+    "description" : "Two 2-bys for your Tuesday",
+    "words" :
+    [
+      ["LIBRARIANS" , "CONDUCTION" ],
+      ["SANDSTORMS" , "TABULATION" ],
+      []
+    ]
+  },
+  "08-02-2023":  {
+    "title" : "Mid-way Wednesday!",
+    "description" : "Three mid-length mazes for your midweek",
+    "words" :
+    [
+      ["STREAK", "HULLED", "VANISH"],
+      ["SANDBAG", "BLANKED", "SPARSER"],
+      ["PROPPING" , "SQUEEZES" , "MYSTIQUE" ]
+    ]
+  },
+  "08-03-2023":  {
+    "title" : "Three-by Thursday!",
+    "description" : "Three 3-by-9s for your Thursday",
+    "words" :
+    [
+      ["OVERTHREW" , "CHERISHES" , "DISSENTED" ],
+      ["EXTREMISM" , "LOATHSOME" , "AMBITIOUS" ],
+      ["GLADDENED" , "ABSTRACTS" , "OUTWEIGHS" ]
+    ]
+  },
+  "08-04-2023":  {
+    "title" : "Fearsome Four-by Friday!",
+    "description" : "A formidable foursome for your Friday",
+    "words" :
+    [
+      ["IMPOSING" , "FOURTEEN" , "KILOGRAM" , "BACKREST" ],
+      [],
+      []
+    ]
+  },
+  "08-05-2023":  {
+    "title" : "A smattering Saturday!",
+    "description" : "A sampler for your Saturday sleuthing",
+    "words" :
+    [
+      ["HONE", "TOGA", "BUNT", "POLO", "SPED"],
+      ["CONGENIAL" , "EASYGOING" ],
+      ["FRAYING", "FORTIFY", "GLACIER"]
+    ]
+  },
+  "08-06-2023":  {
+    "title" : "Short-stack Sunday!",
+    "description" : "Shorties stacked for your Sunday brunch",
+    "words" :
+    [
+      ["CANS", "TOYS", "BABE", "DEAL", "AREA"],
+      ["HIKE", "FEED", "NIPS", "PALE", "DUOS"],
+      ["SOP", "LEG", "GIG", "LOT", "ARE", "MIX"]
+    ]
+  },
+  "08-07-2023":  {
+    "title" : "Easy-does-it Monday!",
+    "description" : "Start your week with some gimmes",
+    "words" :
+    [
+      ["BIO", "OWL", "SOT"],
+      ["TURN", "ROCK", "HOES"],
+      ["HILLS", "SKEWS", "AGONY"]
+    ]
+  },
+  "08-08-2023":  {
+    "title" : "Two-fer Tuesday!",
+    "description" : "Two 2-bys for your Tuesday",
+    "words" :
+    [
+      ["ARISTOCRAT" , "PORCUPINES" ],
+      ["IMAGINABLE" , "AFFILIATES" ],
+      []
+    ]
+  },
+  "08-09-2023":  {
+    "title" : "Mid-way Wednesday!",
+    "description" : "Three mid-length mazes for your midweek",
+    "words" :
+    [
+      ["LOBBED", "NEWEST", "CUCKOO"],
+      ["DENOTED", "REUNITE", "CATALOG"],
+      ["HINDERED" , "IMPORTED" , "SPEEDING" ]
+    ]
+  },
+  "08-10-2023":  {
+    "title" : "Three-by Thursday!",
+    "description" : "Three 3-by-9s for your Thursday",
+    "words" :
+    [
+      ["FLUCTUATE" , "PARASITIC" , "ENTRANCES" ],
+      ["SUBTOTALS" , "SALVAGING" , "OVERTAKEN" ],
+      ["DESERTION" , "TELEVISED" , "MOBILIZES" ]
+    ]
+  },
+  "08-11-2023":  {
+    "title" : "Fearsome Four-by Friday!",
+    "description" : "A formidable foursome for your Friday",
+    "words" :
+    [
+      ["NOBLEMEN" , "PESTERED" , "DEMENTED" , "BARBARIC" ],
+      [],
+      []
+    ]
+  },
+  "08-12-2023":  {
+    "title" : "A smattering Saturday!",
+    "description" : "A sampler for your Saturday sleuthing",
+    "words" :
+    [
+      ["OUST", "LURE", "JOKE", "PILE", "RILE"],
+      ["LIMOUSINE" , "DISPARAGE" ],
+      ["COOKING", "VAULTED", "REGENTS"]
+    ]
+  },
+  "08-13-2023":  {
+    "title" : "Short-stack Sunday!",
+    "description" : "Shorties stacked for your Sunday brunch",
+    "words" :
+    [
+      ["THEN", "MOMS", "CELL", "GAIT", "PANT"],
+      ["FEUD", "OATS", "HOES", "ONYX", "AVOW"],
+      ["EON", "FLU", "DUG", "NIT", "TEA", "OUR"]
+    ]
+  },
+  "08-14-2023":  {
+    "title" : "Easy-does-it Monday!",
+    "description" : "Start your week with some gimmes",
+    "words" :
+    [
+      ["SIT", "LUG", "BUG"],
+      ["MAID", "BOON", "SINK"],
+      ["SIRED", "HUFFS", "VEILS"]
+    ]
+  },
+  "08-15-2023":  {
+    "title" : "Two-fer Tuesday!",
+    "description" : "Two 2-bys for your Tuesday",
+    "words" :
+    [
+      ["POWERHOUSE" , "RUBBERIZED" ],
+      ["BELONGINGS" , "IMPECCABLE" ],
+      []
+    ]
+  },
+  "08-16-2023":  {
+    "title" : "Mid-way Wednesday!",
+    "description" : "Three mid-length mazes for your midweek",
+    "words" :
+    [
+      ["UNWISE", "CREEPY", "PUMICE"],
+      ["GLARING", "STEEPLY", "HEATING"],
+      ["DRESSERS" , "PEACOCKS" , "DICTATOR" ]
+    ]
+  },
+  "08-17-2023":  {
+    "title" : "Three-by Thursday!",
+    "description" : "Three 3-by-9s for your Thursday",
+    "words" :
+    [
+      ["PACIFIERS" , "PALATABLE" , "UNDAUNTED" ],
+      ["CONCEDING" , "ADDICTING" , "CATALYSTS" ],
+      ["SNATCHING" , "ESCALATES" , "ENCRUSTED" ]
+    ]
+  },
+  "08-18-2023":  {
+    "title" : "Fearsome Four-by Friday!",
+    "description" : "A formidable foursome for your Friday",
+    "words" :
+    [
+      ["SQUEALED" , "SHACKLES" , "BAGPIPES" , "PROVOKED" ],
+      [],
+      []
+    ]
+  },
+  "08-19-2023":  {
+    "title" : "A smattering Saturday!",
+    "description" : "A sampler for your Saturday sleuthing",
+    "words" :
+    [
+      ["REAR", "BAWL", "ILLS", "PAWS", "BOLD"],
+      ["SHORTENED" , "REINFORCE" ],
+      ["GLACIER", "VIBRANT", "KITTENS"]
+    ]
+  },
+  "08-20-2023":  {
+    "title" : "Short-stack Sunday!",
+    "description" : "Shorties stacked for your Sunday brunch",
+    "words" :
+    [
+      ["LOAF", "YARN", "POOL", "VICE", "ONTO"],
+      ["VEIN", "GORY", "CROW", "MULE", "AIDE"],
+      ["LYE", "WEB", "LID", "NIT", "VET", "RUM"]
+    ]
+  },
+  "08-21-2023":  {
+    "title" : "Easy-does-it Monday!",
+    "description" : "Start your week with some gimmes",
+    "words" :
+    [
+      ["ORE", "NOR", "ODD"],
+      ["GYMS", "WAGE", "FOIL"],
+      ["GAUGE", "EQUAL", "LEASH"]
+    ]
+  },
+  "08-22-2023":  {
+    "title" : "Two-fer Tuesday!",
+    "description" : "Two 2-bys for your Tuesday",
+    "words" :
+    [
+      ["OFFLOADING" , "UNMODIFIED" ],
+      ["DECORATION" , "FLOORBOARD" ],
+      []
+    ]
+  },
+  "08-23-2023":  {
+    "title" : "Mid-way Wednesday!",
+    "description" : "Three mid-length mazes for your midweek",
+    "words" :
+    [
+      ["LYRICS", "TORPID", "TAUNTS"],
+      ["PARABLE", "BOMBING", "HAIRCUT"],
+      ["COLLAPSE" , "EXCERPTS" , "CONSPIRE" ]
+    ]
+  },
+  "08-24-2023":  {
+    "title" : "Three-by Thursday!",
+    "description" : "Three 3-by-9s for your Thursday",
+    "words" :
+    [
+      ["COURTYARD" , "GUIDEBOOK" , "UNLOADING" ],
+      ["PUBLICIST" , "DEBATABLE" , "AMUSINGLY" ],
+      ["CARNATION" , "SCORELESS" , "MISFIRING" ]
+    ]
+  },
+  "08-25-2023":  {
+    "title" : "Fearsome Four-by Friday!",
+    "description" : "A formidable foursome for your Friday",
+    "words" :
+    [
+      ["SOLUTION" , "RELISHED" , "EMPHASIS" , "CAPTIONS" ],
+      [],
+      []
+    ]
+  },
+  "08-26-2023":  {
+    "title" : "A smattering Saturday!",
+    "description" : "A sampler for your Saturday sleuthing",
+    "words" :
+    [
+      ["BOUT", "SALE", "NIPS", "MONK", "DECK"],
+      ["POSITIVES" , "HONEYPOTS" ],
+      ["HOTLINE", "ALLOWED", "VISIBLE"]
+    ]
+  },
+  "08-27-2023":  {
+    "title" : "Short-stack Sunday!",
+    "description" : "Shorties stacked for your Sunday brunch",
+    "words" :
+    [
+      ["CARB", "SPUR", "BELT", "CARP", "POLL"],
+      ["FOUR", "INFO", "DAME", "SACK", "BUYS"],
+      ["IRK", "HUB", "EGO", "ICY", "EON", "BIN"]
+    ]
+  },
+  "08-28-2023":  {
+    "title" : "Easy-does-it Monday!",
+    "description" : "Start your week with some gimmes",
+    "words" :
+    [
+      ["FLU", "CAD", "PUB"],
+      ["BEND", "CARS", "LONE"],
+      ["ANIME", "GRAVY", "SNUCK"]
+    ]
+  },
+  "08-29-2023":  {
+    "title" : "Two-fer Tuesday!",
+    "description" : "Two 2-bys for your Tuesday",
+    "words" :
+    [
+      ["CALCULATOR" , "AMELIORATE" ],
+      ["METABOLISM" , "CROSSOVERS" ],
+      []
+    ]
+  },
+  "08-30-2023":  {
+    "title" : "Mid-way Wednesday!",
+    "description" : "Three mid-length mazes for your midweek",
+    "words" :
+    [
+      ["MILDLY", "UGLIER", "SCALPS"],
+      ["CONDUCT", "GUZZLES", "SHORTER"],
+      ["SQUARISH" , "CEILINGS" , "TETHERED" ]
+    ]
+  },
+  "08-31-2023":  {
+    "title" : "Three-by Thursday!",
+    "description" : "Three 3-by-9s for your Thursday",
+    "words" :
+    [
+      ["INTERIORS" , "INSIDIOUS" , "BLOODIEST" ],
+      ["POLITICAL" , "VITALIZED" , "TAMPERING" ],
+      ["QUICKNESS" , "QUALIFIED" , "MALLEABLE" ]
+    ]
+  },
+  "09-01-2023":  {
+    "title" : "Fearsome Four-by Friday!",
+    "description" : "A formidable foursome for your Friday",
+    "words" :
+    [
+      ["CHOPPERS" , "DRUGGIST" , "BOARDING" , "ETHEREAL" ],
+      [],
+      []
+    ]
+  },
+  "09-02-2023":  {
+    "title" : "A smattering Saturday!",
+    "description" : "A sampler for your Saturday sleuthing",
+    "words" :
+    [
+      ["ERAS", "RODS", "WEAK", "SUES", "ONES"],
+      ["SKEPTICAL" , "RECEPTIVE" ],
+      ["FAIREST", "MAILBAG", "DUSTERS"]
+    ]
+  },
+  "09-03-2023":  {
+    "title" : "Short-stack Sunday!",
+    "description" : "Shorties stacked for your Sunday brunch",
+    "words" :
+    [
+      ["TRIO", "WILD", "DIPS", "LIPS", "RAZE"],
+      ["DUNK", "STIR", "OUTS", "HUNK", "ELSE"],
+      ["HIS", "PEW", "EYE", "WOK", "KEG", "LOX"]
+    ]
+  },
+  "09-04-2023":  {
+    "title" : "Easy-does-it Monday!",
+    "description" : "Start your week with some gimmes",
+    "words" :
+    [
+      ["CAP", "PIE", "BUM"],
+      ["OVER", "TINE", "DRAB"],
+      ["BULLS", "CURSE", "PUPIL"]
+    ]
+  },
+  "09-05-2023":  {
+    "title" : "Two-fer Tuesday!",
+    "description" : "Two 2-bys for your Tuesday",
+    "words" :
+    [
+      ["ACROBATICS" , "CUSTODIANS" ],
+      ["NEWSREADER" , "CONTORTING" ],
+      []
+    ]
+  },
+  "09-06-2023":  {
+    "title" : "Mid-way Wednesday!",
+    "description" : "Three mid-length mazes for your midweek",
+    "words" :
+    [
+      ["ASSIST", "JETSAM", "ORACLE"],
+      ["TATTOOS", "COBWEBS", "CRADLES"],
+      ["PROPOSAL" , "SALESMAN" , "FLINCHED" ]
+    ]
+  },
+  "09-07-2023":  {
+    "title" : "Three-by Thursday!",
+    "description" : "Three 3-by-9s for your Thursday",
+    "words" :
+    [
+      ["WALLOWING" , "INEPTNESS" , "PROTRUDES" ],
+      ["MORTGAGED" , "SYMPHONIC" , "CLUTTERED" ],
+      ["UNCOUNTED" , "OFFICIALS" , "INTRIGUES" ]
+    ]
+  },
+  "09-08-2023":  {
+    "title" : "Fearsome Four-by Friday!",
+    "description" : "A formidable foursome for your Friday",
+    "words" :
+    [
+      ["WEIGHTED" , "EXULTANT" , "BACKREST" , "POSTPONE" ],
+      [],
+      []
+    ]
+  },
+  "09-09-2023":  {
+    "title" : "A smattering Saturday!",
+    "description" : "A sampler for your Saturday sleuthing",
+    "words" :
+    [
+      ["ACED", "DAUB", "VASE", "HERE", "POND"],
+      ["STRESSFUL" , "ADDITIVES" ],
+      ["SNOOPED", "PROUDLY", "ALMONDS"]
+    ]
+  },
+  "09-10-2023":  {
+    "title" : "Short-stack Sunday!",
+    "description" : "Shorties stacked for your Sunday brunch",
+    "words" :
+    [
+      ["EELS", "HUNT", "HALT", "LIKE", "SPAY"],
+      ["SINS", "BUGS", "SIDE", "SPAM", "DISH"],
+      ["RUM", "PUB", "PIE", "WED", "GAR", "GEM"]
+    ]
+  },
+  "09-11-2023":  {
+    "title" : "Easy-does-it Monday!",
+    "description" : "Start your week with some gimmes",
+    "words" :
+    [
+      ["WOE", "FAB", "BID"],
+      ["MIST", "DUNE", "DRAB"],
+      ["CAPER", "HALVE", "JOKED"]
+    ]
+  },
+  "09-12-2023":  {
+    "title" : "Two-fer Tuesday!",
+    "description" : "Two 2-bys for your Tuesday",
+    "words" :
+    [
+      ["HEALTHCARE" , "WEATHERING" ],
+      ["RESUMPTION" , "MATERIALLY" ],
+      []
+    ]
+  },
+  "09-13-2023":  {
+    "title" : "Mid-way Wednesday!",
+    "description" : "Three mid-length mazes for your midweek",
+    "words" :
+    [
+      ["SPENDS", "SASSED", "MINCED"],
+      ["DUSTPAN", "GUTTERS", "GUNSHOT"],
+      ["BREEZING" , "LEVELING" , "POPULATE" ]
+    ]
+  },
+  "09-14-2023":  {
+    "title" : "Three-by Thursday!",
+    "description" : "Three 3-by-9s for your Thursday",
+    "words" :
+    [
+      ["BOTANICAL" , "SHORTSTOP" , "FLICKERED" ],
+      ["CROTCHETY" , "MINIMALLY" , "DREAMLIKE" ],
+      ["SYNTHESIS" , "ECLIPSING" , "MAELSTROM" ]
+    ]
+  },
+  "09-15-2023":  {
+    "title" : "Fearsome Four-by Friday!",
+    "description" : "A formidable foursome for your Friday",
+    "words" :
+    [
+      ["VINTAGES" , "ARTISANS" , "ENDEAVOR" , "SURVEYED" ],
+      [],
+      []
+    ]
+  },
+  "09-16-2023":  {
+    "title" : "A smattering Saturday!",
+    "description" : "A sampler for your Saturday sleuthing",
+    "words" :
+    [
+      ["ROOT", "RUNT", "CENT", "SICK", "ARMS"],
+      ["EMBASSIES" , "WINNOWING" ],
+      ["AWFULLY", "HEDGING", "SELECTS"]
+    ]
+  },
+  "09-17-2023":  {
+    "title" : "Short-stack Sunday!",
+    "description" : "Shorties stacked for your Sunday brunch",
+    "words" :
+    [
+      ["GEMS", "EKES", "ACED", "BANS", "DUES"],
+      ["JAMB", "FARE", "MARS", "DRAB", "DROP"],
+      ["FOR", "CRY", "FIT", "DIP", "APP", "POD"]
+    ]
+  },
+  "09-18-2023":  {
+    "title" : "Easy-does-it Monday!",
+    "description" : "Start your week with some gimmes",
+    "words" :
+    [
+      ["TAB", "LAY", "COW"],
+      ["TOME", "AMEN", "RICE"],
+      ["CURBS", "USHER", "ACTOR"]
+    ]
+  },
+  "09-19-2023":  {
+    "title" : "Two-fer Tuesday!",
+    "description" : "Two 2-bys for your Tuesday",
+    "words" :
+    [
+      ["SATURATING" , "CHANCELLOR" ],
+      ["PERMEATING" , "HEADCOUNTS" ],
+      []
+    ]
+  },
+  "09-20-2023":  {
+    "title" : "Mid-way Wednesday!",
+    "description" : "Three mid-length mazes for your midweek",
+    "words" :
+    [
+      ["SPLICE", "MANIAC", "PARADE"],
+      ["PLUNGER", "WINDING", "ADMIRED"],
+      ["UNHEATED" , "MEASURED" , "CUSTARDS" ]
+    ]
+  },
+  "09-21-2023":  {
+    "title" : "Three-by Thursday!",
+    "description" : "Three 3-by-9s for your Thursday",
+    "words" :
+    [
+      ["POMPOUSLY" , "STEPCHILD" , "DELEGATED" ],
+      ["INCORRECT" , "SPECIALTY" , "JITTERBUG" ],
+      ["NULLIFIES" , "NOVELISTS" , "INFURIATE" ]
+    ]
+  },
+  "09-22-2023":  {
+    "title" : "Fearsome Four-by Friday!",
+    "description" : "A formidable foursome for your Friday",
+    "words" :
+    [
+      ["TRAPDOOR" , "REVERSES" , "ENGINEER" , "HONEYBEE" ],
+      [],
+      []
+    ]
+  },
+  "09-23-2023":  {
+    "title" : "A smattering Saturday!",
+    "description" : "A sampler for your Saturday sleuthing",
+    "words" :
+    [
+      ["LACE", "TINY", "MAZE", "SINE", "ORES"],
+      ["ATONEMENT" , "AUTOMAKER" ],
+      ["ASSUAGE", "HOPEFUL", "ENROLLS"]
+    ]
+  },
+  "09-24-2023":  {
+    "title" : "Short-stack Sunday!",
+    "description" : "Shorties stacked for your Sunday brunch",
+    "words" :
+    [
+      ["PATH", "COAL", "HOLY", "GENE", "RING"],
+      ["LIST", "FOUR", "DEFY", "BOOS", "BANS"],
+      ["OAR", "TEN", "FRY", "PAN", "NAB", "TOT"]
+    ]
+  },
+  "09-25-2023":  {
+    "title" : "Easy-does-it Monday!",
+    "description" : "Start your week with some gimmes",
+    "words" :
+    [
+      ["RAM", "GYM", "INN"],
+      ["GOAL", "DODO", "TRAP"],
+      ["BEAMS", "GURUS", "ASSET"]
+    ]
+  },
+  "09-26-2023":  {
+    "title" : "Two-fer Tuesday!",
+    "description" : "Two 2-bys for your Tuesday",
+    "words" :
+    [
+      ["RACECOURSE" , "BUTTERMILK" ],
+      ["COOPERATES" , "HEADPHONES" ],
+      []
+    ]
+  },
+  "09-27-2023":  {
+    "title" : "Mid-way Wednesday!",
+    "description" : "Three mid-length mazes for your midweek",
+    "words" :
+    [
+      ["THEIRS", "KAYAKS", "COVETS"],
+      ["CRACKLE", "LUMPING", "MORSELS"],
+      ["DISTASTE" , "HABITUAL" , "BUTTERED" ]
+    ]
+  },
+  "09-28-2023":  {
+    "title" : "Three-by Thursday!",
+    "description" : "Three 3-by-9s for your Thursday",
+    "words" :
+    [
+      ["STATEWIDE" , "ASSEMBLES" , "CANDIDATE" ],
+      ["REPENTANT" , "POSSESSES" , "CIRCULATE" ],
+      ["SLIPCOVER" , "PAINFULLY" , "NONSMOKER" ]
+    ]
+  },
+  "09-29-2023":  {
+    "title" : "Fearsome Four-by Friday!",
+    "description" : "A formidable foursome for your Friday",
+    "words" :
+    [
+      ["SUNBEAMS" , "CONSOLED" , "REPORTED" , "ENTIRELY" ],
+      [],
+      []
+    ]
+  },
+  "09-30-2023":  {
+    "title" : "A smattering Saturday!",
+    "description" : "A sampler for your Saturday sleuthing",
+    "words" :
+    [
+      ["PUMA", "NOSE", "BOPS", "BLOC", "ROWS"],
+      ["BETTERING" , "AFFILIATE" ],
+      ["ENGULFS", "ADJUNCT", "GHERKIN"]
+    ]
+  },
+  "10-01-2023":  {
+    "title" : "Short-stack Sunday!",
+    "description" : "Shorties stacked for your Sunday brunch",
+    "words" :
+    [
+      ["BUMS", "SOLD", "DIAL", "RIDE", "JEST"],
+      ["PRIM", "SIRS", "BOAS", "FOAM", "CASH"],
+      ["NIP", "LOG", "HEN", "DUN", "KIN", "ELL"]
+    ]
+  },
+  "10-02-2023":  {
+    "title" : "Easy-does-it Monday!",
+    "description" : "Start your week with some gimmes",
+    "words" :
+    [
+      ["VET", "MUD", "IMP"],
+      ["COMB", "DYES", "AILS"],
+      ["PUPIL", "MUSES", "SIFTS"]
+    ]
+  },
+  "10-03-2023":  {
+    "title" : "Two-fer Tuesday!",
+    "description" : "Two 2-bys for your Tuesday",
+    "words" :
+    [
+      ["NUCLEOTIDE" , "BESEECHING" ],
+      ["INTERLUDES" , "SPELUNKING" ],
+      []
+    ]
+  },
+  "10-04-2023":  {
+    "title" : "Mid-way Wednesday!",
+    "description" : "Three mid-length mazes for your midweek",
+    "words" :
+    [
+      ["CRITIC", "HARBOR", "SQUEAL"],
+      ["SLICING", "POLYMER", "ADJUSTS"],
+      ["THOUSAND" , "HORMONAL" , "HAYSTACK" ]
+    ]
+  },
+  "10-05-2023":  {
+    "title" : "Three-by Thursday!",
+    "description" : "Three 3-by-9s for your Thursday",
+    "words" :
+    [
+      ["FORTITUDE" , "TRUCKLOAD" , "SECTIONAL" ],
+      ["SIDEBURNS" , "TENACIOUS" , "DEVALUING" ],
+      ["REPEATING" , "COALMINES" , "CRUCIALLY" ]
+    ]
+  },
+  "10-06-2023":  {
+    "title" : "Fearsome Four-by Friday!",
+    "description" : "A formidable foursome for your Friday",
+    "words" :
+    [
+      ["STOWAWAY" , "OINTMENT" , "JUBILEES" , "CHUNKIER" ],
+      [],
+      []
+    ]
+  },
+  "10-07-2023":  {
+    "title" : "A smattering Saturday!",
+    "description" : "A sampler for your Saturday sleuthing",
+    "words" :
+    [
+      ["IRIS", "TAME", "TAGS", "CHAP", "BOYS"],
+      ["CLEVEREST" , "POSTULATE" ],
+      ["TURTLES", "SPRUCES", "MOTHERS"]
+    ]
+  },
+  "10-08-2023":  {
+    "title" : "Short-stack Sunday!",
+    "description" : "Shorties stacked for your Sunday brunch",
+    "words" :
+    [
+      ["FURL", "DUMB", "BUNT", "BOGS", "SHIP"],
+      ["RAZE", "RIMS", "DONS", "NERD", "DONS"],
+      ["LAD", "DUB", "LET", "HAT", "IRK", "BUD"]
+    ]
+  },
+  "10-09-2023":  {
+    "title" : "Easy-does-it Monday!",
+    "description" : "Start your week with some gimmes",
+    "words" :
+    [
+      ["HUM", "SOY", "NUN"],
+      ["HASH", "DUAL", "TICS"],
+      ["GLOWS", "APRON", "WAGER"]
+    ]
+  },
+  "10-10-2023":  {
+    "title" : "Two-fer Tuesday!",
+    "description" : "Two 2-bys for your Tuesday",
+    "words" :
+    [
+      ["VINDICTIVE" , "VOLLEYBALL" ],
+      ["MICROSCOPY" , "THERMOSTAT" ],
+      []
+    ]
+  },
+  "10-11-2023":  {
+    "title" : "Mid-way Wednesday!",
+    "description" : "Three mid-length mazes for your midweek",
+    "words" :
+    [
+      ["SENSOR", "SKILLS", "LATENT"],
+      ["JUMBLED", "FIDDLED", "HOMAGES"],
+      ["MOONBEAM" , "SEASHORE" , "CHEERILY" ]
+    ]
+  },
+  "10-12-2023":  {
+    "title" : "Three-by Thursday!",
+    "description" : "Three 3-by-9s for your Thursday",
+    "words" :
+    [
+      ["UNUSUALLY" , "INJUSTICE" , "LEAVENING" ],
+      ["POLLUTING" , "YEARBOOKS" , "PROJECTED" ],
+      ["PRINTABLE" , "DEAFENING" , "EXTREMIST" ]
+    ]
+  },
+  "10-13-2023":  {
+    "title" : "Fearsome Four-by Friday!",
+    "description" : "A formidable foursome for your Friday",
+    "words" :
+    [
+      ["INHERITS" , "QUARTERS" , "WARPAINT" , "RENOWNED" ],
+      [],
+      []
+    ]
+  },
+  "10-14-2023":  {
+    "title" : "A smattering Saturday!",
+    "description" : "A sampler for your Saturday sleuthing",
+    "words" :
+    [
+      ["SNOB", "FURL", "LAMB", "GLUM", "JINX"],
+      ["TANGIBLES" , "BEGINNING" ],
+      ["CAMPING", "SEETHED", "REDWOOD"]
+    ]
+  },
+  "10-15-2023":  {
+    "title" : "Short-stack Sunday!",
+    "description" : "Shorties stacked for your Sunday brunch",
+    "words" :
+    [
+      ["DAMP", "FORE", "SPAT", "ARTY", "ARTS"],
+      ["ROAM", "DASH", "WAKE", "TROT", "BORE"],
+      ["EVE", "TOO", "CUP", "TRY", "NET", "THY"]
+    ]
+  },
+  "10-16-2023":  {
+    "title" : "Easy-does-it Monday!",
+    "description" : "Start your week with some gimmes",
+    "words" :
+    [
+      ["PIN", "GYM", "RIB"],
+      ["PEEL", "LONE", "TALK"],
+      ["UNCLE", "AUDIO", "WOODY"]
+    ]
+  },
+  "10-17-2023":  {
+    "title" : "Two-fer Tuesday!",
+    "description" : "Two 2-bys for your Tuesday",
+    "words" :
+    [
+      ["CHIMPANZEE" , "ADMITTEDLY" ],
+      ["WEAKNESSES" , "WRISTWATCH" ],
+      []
+    ]
+  },
+  "10-18-2023":  {
+    "title" : "Mid-way Wednesday!",
+    "description" : "Three mid-length mazes for your midweek",
+    "words" :
+    [
+      ["RANGES", "REMAND", "ALWAYS"],
+      ["CHEMIST", "RAILING", "ENCHANT"],
+      ["ENORMITY" , "COARSELY" , "PLASTICS" ]
+    ]
+  },
+  "10-19-2023":  {
+    "title" : "Three-by Thursday!",
+    "description" : "Three 3-by-9s for your Thursday",
+    "words" :
+    [
+      ["PLACEMENT" , "LETHARGIC" , "CHEMISTRY" ],
+      ["MIGRATING" , "SEPARATES" , "PIECEMEAL" ],
+      ["INSULTING" , "TREATMENT" , "CIVILIZED" ]
+    ]
+  },
+  "10-20-2023":  {
+    "title" : "Fearsome Four-by Friday!",
+    "description" : "A formidable foursome for your Friday",
+    "words" :
+    [
+      ["NOTEPADS" , "SABOTAGE" , "NEWSCAST" , "COMPILED" ],
+      [],
+      []
+    ]
+  },
+  "10-21-2023":  {
+    "title" : "A smattering Saturday!",
+    "description" : "A sampler for your Saturday sleuthing",
+    "words" :
+    [
+      ["RASH", "HARE", "COAL", "DISC", "GASH"],
+      ["GUESSABLE" , "SHADOWING" ],
+      ["ASPIRIN", "STOPPED", "QUOTING"]
+    ]
+  },
+  "10-22-2023":  {
+    "title" : "Short-stack Sunday!",
+    "description" : "Shorties stacked for your Sunday brunch",
+    "words" :
+    [
+      ["DEWY", "WANT", "DRUG", "PIKE", "DYED"],
+      ["RUGS", "KNOT", "OGRE", "FACE", "DATA"],
+      ["ATE", "RAY", "END", "LAW", "YIP", "BAN"]
+    ]
+  },
+  "10-23-2023":  {
+    "title" : "Easy-does-it Monday!",
+    "description" : "Start your week with some gimmes",
+    "words" :
+    [
+      ["FIN", "NAY", "BAD"],
+      ["AFAR", "JAZZ", "DREW"],
+      ["HURTS", "LIENS", "WORMY"]
+    ]
+  },
+  "10-24-2023":  {
+    "title" : "Two-fer Tuesday!",
+    "description" : "Two 2-bys for your Tuesday",
+    "words" :
+    [
+      ["PESSIMISTS" , "YOUNGSTERS" ],
+      ["LEVITATION" , "UNREADABLE" ],
+      []
+    ]
+  },
+  "10-25-2023":  {
+    "title" : "Mid-way Wednesday!",
+    "description" : "Three mid-length mazes for your midweek",
+    "words" :
+    [
+      ["UNUSED", "HANGUP", "PALEST"],
+      ["REVISIT", "SALTIER", "TOTALLY"],
+      ["OBSCURED" , "MNEMONIC" , "VOLATILE" ]
+    ]
+  },
+  "10-26-2023":  {
+    "title" : "Three-by Thursday!",
+    "description" : "Three 3-by-9s for your Thursday",
+    "words" :
+    [
+      ["CROSSOVER" , "CONFIDENT" , "PRUDENTLY" ],
+      ["VIOLINIST" , "LEFTOVERS" , "SUNSTROKE" ],
+      ["CARPOOLED" , "VENTURING" , "CACOPHONY" ]
+    ]
+  },
+  "10-27-2023":  {
+    "title" : "Fearsome Four-by Friday!",
+    "description" : "A formidable foursome for your Friday",
+    "words" :
+    [
+      ["PLUNDERS" , "CULTURES" , "DETACHED" , "BEDSTEAD" ],
+      [],
+      []
+    ]
+  },
+  "10-28-2023":  {
+    "title" : "A smattering Saturday!",
+    "description" : "A sampler for your Saturday sleuthing",
+    "words" :
+    [
+      ["DADS", "WILT", "TEXT", "ENVY", "WIRY"],
+      ["MEMORIZES" , "ROUGHSHOD" ],
+      ["PLUMBER", "NODULES", "REPEATS"]
+    ]
+  },
+  "10-29-2023":  {
+    "title" : "Short-stack Sunday!",
+    "description" : "Shorties stacked for your Sunday brunch",
+    "words" :
+    [
+      ["WISE", "PEND", "GAME", "FOIL", "KIND"],
+      ["YARN", "LEAD", "MUST", "HOPS", "CLAP"],
+      ["FUR", "HEN", "TOY", "GAD", "JOB", "RID"]
+    ]
+  },
+  "10-30-2023":  {
+    "title" : "Easy-does-it Monday!",
+    "description" : "Start your week with some gimmes",
+    "words" :
+    [
+      ["MAW", "GOD", "ALL"],
+      ["LUMP", "GOOD", "FACT"],
+      ["RETRY", "SWANS", "DEANS"]
+    ]
+  },
+  "10-31-2023":  {
+    "title" : "Two-fer Tuesday!",
+    "description" : "Two 2-bys for your Tuesday",
+    "words" :
+    [
+      ["PARTNERING" , "SUPERVISED" ],
+      ["MANICURING" , "UNOCCUPIED" ],
+      []
+    ]
+  },
+  "11-01-2023":  {
+    "title" : "Mid-way Wednesday!",
+    "description" : "Three mid-length mazes for your midweek",
+    "words" :
+    [
+      ["BARROW", "SLINKS", "FEELER"],
+      ["NEWBORN", "HATEFUL", "PSYCHIC"],
+      ["ENABLING" , "CHARMING" , "MOVEABLE" ]
+    ]
+  },
+  "11-02-2023":  {
+    "title" : "Three-by Thursday!",
+    "description" : "Three 3-by-9s for your Thursday",
+    "words" :
+    [
+      ["PRIVILEGE" , "WALLOPING" , "PITCHFORK" ],
+      ["AUTOMATED" , "SNOWPLOWS" , "REQUESTED" ],
+      ["SABOTAGED" , "SIDESWIPE" , "BALLISTIC" ]
+    ]
+  },
+  "11-03-2023":  {
+    "title" : "Fearsome Four-by Friday!",
+    "description" : "A formidable foursome for your Friday",
+    "words" :
+    [
+      ["MIDNIGHT" , "SERVICED" , "CURRENTS" , "UPPERCUT" ],
+      [],
+      []
+    ]
+  },
+  "11-04-2023":  {
+    "title" : "A smattering Saturday!",
+    "description" : "A sampler for your Saturday sleuthing",
+    "words" :
+    [
+      ["HAWK", "PATS", "BIND", "HAZE", "RANT"],
+      ["UNVARYING" , "KILOBYTES" ],
+      ["BOTTLES", "SNORTED", "BRAVING"]
+    ]
+  },
+  "11-05-2023":  {
+    "title" : "Short-stack Sunday!",
+    "description" : "Shorties stacked for your Sunday brunch",
+    "words" :
+    [
+      ["WINK", "OUTS", "GNAW", "ROPE", "ARID"],
+      ["SLAM", "LACE", "PATH", "COOK", "COPY"],
+      ["ACT", "PLY", "ASK", "TOT", "FEN", "JAB"]
+    ]
+  },
+  "11-06-2023":  {
+    "title" : "Easy-does-it Monday!",
+    "description" : "Start your week with some gimmes",
+    "words" :
+    [
+      ["WOO", "BOO", "HOT"],
+      ["MINE", "GNAW", "RODE"],
+      ["SALTY", "BREAK", "HILLY"]
+    ]
+  },
+  "11-07-2023":  {
+    "title" : "Two-fer Tuesday!",
+    "description" : "Two 2-bys for your Tuesday",
+    "words" :
+    [
+      ["PORTENTOUS" , "MEDICATING" ],
+      ["AMPLIFYING" , "WITHDRAWAL" ],
+      []
+    ]
+  },
+  "11-08-2023":  {
+    "title" : "Mid-way Wednesday!",
+    "description" : "Three mid-length mazes for your midweek",
+    "words" :
+    [
+      ["GOATEE", "REAPER", "JOYFUL"],
+      ["SIMPLER", "STARDOM", "PITCHED"],
+      ["HUSTLING" , "INEQUITY" , "WOBBLING" ]
+    ]
+  },
+  "11-09-2023":  {
+    "title" : "Three-by Thursday!",
+    "description" : "Three 3-by-9s for your Thursday",
+    "words" :
+    [
+      ["REPUBLICS" , "ABANDONED" , "PACHYDERM" ],
+      ["THESAURUS" , "PERTAINED" , "PHEASANTS" ],
+      ["UPROOTING" , "RADICALLY" , "OUTLASTED" ]
+    ]
+  },
+  "11-10-2023":  {
+    "title" : "Fearsome Four-by Friday!",
+    "description" : "A formidable foursome for your Friday",
+    "words" :
+    [
+      ["COLORING" , "BLENDING" , "DEFAMING" , "VOUCHERS" ],
+      [],
+      []
+    ]
+  },
+  "11-11-2023":  {
+    "title" : "A smattering Saturday!",
+    "description" : "A sampler for your Saturday sleuthing",
+    "words" :
+    [
+      ["GREY", "PROW", "FEET", "SANE", "DUMP"],
+      ["TERMINATE" , "DICTATION" ],
+      ["FARMERS", "FORMING", "DRAWING"]
+    ]
+  },
+  "11-12-2023":  {
+    "title" : "Short-stack Sunday!",
+    "description" : "Shorties stacked for your Sunday brunch",
+    "words" :
+    [
+      ["IDLY", "PEEL", "SKIP", "VARY", "MEET"],
+      ["TINT", "DAMS", "DUET", "TACO", "ABLE"],
+      ["YAP", "HAS", "HOT", "WHO", "ITS", "BOG"]
+    ]
+  },
+  "11-13-2023":  {
+    "title" : "Easy-does-it Monday!",
+    "description" : "Start your week with some gimmes",
+    "words" :
+    [
+      ["BOB", "COB", "PUS"],
+      ["BLOC", "GIVE", "WASH"],
+      ["SERFS", "HATES", "FLUFF"]
+    ]
+  },
+  "11-14-2023":  {
+    "title" : "Two-fer Tuesday!",
+    "description" : "Two 2-bys for your Tuesday",
+    "words" :
+    [
+      ["RETOUCHING" , "MIDSHIPMEN" ],
+      ["BOOTLEGGER" , "IMPERATIVE" ],
+      []
+    ]
+  },
+  "11-15-2023":  {
+    "title" : "Mid-way Wednesday!",
+    "description" : "Three mid-length mazes for your midweek",
+    "words" :
+    [
+      ["MUGGED", "DECREE", "RADISH"],
+      ["FREEZES", "REFORMS", "COFFEES"],
+      ["DELIGHTS" , "SPECIFIC" , "REDUCING" ]
+    ]
+  },
+  "11-16-2023":  {
+    "title" : "Three-by Thursday!",
+    "description" : "Three 3-by-9s for your Thursday",
+    "words" :
+    [
+      ["HOBBYISTS" , "SLACKENED" , "HEADPHONE" ],
+      ["UNMATCHED" , "DICHOTOMY" , "DETRACTED" ],
+      ["WITNESSES" , "WESTERNER" , "DIVIDENDS" ]
+    ]
+  },
+  "11-17-2023":  {
+    "title" : "Fearsome Four-by Friday!",
+    "description" : "A formidable foursome for your Friday",
+    "words" :
+    [
+      ["ENTERING" , "DROPOUTS" , "CANOEING" , "SESSIONS" ],
+      [],
+      []
+    ]
+  },
+  "11-18-2023":  {
+    "title" : "A smattering Saturday!",
+    "description" : "A sampler for your Saturday sleuthing",
+    "words" :
+    [
+      ["BOMB", "NULL", "FATS", "VEAL", "LARK"],
+      ["THOUSANDS" , "HARMONICA" ],
+      ["NOTHING", "SADDLED", "FLIGHTY"]
+    ]
+  },
+  "11-19-2023":  {
+    "title" : "Short-stack Sunday!",
+    "description" : "Shorties stacked for your Sunday brunch",
+    "words" :
+    [
+      ["BINS", "SPAT", "FIZZ", "SITE", "FREE"],
+      ["ANEW", "PUBS", "SKIT", "DIED", "BILL"],
+      ["HID", "RID", "VET", "PEP", "HIP", "POD"]
+    ]
+  },
+  "11-20-2023":  {
+    "title" : "Easy-does-it Monday!",
+    "description" : "Start your week with some gimmes",
+    "words" :
+    [
+      ["LAX", "HIT", "GAD"],
+      ["LION", "DIGS", "SOLO"],
+      ["FALSE", "SHRED", "CAGED"]
+    ]
+  },
+  "11-21-2023":  {
+    "title" : "Two-fer Tuesday!",
+    "description" : "Two 2-bys for your Tuesday",
+    "words" :
+    [
+      ["ASPIRATING" , "BANDWAGONS" ],
+      ["SERENADING" , "PROCLIVITY" ],
+      []
+    ]
+  },
+  "11-22-2023":  {
+    "title" : "Mid-way Wednesday!",
+    "description" : "Three mid-length mazes for your midweek",
+    "words" :
+    [
+      ["GALLOP", "INNATE", "BOWLED"],
+      ["PANELED", "HUNTING", "FACTORY"],
+      ["BROADEST" , "UNIVERSE" , "IMPUNITY" ]
+    ]
+  },
+  "11-23-2023":  {
+    "title" : "Three-by Thursday!",
+    "description" : "Three 3-by-9s for your Thursday",
+    "words" :
+    [
+      ["PROSPECTS" , "VENDETTAS" , "OUTBREAKS" ],
+      ["MOLECULES" , "BLACKENED" , "SUBSISTED" ],
+      ["GRUMBLING" , "FICTIONAL" , "PUNCTURED" ]
+    ]
+  },
+  "11-24-2023":  {
+    "title" : "Fearsome Four-by Friday!",
+    "description" : "A formidable foursome for your Friday",
+    "words" :
+    [
+      ["OUTRIGHT" , "MARRYING" , "SECURELY" , "FRECKLES" ],
+      [],
+      []
+    ]
+  },
+  "11-25-2023":  {
+    "title" : "A smattering Saturday!",
+    "description" : "A sampler for your Saturday sleuthing",
+    "words" :
+    [
+      ["WORN", "EXAM", "EXIT", "CHAT", "ENVY"],
+      ["MOVEMENTS" , "MISBEHAVE" ],
+      ["PLAGUES", "DISGUST", "TRACKED"]
+    ]
+  },
+  "11-26-2023":  {
+    "title" : "Short-stack Sunday!",
+    "description" : "Shorties stacked for your Sunday brunch",
+    "words" :
+    [
+      ["TIDE", "BRIE", "TAPS", "STUB", "FLED"],
+      ["BUYS", "KNEW", "GREY", "FERN", "DEWY"],
+      ["ASP", "RAW", "GYM", "VAT", "PAY", "PUP"]
+    ]
+  },
+  "11-27-2023":  {
+    "title" : "Easy-does-it Monday!",
+    "description" : "Start your week with some gimmes",
+    "words" :
+    [
+      ["HUE", "HAT", "SAT"],
+      ["HEAT", "LEEK", "FIGS"],
+      ["TOYED", "WATTS", "KEBAB"]
+    ]
+  },
+  "11-28-2023":  {
+    "title" : "Two-fer Tuesday!",
+    "description" : "Two 2-bys for your Tuesday",
+    "words" :
+    [
+      ["SNOWBOARDS" , "FUTURISTIC" ],
+      ["EXHALATION" , "APPRECIATE" ],
+      []
+    ]
+  },
+  "11-29-2023":  {
+    "title" : "Mid-way Wednesday!",
+    "description" : "Three mid-length mazes for your midweek",
+    "words" :
+    [
+      ["OCCURS", "HOVELS", "SLEEPY"],
+      ["GUMDROP", "ANGLERS", "QUIZZED"],
+      ["HIJACKED" , "DEADBEAT" , "AIRBORNE" ]
+    ]
+  },
+  "11-30-2023":  {
+    "title" : "Three-by Thursday!",
+    "description" : "Three 3-by-9s for your Thursday",
+    "words" :
+    [
+      ["BELIEVING" , "DEFINABLE" , "CURIOUSLY" ],
+      ["DESCRIBES" , "DESCRIBES" , "AEROSPACE" ],
+      ["EXTREMELY" , "DICTATION" , "THEATRICS" ]
+    ]
+  },
+  "12-01-2023":  {
+    "title" : "Fearsome Four-by Friday!",
+    "description" : "A formidable foursome for your Friday",
+    "words" :
+    [
+      ["EYEBROWS" , "INFINITE" , "MINIMUMS" , "BROTHERS" ],
+      [],
+      []
+    ]
+  },
+  "12-02-2023":  {
+    "title" : "A smattering Saturday!",
+    "description" : "A sampler for your Saturday sleuthing",
+    "words" :
+    [
+      ["CHUM", "THIN", "TEMP", "JARS", "NEST"],
+      ["COVENANTS" , "TERRORIST" ],
+      ["GATHERS", "INFIELD", "RIGHTLY"]
+    ]
+  },
+  "12-03-2023":  {
+    "title" : "Short-stack Sunday!",
+    "description" : "Shorties stacked for your Sunday brunch",
+    "words" :
+    [
+      ["COAT", "FLOP", "REAP", "GEMS", "EONS"],
+      ["FUSS", "GLUT", "DIRT", "DYED", "CAVE"],
+      ["HEX", "FIN", "MAY", "CUR", "ELL", "ASP"]
+    ]
+  },
+  "12-04-2023":  {
+    "title" : "Easy-does-it Monday!",
+    "description" : "Start your week with some gimmes",
+    "words" :
+    [
+      ["TOO", "OFF", "DOC"],
+      ["WADS", "ALLY", "TAPS"],
+      ["MARKS", "KEYED", "FACET"]
+    ]
+  },
+  "12-05-2023":  {
+    "title" : "Two-fer Tuesday!",
+    "description" : "Two 2-bys for your Tuesday",
+    "words" :
+    [
+      ["TRANSCRIPT" , "MITIGATION" ],
+      ["NONTAXABLE" , "BROADENING" ],
+      []
+    ]
+  },
+  "12-06-2023":  {
+    "title" : "Mid-way Wednesday!",
+    "description" : "Three mid-length mazes for your midweek",
+    "words" :
+    [
+      ["DIMPLE", "FRONDS", "PROBED"],
+      ["OBEYING", "IMMORAL", "BAITING"],
+      ["TREMBLES" , "MATTERED" , "QUAGMIRE" ]
+    ]
+  },
+  "12-07-2023":  {
+    "title" : "Three-by Thursday!",
+    "description" : "Three 3-by-9s for your Thursday",
+    "words" :
+    [
+      ["AVOIDABLE" , "TROUBLING" , "MURKINESS" ],
+      ["CHAGRINED" , "DECIPHERS" , "ARBITRATE" ],
+      ["RENEGADES" , "STATEHOOD" , "EQUATIONS" ]
+    ]
+  },
+  "12-08-2023":  {
+    "title" : "Fearsome Four-by Friday!",
+    "description" : "A formidable foursome for your Friday",
+    "words" :
+    [
+      ["QUERYING" , "COMPLIES" , "MENTALLY" , "DYNAMICS" ],
+      [],
+      []
+    ]
+  },
+  "12-09-2023":  {
+    "title" : "A smattering Saturday!",
+    "description" : "A sampler for your Saturday sleuthing",
+    "words" :
+    [
+      ["ECHO", "COTS", "MAIM", "RUNS", "FIST"],
+      ["SHIVERING" , "DISCLOSED" ],
+      ["BATHTUB", "FIXATED", "SANDBOX"]
+    ]
+  },
+  "12-10-2023":  {
+    "title" : "Short-stack Sunday!",
+    "description" : "Shorties stacked for your Sunday brunch",
+    "words" :
+    [
+      ["SEEN", "BOPS", "AIRY", "CLOG", "SAME"],
+      ["QUAY", "BRED", "CARE", "GALL", "CLAY"],
+      ["DOC", "MID", "FEW", "HER", "TIC", "OLD"]
+    ]
+  },
+  "12-11-2023":  {
+    "title" : "Easy-does-it Monday!",
+    "description" : "Start your week with some gimmes",
+    "words" :
+    [
+      ["JET", "RAP", "ILL"],
+      ["ONES", "TEND", "HIDE"],
+      ["OLDIE", "UNCLE", "BLOOD"]
+    ]
+  },
+  "12-12-2023":  {
+    "title" : "Two-fer Tuesday!",
+    "description" : "Two 2-bys for your Tuesday",
+    "words" :
+    [
+      ["JOURNEYMEN" , "AUTHORIZES" ],
+      ["RANSACKING" , "REPRESSIVE" ],
+      []
+    ]
+  },
+  "12-13-2023":  {
+    "title" : "Mid-way Wednesday!",
+    "description" : "Three mid-length mazes for your midweek",
+    "words" :
+    [
+      ["CHALKY", "ELEVEN", "PINNED"],
+      ["REBUILD", "CAUSING", "SALUTED"],
+      ["ANIMATES" , "COOKBOOK" , "TEACHING" ]
+    ]
+  },
+  "12-14-2023":  {
+    "title" : "Three-by Thursday!",
+    "description" : "Three 3-by-9s for your Thursday",
+    "words" :
+    [
+      ["VIRGINITY" , "CLARIFIES" , "CRUCIALLY" ],
+      ["NICKNAMED" , "STYLISHLY" , "WRESTLERS" ],
+      ["BLANCHING" , "QUOTIENTS" , "SURVIVORS" ]
+    ]
+  },
+  "12-15-2023":  {
+    "title" : "Fearsome Four-by Friday!",
+    "description" : "A formidable foursome for your Friday",
+    "words" :
+    [
+      ["CARELESS" , "STRANDED" , "POWERFUL" , "ELIGIBLE" ],
+      [],
+      []
+    ]
+  },
+  "12-16-2023":  {
+    "title" : "A smattering Saturday!",
+    "description" : "A sampler for your Saturday sleuthing",
+    "words" :
+    [
+      ["LOOM", "OURS", "ROBE", "TYPO", "GULF"],
+      ["MARATHONS" , "BEJEWELED" ],
+      ["BASHFUL", "DUALITY", "OPERATE"]
+    ]
+  },
+  "12-17-2023":  {
+    "title" : "Short-stack Sunday!",
+    "description" : "Shorties stacked for your Sunday brunch",
+    "words" :
+    [
+      ["HAWK", "GUMS", "DAMS", "EVES", "NODE"],
+      ["SWIM", "COLA", "OPUS", "SURF", "BYTE"],
+      ["MIX", "RUE", "FEZ", "HOE", "FLY", "LOW"]
+    ]
+  },
+  "12-18-2023":  {
+    "title" : "Easy-does-it Monday!",
+    "description" : "Start your week with some gimmes",
+    "words" :
+    [
+      ["NAY", "SOY", "HIS"],
+      ["ODDS", "WAIL", "TAME"],
+      ["BREED", "SQUAD", "SEVER"]
+    ]
+  },
+  "12-19-2023":  {
+    "title" : "Two-fer Tuesday!",
+    "description" : "Two 2-bys for your Tuesday",
+    "words" :
+    [
+      ["YESTERYEAR" , "WOODWORKER" ],
+      ["DALLIANCES" , "IGNORANTLY" ],
+      []
+    ]
+  },
+  "12-20-2023":  {
+    "title" : "Mid-way Wednesday!",
+    "description" : "Three mid-length mazes for your midweek",
+    "words" :
+    [
+      ["MIDDAY", "BUZZED", "STEERS"],
+      ["PROPELS", "LINGERS", "SIGNIFY"],
+      ["COMPARED" , "PROFOUND" , "RESOLVES" ]
+    ]
+  },
+  "12-21-2023":  {
+    "title" : "Three-by Thursday!",
+    "description" : "Three 3-by-9s for your Thursday",
+    "words" :
+    [
+      ["LUXURIOUS" , "STAMPEDED" , "RELIGIOUS" ],
+      ["METABOLIC" , "AFTERMATH" , "DECEIVING" ],
+      ["RETURNING" , "ROADBLOCK" , "EXPEDITES" ]
+    ]
+  },
+  "12-22-2023":  {
+    "title" : "Fearsome Four-by Friday!",
+    "description" : "A formidable foursome for your Friday",
+    "words" :
+    [
+      ["ENCROACH" , "OVERLAPS" , "SOLEMNLY" , "THUDDING" ],
+      [],
+      []
+    ]
+  },
+  "12-23-2023":  {
+    "title" : "A smattering Saturday!",
+    "description" : "A sampler for your Saturday sleuthing",
+    "words" :
+    [
+      ["DUMB", "PEWS", "POEM", "PORT", "MAID"],
+      ["DISREPAIR" , "FOUNTAINS" ],
+      ["LEADERS", "NATIONS", "SPEAKER"]
+    ]
+  },
+  "12-24-2023":  {
+    "title" : "Short-stack Sunday!",
+    "description" : "Shorties stacked for your Sunday brunch",
+    "words" :
+    [
+      ["VIED", "DIET", "FOLK", "FOWL", "ROOF"],
+      ["BITS", "SENT", "NINE", "CARP", "DUKE"],
+      ["TAR", "GAP", "MID", "TON", "HUB", "SOP"]
+    ]
+  },
+  "12-25-2023":  {
+    "title" : "Easy-does-it Monday!",
+    "description" : "Start your week with some gimmes",
+    "words" :
+    [
+      ["TOP", "BET", "ADO"],
+      ["PORE", "PORE", "OWLS"],
+      ["OBEYS", "PENCE", "TEMPT"]
+    ]
+  },
+  "12-26-2023":  {
+    "title" : "Two-fer Tuesday!",
+    "description" : "Two 2-bys for your Tuesday",
+    "words" :
+    [
+      ["CONGEALING" , "ADVANTAGED" ],
+      ["STAGEHANDS" , "ECOLOGICAL" ],
+      []
+    ]
+  },
+  "12-27-2023":  {
+    "title" : "Mid-way Wednesday!",
+    "description" : "Three mid-length mazes for your midweek",
+    "words" :
+    [
+      ["TRYSTS", "FENDED", "DECALS"],
+      ["TANGLED", "WELLING", "SCHOOLS"],
+      ["ELECTRIC" , "REHEATED" , "TAKEOVER" ]
+    ]
+  },
+  "12-28-2023":  {
+    "title" : "Three-by Thursday!",
+    "description" : "Three 3-by-9s for your Thursday",
+    "words" :
+    [
+      ["ACCESSING" , "PROSECUTE" , "NIGHTGOWN" ],
+      ["RESENTING" , "KEYSTROKE" , "UNTREATED" ],
+      ["APPRAISER" , "TIGHTROPE" , "BELATEDLY" ]
+    ]
+  },
+  "12-29-2023":  {
+    "title" : "Fearsome Four-by Friday!",
+    "description" : "A formidable foursome for your Friday",
+    "words" :
+    [
+      ["SEMINARS" , "DESKTOPS" , "RECEIPTS" , "FISHTAIL" ],
+      [],
+      []
+    ]
+  },
+  "12-30-2023":  {
+    "title" : "A smattering Saturday!",
+    "description" : "A sampler for your Saturday sleuthing",
+    "words" :
+    [
+      ["EWES", "LOAD", "USES", "CULT", "FLOW"],
+      ["PETITIONS" , "REALIZING" ],
+      ["HIDEOUS", "MAKEUPS", "BAITING"]
+    ]
+  },
+  "12-31-2023":  {
+    "title" : "Short-stack Sunday!",
+    "description" : "Shorties stacked for your Sunday brunch",
+    "words" :
+    [
+      ["VAIN", "FLOP", "DIED", "MOSS", "PEST"],
+      ["IOTA", "NEWS", "BREW", "BULK", "AVOW"],
+      ["ZIP", "BED", "GAG", "BRA", "WAX", "COB"]
+    ]
+  },
+  "01-01-2024":  {
+    "title" : "Easy-does-it Monday!",
+    "description" : "Start your week with some gimmes",
+    "words" :
+    [
+      ["OFF", "MOB", "WRY"],
+      ["BRIM", "DUNK", "NOOK"],
+      ["OKAYS", "MOTHS", "ASHES"]
+    ]
+  },
+  "01-02-2024":  {
+    "title" : "Two-fer Tuesday!",
+    "description" : "Two 2-bys for your Tuesday",
+    "words" :
+    [
+      ["PULVERIZES" , "WEIGHTLESS" ],
+      ["SENTENCING" , "JUSTIFYING" ],
+      []
+    ]
+  },
+  "01-03-2024":  {
+    "title" : "Mid-way Wednesday!",
+    "description" : "Three mid-length mazes for your midweek",
+    "words" :
+    [
+      ["REFILE", "ALIBIS", "JOYFUL"],
+      ["IGNITED", "ODDNESS", "PARROTS"],
+      ["HEADBAND" , "DEVOUTLY" , "FLUFFIER" ]
+    ]
+  },
+  "01-04-2024":  {
+    "title" : "Three-by Thursday!",
+    "description" : "Three 3-by-9s for your Thursday",
+    "words" :
+    [
+      ["HASTENING" , "ITINERARY" , "LODESTONE" ],
+      ["PUNCTURES" , "CLOBBERED" , "OPERATING" ],
+      ["GENERATES" , "CONTORTED" , "CONDIMENT" ]
+    ]
+  },
+  "01-05-2024":  {
+    "title" : "Fearsome Four-by Friday!",
+    "description" : "A formidable foursome for your Friday",
+    "words" :
+    [
+      ["SHRUGGED" , "DAMPNESS" , "CHARTERS" , "WINERIES" ],
+      [],
+      []
+    ]
+  },
+  "01-06-2024":  {
+    "title" : "A smattering Saturday!",
+    "description" : "A sampler for your Saturday sleuthing",
+    "words" :
+    [
+      ["BURN", "KEEN", "JACK", "SOFA", "FURL"],
+      ["RELOADING" , "PREVENTED" ],
+      ["LITTLER", "TUITION", "HOSTELS"]
+    ]
+  },
+  "01-07-2024":  {
+    "title" : "Short-stack Sunday!",
+    "description" : "Shorties stacked for your Sunday brunch",
+    "words" :
+    [
+      ["SINE", "OWED", "HURT", "BRAG", "MATH"],
+      ["OWES", "RIPE", "LAZY", "LUAU", "DUNK"],
+      ["ELM", "CUE", "LEA", "NOR", "MEN", "INN"]
+    ]
+  },
+  "01-08-2024":  {
+    "title" : "Easy-does-it Monday!",
+    "description" : "Start your week with some gimmes",
+    "words" :
+    [
+      ["AGE", "CUE", "TAB"],
+      ["MANE", "DARK", "MUSH"],
+      ["FRESH", "RENTS", "TOTES"]
+    ]
+  },
+  "01-09-2024":  {
+    "title" : "Two-fer Tuesday!",
+    "description" : "Two 2-bys for your Tuesday",
+    "words" :
+    [
+      ["XENOPHOBIA" , "ADMISSIBLE" ],
+      ["SECRETIONS" , "EUCALYPTUS" ],
+      []
+    ]
+  },
+  "01-10-2024":  {
+    "title" : "Mid-way Wednesday!",
+    "description" : "Three mid-length mazes for your midweek",
+    "words" :
+    [
+      ["REUSES", "PAYOUT", "STREET"],
+      ["HOSTELS", "AIRFOIL", "RAIDERS"],
+      ["ARTISANS" , "REPORTED" , "INVADERS" ]
+    ]
+  },
+  "01-11-2024":  {
+    "title" : "Three-by Thursday!",
+    "description" : "Three 3-by-9s for your Thursday",
+    "words" :
+    [
+      ["SPRINTING" , "NOTEPAPER" , "INSOLENCE" ],
+      ["ESPIONAGE" , "REFLECTED" , "DISOBEYED" ],
+      ["RESERVING" , "UNFURLING" , "UNRELATED" ]
+    ]
+  },
+  "01-12-2024":  {
+    "title" : "Fearsome Four-by Friday!",
+    "description" : "A formidable foursome for your Friday",
+    "words" :
+    [
+      ["SOMETIME" , "DEFERRAL" , "SUNSHINE" , "REDDENED" ],
+      [],
+      []
+    ]
+  },
+  "01-13-2024":  {
+    "title" : "A smattering Saturday!",
+    "description" : "A sampler for your Saturday sleuthing",
+    "words" :
+    [
+      ["LAGS", "PONY", "HONK", "ELMS", "DESK"],
+      ["EMPLOYING" , "REPUTABLE" ],
+      ["CRAWDAD", "MAGNETS", "NOTATED"]
+    ]
+  },
+  "01-14-2024":  {
+    "title" : "Short-stack Sunday!",
+    "description" : "Shorties stacked for your Sunday brunch",
+    "words" :
+    [
+      ["VATS", "CUFF", "SORT", "FENS", "HOOP"],
+      ["RODS", "LIFT", "TRIM", "LOOM", "DEAR"],
+      ["LOP", "GET", "FEZ", "BIB", "TIC", "TEE"]
+    ]
+  },
+  "01-15-2024":  {
+    "title" : "Easy-does-it Monday!",
+    "description" : "Start your week with some gimmes",
+    "words" :
+    [
+      ["AYE", "WOK", "WON"],
+      ["BASK", "DATE", "MITE"],
+      ["IDOLS", "ABODE", "CANOE"]
+    ]
+  },
+  "01-16-2024":  {
+    "title" : "Two-fer Tuesday!",
+    "description" : "Two 2-bys for your Tuesday",
+    "words" :
+    [
+      ["COMPOSTING" , "AMBULANCES" ],
+      ["REPEATABLE" , "LOGISTICAL" ],
+      []
+    ]
+  },
+  "01-17-2024":  {
+    "title" : "Mid-way Wednesday!",
+    "description" : "Three mid-length mazes for your midweek",
+    "words" :
+    [
+      ["SECEDE", "YOUTHS", "ENTITY"],
+      ["EDITORS", "UNPLUGS", "LESSONS"],
+      ["CANNIBAL" , "SWERVING" , "VOLCANOS" ]
+    ]
+  },
+  "01-18-2024":  {
+    "title" : "Three-by Thursday!",
+    "description" : "Three 3-by-9s for your Thursday",
+    "words" :
+    [
+      ["EXCHANGED" , "CROTCHETY" , "INSERTION" ],
+      ["UNCLAIMED" , "RESEMBLED" , "COLLECTED" ],
+      ["COMPLICIT" , "CAPTURING" , "GOOFINESS" ]
+    ]
+  },
+  "01-19-2024":  {
+    "title" : "Fearsome Four-by Friday!",
+    "description" : "A formidable foursome for your Friday",
+    "words" :
+    [
+      ["EMULSIFY" , "FOLKTALE" , "EVICTION" , "CURRENCY" ],
+      [],
+      []
+    ]
+  },
+  "01-20-2024":  {
+    "title" : "A smattering Saturday!",
+    "description" : "A sampler for your Saturday sleuthing",
+    "words" :
+    [
+      ["SAPS", "DOME", "LEEK", "HOOT", "GRID"],
+      ["REWRITTEN" , "SONGBOOKS" ],
+      ["CITIZEN", "DEPLETE", "PROMOTE"]
+    ]
+  },
+  "01-21-2024":  {
+    "title" : "Short-stack Sunday!",
+    "description" : "Shorties stacked for your Sunday brunch",
+    "words" :
+    [
+      ["RUNG", "HIDE", "SCAB", "RITE", "EMUS"],
+      ["BETA", "GILL", "MORE", "RUSH", "EXAM"],
+      ["BIN", "OUR", "RUE", "NOB", "ERR", "SON"]
+    ]
+  },
+  "01-22-2024":  {
+    "title" : "Easy-does-it Monday!",
+    "description" : "Start your week with some gimmes",
+    "words" :
+    [
+      ["FAD", "SOW", "ADS"],
+      ["SLIM", "RIMS", "HALF"],
+      ["CLUNK", "MESAS", "DRILL"]
+    ]
+  },
+  "01-23-2024":  {
+    "title" : "Two-fer Tuesday!",
+    "description" : "Two 2-bys for your Tuesday",
+    "words" :
+    [
+      ["APPLESAUCE" , "SCHOLASTIC" ],
+      ["MISALIGNED" , "COGITATION" ],
+      []
+    ]
+  },
+  "01-24-2024":  {
+    "title" : "Mid-way Wednesday!",
+    "description" : "Three mid-length mazes for your midweek",
+    "words" :
+    [
+      ["GYPSUM", "BEEPED", "SPASMS"],
+      ["BISHOPS", "LAUNDER", "PUPPETS"],
+      ["MEDIOCRE" , "VILLAGES" , "HEREDITY" ]
+    ]
+  },
+  "01-25-2024":  {
+    "title" : "Three-by Thursday!",
+    "description" : "Three 3-by-9s for your Thursday",
+    "words" :
+    [
+      ["TOLERANCE" , "ASSASSINS" , "ANALOGIES" ],
+      ["RUINATION" , "PLAYGROUP" , "FOLKTALES" ],
+      ["CATATONIC" , "BOYCOTTED" , "INTERNIST" ]
+    ]
+  },
+  "01-26-2024":  {
+    "title" : "Fearsome Four-by Friday!",
+    "description" : "A formidable foursome for your Friday",
+    "words" :
+    [
+      ["SUPPLIER" , "CATERING" , "MESSAGED" , "INJURIES" ],
+      [],
+      []
+    ]
+  },
+  "01-27-2024":  {
+    "title" : "A smattering Saturday!",
+    "description" : "A sampler for your Saturday sleuthing",
+    "words" :
+    [
+      ["WITS", "CLEF", "ITEM", "WILL", "GRUB"],
+      ["DEPENDING" , "DEPARTURE" ],
+      ["ITEMIZE", "CUBICLE", "DUALITY"]
+    ]
+  },
+  "01-28-2024":  {
+    "title" : "Short-stack Sunday!",
+    "description" : "Shorties stacked for your Sunday brunch",
+    "words" :
+    [
+      ["SLOP", "HOOK", "GONG", "UGLY", "FATS"],
+      ["MOWS", "EGOS", "TWIG", "RUED", "DUCK"],
+      ["SUM", "VOW", "WET", "ROT", "WON", "RAY"]
+    ]
+  },
+  "01-29-2024":  {
+    "title" : "Easy-does-it Monday!",
+    "description" : "Start your week with some gimmes",
+    "words" :
+    [
+      ["SKA", "HIP", "BUY"],
+      ["OAKS", "UPON", "HIKE"],
+      ["PICKY", "TUNAS", "BOARS"]
+    ]
+  },
+  "01-30-2024":  {
+    "title" : "Two-fer Tuesday!",
+    "description" : "Two 2-bys for your Tuesday",
+    "words" :
+    [
+      ["PRAGMATISM" , "PERSEVERED" ],
+      ["MISBEHAVED" , "FASHIONING" ],
+      []
+    ]
+  },
+  "01-31-2024":  {
+    "title" : "Mid-way Wednesday!",
+    "description" : "Three mid-length mazes for your midweek",
+    "words" :
+    [
+      ["FALLEN", "SANEST", "UNWELL"],
+      ["PUMMELS", "SAMURAI", "DENSEST"],
+      ["EXCLUDED" , "DISPUTES" , "HOOLIGAN" ]
+    ]
+  },
+  "02-01-2024":  {
+    "title" : "Three-by Thursday!",
+    "description" : "Three 3-by-9s for your Thursday",
+    "words" :
+    [
+      ["STRAINING" , "MODERATED" , "CRACKDOWN" ],
+      ["VISCOSITY" , "HIERARCHY" , "PROTESTED" ],
+      ["PATROLLED" , "APOLOGIZE" , "CORRECTED" ]
+    ]
+  },
+  "02-02-2024":  {
+    "title" : "Fearsome Four-by Friday!",
+    "description" : "A formidable foursome for your Friday",
+    "words" :
+    [
+      ["PUNISHED" , "WRECKING" , "PERJURED" , "GREMLINS" ],
+      [],
+      []
+    ]
+  },
+  "02-03-2024":  {
+    "title" : "A smattering Saturday!",
+    "description" : "A sampler for your Saturday sleuthing",
+    "words" :
+    [
+      ["SPAS", "GLUE", "OAKS", "GOUT", "HIND"],
+      ["SHIFTLESS" , "INCUMBENT" ],
+      ["SINGLED", "NUMBERS", "TOSSING"]
+    ]
+  },
+  "02-04-2024":  {
+    "title" : "Short-stack Sunday!",
+    "description" : "Shorties stacked for your Sunday brunch",
+    "words" :
+    [
+      ["REEK", "MYTH", "JAMB", "CAGE", "TYPE"],
+      ["DUCT", "CURB", "LURE", "PANT", "CAPE"],
+      ["HAS", "MAR", "NIT", "HIS", "WAX", "ZAP"]
+    ]
+  },
+  "02-05-2024":  {
+    "title" : "Easy-does-it Monday!",
+    "description" : "Start your week with some gimmes",
+    "words" :
+    [
+      ["WET", "FLY", "ARM"],
+      ["LARD", "WHIR", "MELT"],
+      ["RISEN", "TIDAL", "TROOP"]
+    ]
+  },
+  "02-06-2024":  {
+    "title" : "Two-fer Tuesday!",
+    "description" : "Two 2-bys for your Tuesday",
+    "words" :
+    [
+      ["OCCASIONAL" , "BELONGINGS" ],
+      ["IMPOSSIBLY" , "SOLICITOUS" ],
+      []
+    ]
+  },
+  "02-07-2024":  {
+    "title" : "Mid-way Wednesday!",
+    "description" : "Three mid-length mazes for your midweek",
+    "words" :
+    [
+      ["MURMUR", "STRAIN", "PICNIC"],
+      ["DERIVES", "NIBBLES", "INVALID"],
+      ["FUGITIVE" , "VALIDATE" , "MOLLUSCS" ]
+    ]
+  },
+  "02-08-2024":  {
+    "title" : "Three-by Thursday!",
+    "description" : "Three 3-by-9s for your Thursday",
+    "words" :
+    [
+      ["RECTIFIES" , "SMOOTHEST" , "ADDRESSEE" ],
+      ["CLUTTERED" , "FRAGRANCE" , "COMMUNION" ],
+      ["AGREEABLE" , "DISTRACTS" , "REVOCABLE" ]
+    ]
+  },
+  "02-09-2024":  {
+    "title" : "Fearsome Four-by Friday!",
+    "description" : "A formidable foursome for your Friday",
+    "words" :
+    [
+      ["CONSTANT" , "GUARDIAN" , "GRAPHITE" , "SOMETIME" ],
+      [],
+      []
+    ]
+  },
+  "02-10-2024":  {
+    "title" : "A smattering Saturday!",
+    "description" : "A sampler for your Saturday sleuthing",
+    "words" :
+    [
+      ["BUTS", "SETS", "CARB", "WICK", "COTS"],
+      ["SURPLUSES" , "NEGLECTED" ],
+      ["CRUMBLE", "FACIALS", "CENTAUR"]
+    ]
+  },
+  "02-11-2024":  {
+    "title" : "Short-stack Sunday!",
+    "description" : "Shorties stacked for your Sunday brunch",
+    "words" :
+    [
+      ["SCAB", "QUAY", "BLOT", "ORAL", "SELF"],
+      ["FOUL", "ACRE", "VEIL", "MIST", "AIDS"],
+      ["HOE", "NOD", "EBB", "JAW", "SIT", "DAB"]
+    ]
+  },
+  "02-12-2024":  {
+    "title" : "Easy-does-it Monday!",
+    "description" : "Start your week with some gimmes",
+    "words" :
+    [
+      ["LUG", "TAX", "OUR"],
+      ["TAGS", "TRAM", "ACTS"],
+      ["HYPES", "RUSTS", "SACKS"]
+    ]
+  },
+  "02-13-2024":  {
+    "title" : "Two-fer Tuesday!",
+    "description" : "Two 2-bys for your Tuesday",
+    "words" :
+    [
+      ["SPOOKINESS" , "BOOKSTORES" ],
+      ["PERCOLATOR" , "EXCELLENCY" ],
+      []
+    ]
+  },
+  "02-14-2024":  {
+    "title" : "Mid-way Wednesday!",
+    "description" : "Three mid-length mazes for your midweek",
+    "words" :
+    [
+      ["MARSHY", "HIPPED", "FRUGAL"],
+      ["GELDING", "PLOWING", "DIRTIER"],
+      ["INCIDENT" , "DISSECTS" , "MISLEADS" ]
+    ]
+  },
+  "02-15-2024":  {
+    "title" : "Three-by Thursday!",
+    "description" : "Three 3-by-9s for your Thursday",
+    "words" :
+    [
+      ["DISFIGURE" , "UNWILLING" , "RETAINING" ],
+      ["DOVETAILS" , "STRUMMING" , "GANGPLANK" ],
+      ["ILLNESSES" , "MARINADES" , "MINIMIZES" ]
+    ]
+  },
+  "02-16-2024":  {
+    "title" : "Fearsome Four-by Friday!",
+    "description" : "A formidable foursome for your Friday",
+    "words" :
+    [
+      ["PRETENDS" , "CHARIOTS" , "WEAKENED" , "ENGRAVER" ],
+      [],
+      []
+    ]
+  },
+  "02-17-2024":  {
+    "title" : "A smattering Saturday!",
+    "description" : "A sampler for your Saturday sleuthing",
+    "words" :
+    [
+      ["PRIM", "MERE", "KNEW", "DUMB", "SAME"],
+      ["DISSONANT" , "FORGOTTEN" ],
+      ["SUNDOWN", "TIDYING", "CULTURE"]
+    ]
+  },
+  "02-18-2024":  {
+    "title" : "Short-stack Sunday!",
+    "description" : "Shorties stacked for your Sunday brunch",
+    "words" :
+    [
+      ["GUST", "OILY", "BABY", "PACE", "BELT"],
+      ["DREW", "MUST", "DIRT", "GRAD", "EARL"],
+      ["ADO", "NOR", "POD", "BOT", "OAK", "CAT"]
+    ]
+  },
+  "02-19-2024":  {
+    "title" : "Easy-does-it Monday!",
+    "description" : "Start your week with some gimmes",
+    "words" :
+    [
+      ["AUK", "FIX", "DOT"],
+      ["FRAY", "JOTS", "LAWN"],
+      ["FUMES", "CROWN", "SAFES"]
+    ]
+  },
+  "02-20-2024":  {
+    "title" : "Two-fer Tuesday!",
+    "description" : "Two 2-bys for your Tuesday",
+    "words" :
+    [
+      ["SCHEMATICS" , "THUMBNAILS" ],
+      ["INCEPTIONS" , "LINEBACKER" ],
+      []
+    ]
+  },
+  "02-21-2024":  {
+    "title" : "Mid-way Wednesday!",
+    "description" : "Three mid-length mazes for your midweek",
+    "words" :
+    [
+      ["CREAMS", "TUMBLE", "PUDDLE"],
+      ["FIBBING", "REPAINT", "FRECKLE"],
+      ["PRISONER" , "SLUMBERS" , "RHAPSODY" ]
+    ]
+  },
+  "02-22-2024":  {
+    "title" : "Three-by Thursday!",
+    "description" : "Three 3-by-9s for your Thursday",
+    "words" :
+    [
+      ["FOMENTING" , "DRAMATICS" , "UNWITTING" ],
+      ["INSISTING" , "SHOWROOMS" , "BALLPARKS" ],
+      ["EVOLUTION" , "BACHELORS" , "STOPPABLE" ]
+    ]
+  },
+  "02-23-2024":  {
+    "title" : "Fearsome Four-by Friday!",
+    "description" : "A formidable foursome for your Friday",
+    "words" :
+    [
+      ["FARTHEST" , "PASTRAMI" , "OVERLOOK" , "COOKWARE" ],
+      [],
+      []
+    ]
+  },
+  "02-24-2024":  {
+    "title" : "A smattering Saturday!",
+    "description" : "A sampler for your Saturday sleuthing",
+    "words" :
+    [
+      ["BALK", "POET", "OAKS", "SAND", "TOIL"],
+      ["DOWNWARDS" , "STOICALLY" ],
+      ["SWEEPER", "DROOPED", "FACULTY"]
+    ]
+  },
+  "02-25-2024":  {
+    "title" : "Short-stack Sunday!",
+    "description" : "Shorties stacked for your Sunday brunch",
+    "words" :
+    [
+      ["COBS", "REEL", "CRAM", "YAKS", "GORY"],
+      ["FAWN", "WHEN", "SAID", "WHIR", "BOON"],
+      ["FOG", "WHO", "WAX", "GUN", "ADO", "PIG"]
+    ]
+  },
+  "02-26-2024":  {
+    "title" : "Easy-does-it Monday!",
+    "description" : "Start your week with some gimmes",
+    "words" :
+    [
+      ["EON", "TIC", "OWL"],
+      ["WARY", "MINK", "SOFT"],
+      ["TODAY", "WORLD", "TAXES"]
+    ]
+  },
+  "02-27-2024":  {
+    "title" : "Two-fer Tuesday!",
+    "description" : "Two 2-bys for your Tuesday",
+    "words" :
+    [
+      ["WAREHOUSED" , "RECREATING" ],
+      ["WHIRLPOOLS" , "JITTERBUGS" ],
+      []
+    ]
+  },
+  "02-28-2024":  {
+    "title" : "Mid-way Wednesday!",
+    "description" : "Three mid-length mazes for your midweek",
+    "words" :
+    [
+      ["GUZZLE", "WANING", "STOKES"],
+      ["BILLOWS", "UNITING", "SEDUCES"],
+      ["RESTATED" , "PEDANTIC" , "BELIEVES" ]
+    ]
+  },
+  "02-29-2024":  {
+    "title" : "Three-by Thursday!",
+    "description" : "Three 3-by-9s for your Thursday",
+    "words" :
+    [
+      ["VALUELESS" , "SHORTNESS" , "TEARFULLY" ],
+      ["PARALEGAL" , "PRECEDENT" , "DISPLACED" ],
+      ["TAXPAYERS" , "BILINGUAL" , "REPELLING" ]
+    ]
+  },
+  "03-01-2024":  {
+    "title" : "Fearsome Four-by Friday!",
+    "description" : "A formidable foursome for your Friday",
+    "words" :
+    [
+      ["DAUNTING" , "ROCKETED" , "CONFIRMS" , "ACCOLADE" ],
+      [],
+      []
+    ]
+  },
+  "03-02-2024":  {
+    "title" : "A smattering Saturday!",
+    "description" : "A sampler for your Saturday sleuthing",
+    "words" :
+    [
+      ["WHIP", "DUDE", "FUNK", "SEED", "GIFT"],
+      ["SOMETHING" , "CONTINUAL" ],
+      ["BRISKLY", "GASEOUS", "MANSION"]
+    ]
+  },
+  "03-03-2024":  {
+    "title" : "Short-stack Sunday!",
+    "description" : "Shorties stacked for your Sunday brunch",
+    "words" :
+    [
+      ["WINS", "FAIL", "MULL", "GURU", "LAKE"],
+      ["TIME", "YOLK", "MULE", "FANS", "APES"],
+      ["CUP", "VET", "TEN", "AWE", "WED", "COO"]
+    ]
+  },
+  "03-04-2024":  {
+    "title" : "Easy-does-it Monday!",
+    "description" : "Start your week with some gimmes",
+    "words" :
+    [
+      ["OFF", "BOB", "SAX"],
+      ["EKES", "LIFE", "DUMP"],
+      ["FATED", "GUARD", "ACIDS"]
+    ]
+  },
+  "03-05-2024":  {
+    "title" : "Two-fer Tuesday!",
+    "description" : "Two 2-bys for your Tuesday",
+    "words" :
+    [
+      ["OUTLANDISH" , "RENDITIONS" ],
+      ["CONJUGATED" , "INSURANCES" ],
+      []
+    ]
+  },
+  "03-06-2024":  {
+    "title" : "Mid-way Wednesday!",
+    "description" : "Three mid-length mazes for your midweek",
+    "words" :
+    [
+      ["TRIALS", "INFANT", "WAVERS"],
+      ["MOISTEN", "DEPRESS", "TEMPERS"],
+      ["ESPRESSO" , "BAPTIZED" , "SYMPHONY" ]
+    ]
+  },
+  "03-07-2024":  {
+    "title" : "Three-by Thursday!",
+    "description" : "Three 3-by-9s for your Thursday",
+    "words" :
+    [
+      ["HOMEOWNER" , "CUCUMBERS" , "RESEMBLED" ],
+      ["PRIMARILY" , "JUVENILES" , "BUTTERCUP" ],
+      ["SPHERICAL" , "ANOMALOUS" , "FROLICKED" ]
+    ]
+  },
+  "03-08-2024":  {
+    "title" : "Fearsome Four-by Friday!",
+    "description" : "A formidable foursome for your Friday",
+    "words" :
+    [
+      ["DETONATE" , "SLITHERS" , "COLLECTS" , "COHESIVE" ],
+      [],
+      []
+    ]
+  },
+  "03-09-2024":  {
+    "title" : "A smattering Saturday!",
+    "description" : "A sampler for your Saturday sleuthing",
+    "words" :
+    [
+      ["BITE", "FOWL", "BUZZ", "BARD", "ROLE"],
+      ["WITTICISM" , "COSTLIEST" ],
+      ["FRESHEN", "STATUES", "CALLING"]
+    ]
+  },
+  "03-10-2024":  {
+    "title" : "Short-stack Sunday!",
+    "description" : "Shorties stacked for your Sunday brunch",
+    "words" :
+    [
+      ["SNOB", "BUYS", "GREW", "PAWN", "DIGS"],
+      ["GLAD", "PANT", "COGS", "OVAL", "AREA"],
+      ["RID", "PIP", "MUG", "LIP", "SPA", "RUG"]
+    ]
+  },
+  "03-11-2024":  {
+    "title" : "Easy-does-it Monday!",
+    "description" : "Start your week with some gimmes",
+    "words" :
+    [
+      ["COX", "MAT", "WIN"],
+      ["DUNK", "LEVY", "HALF"],
+      ["FACES", "SCALP", "GLOAT"]
+    ]
+  },
+  "03-12-2024":  {
+    "title" : "Two-fer Tuesday!",
+    "description" : "Two 2-bys for your Tuesday",
+    "words" :
+    [
+      ["PLAGIARIST" , "INTERFERED" ],
+      ["CONGESTIVE" , "CONCLUSION" ],
+      []
+    ]
+  },
+  "03-13-2024":  {
+    "title" : "Mid-way Wednesday!",
+    "description" : "Three mid-length mazes for your midweek",
+    "words" :
+    [
+      ["FROCKS", "TEASED", "MEEKER"],
+      ["LOOKING", "BILLION", "TIDINGS"],
+      ["MINIVANS" , "BOTTOMED" , "INVASIVE" ]
+    ]
+  },
+  "03-14-2024":  {
+    "title" : "Three-by Thursday!",
+    "description" : "Three 3-by-9s for your Thursday",
+    "words" :
+    [
+      ["PEDIATRIC" , "RECESSION" , "RESEMBLES" ],
+      ["BREAKDOWN" , "CORRECTLY" , "BIRDCAGES" ],
+      ["INCIPIENT" , "GRADUATES" , "RESPONSES" ]
+    ]
+  },
+  "03-15-2024":  {
+    "title" : "Fearsome Four-by Friday!",
+    "description" : "A formidable foursome for your Friday",
+    "words" :
+    [
+      ["ORCHARDS" , "COWARDLY" , "VALIDITY" , "SNEEZING" ],
+      [],
+      []
+    ]
+  },
+  "03-16-2024":  {
+    "title" : "A smattering Saturday!",
+    "description" : "A sampler for your Saturday sleuthing",
+    "words" :
+    [
+      ["PANE", "HILL", "OXEN", "PALS", "IDLE"],
+      ["STICKIEST" , "PETITIONS" ],
+      ["ECLIPSE", "MASSAGE", "SUBWAYS"]
+    ]
+  },
+  "03-17-2024":  {
+    "title" : "Short-stack Sunday!",
+    "description" : "Shorties stacked for your Sunday brunch",
+    "words" :
+    [
+      ["JIGS", "WISH", "FATS", "DIED", "DONE"],
+      ["COPS", "LOAD", "OILY", "FLEE", "CUSP"],
+      ["PIG", "WAS", "EVE", "LEA", "HAY", "CUT"]
+    ]
+  },
+  "03-18-2024":  {
+    "title" : "Easy-does-it Monday!",
+    "description" : "Start your week with some gimmes",
+    "words" :
+    [
+      ["DAB", "FIX", "YAK"],
+      ["VATS", "THAN", "WOES"],
+      ["DEPOT", "MATES", "DUKES"]
+    ]
+  },
+  "03-19-2024":  {
+    "title" : "Two-fer Tuesday!",
+    "description" : "Two 2-bys for your Tuesday",
+    "words" :
+    [
+      ["CALAMITIES" , "THOUGHTFUL" ],
+      ["INHIBITORY" , "LEGISLATOR" ],
+      []
+    ]
+  },
+  "03-20-2024":  {
+    "title" : "Mid-way Wednesday!",
+    "description" : "Three mid-length mazes for your midweek",
+    "words" :
+    [
+      ["REPACK", "LEERED", "CREEDS"],
+      ["BARTERS", "SHARPEN", "EARLOBE"],
+      ["CACKLING" , "THRIVING" , "SURFACES" ]
+    ]
+  },
+  "03-21-2024":  {
+    "title" : "Three-by Thursday!",
+    "description" : "Three 3-by-9s for your Thursday",
+    "words" :
+    [
+      ["CULTIVATE" , "DECISIONS" , "DEMANDING" ],
+      ["WHETSTONE" , "TOUGHNESS" , "ENCHANTED" ],
+      ["CARPENTRY" , "REAPPEARS" , "CAVERNOUS" ]
+    ]
+  },
+  "03-22-2024":  {
+    "title" : "Fearsome Four-by Friday!",
+    "description" : "A formidable foursome for your Friday",
+    "words" :
+    [
+      ["BRAMBLES" , "DEFLECTS" , "DEFENSES" , "POUNCING" ],
+      [],
+      []
+    ]
+  },
+  "03-23-2024":  {
+    "title" : "A smattering Saturday!",
+    "description" : "A sampler for your Saturday sleuthing",
+    "words" :
+    [
+      ["FORE", "FLEE", "PALL", "AMEN", "KNEW"],
+      ["SCALLYWAG" , "SAUNTERED" ],
+      ["VANILLA", "BOOSTED", "DISBAND"]
+    ]
+  },
+  "03-24-2024":  {
+    "title" : "Short-stack Sunday!",
+    "description" : "Shorties stacked for your Sunday brunch",
+    "words" :
+    [
+      ["BEER", "BURY", "OBEY", "CUSS", "LINE"],
+      ["TOED", "KILO", "DUCK", "ELKS", "BILL"],
+      ["FIT", "BOA", "ROW", "PIP", "TON", "BAD"]
+    ]
+  },
+  "03-25-2024":  {
+    "title" : "Easy-does-it Monday!",
+    "description" : "Start your week with some gimmes",
+    "words" :
+    [
+      ["VAT", "HEX", "MAR"],
+      ["ZERO", "SLOB", "DEED"],
+      ["DUPED", "AVERT", "CLOUD"]
+    ]
+  },
+  "03-26-2024":  {
+    "title" : "Two-fer Tuesday!",
+    "description" : "Two 2-bys for your Tuesday",
+    "words" :
+    [
+      ["SURROUNDED" , "INCREASING" ],
+      ["SATURATION" , "SHEEPISHLY" ],
+      []
+    ]
+  },
+  "03-27-2024":  {
+    "title" : "Mid-way Wednesday!",
+    "description" : "Three mid-length mazes for your midweek",
+    "words" :
+    [
+      ["GOPHER", "CHURCH", "TRUISM"],
+      ["BRIDGES", "VANILLA", "CLIENTS"],
+      ["STRAINER" , "DURATION" , "BREEZILY" ]
+    ]
+  },
+  "03-28-2024":  {
+    "title" : "Three-by Thursday!",
+    "description" : "Three 3-by-9s for your Thursday",
+    "words" :
+    [
+      ["PERPETUAL" , "SLIGHTING" , "PROJECTED" ],
+      ["SWIFTNESS" , "WINTERIZE" , "VITALIZED" ],
+      ["FISHERIES" , "DEADLIEST" , "MORTALITY" ]
+    ]
+  },
+  "03-29-2024":  {
+    "title" : "Fearsome Four-by Friday!",
+    "description" : "A formidable foursome for your Friday",
+    "words" :
+    [
+      ["TRUFFLES" , "BURSTING" , "GLISTENS" , "SPINOFFS" ],
+      [],
+      []
+    ]
+  },
+  "03-30-2024":  {
+    "title" : "A smattering Saturday!",
+    "description" : "A sampler for your Saturday sleuthing",
+    "words" :
+    [
+      ["GOSH", "HITS", "BOYS", "JUNK", "TEEN"],
+      ["SUPERNOVA" , "NOTORIETY" ],
+      ["AIRBAGS", "OFFERED", "HYGIENE"]
+    ]
+  },
+  "03-31-2024":  {
+    "title" : "Short-stack Sunday!",
+    "description" : "Shorties stacked for your Sunday brunch",
+    "words" :
+    [
+      ["PONY", "HUTS", "TOGA", "CADS", "HEAR"],
+      ["ZAPS", "SNAP", "MARK", "ARMY", "DIGS"],
+      ["SIN", "RUT", "RIM", "GAB", "VET", "DOC"]
+    ]
+  },
+  "04-01-2024":  {
+    "title" : "Easy-does-it Monday!",
+    "description" : "Start your week with some gimmes",
+    "words" :
+    [
+      ["FAN", "PIT", "WET"],
+      ["GOAL", "LESS", "PLOD"],
+      ["HIVES", "MIMED", "SLOWS"]
+    ]
+  },
+  "04-02-2024":  {
+    "title" : "Two-fer Tuesday!",
+    "description" : "Two 2-bys for your Tuesday",
+    "words" :
+    [
+      ["MARGARITAS" , "ABSTRACTLY" ],
+      ["LOVELINESS" , "ENCAMPMENT" ],
+      []
+    ]
+  },
+  "04-03-2024":  {
+    "title" : "Mid-way Wednesday!",
+    "description" : "Three mid-length mazes for your midweek",
+    "words" :
+    [
+      ["YELPED", "SASSED", "BOWING"],
+      ["ACQUIRE", "FLEXING", "WISHING"],
+      ["IMPACTED" , "BLUEJAYS" , "STABBING" ]
+    ]
+  },
+  "04-04-2024":  {
+    "title" : "Three-by Thursday!",
+    "description" : "Three 3-by-9s for your Thursday",
+    "words" :
+    [
+      ["VAGABONDS" , "DECLINING" , "RESPONSES" ],
+      ["HEADLIGHT" , "BOOKCASES" , "PIECEMEAL" ],
+      ["ALLIGATOR" , "ORIENTING" , "PRECURSOR" ]
+    ]
+  },
+  "04-05-2024":  {
+    "title" : "Fearsome Four-by Friday!",
+    "description" : "A formidable foursome for your Friday",
+    "words" :
+    [
+      ["SCRAGGLY" , "MERCHANT" , "POSSIBLE" , "OPERATES" ],
+      [],
+      []
+    ]
+  },
+  "04-06-2024":  {
+    "title" : "A smattering Saturday!",
+    "description" : "A sampler for your Saturday sleuthing",
+    "words" :
+    [
+      ["TART", "BEAM", "ENVY", "WHIZ", "AHOY"],
+      ["ADHERENCE" , "FOOLISHLY" ],
+      ["FARTHER", "STENCIL", "WILTING"]
+    ]
+  },
+  "04-07-2024":  {
+    "title" : "Short-stack Sunday!",
+    "description" : "Shorties stacked for your Sunday brunch",
+    "words" :
+    [
+      ["FLAP", "DUMP", "ATOP", "ARTS", "RAZE"],
+      ["SEWS", "HOLY", "GILD", "LADY", "AUNT"],
+      ["IDS", "RIB", "RAW", "NUB", "BIN", "MAX"]
+    ]
+  },
+  "04-08-2024":  {
+    "title" : "Easy-does-it Monday!",
+    "description" : "Start your week with some gimmes",
+    "words" :
+    [
+      ["SAP", "LAW", "DOE"],
+      ["TEND", "DUKE", "WIRY"],
+      ["POKES", "HILTS", "THANK"]
+    ]
+  },
+  "04-09-2024":  {
+    "title" : "Two-fer Tuesday!",
+    "description" : "Two 2-bys for your Tuesday",
+    "words" :
+    [
+      ["AMMUNITION" , "REGROUPING" ],
+      ["HABITUALLY" , "WASTEPAPER" ],
+      []
+    ]
+  },
+  "04-10-2024":  {
+    "title" : "Mid-way Wednesday!",
+    "description" : "Three mid-length mazes for your midweek",
+    "words" :
+    [
+      ["INFEST", "SCHOOL", "MATRON"],
+      ["BLANDLY", "DEFACES", "HEDGING"],
+      ["CHEERING" , "BALLGAME" , "OVERLORD" ]
+    ]
+  },
+  "04-11-2024":  {
+    "title" : "Three-by Thursday!",
+    "description" : "Three 3-by-9s for your Thursday",
+    "words" :
+    [
+      ["EXCURSION" , "SNOWBIRDS" , "DEXTEROUS" ],
+      ["IMPUDENCE" , "ASTROLOGY" , "MORTALITY" ],
+      ["COHERENCY" , "BUCKWHEAT" , "EXCITABLE" ]
+    ]
+  },
+  "04-12-2024":  {
+    "title" : "Fearsome Four-by Friday!",
+    "description" : "A formidable foursome for your Friday",
+    "words" :
+    [
+      ["POACHERS" , "STRUMMED" , "IDEALIZE" , "DABBLING" ],
+      [],
+      []
+    ]
+  },
+  "04-13-2024":  {
+    "title" : "A smattering Saturday!",
+    "description" : "A sampler for your Saturday sleuthing",
+    "words" :
+    [
+      ["SURF", "BUNG", "ADDS", "SAGA", "FUND"],
+      ["OXYGENATE" , "PERISHING" ],
+      ["CHANCED", "PLUNGER", "ANGULAR"]
+    ]
+  },
+  "04-14-2024":  {
+    "title" : "Short-stack Sunday!",
+    "description" : "Shorties stacked for your Sunday brunch",
+    "words" :
+    [
+      ["ARMS", "GRAB", "AXLE", "GRIP", "TYPO"],
+      ["PLOD", "LONE", "DADS", "WANE", "CELL"],
+      ["CUR", "DAB", "HIP", "NUN", "SIS", "USE"]
+    ]
+  },
+  "04-15-2024":  {
+    "title" : "Easy-does-it Monday!",
+    "description" : "Start your week with some gimmes",
+    "words" :
+    [
+      ["BOG", "ELM", "RUG"],
+      ["RINK", "BRAG", "LOGS"],
+      ["MIMIC", "DAZED", "TORUS"]
+    ]
+  } 
 }
