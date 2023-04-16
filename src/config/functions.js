@@ -1,3 +1,6 @@
+import tinycolor from 'tinycolor2';
+
+
 export function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
     let j = Math.floor(Math.random() * (i + 1));
@@ -38,7 +41,21 @@ export function getColor(){//https://stackoverflow.com/questions/43193341/how-to
              Math.floor(70 + 10 * Math.random()) + '%,' +//saturation
              Math.floor(40 + 20 * Math.random()) + '%)'//lightness
 }
-
+export function getOffsetColor(colorSent){//send "0" or an hsl string, e.g. "hsl(138,72%,41%)"
+  let hue = Math.floor(360 * Math.random());
+  let hueSent = 0;
+  const parts = colorSent.split(",");
+  hueSent = parts.length > 1?parseInt(parts[0].split("(")[1]):0;
+  hue = Math.abs(hueSent - hue) < 90?(hue + 180)%360:hue;
+  const newCol = 'hsl(' + hue + ',' +//hue
+             Math.floor(70 + 10 * Math.random()) + '%,' +//saturation
+             Math.floor(40 + 20 * Math.random()) + '%)';
+  const color = tinycolor(newCol);
+  return color.toHex();
+  // return 'hsl(' + hue + ',' +//hue
+  //            Math.floor(70 + 10 * Math.random()) + '%,' +//saturation
+  //            Math.floor(40 + 20 * Math.random()) + '%)';//lightness
+}
 export function randomBoolean(){
   return Math.random() < 0.5;
 }

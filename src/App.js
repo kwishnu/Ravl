@@ -19,7 +19,7 @@ import animStyles from './styles/anim.module.css';
 import './styles/animations.css';
 import tut_styles from './styles/tut_styles';
 import {puzzTitle, puzzDescription,  puzzles} from './data/dailyDataHelper';//numPuzzles,
-import { getRandom, getRandomInt, shuffleArray, transposeArray, allElementsEqual, getColor, printWordsToConsole,  } from './config/functions';//printGameArrayToConsole
+import { getRandom, getRandomInt, shuffleArray, transposeArray, allElementsEqual, printWordsToConsole, getOffsetColor } from './config/functions';//printGameArrayToConsole
 import gamePlatitudes from "./data/game_plats";
 import playRavlStr from "./data/PlayRavlStr";
 import words3letter from "./words/3letter_bonus";
@@ -1552,7 +1552,9 @@ class App extends Component {
       let numS = this.state.numberOfStars;
       if (numS === 100) {
         numS = 1;
-        const newColor = getColor();
+        let newColor = getOffsetColor(this.state.currentStarColor);
+        newColor = "#" + newColor;
+
         let delim = ',';
         let newColorString = '';
         let colArr = this.state.starColorArray;
@@ -1568,6 +1570,8 @@ class App extends Component {
           newColorString = newColorString + delim + color;
         });
         newColorString = newColorString.substring(1);
+        console.log("newColorString: " + newColorString);
+
         try {
           window.localStorage.setItem(KEY_StarColorString, newColorString);
         } catch (error) {
@@ -2465,7 +2469,7 @@ class App extends Component {
 
   renderStars100() {
     let singleStar = "\u2605";
-
+console.log("starColorArray: " + JSON.stringify(this.state.starColorArray));
     return (
       <div style={this.styles().star_row}>
         <div style={{ ...this.styles().star100, marginLeft: tablet ? scrWidth * 0.01 : 2, color: this.state.starColorArray[0] }}>{singleStar}</div>
